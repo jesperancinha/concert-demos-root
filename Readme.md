@@ -1,5 +1,16 @@
 # concert-demos-root
 
+This application is a demo application to show the power of Kotlin in a Reactive Programming environment.
+
+> In this example the domain revolves around the registration of concert dates, the artists and the show they belong to.
+> We want to be able to record the concert data and make it the more efficient as possible.
+> For this Demo we will use RxJava
+
+## References
+
+-   [Spring Boot Kotlin](https://spring.io/guides/tutorials/spring-boot-kotlin/)
+-   [R2DBC – Reactive Relational Database Connectivity](https://www.baeldung.com/r2dbc)
+
 ## About me
 
 [![Twitter Follow](https://img.shields.io/twitter/follow/joaofse?label=João%20Esperancinha&style=social)](https://twitter.com/joaofse)
