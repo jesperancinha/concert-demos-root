@@ -2,6 +2,7 @@
 
 [![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=Concert%20Demos&color=informational)](https://github.com/jesperancinha/concert-demos-root) 
 [![GitHub release](https://img.shields.io/github/release-pre/jesperancinha/concert-demos-root.svg)](#)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/0ddf4a0b338e4644b416824298e33127)](https://www.codacy.com/manual/jofisaes/concert-demos-root?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/concert-demos-root&amp;utm_campaign=Badge_Grade)
 [![codebeat badge](https://codebeat.co/badges/c36571eb-ca0f-4abe-9af2-c66ffc3a4002)](https://codebeat.co/projects/github-com-jesperancinha-concert-demos-root-master)
@@ -16,15 +17,22 @@
 [![GitHub top language](https://img.shields.io/github/languages/code-size/jesperancinha/concert-demos-root.svg)](#)
 
 This application is a demo application to show the power of Kotlin in a Reactive Programming environment.
+We will also look at how to work with R2DBC
 
 > In this example the domain revolves around the registration of concert dates, the artists and the show they belong to.
 > We want to be able to record the concert data and make it the more efficient as possible.
-> For this Demo we will use RxJava
+> For this Demo we will use WebFlow
 
 ## References
 
+-   [Spring Data Reactive Repositories with MongoDB](https://www.baeldung.com/spring-data-mongodb-reactive)
 -   [Spring Boot Kotlin](https://spring.io/guides/tutorials/spring-boot-kotlin/)
 -   [R2DBC – Reactive Relational Database Connectivity](https://www.baeldung.com/r2dbc)
+-   [A Quick Look at R2DBC with Spring Data](https://www.baeldung.com/spring-data-r2dbc)
+-   [Spring Webflux with Kotlin](https://www.baeldung.com/spring-webflux-kotlin)
+-   [Reactive relational databases with R2DBC and Spring](https://dimitr.im/reactive-relational-databases-r2dbc-spring)
+-   [R2DBC](https://r2dbc.io/)
+-   [Lesson 11 - Date and Time in Kotlin - Creating and formatting](https://www.ict.social/kotlin/oop/date-and-time-in-kotlin-creating-and-formatting)
 
 ## About me
 

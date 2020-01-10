@@ -1,10 +1,8 @@
 package org.jesperancinha.concerts.repos
 
-import io.r2dbc.spi.ConnectionFactory
+import org.jesperancinha.concerts.model.Artist
+import org.springframework.data.repository.reactive.ReactiveCrudRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-class ArtistRepository(private var connectionFactory: ConnectionFactory) {
-
-}
-
+interface ArtistRepository : ReactiveCrudRepository<Artist, Long>
