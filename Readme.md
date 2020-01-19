@@ -16,6 +16,12 @@
 [![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/concert-demos-root.svg)](#)
 [![GitHub top language](https://img.shields.io/github/languages/code-size/jesperancinha/concert-demos-root.svg)](#)
 
+## Status
+
+Under construction...
+
+## Description
+
 This application is a demo application to show the power of Kotlin in a Reactive Programming environment.
 We will also look at how to work with R2DBC
 
