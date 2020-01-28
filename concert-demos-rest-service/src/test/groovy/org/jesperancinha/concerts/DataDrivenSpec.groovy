@@ -1,6 +1,8 @@
 package org.jesperancinha.concerts
 
-import spock.lang.*
+
+import spock.lang.Specification
+import spock.lang.Unroll
 
 @Unroll
 class DataDrivenSpec extends Specification {
@@ -37,6 +39,7 @@ class DataDrivenSpec extends Specification {
 
     static class Person {
         String name
+
         String getSex() {
             name == "Fred" ? "Male" : "Female"
         }
