@@ -31,6 +31,7 @@ We will also look at how to work with R2DBC
 
 ## References
 
+-   [Reactive Manifesto](https://www.reactivemanifesto.org/)
 -   [Spring Data Reactive Repositories with MongoDB](https://www.baeldung.com/spring-data-mongodb-reactive)
 -   [Spring Boot Kotlin](https://spring.io/guides/tutorials/spring-boot-kotlin/)
 -   [R2DBC – Reactive Relational Database Connectivity](https://www.baeldung.com/r2dbc)

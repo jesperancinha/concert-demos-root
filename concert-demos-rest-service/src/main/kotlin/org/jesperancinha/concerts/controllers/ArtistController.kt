@@ -1,15 +1,17 @@
 package org.jesperancinha.concerts.controllers
 
-import org.jesperancinha.concerts.repos.ArtistRepository
+import org.jesperancinha.concerts.model.Artist
 import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
 import reactor.core.publisher.Flux
 
-@RestController
-class ArtistController(private var artistRepository: ArtistRepository?) {
+interface ArtistController {
 
-    @GetMapping()
-    fun getAllAccounts(): Flux<String?>? {
-        return Flux.just("wow");
-    }
+    @GetMapping
+    fun getAllArtists(): Flux<Artist?>?;
+
+    @PostMapping
+    fun createArtist(@RequestBody artist: Artist);
+
 }
