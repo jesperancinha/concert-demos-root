@@ -1,0 +1,9 @@
+version: "3.7"
+services:
+  postgres:
+    hostname: postgres
+    image: library/postgres:12
+    ports:
+      - "5432:5432"
+    env_file:
+      - docker-psql/.env

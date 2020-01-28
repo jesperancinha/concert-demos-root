@@ -33,6 +33,9 @@ class Configuration {
     }
 
     private fun executeSql(client: DatabaseClient, sql: String): Mono<Int> {
+        if (sql.isEmpty()) {
+            return Mono.just(0)
+        }
         return client.execute(sql).fetch().rowsUpdated()
     }
 }
