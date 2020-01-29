@@ -1,15 +1,21 @@
 package org.jesperancinha.concerts.controllers
 
+import org.jesperancinha.concerts.model.Artist
 import org.jesperancinha.concerts.services.ArtistService
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.boot.test.mock.mockito.MockBean
+import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
+import reactor.core.publisher.Flux
 import spock.lang.Specification
 
-@AutoConfigureMockMvc
-@WebMvcTest(ArtistController.class)
+import static org.mockito.Mockito.when
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
+
+@WebMvcTest(controllers = [ArtistControllerImpl, ArtistController])
 class ArtistControllerImplSpec extends Specification {
 
     @Autowired
@@ -19,21 +25,15 @@ class ArtistControllerImplSpec extends Specification {
     private ArtistService artistService
 
     def "GetAllArtists"() {
-        expect:
-        Math.max(a, b) == c
-        where:
-        a << [3, 5, 9]
-        b << [7, 4, 9]
-        c << [7, 5, 9]
-    }
-
-    def "CreateArtist"() {
-        expect:
-        Math.max(a, b) == c
-
-        where:
-        a << [3, 5, 9]
-        b << [7, 4, 9]
-        c << [7, 5, 9]
+        when:
+        when(artistService.getAllArtists()).thenReturn(Flux.just(new Artist[0]))
+        def target = '/concerts/data/artists'
+        and:
+        def results = mvc.perform(get(target)
+                .accept(MediaType.APPLICATION_JSON))
+        then:
+        results.andExpect(status().isOk())
+        and:
+        results.andExpect(content().string(""))
     }
 }

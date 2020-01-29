@@ -1,8 +1,10 @@
 package org.jesperancinha.concerts.model
 
+import lombok.Builder
 import java.time.LocalDateTime
 
 
+@Builder
 data class Artist(
         val name: String,
         val gender: Gender,
