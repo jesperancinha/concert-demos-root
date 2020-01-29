@@ -29,6 +29,26 @@ We will also look at how to work with R2DBC
 > We want to be able to record the concert data and make it the more efficient as possible.
 > For this Demo we will use WebFlow
 
+## Detail
+
+-  concert-demos-rest-service - WebFlux implementation of the Sprig Boot Back-End process for the concerts website.
+
+## JMeter
+
+Part of this project is to perform benchmarking tests. For this, we will be using [JMeter](http://jmeter.apache.org/) by the [Apache Software Foundation](https://www.apache.org/).
+
+Please find all JMeter files in [jmeter](jmeter)
+
+## Docker images
+
+This project makes use of the following docker images:
+
+[![dockeri.co](https://dockeri.co/image/jesperancinha/je-all-build)](https://hub.docker.com/r/jesperancinha/je-all-build)
+
+[![dockeri.co](https://dockeri.co/image/library/postgres)](https://hub.docker.com/r/library/postgres)
+
+All source code for the [JE](https://bitbucket.org/jesperancinha/docker-images) images reside in repo [Docker images](https://bitbucket.org/jesperancinha/docker-images).
+
 ## References
 
 -   [Reactive Manifesto](https://www.reactivemanifesto.org/)
@@ -41,6 +61,7 @@ We will also look at how to work with R2DBC
 -   [R2DBC](https://r2dbc.io/)
 -   [Lesson 11 - Date and Time in Kotlin - Creating and formatting](https://www.ict.social/kotlin/oop/date-and-time-in-kotlin-creating-and-formatting)
 -   [Spock Example](https://github.com/spockframework/spock-example)
+-   [JMeter](http://jmeter.apache.org/) 
 
 ## About me
 
