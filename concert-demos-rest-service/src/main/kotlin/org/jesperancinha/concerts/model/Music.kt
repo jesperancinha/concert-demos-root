@@ -6,15 +6,27 @@ data class Music(
         val lyrics: String,
         val artist: Artist
 ) {
+
     override fun equals(other: Any?): Boolean {
-        return super.equals(other)
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as Music
+
+        if (id != other.id) return false
+        if (name != other.name) return false
+        if (lyrics != other.lyrics) return false
+        if (artist != other.artist) return false
+
+        return true
     }
 
     override fun hashCode(): Int {
-        return super.hashCode()
+        var result = id.hashCode()
+        result = 31 * result + name.hashCode()
+        result = 31 * result + lyrics.hashCode()
+        result = 31 * result + artist.hashCode()
+        return result
     }
 
-    override fun toString(): String {
-        return super.toString()
-    }
 }

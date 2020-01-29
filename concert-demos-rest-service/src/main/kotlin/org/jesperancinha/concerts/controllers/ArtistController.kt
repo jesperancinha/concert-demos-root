@@ -11,7 +11,7 @@ interface ArtistController {
     @GetMapping
     fun getAllArtists(): Flux<Artist?>?;
 
-    @PostMapping
+    @PostMapping("/artist")
     fun createArtist(@RequestBody artist: Artist);
 
 }

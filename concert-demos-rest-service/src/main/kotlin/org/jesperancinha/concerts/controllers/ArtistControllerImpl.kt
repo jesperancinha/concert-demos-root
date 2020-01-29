@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 import reactor.core.publisher.Flux
 
-@RestController
+@RestController("/concerts/data/artists")
 class ArtistControllerImpl(private val artistService: ArtistService) : ArtistController {
 
     override fun getAllArtists(): Flux<Artist?>? {
