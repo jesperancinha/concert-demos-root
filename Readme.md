@@ -62,6 +62,7 @@ All source code for the [JE](https://bitbucket.org/jesperancinha/docker-images) 
 -   [Lesson 11 - Date and Time in Kotlin - Creating and formatting](https://www.ict.social/kotlin/oop/date-and-time-in-kotlin-creating-and-formatting)
 -   [Spock Example](https://github.com/spockframework/spock-example)
 -   [JMeter](http://jmeter.apache.org/) 
+-   [Migrating From Lombok to Kotlin by Erik Pragt](https://dzone.com/articles/migrating-from-lombok-to-kotlin)
 
 ## About me
 

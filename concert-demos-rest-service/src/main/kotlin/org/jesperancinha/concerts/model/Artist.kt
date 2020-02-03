@@ -1,21 +1,15 @@
 package org.jesperancinha.concerts.model
 
-import lombok.Builder
-import java.time.LocalDateTime
-
-
-@Builder
 data class Artist(
         val name: String,
         val gender: Gender,
         val careerStart: Long,
-        val birthDate: LocalDateTime,
+        val birthDate: String,
         val birthCity: String,
         val country: String,
-        val keywords: Array<String>
+        val keywords: List<String>
 
 ) {
-
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -29,7 +23,7 @@ data class Artist(
         if (birthDate != other.birthDate) return false
         if (birthCity != other.birthCity) return false
         if (country != other.country) return false
-        if (!keywords.contentEquals(other.keywords)) return false
+        if (keywords != other.keywords) return false
 
         return true
     }
@@ -41,7 +35,9 @@ data class Artist(
         result = 31 * result + birthDate.hashCode()
         result = 31 * result + birthCity.hashCode()
         result = 31 * result + country.hashCode()
-        result = 31 * result + keywords.contentHashCode()
+        result = 31 * result + keywords.hashCode()
         return result
     }
+
+
 }
