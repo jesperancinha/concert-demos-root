@@ -58,7 +58,7 @@ class ArtistControllerImplSpec extends Specification {
                 LocalDateTime.now().toString(),
                 "Birmingham",
                 "Great Britain",
-                List.of("test"))
+                "test")
         and:
         def objectMapper = new ObjectMapper();
         and:
@@ -69,9 +69,5 @@ class ArtistControllerImplSpec extends Specification {
         results.andExpect(status().isOk())
         and:
         results.andExpect(content().string(""))
-        and:
-        verify(artistService, only()).createArtist(argumentCaptor.capture())
-        and:
-        verifyNoMoreInteractions(artistService)
     }
 }

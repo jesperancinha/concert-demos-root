@@ -28,6 +28,8 @@
         <kotlin-logging.version>1.7.8</kotlin-logging.version>
         <lombok.version>1.18.10</lombok.version>
         <netty-all.version>4.1.44.Final</netty-all.version>
+        <gmavenplus-plugin.version>1.8.1</gmavenplus-plugin.version>
+        <assertj-core.version>3.15.0</assertj-core.version>
     </properties>
 
     <modules>
@@ -49,6 +51,12 @@
                 <version>2.0-M1-groovy-2.5</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.assertj</groupId>
+                <artifactId>assertj-core</artifactId>
+                <version>${assertj-core.version}</version>
+                <scope>test</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>

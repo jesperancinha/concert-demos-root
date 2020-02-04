@@ -53,11 +53,6 @@
         </dependency>
         <dependency>
             <groupId>io.r2dbc</groupId>
-            <artifactId>r2dbc-h2</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.r2dbc</groupId>
             <artifactId>r2dbc-postgresql</artifactId>
         </dependency>
         <dependency>
@@ -75,7 +70,6 @@
             <artifactId>kotlin-logging</artifactId>
             <version>${kotlin-logging.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -87,6 +81,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot.experimental</groupId>
             <artifactId>spring-boot-test-autoconfigure-r2dbc</artifactId>
@@ -113,7 +108,6 @@
             <version>${spock-spring.version}</version>
             <scope>test</scope>
         </dependency>
-
         <!-- This is important to have as a general scope. Spock needs this -->
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
@@ -124,7 +118,11 @@
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>3.13.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.r2dbc</groupId>
+            <artifactId>r2dbc-h2</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -205,7 +203,7 @@
             <plugin>
                 <groupId>org.codehaus.gmavenplus</groupId>
                 <artifactId>gmavenplus-plugin</artifactId>
-                <version>1.8.1</version>
+                <version>${gmavenplus-plugin.version}</version>
                 <extensions>true</extensions>
                 <executions>
                     <execution>
@@ -213,14 +211,14 @@
                             <goal>compileTests</goal>
                         </goals>
                         <configuration>
-                            <sources>
+                            <testSources>
                                 <fileset>
                                     <directory>${pom.basedir}/src/test/groovy</directory>
                                     <includes>
                                         <include>**/*.groovy</include>
                                     </includes>
                                 </fileset>
-                            </sources>
+                            </testSources>
                         </configuration>
                     </execution>
                 </executions>

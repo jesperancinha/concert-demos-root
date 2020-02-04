@@ -7,7 +7,7 @@ data class Artist(
         val birthDate: String,
         val birthCity: String,
         val country: String,
-        val keywords: List<String>
+        val keywords: String
 
 ) {
 

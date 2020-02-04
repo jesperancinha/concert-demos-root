@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import reactor.core.publisher.Flux
+import reactor.core.publisher.Mono
 
 @RestController
 @RequestMapping("/concerts/data/artists")
@@ -15,7 +16,7 @@ class ArtistControllerImpl(private val artistService: ArtistService) : ArtistCon
         return artistService.getAllArtists();
     }
 
-    override fun createArtist(@RequestBody artist: Artist) {
-        artistService.createArtist(artist)
+    override fun createArtist(@RequestBody artist: Artist): Mono<Artist> {
+       return artistService.createArtist(artist)
     }
 }
