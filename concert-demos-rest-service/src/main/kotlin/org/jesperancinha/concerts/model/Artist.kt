@@ -1,6 +1,9 @@
 package org.jesperancinha.concerts.model
 
+import org.springframework.data.annotation.Id
+
 data class Artist(
+        @Id var id: Int? = null,
         val name: String,
         val gender: Gender,
         val careerStart: Long,
@@ -10,6 +13,7 @@ data class Artist(
         val keywords: String
 
 ) {
+
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -38,6 +42,5 @@ data class Artist(
         result = 31 * result + keywords.hashCode()
         return result
     }
-
 
 }
