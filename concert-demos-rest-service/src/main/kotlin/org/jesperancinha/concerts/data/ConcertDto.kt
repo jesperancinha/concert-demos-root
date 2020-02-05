@@ -1,26 +1,25 @@
-package org.jesperancinha.concerts.model
+package org.jesperancinha.concerts.data
 
-import org.springframework.data.annotation.Id
 import java.time.LocalDateTime
 
-data class Concert(
-        @Id var id: Int? = null,
+data class ConcertDto(
+        var id: Int? = null,
         val name: String,
         val location: String,
         val date: LocalDateTime,
-        val listings: List<Listing>
+        val listingDtos: List<ListingDto>
 ) {
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
 
-        other as Concert
+        other as ConcertDto
 
         if (name != other.name) return false
         if (location != other.location) return false
         if (date != other.date) return false
-        if (listings != other.listings) return false
+        if (listingDtos != other.listingDtos) return false
 
         return true
     }
@@ -29,7 +28,7 @@ data class Concert(
         var result = name.hashCode()
         result = 31 * result + location.hashCode()
         result = 31 * result + date.hashCode()
-        result = 31 * result + listings.hashCode()
+        result = 31 * result + listingDtos.hashCode()
         return result
     }
 }

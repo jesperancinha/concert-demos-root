@@ -1,10 +1,9 @@
-package org.jesperancinha.concerts.model
+package org.jesperancinha.concerts.data
 
 import org.jesperancinha.concerts.types.Gender
-import org.springframework.data.annotation.Id
 
-data class Artist(
-        @Id var id: Int? = null,
+data class ArtistDto(
+        var id: Int? = null,
         val name: String,
         val gender: Gender,
         val careerStart: Long,
@@ -14,13 +13,29 @@ data class Artist(
         val keywords: String
 
 ) {
+    constructor(name: String,
+                gender: Gender,
+                careerStart: Long,
+                birthDate: String,
+                birthCity: String,
+                country: String,
+                keywords: String) :
+            this(
+                    null,
+                    name,
+                    gender,
+                    careerStart,
+                    birthDate,
+                    birthCity,
+                    country,
+                    keywords)
 
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
 
-        other as Artist
+        other as ArtistDto
 
         if (name != other.name) return false
         if (gender != other.gender) return false

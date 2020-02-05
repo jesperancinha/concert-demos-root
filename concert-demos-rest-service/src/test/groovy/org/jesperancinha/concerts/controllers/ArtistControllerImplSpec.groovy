@@ -1,6 +1,7 @@
 package org.jesperancinha.concerts.controllers
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.model.Artist
 import org.jesperancinha.concerts.services.ArtistService
 import org.mockito.ArgumentCaptor
@@ -16,7 +17,7 @@ import spock.lang.Specification
 
 import java.time.LocalDateTime
 
-import static org.jesperancinha.concerts.model.Gender.AGENDER
+import static org.jesperancinha.concerts.types.Gender.AGENDER
 import static org.mockito.Mockito.when
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
@@ -59,8 +60,7 @@ class ArtistControllerImplSpec extends Specification {
         def target = '/concerts/data/artists'
 
         and:
-        def artist = new Artist(
-                null,
+        def artist = new ArtistDto(
                 "Duran Duran",
                 AGENDER,
                 1000L,

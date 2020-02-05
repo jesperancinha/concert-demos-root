@@ -17,6 +17,6 @@ class ArtistControllerImpl(private val artistService: ArtistService) : ArtistCon
     }
 
     override fun createArtist(@RequestBody artist: Artist): Mono<Artist> {
-       return artistService.createArtist(artist)
+        return artistService.createArtist(artist)
     }
 }

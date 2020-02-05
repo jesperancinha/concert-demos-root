@@ -1,12 +1,12 @@
 package org.jesperancinha.concerts.controllers
 
-
 import org.assertj.core.api.SoftAssertions
 import org.jesperancinha.concerts.configuration.ConfigurationProperties
+import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.model.Artist
-import org.jesperancinha.concerts.model.Gender
 import org.jesperancinha.concerts.repos.ArtistRepository
 import org.jesperancinha.concerts.services.ArtistService
+import org.jesperancinha.concerts.types.Gender
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.test.context.SpringBootTest
@@ -17,7 +17,7 @@ import spock.lang.Specification
 
 import java.time.LocalDateTime
 
-import static org.jesperancinha.concerts.model.Gender.AGENDER
+import static org.jesperancinha.concerts.types.Gender.AGENDER
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
@@ -62,8 +62,7 @@ class ArtistControllerImplITSpec extends Specification {
         final String uri = "http://localhost:${port}/concerts/data/artists"
 
         and:
-        def artist = new Artist(
-                null,
+        def artist = new ArtistDto(
                 "Duran Duran",
                 AGENDER,
                 1000L,

@@ -1,4 +1,4 @@
-package org.jesperancinha.concerts.model
+package org.jesperancinha.concerts.types
 
 enum class Gender {
     MALE,
