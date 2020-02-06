@@ -5,9 +5,7 @@ import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 
 interface ArtistService {
-
     fun getAllArtists(): Flux<Artist?>?
 
     fun createArtist(artist: Artist): Mono<Artist>
-
 }

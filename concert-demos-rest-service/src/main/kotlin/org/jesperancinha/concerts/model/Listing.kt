@@ -4,8 +4,8 @@ import org.springframework.data.annotation.Id
 
 data class Listing(
         @Id var id: Int? = null,
-        val artist: Artist,
-        val music: List<Music>
+        val artistId: Long,
+        val referenceMusicId: Long
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -13,15 +13,17 @@ data class Listing(
 
         other as Listing
 
-        if (artist != other.artist) return false
-        if (music != other.music) return false
+        if (id != other.id) return false
+        if (artistId != other.artistId) return false
+        if (referenceMusicId != other.referenceMusicId) return false
 
         return true
     }
 
     override fun hashCode(): Int {
-        var result = artist.hashCode()
-        result = 31 * result + music.hashCode()
+        var result = id ?: 0
+        result = 31 * result + artistId.hashCode()
+        result = 31 * result + referenceMusicId.hashCode()
         return result
     }
 

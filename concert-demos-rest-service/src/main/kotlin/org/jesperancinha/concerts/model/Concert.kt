@@ -7,8 +7,7 @@ data class Concert(
         @Id var id: Int? = null,
         val name: String,
         val location: String,
-        val date: LocalDateTime,
-        val listings: List<Listing>
+        val date: LocalDateTime
 ) {
 
     override fun equals(other: Any?): Boolean {
@@ -20,7 +19,6 @@ data class Concert(
         if (name != other.name) return false
         if (location != other.location) return false
         if (date != other.date) return false
-        if (listings != other.listings) return false
 
         return true
     }
@@ -29,7 +27,6 @@ data class Concert(
         var result = name.hashCode()
         result = 31 * result + location.hashCode()
         result = 31 * result + date.hashCode()
-        result = 31 * result + listings.hashCode()
         return result
     }
 }
