@@ -3,7 +3,7 @@ package org.jesperancinha.concerts.model
 import org.springframework.data.annotation.Id
 
 data class Listing(
-        @Id var id: Int? = null,
+        @Id var id: Long? = null,
         val artistId: Long,
         val referenceMusicId: Long
 ) {
@@ -24,7 +24,7 @@ data class Listing(
         var result = id ?: 0
         result = 31 * result + artistId.hashCode()
         result = 31 * result + referenceMusicId.hashCode()
-        return result
+        return result.toInt()
     }
 
 }

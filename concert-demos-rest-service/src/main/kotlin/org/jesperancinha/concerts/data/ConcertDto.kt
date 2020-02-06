@@ -3,11 +3,11 @@ package org.jesperancinha.concerts.data
 import java.time.LocalDateTime
 
 data class ConcertDto(
-        var id: Int? = null,
+        var id: Long? = null,
         val name: String,
         val location: String,
         val date: LocalDateTime,
-        val listingDtos: List<ListingDto>
+        val listingDtos: MutableList<ListingDto> = mutableListOf()
 ) {
 
     override fun equals(other: Any?): Boolean {

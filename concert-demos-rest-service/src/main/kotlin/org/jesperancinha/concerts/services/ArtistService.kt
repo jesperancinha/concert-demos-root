@@ -1,11 +1,11 @@
 package org.jesperancinha.concerts.services
 
-import org.jesperancinha.concerts.model.Artist
+import org.jesperancinha.concerts.data.ArtistDto
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 
 interface ArtistService {
-    fun getAllArtists(): Flux<Artist?>?
+    fun getAllArtists(): Flux<ArtistDto>?
 
-    fun createArtist(artist: Artist): Mono<Artist>
+    fun createArtist(artist: ArtistDto): Mono<ArtistDto>
 }

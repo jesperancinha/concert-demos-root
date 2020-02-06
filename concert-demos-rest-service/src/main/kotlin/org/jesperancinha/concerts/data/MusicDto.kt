@@ -1,19 +1,16 @@
 package org.jesperancinha.concerts.data
 
 data class MusicDto(
-        var id: Int? = null,
+        var id: Long? = null,
         val name: String,
-        val lyrics: String,
-        val artistDto: ArtistDto
+        val lyrics: String
 ) {
 
     constructor(name: String,
-                lyrics: String,
-                artistDto: ArtistDto) :
+                lyrics: String) :
             this(null,
                     name,
-                    lyrics,
-                    artistDto
+                    lyrics
             )
 
     override fun equals(other: Any?): Boolean {
@@ -24,7 +21,6 @@ data class MusicDto(
 
         if (name != other.name) return false
         if (lyrics != other.lyrics) return false
-        if (artistDto != other.artistDto) return false
 
         return true
     }
@@ -32,7 +28,6 @@ data class MusicDto(
     override fun hashCode(): Int {
         var result = name.hashCode()
         result = 31 * result + lyrics.hashCode()
-        result = 31 * result + artistDto.hashCode()
         return result
     }
 

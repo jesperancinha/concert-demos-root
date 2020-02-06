@@ -4,7 +4,7 @@ import org.springframework.data.annotation.Id
 import java.time.LocalDateTime
 
 data class Concert(
-        @Id var id: Int? = null,
+        @Id var id: Long? = null,
         val name: String,
         val location: String,
         val date: LocalDateTime

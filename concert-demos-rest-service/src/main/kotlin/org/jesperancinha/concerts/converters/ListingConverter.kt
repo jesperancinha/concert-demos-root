@@ -6,11 +6,11 @@ import org.jesperancinha.concerts.data.MusicDto
 import org.jesperancinha.concerts.model.Listing
 
 object ListingConverter {
-    fun toListingDto(listing: Listing, artistDto: ArtistDto, musicDtos: List<MusicDto>): ListingDto {
+    fun toListingDto(listing: Listing, artistDto: ArtistDto, musicDto: MusicDto?): ListingDto {
         return ListingDto(
                 listing.id,
                 artistDto,
-                musicDtos
+                musicDto
         )
     }
 }

@@ -5,8 +5,7 @@ import org.springframework.data.annotation.Id
 data class Music(
         @Id var id: Int? = null,
         val name: String,
-        val lyrics: String,
-        val artist: Artist
+        val lyrics: String
 ) {
 
     override fun equals(other: Any?): Boolean {
@@ -18,7 +17,6 @@ data class Music(
         if (id != other.id) return false
         if (name != other.name) return false
         if (lyrics != other.lyrics) return false
-        if (artist != other.artist) return false
 
         return true
     }
@@ -27,7 +25,6 @@ data class Music(
         var result = id.hashCode()
         result = 31 * result + name.hashCode()
         result = 31 * result + lyrics.hashCode()
-        result = 31 * result + artist.hashCode()
         return result
     }
 

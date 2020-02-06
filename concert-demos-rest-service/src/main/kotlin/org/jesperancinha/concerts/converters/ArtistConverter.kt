@@ -15,4 +15,17 @@ object ArtistConverter {
                 artist.keywords
         )
     }
+
+    fun toArtist(artistDto: ArtistDto): Artist {
+        return Artist(
+                null,
+                artistDto.name,
+                artistDto.gender,
+                artistDto.careerStart,
+                artistDto.birthDate,
+                artistDto.birthCity,
+                artistDto.country,
+                artistDto.keywords
+        )
+    }
 }

@@ -1,11 +1,11 @@
 package org.jesperancinha.concerts.services
 
-import org.jesperancinha.concerts.model.Concert
+import org.jesperancinha.concerts.data.ConcertDto
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 
 interface ConcertService {
-    fun getAllConcerts(): Flux<Concert?>?
+    fun getAllConcerts(): Flux<ConcertDto>?
 
-    fun createConcert(concert: Concert): Mono<Concert>
+    fun createConcert(concert: ConcertDto): Mono<ConcertDto>
 }

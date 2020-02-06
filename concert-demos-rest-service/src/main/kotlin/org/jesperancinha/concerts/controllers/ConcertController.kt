@@ -1,18 +1,18 @@
 package org.jesperancinha.concerts.controllers
 
-import org.jesperancinha.concerts.data.ArtistDto
+import org.jesperancinha.concerts.data.ConcertDto
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 
-interface ArtistController {
+interface ConcertController {
 
     @GetMapping
-    fun getAllArtists(): Flux<ArtistDto>?
+    fun getAllConcerts(): Flux<ConcertDto>?
 
     @PostMapping
-    fun createArtist(@RequestBody artistDto: ArtistDto): Mono<ArtistDto>
+    fun createConcert(@RequestBody concertDto: ConcertDto): Mono<ConcertDto>
 
 }

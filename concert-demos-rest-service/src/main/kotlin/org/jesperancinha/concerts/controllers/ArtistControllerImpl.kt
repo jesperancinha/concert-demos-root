@@ -1,6 +1,6 @@
 package org.jesperancinha.concerts.controllers
 
-import org.jesperancinha.concerts.model.Artist
+import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.services.ArtistService
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -12,11 +12,11 @@ import reactor.core.publisher.Mono
 @RequestMapping("/concerts/data/artists")
 class ArtistControllerImpl(private val artistService: ArtistService) : ArtistController {
 
-    override fun getAllArtists(): Flux<Artist?>? {
-        return artistService.getAllArtists();
+    override fun getAllArtists(): Flux<ArtistDto>? {
+        return artistService.getAllArtists()
     }
 
-    override fun createArtist(@RequestBody artist: Artist): Mono<Artist> {
-        return artistService.createArtist(artist)
+    override fun createArtist(@RequestBody artistDto: ArtistDto): Mono<ArtistDto> {
+        return artistService.createArtist(artistDto)
     }
 }

@@ -32,3 +32,6 @@ build/
 
 ### Maven ###
 .mvn
+
+### OSX
+.DS_Store

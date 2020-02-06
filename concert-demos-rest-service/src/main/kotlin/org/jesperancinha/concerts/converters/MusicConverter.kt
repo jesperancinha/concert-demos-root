@@ -8,8 +8,15 @@ object MusicConverter {
     fun toMusicDto(music: Music): MusicDto {
         return MusicDto(
                 music.name,
-                music.lyrics,
-                ArtistConverter.toArtistDto(music.artist)
+                music.lyrics
+        )
+    }
+
+    fun toMusic(musicDto: MusicDto): Music {
+        return Music(
+                null,
+                musicDto.name,
+                musicDto.lyrics
         )
     }
 }
