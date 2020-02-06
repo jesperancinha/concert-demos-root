@@ -28,7 +28,7 @@ class Configuration {
         val reader = BufferedReader(getSystemResourceAsStream("schema.sql").reader())
         reader.use {
             val content: String = reader.readText()
-            return Mono.just(content);
+            return Mono.just(content)
         }
     }
 

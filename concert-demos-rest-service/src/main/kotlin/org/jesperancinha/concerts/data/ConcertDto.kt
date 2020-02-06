@@ -7,7 +7,7 @@ data class ConcertDto(
         val name: String,
         val location: String,
         val date: LocalDateTime,
-        val listingDtos: MutableList<ListingDto> = mutableListOf()
+        val listingDtos: MutableList<Long> = mutableListOf()
 ) {
 
     override fun equals(other: Any?): Boolean {

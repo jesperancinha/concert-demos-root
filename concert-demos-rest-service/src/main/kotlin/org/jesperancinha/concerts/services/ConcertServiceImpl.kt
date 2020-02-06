@@ -2,16 +2,17 @@ package org.jesperancinha.concerts.services
 
 import org.jesperancinha.concerts.converters.ArtistConverter
 import org.jesperancinha.concerts.converters.ConcertConverter
-import org.jesperancinha.concerts.converters.ListingConverter
 import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.data.ConcertDto
 import org.jesperancinha.concerts.model.ConcertListing
 import org.jesperancinha.concerts.model.Listing
 import org.jesperancinha.concerts.repos.*
+import org.springframework.stereotype.Service
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 import reactor.core.publisher.toFlux
 
+@Service
 class ConcertServiceImpl(
         private val concertRepository: ConcertRepository,
         private val concertListingRepository: ConcertListingRepository,
@@ -39,8 +40,7 @@ class ConcertServiceImpl(
                     val listing = listingLink.second
                     val concertLink = listingLink.first
                     val concertDto: ConcertDto = concertLink.first
-                    val listingDto = ListingConverter.toListingDto(listing, artistDto, null)
-                    concertDto.listingDtos.add(listingDto)
+                    listing.id?.let { (concertDto.listingDtos.add(listing.id!!)) }
                     concertDto
                 }
     }
