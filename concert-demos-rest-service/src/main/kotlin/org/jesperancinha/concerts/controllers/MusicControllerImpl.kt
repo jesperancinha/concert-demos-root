@@ -8,7 +8,7 @@ import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 
 @RestController
-@RequestMapping("/concerts/data/music")
+@RequestMapping("/concerts/data/musics")
 class MusicControllerImpl(private val musicService: MusicService) : MusicController {
     override fun getAllMusics(): Flux<MusicDto>? {
         return musicService.getAllMusics()
