@@ -5,10 +5,10 @@ import org.jesperancinha.concerts.model.Music
 
 object MusicConverter {
 
-    fun toMusicDto(music: Music): MusicDto {
+    fun toMusicDto(Music: Music): MusicDto {
         return MusicDto(
-                music.name,
-                music.lyrics
+                Music.name,
+                Music.lyrics
         )
     }
 
