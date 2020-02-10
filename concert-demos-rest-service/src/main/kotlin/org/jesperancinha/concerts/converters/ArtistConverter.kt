@@ -6,6 +6,7 @@ import org.jesperancinha.concerts.model.Artist
 object ArtistConverter {
     fun toArtistDto(artist: Artist): ArtistDto {
         return ArtistDto(
+                artist.id,
                 artist.name,
                 artist.gender,
                 artist.careerStart,
@@ -18,7 +19,7 @@ object ArtistConverter {
 
     fun toArtist(artistDto: ArtistDto): Artist {
         return Artist(
-                null,
+                artistDto.id,
                 artistDto.name,
                 artistDto.gender,
                 artistDto.careerStart,

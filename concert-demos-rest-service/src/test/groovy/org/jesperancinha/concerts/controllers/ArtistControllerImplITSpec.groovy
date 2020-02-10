@@ -37,7 +37,6 @@ class ArtistControllerImplITSpec extends Specification {
 
     def "GetAllArtists"() {
         given: "An empty database"
-        artistRepository.deleteAll()
 
         when: "Fetching all artists"
         final String uri = "http://localhost:${port}/concerts/data/artists"
@@ -56,7 +55,6 @@ class ArtistControllerImplITSpec extends Specification {
 
     def "CreateArtist"() {
         given: "An empty database"
-        artistRepository.deleteAll()
 
         when:
         final String uri = "http://localhost:${port}/concerts/data/artists"
@@ -89,5 +87,9 @@ class ArtistControllerImplITSpec extends Specification {
             softly.assertThat(result.get(0).gender as Gender).isSameAs(AGENDER)
             softly.assertThat(result.get(0).birthCity).isEqualTo("Birmingham")
         }
+    }
+
+    def setup() {
+        artistRepository.deleteAll().block()
     }
 }

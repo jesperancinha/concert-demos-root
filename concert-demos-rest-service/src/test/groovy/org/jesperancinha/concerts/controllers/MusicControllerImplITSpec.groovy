@@ -29,12 +29,11 @@ class MusicControllerImplITSpec extends Specification {
     private MusicService artistService
 
     @Autowired
-    private MusicRepository artistRepository
+    private MusicRepository musicRepository
 
 
     def "GetAllMusics"() {
         given: "An empty database"
-        artistRepository.deleteAll()
 
         when: "Fetching all artists"
         final String uri = "http://localhost:${port}/concerts/data/musics"
@@ -53,14 +52,12 @@ class MusicControllerImplITSpec extends Specification {
 
     def "CreateMusic"() {
         given: "An empty database"
-        artistRepository.deleteAll()
 
         when:
         final String uri = "http://localhost:${port}/concerts/data/musics"
 
         and:
-        def artist = new MusicDto(
-                1L,
+        def musicDto = new MusicDto(
                 "Hey mama",
                 HEY_MAMA)
 
@@ -68,7 +65,7 @@ class MusicControllerImplITSpec extends Specification {
         final RestTemplate restTemplate = new RestTemplate()
 
         and:
-        restTemplate.postForEntity(uri, artist, Music)
+        restTemplate.postForEntity(uri, musicDto, Music)
 
         and:
         final List<Music> result = restTemplate.getForObject(uri, List.class)
@@ -81,5 +78,9 @@ class MusicControllerImplITSpec extends Specification {
             softly.assertThat(result.get(0).name).isEqualTo("Hey mama")
             softly.assertThat(result.get(0).lyrics).isEqualTo(HEY_MAMA)
         }
+    }
+
+    def setup() {
+        musicRepository.deleteAll().block()
     }
 }

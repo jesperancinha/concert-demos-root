@@ -4,7 +4,7 @@ import org.jesperancinha.concerts.types.Gender
 import org.springframework.data.annotation.Id
 
 data class Artist(
-        @Id var id: Int? = null,
+        @Id var id: Long? = null,
         val name: String,
         val gender: Gender,
         val careerStart: Long,

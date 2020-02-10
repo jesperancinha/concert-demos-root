@@ -3,7 +3,7 @@ package org.jesperancinha.concerts.data
 import org.jesperancinha.concerts.types.Gender
 
 data class ArtistDto(
-        var id: Int? = null,
+        var id: Long? = null,
         val name: String,
         val gender: Gender,
         val careerStart: Long,

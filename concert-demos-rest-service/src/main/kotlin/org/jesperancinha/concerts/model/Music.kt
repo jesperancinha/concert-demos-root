@@ -3,7 +3,7 @@ package org.jesperancinha.concerts.model
 import org.springframework.data.annotation.Id
 
 data class Music(
-        @Id var id: Int? = null,
+        @Id var id: Long? = null,
         val name: String,
         val lyrics: String
 ) {
