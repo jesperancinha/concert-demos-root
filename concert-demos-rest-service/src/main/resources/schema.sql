@@ -10,3 +10,4 @@ CREATE TABLE IF NOT EXISTS Artist
     birth_date   VARCHAR(50)        NOT NULL,
     keywords     VARCHAR(500)       NOT NULL
 );
+
