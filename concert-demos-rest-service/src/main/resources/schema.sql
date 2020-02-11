@@ -22,15 +22,34 @@ CREATE TABLE IF NOT EXISTS Music
 DROP TABLE IF EXISTS Listing;
 CREATE TABLE IF NOT EXISTS Listing
 (
-    id LONG PRIMARY KEY AUTO_INCREMENT,
-    artist_id LONG,
+    id                 LONG PRIMARY KEY AUTO_INCREMENT,
+    artist_id          LONG,
     reference_music_id LONG
 );
 
 DROP TABLE IF EXISTS Listing_Music;
 CREATE TABLE IF NOT EXISTS Listing_Music
 (
-    id LONG PRIMARY KEY AUTO_INCREMENT,
+    id         LONG PRIMARY KEY AUTO_INCREMENT,
     listing_id LONG,
-    music_id LONG
+    music_id   LONG
+);
+
+DROP TABLE IF EXISTS Concert;
+CREATE TABLE IF NOT EXISTS Concert
+(
+    id       LONG PRIMARY KEY AUTO_INCREMENT,
+    name     VARCHAR(50) UNIQUE NOT NULL,
+    location VARCHAR(50) UNIQUE NOT NULL,
+    date     VARCHAR(50) UNIQUE NOT NULL
+
+);
+
+
+DROP TABLE IF EXISTS Concert_Listing;
+CREATE TABLE IF NOT EXISTS Concert_Listing
+(
+    id                 LONG PRIMARY KEY AUTO_INCREMENT,
+    concert_id          LONG,
+    listing_id LONG
 );

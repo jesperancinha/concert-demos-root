@@ -6,9 +6,11 @@ data class ConcertDto(
         var id: Long? = null,
         val name: String,
         val location: String,
-        val date: LocalDateTime,
-        val listingDtos: MutableList<Long> = mutableListOf()
+        val date: String,
+        val listingDtos: MutableList<ListingDto> = mutableListOf()
 ) {
+    constructor(name: String, location: String, localDateTime: String, listingDtos: MutableList<ListingDto>) :
+            this(null, name, location, localDateTime, listingDtos)
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

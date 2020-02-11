@@ -9,6 +9,6 @@ import reactor.core.publisher.Mono
 @Repository
 interface ConcertListingRepository : ReactiveCrudRepository<ConcertListing, Long> {
 
-    @Query("SELECT * FROM ConcertListing WHERE concert_id = :concertId")
+    @Query("SELECT * FROM Concert_Listing WHERE concert_id = :concertId")
     fun findByConcertId(concertId: Long): Mono<ConcertListing>
 }

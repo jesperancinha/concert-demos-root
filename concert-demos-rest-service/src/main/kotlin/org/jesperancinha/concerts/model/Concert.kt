@@ -1,13 +1,12 @@
 package org.jesperancinha.concerts.model
 
 import org.springframework.data.annotation.Id
-import java.time.LocalDateTime
 
 data class Concert(
         @Id var id: Long? = null,
         val name: String,
         val location: String,
-        val date: LocalDateTime
+        val date: String
 ) {
 
     override fun equals(other: Any?): Boolean {
