@@ -115,10 +115,19 @@ class ConcertControllerImplITSpec extends Specification {
 
         then:
         SoftAssertions.assertSoftly { softly ->
-//            softly.assertThat(result).isNotEmpty()
-//            softly.assertThat(result).hasSize(1)
-//            softly.assertThat(result[0].id).isNotEqualTo(0)
-//            softly.assertThat(result[0].id).isEqualTo(savedConcertDto.id)
+            softly.assertThat(result).isNotEmpty()
+            softly.assertThat(result).hasSize(1)
+            final concertDtoResult = result[0]
+            softly.assertThat(concertDtoResult.id).isNotEqualTo(0)
+            softly.assertThat(concertDtoResult.id).isEqualTo(savedConcertDto.id)
+            softly.assertThat(concertDtoResult.name).isEqualTo("Nicki Wrld Tour")
+            softly.assertThat(concertDtoResult.location).isEqualTo("Amsterdam")
+            softly.assertThat(concertDtoResult.listingDtos).hasSize(1)
+            final listingDtoResult = concertDtoResult.listingDtos[0]
+            softly.assertThat(listingDtoResult.artistDto).isEqualTo(savedArtistDto)
+            softly.assertThat(listingDtoResult.referenceMusicDto).isEqualTo(savedMusicDto)
+            softly.assertThat(listingDtoResult.musicDtos).hasSize(1)
+            softly.assertThat(listingDtoResult.musicDtos[0]).isEqualTo(savedMusicDto)
         }
     }
 

@@ -7,6 +7,8 @@ data class ConcertListing(
         val concertId: Long,
         val listingId: Long
 ) {
+    constructor(concertId: Long, listingId: Long) : this(null, concertId, listingId)
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false

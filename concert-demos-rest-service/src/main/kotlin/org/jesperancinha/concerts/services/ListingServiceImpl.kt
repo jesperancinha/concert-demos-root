@@ -4,6 +4,7 @@ import org.jesperancinha.concerts.converters.ArtistConverter
 import org.jesperancinha.concerts.converters.ListingConverter
 import org.jesperancinha.concerts.converters.MusicConverter
 import org.jesperancinha.concerts.data.ListingDto
+import org.jesperancinha.concerts.model.Listing
 import org.jesperancinha.concerts.model.ListingMusic
 import org.jesperancinha.concerts.repos.ArtistRepository
 import org.jesperancinha.concerts.repos.ListingMusicRepository
@@ -23,30 +24,11 @@ class ListingServiceImpl(private val listingRepository: ListingRepository,
 ) : ListingService {
 
     override fun getAllListings(): Flux<ListingDto>? {
-        return listingRepository.findAll().flatMap {
-            Mono.zip(
-                    musicRepository.findById(it.referenceMusicId).subscribeOn(Schedulers.parallel()),
-                    artistRepository.findById(it.artistId).subscribeOn(Schedulers.parallel())
-            ) { music, artist ->
-                ListingConverter.toListingDto(it,
-                        ArtistConverter.toArtistDto(artist),
-                        MusicConverter.toMusicDto(music))
-            }.subscribeOn(Schedulers.parallel())
-                    .flatMap {
-                        val listingDto = it
-                        it.id?.let { it1 ->
-                            listingMusicRepository
-                                    .findByListingId(it1).map { it.musicId }
-                        }
-                                ?.flatMap {
-                                    musicRepository.findById(it)
-                                            .map { MusicConverter.toMusicDto(it) }
-                                }?.map {
-                                    listingDto.musicDtos.add(it)
-                                    listingDto
-                                }
-                    }
-        }
+        return listingRepository.findAll().flatMap { listing -> fetchListingTree(listing) }
+    }
+
+    override fun getListingById(id: Long): Mono<ListingDto> {
+        return listingRepository.findById(id).flatMap { listing -> fetchListingTree(listing) }
     }
 
     override fun createListing(listingDto: ListingDto): Mono<ListingDto> {
@@ -59,7 +41,6 @@ class ListingServiceImpl(private val listingRepository: ListingRepository,
                         ArtistConverter.toArtistDto(artist),
                         MusicConverter.toMusicDto(music))
             }.subscribeOn(Schedulers.parallel())
-
         }.flatMapMany { it ->
             val listingId = it.id!!
             Flux.fromIterable(listingDto.musicDtos).map { listingMusicRepository.save(ListingMusic(null, listingId, it.id!!)) }
@@ -69,16 +50,27 @@ class ListingServiceImpl(private val listingRepository: ListingRepository,
         }.toMono()
     }
 
-    override fun getListingById(id: Long): Mono<ListingDto> {
-        return listingRepository.findById(id).map {
-            Mono.zip(
-                    musicRepository.findById(it.referenceMusicId).subscribeOn(Schedulers.parallel()),
-                    artistRepository.findById(it.referenceMusicId).subscribeOn(Schedulers.parallel())
-            ) { music, artist ->
-                ListingConverter.toListingDto(it,
-                        ArtistConverter.toArtistDto(artist),
-                        MusicConverter.toMusicDto(music))
-            }
-        }.flatMap { it }
+    private fun fetchListingTree(listing: Listing): Mono<ListingDto> {
+        return Mono.zip(
+                musicRepository.findById(listing.referenceMusicId).subscribeOn(Schedulers.parallel()),
+                artistRepository.findById(listing.artistId).subscribeOn(Schedulers.parallel())
+        ) { music, artist ->
+            ListingConverter.toListingDto(listing,
+                    ArtistConverter.toArtistDto(artist),
+                    MusicConverter.toMusicDto(music))
+        }.subscribeOn(Schedulers.parallel())
+                .flatMap { listingDto ->
+                    listingDto.id?.let { it1 ->
+                        listingMusicRepository
+                                .findByListingId(it1).map { it.musicId }
+                    }
+                            ?.flatMap { musicId ->
+                                musicRepository.findById(musicId)
+                                        .map { MusicConverter.toMusicDto(it) }
+                            }?.map {
+                                listingDto.musicDtos.add(it)
+                                listingDto
+                            }
+                }
     }
 }
