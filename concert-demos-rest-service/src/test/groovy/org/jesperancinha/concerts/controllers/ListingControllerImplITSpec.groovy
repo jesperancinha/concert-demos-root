@@ -109,7 +109,8 @@ class ListingControllerImplITSpec extends Specification {
             softly.assertThat(result[0].id).isEqualTo(savedListingDto.id)
             softly.assertThat(result[0].artistDto).isEqualTo(artistDto)
             softly.assertThat(result[0].referenceMusicDto).isEqualTo(musicDto)
-//            softly.assertThat(result.get(0).musicDtos.get(0)).isEqualTo(musicDto)
+            softly.assertThat(result[0].musicDtos).hasSize(1)
+            softly.assertThat(result[0].musicDtos.get(0)).isEqualTo(musicDto)
         }
     }
 

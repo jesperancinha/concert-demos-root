@@ -32,6 +32,20 @@ class ListingServiceImpl(private val listingRepository: ListingRepository,
                         ArtistConverter.toArtistDto(artist),
                         MusicConverter.toMusicDto(music))
             }.subscribeOn(Schedulers.parallel())
+                    .flatMap {
+                        val listingDto = it
+                        it.id?.let { it1 ->
+                            listingMusicRepository
+                                    .findByListingId(it1).map { it.musicId }
+                        }
+                                ?.flatMap {
+                                    musicRepository.findById(it)
+                                            .map { MusicConverter.toMusicDto(it) }
+                                }?.map {
+                                    listingDto.musicDtos.add(it)
+                                    listingDto
+                                }
+                    }
         }
     }
 
@@ -47,8 +61,8 @@ class ListingServiceImpl(private val listingRepository: ListingRepository,
             }.subscribeOn(Schedulers.parallel())
 
         }.flatMapMany { it ->
-            val listingId = it.id
-            Flux.fromIterable(listingDto.musicDtos).map { listingMusicRepository.save(ListingMusic(null, listingId, it.id)) }
+            val listingId = it.id!!
+            Flux.fromIterable(listingDto.musicDtos).map { listingMusicRepository.save(ListingMusic(null, listingId, it.id!!)) }
         }.flatMap { it }.map {
             listingDto.id = it.listingId
             listingDto
