@@ -2,42 +2,18 @@ package org.jesperancinha.concerts.services
 
 import org.jesperancinha.concerts.converters.ConcertConverter
 import org.jesperancinha.concerts.data.ConcertDto
-import org.jesperancinha.concerts.model.ConcertListing
-import org.jesperancinha.concerts.repos.ConcertListingRepository
 import org.jesperancinha.concerts.repos.ConcertRepository
 import org.springframework.stereotype.Service
-import reactor.core.publisher.Flux
-import reactor.core.publisher.Mono
-import reactor.core.publisher.toMono
 
 @Service
 class ConcertServiceImpl(
-        private val concertRepository: ConcertRepository,
-        private val concertListingRepository: ConcertListingRepository,
-        private val listingService: ListingService
-
+        private val concertRepository: ConcertRepository
 ) : ConcertService {
-    override fun getAllConcerts(): Flux<ConcertDto> {
-        return concertRepository.findAll()
-                .map { ConcertConverter.toConcertDto(it) }
-                .flatMap { concert ->
-                    concertListingRepository.findByConcertId(concert.id!!)
-                            .flatMap { listingService.getListingById(it.listingId) }
-                            .map {
-                                concert.listingDtos.add(it)
-                                concert
-                            }
-                }
+    override fun getAllConcerts(): List<ConcertDto> {
+        return concertRepository.findAll().map { ConcertConverter.toConcertDto(it) }
     }
 
-    override fun createConcert(concertDto: ConcertDto): Mono<ConcertDto> {
-        return concertRepository.save(ConcertConverter.toConcert(concertDto))
-                .flatMapMany {
-                    concertDto.id = it.id
-                    Flux.fromIterable(concertDto.listingDtos)
-                }.flatMap {
-                    concertListingRepository.save(ConcertListing(concertDto.id!!, it.id!!))
-                }.map { concertDto }
-                .toMono()
+    override fun createConcert(concertDto: ConcertDto): ConcertDto {
+        return ConcertConverter.toConcertDto(concertRepository.save(ConcertConverter.toConcert(concertDto)))
     }
 }

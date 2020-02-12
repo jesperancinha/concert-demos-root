@@ -43,7 +43,7 @@ class ListingServiceImpl(private val listingRepository: ListingRepository,
             }.subscribeOn(Schedulers.parallel())
         }.flatMapMany { it ->
             val listingId = it.id!!
-            Flux.fromIterable(listingDto.musicDtos).map { listingMusicRepository.save(ListingMusic(null, listingId, it.id!!)) }
+            Flux.fromIterable(listingDto.musicDtos!!).map { listingMusicRepository.save(ListingMusic(null, listingId, it.id!!)) }
         }.flatMap { it }.map {
             listingDto.id = it.listingId
             listingDto
@@ -68,7 +68,7 @@ class ListingServiceImpl(private val listingRepository: ListingRepository,
                                 musicRepository.findById(musicId)
                                         .map { MusicConverter.toMusicDto(it) }
                             }?.map {
-                                listingDto.musicDtos.add(it)
+                                listingDto.musicDtos?.add(it)
                                 listingDto
                             }
                 }

@@ -1,12 +1,20 @@
 package org.jesperancinha.concerts.model
 
-import org.springframework.data.annotation.Id
+import javax.persistence.Entity
+import javax.persistence.GeneratedValue
+import javax.persistence.Id
+import javax.persistence.OneToMany
 
+@Entity
 data class Concert(
-        @Id var id: Long? = null,
-        val name: String,
-        val location: String,
-        val date: String
+        @Id @GeneratedValue
+        var id: Long? = null,
+        val name: String? = null,
+        val location: String? = null,
+        val date: String? = null,
+
+        @OneToMany(mappedBy = "concert")
+        val listings: MutableSet<Listing> = HashSet()
 ) {
 
     override fun equals(other: Any?): Boolean {
@@ -15,17 +23,23 @@ data class Concert(
 
         other as Concert
 
+        if (id != other.id) return false
         if (name != other.name) return false
         if (location != other.location) return false
         if (date != other.date) return false
+        if (listings != other.listings) return false
 
         return true
     }
 
     override fun hashCode(): Int {
-        var result = name.hashCode()
-        result = 31 * result + location.hashCode()
-        result = 31 * result + date.hashCode()
+        var result = id?.hashCode() ?: 0
+        result = 31 * result + (name?.hashCode() ?: 0)
+        result = 31 * result + (location?.hashCode() ?: 0)
+        result = 31 * result + (date?.hashCode() ?: 0)
+        result = 31 * result + listings.hashCode()
         return result
     }
+
+
 }

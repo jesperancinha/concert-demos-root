@@ -1,5 +1,6 @@
 package org.jesperancinha.concerts.services
 
+import org.jesperancinha.concerts.converters.ArtistConverter
 import org.jesperancinha.concerts.converters.ArtistConverter.toArtist
 import org.jesperancinha.concerts.converters.ArtistConverter.toArtistDto
 import org.jesperancinha.concerts.data.ArtistDto
@@ -11,11 +12,11 @@ import reactor.core.publisher.Mono
 @Service
 class ArtistServiceImpl(private val artistRepository: ArtistRepository) : ArtistService {
 
-    override fun getAllArtists(): Flux<ArtistDto>? {
+    override fun getAllArtists(): List<ArtistDto>? {
         return artistRepository.findAll().map { toArtistDto(it) }
     }
 
-    override fun createArtist(artist: ArtistDto): Mono<ArtistDto> {
-        return artistRepository.save(toArtist(artist)).map { toArtistDto(it) }
+    override fun createArtist(artist: ArtistDto): ArtistDto {
+        return ArtistConverter.toArtistDto(artistRepository.save(toArtist(artist)))
     }
 }

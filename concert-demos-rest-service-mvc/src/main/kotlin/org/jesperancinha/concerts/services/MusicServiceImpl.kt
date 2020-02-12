@@ -9,16 +9,15 @@ import reactor.core.publisher.Mono
 
 @Service
 class MusicServiceImpl(private val musicRepository: MusicRepository) : MusicService {
-    override fun getAllMusics(): Flux<MusicDto>? {
+    override fun getAllMusics(): List<MusicDto>? {
         return musicRepository.findAll().map { MusicConverter.toMusicDto(it) }
     }
 
-    override fun getMusicById(id: Long): Mono<MusicDto> {
-        return musicRepository.findById(id).map { MusicConverter.toMusicDto(it) }
+    override fun getMusicById(id: Long): MusicDto {
+        return MusicConverter.toMusicDto(musicRepository.findById(id).orElse(null))
     }
 
-    override fun createMusic(music: MusicDto): Mono<MusicDto> {
-        return musicRepository.save(MusicConverter.toMusic(music))
-                .map { MusicConverter.toMusicDto(it) }
+    override fun createMusic(music: MusicDto): MusicDto {
+        return MusicConverter.toMusicDto(musicRepository.save(MusicConverter.toMusic(music)))
     }
 }

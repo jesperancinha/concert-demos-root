@@ -6,17 +6,14 @@ import org.jesperancinha.concerts.data.ConcertDto
 import org.jesperancinha.concerts.data.ListingDto
 import org.jesperancinha.concerts.data.MusicDto
 import org.jesperancinha.concerts.model.Concert
-import org.jesperancinha.concerts.services.ConcertListingService
 import org.jesperancinha.concerts.services.ConcertService
 import org.mockito.ArgumentCaptor
 import org.mockito.Captor
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.boot.test.mock.mockito.MockBean
-import org.springframework.data.r2dbc.core.DatabaseClient
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
-import org.springframework.web.client.RestTemplate
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 import spock.lang.Specification
@@ -40,14 +37,8 @@ class ConcertControllerImplSpec extends Specification {
     @MockBean
     private ConcertService concertService
 
-    @MockBean
-    private ConcertListingService concertListService
-
-    @MockBean
-    private DatabaseClient databaseClient
-
     @Captor
-    private ArgumentCaptor<Concert> argumentCaptor;
+    private ArgumentCaptor<Concert> argumentCaptor
 
     def "GetAllConcerts"() {
         when:

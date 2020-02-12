@@ -10,9 +10,9 @@ import reactor.core.publisher.Mono
 interface ArtistController {
 
     @GetMapping
-    fun getAllArtists(): Flux<ArtistDto>?
+    fun getAllArtists(): List<ArtistDto>?
 
     @PostMapping
-    fun createArtist(@RequestBody artistDto: ArtistDto): Mono<ArtistDto>
+    fun createArtist(@RequestBody artistDto: ArtistDto): ArtistDto
 
 }

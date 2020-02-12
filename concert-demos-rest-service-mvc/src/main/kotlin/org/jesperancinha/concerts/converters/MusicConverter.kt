@@ -8,8 +8,8 @@ object MusicConverter {
     fun toMusicDto(music: Music): MusicDto {
         return MusicDto(
                 music.id,
-                music.name,
-                music.lyrics
+                music.name!!,
+                music.lyrics!!
         )
     }
 

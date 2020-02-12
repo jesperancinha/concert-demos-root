@@ -11,12 +11,12 @@ import reactor.core.publisher.Mono
 interface MusicController {
 
     @GetMapping
-    fun getAllMusics(): Flux<MusicDto>?
+    fun getAllMusics(): List<MusicDto>?
 
     @GetMapping("/{id}")
-    fun getMusicById(@PathVariable id: Long): Mono<MusicDto>
+    fun getMusicById(@PathVariable id: Long): MusicDto
 
     @PostMapping
-    fun createMusic(@RequestBody musicDto: MusicDto): Mono<MusicDto>
+    fun createMusic(@RequestBody musicDto: MusicDto): MusicDto
 
 }

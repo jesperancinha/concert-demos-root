@@ -9,7 +9,6 @@ import org.mockito.Captor
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.boot.test.mock.mockito.MockBean
-import org.springframework.data.r2dbc.core.DatabaseClient
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
 import reactor.core.publisher.Flux
@@ -31,11 +30,8 @@ class MusicControllerImplSpec extends Specification {
     @MockBean
     private MusicService artistService
 
-    @MockBean
-    private DatabaseClient databaseClient
-
     @Captor
-    private ArgumentCaptor<Music> argumentCaptor;
+    private ArgumentCaptor<Music> argumentCaptor
 
     def "GetAllMusics"() {
         when:

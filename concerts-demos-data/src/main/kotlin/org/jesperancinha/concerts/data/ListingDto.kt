@@ -4,7 +4,7 @@ data class ListingDto(
         var id: Long? = null,
         val artistDto: ArtistDto,
         val referenceMusicDto: MusicDto,
-        val musicDtos: MutableList<MusicDto> = mutableListOf()
+        val musicDtos: MutableList<MusicDto>? = mutableListOf()
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

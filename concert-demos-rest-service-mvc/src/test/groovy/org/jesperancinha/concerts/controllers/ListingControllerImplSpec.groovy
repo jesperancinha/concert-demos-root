@@ -5,14 +5,12 @@ import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.data.ListingDto
 import org.jesperancinha.concerts.data.MusicDto
 import org.jesperancinha.concerts.model.Listing
-import org.jesperancinha.concerts.services.ListingMusicService
 import org.jesperancinha.concerts.services.ListingService
 import org.mockito.ArgumentCaptor
 import org.mockito.Captor
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.boot.test.mock.mockito.MockBean
-import org.springframework.data.r2dbc.core.DatabaseClient
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
 import reactor.core.publisher.Flux
@@ -38,14 +36,8 @@ class ListingControllerImplSpec extends Specification {
     @MockBean
     private ListingService listingService
 
-    @MockBean
-    private ListingMusicService listingMusicService
-
-    @MockBean
-    private DatabaseClient databaseClient
-
     @Captor
-    private ArgumentCaptor<Listing> argumentCaptor;
+    private ArgumentCaptor<Listing> argumentCaptor
 
     def "GetAllListings"() {
         when:

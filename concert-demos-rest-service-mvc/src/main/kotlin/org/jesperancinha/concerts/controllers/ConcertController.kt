@@ -10,9 +10,9 @@ import reactor.core.publisher.Mono
 interface ConcertController {
 
     @GetMapping
-    fun getAllConcerts(): Flux<ConcertDto>
+    fun getAllConcerts(): List<ConcertDto>
 
     @PostMapping
-    fun createConcert(@RequestBody concertDto: ConcertDto): Mono<ConcertDto>
+    fun createConcert(@RequestBody concertDto: ConcertDto): ConcertDto
 
 }

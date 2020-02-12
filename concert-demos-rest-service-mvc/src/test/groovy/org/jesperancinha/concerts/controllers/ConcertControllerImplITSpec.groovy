@@ -1,7 +1,6 @@
 package org.jesperancinha.concerts.controllers
 
 import org.assertj.core.api.SoftAssertions
-import org.jesperancinha.concerts.configuration.ConfigurationProperties
 import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.data.ConcertDto
 import org.jesperancinha.concerts.data.ListingDto
@@ -12,8 +11,8 @@ import org.jesperancinha.concerts.repos.ConcertRepository
 import org.jesperancinha.concerts.repos.ListingRepository
 import org.jesperancinha.concerts.repos.MusicRepository
 import org.jesperancinha.concerts.services.ConcertService
+import org.junit.jupiter.api.Disabled
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.web.server.LocalServerPort
 import org.springframework.test.context.ActiveProfiles
@@ -27,8 +26,8 @@ import static org.jesperancinha.concerts.types.Gender.FEMALE
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
-@EnableConfigurationProperties(ConfigurationProperties)
 @ActiveProfiles("test")
+@Disabled
 class ConcertControllerImplITSpec extends Specification {
 
     @LocalServerPort

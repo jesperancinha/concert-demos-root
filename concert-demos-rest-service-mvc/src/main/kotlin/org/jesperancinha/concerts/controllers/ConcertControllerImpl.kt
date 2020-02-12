@@ -10,11 +10,11 @@ import reactor.core.publisher.Mono
 @RestController
 @RequestMapping("/concerts/data/concerts")
 class ConcertControllerImpl(private val concertService: ConcertService) : ConcertController {
-    override fun getAllConcerts(): Flux<ConcertDto> {
+    override fun getAllConcerts(): List<ConcertDto> {
         return concertService.getAllConcerts()
     }
 
-    override fun createConcert(concertDto: ConcertDto): Mono<ConcertDto> {
+    override fun createConcert(concertDto: ConcertDto): ConcertDto {
         return concertService.createConcert(concertDto)
     }
 }

@@ -12,11 +12,11 @@ import reactor.core.publisher.Mono
 @RequestMapping("/concerts/data/artists")
 class ArtistControllerImpl(private val artistService: ArtistService) : ArtistController {
 
-    override fun getAllArtists(): Flux<ArtistDto>? {
+    override fun getAllArtists(): List<ArtistDto>? {
         return artistService.getAllArtists()
     }
 
-    override fun createArtist(@RequestBody artistDto: ArtistDto): Mono<ArtistDto> {
+    override fun createArtist(@RequestBody artistDto: ArtistDto): ArtistDto {
         return artistService.createArtist(artistDto)
     }
 }

@@ -11,12 +11,12 @@ import reactor.core.publisher.Mono
 interface ListingController {
 
     @GetMapping
-    fun getAllListings(): Flux<ListingDto>?
+    fun getAllListings(): List<ListingDto>?
 
     @GetMapping("/{id}")
-    fun getListingById(@PathVariable id: Long): Mono<ListingDto>
+    fun getListingById(@PathVariable id: Long): ListingDto
 
     @PostMapping
-    fun createListing(@RequestBody listingDto: ListingDto): Mono<ListingDto>
+    fun createListing(@RequestBody listingDto: ListingDto): ListingDto
 
 }
