@@ -1,7 +1,5 @@
 package org.jesperancinha.concerts.data
 
-import java.time.LocalDateTime
-
 data class ConcertDto(
         var id: Long? = null,
         val name: String,

@@ -1,22 +1,22 @@
 package org.jesperancinha.concerts.model
 
 import org.jesperancinha.concerts.types.Gender
-import org.springframework.data.annotation.Id
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
+import javax.persistence.Id
 
 @Entity
 data class Artist(
 
         @Id @GeneratedValue
         var id: Long? = null,
-        val name: String,
-        val gender: Gender,
-        val careerStart: Long,
-        val birthDate: String,
-        val birthCity: String,
-        val country: String,
-        val keywords: String
+        val name: String? = null,
+        val gender: Gender? = null,
+        val careerStart: Long? = null,
+        val birthDate: String? = null,
+        val birthCity: String? = null,
+        val country: String? = null,
+        val keywords: String? = null
 
 ) {
 

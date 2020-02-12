@@ -6,8 +6,6 @@ import org.jesperancinha.concerts.converters.ArtistConverter.toArtistDto
 import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.repos.ArtistRepository
 import org.springframework.stereotype.Service
-import reactor.core.publisher.Flux
-import reactor.core.publisher.Mono
 
 @Service
 class ArtistServiceImpl(private val artistRepository: ArtistRepository) : ArtistService {

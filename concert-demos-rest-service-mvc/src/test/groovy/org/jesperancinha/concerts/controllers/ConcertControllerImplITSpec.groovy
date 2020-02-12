@@ -31,7 +31,7 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 class ConcertControllerImplITSpec extends Specification {
 
     @LocalServerPort
-    private int port;
+    private int port
 
     @Autowired
     private ConcertService artistService
@@ -58,7 +58,7 @@ class ConcertControllerImplITSpec extends Specification {
         final RestTemplate restTemplate = new RestTemplate()
 
         and: "Making the REST Call"
-        final List<Concert> result = restTemplate.getForObject(uri, List.class);
+        final List<Concert> result = restTemplate.getForObject(uri, List.class)
 
         then: "Assert response of an empty array"
         SoftAssertions.assertSoftly { softly ->

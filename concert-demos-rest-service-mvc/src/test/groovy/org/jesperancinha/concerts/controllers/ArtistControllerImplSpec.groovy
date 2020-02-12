@@ -34,7 +34,7 @@ class ArtistControllerImplSpec extends Specification {
 
 
     @Captor
-    private ArgumentCaptor<Artist> argumentCaptor;
+    private ArgumentCaptor<Artist> argumentCaptor
 
     def "GetAllArtists"() {
         when:

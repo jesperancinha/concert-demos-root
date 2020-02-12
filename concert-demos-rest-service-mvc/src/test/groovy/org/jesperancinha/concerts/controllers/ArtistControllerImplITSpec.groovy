@@ -6,7 +6,6 @@ import org.jesperancinha.concerts.model.Artist
 import org.jesperancinha.concerts.repos.ArtistRepository
 import org.jesperancinha.concerts.services.ArtistService
 import org.jesperancinha.concerts.types.Gender
-import org.junit.jupiter.api.Disabled
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.web.server.LocalServerPort
@@ -21,11 +20,10 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @ActiveProfiles("test")
-@Disabled
 class ArtistControllerImplITSpec extends Specification {
 
     @LocalServerPort
-    private int port;
+    private int port
 
     @Autowired
     private ArtistService artistService
@@ -44,7 +42,7 @@ class ArtistControllerImplITSpec extends Specification {
         final RestTemplate restTemplate = new RestTemplate()
 
         and: "Making the REST Call"
-        final List<Artist> result = restTemplate.getForObject(uri, List.class);
+        final List<Artist> result = restTemplate.getForObject(uri, List.class)
 
         then: "Assert response of an empty array"
         SoftAssertions.assertSoftly { softly ->

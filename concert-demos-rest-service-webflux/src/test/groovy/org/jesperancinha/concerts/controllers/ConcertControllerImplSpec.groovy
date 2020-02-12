@@ -16,7 +16,6 @@ import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.data.r2dbc.core.DatabaseClient
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
-import org.springframework.web.client.RestTemplate
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 import spock.lang.Specification
