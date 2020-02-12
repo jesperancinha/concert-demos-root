@@ -2,8 +2,8 @@ package org.jesperancinha.concerts.data
 
 data class ListingDto(
         var id: Long? = null,
-        val artistDto: ArtistDto,
-        val referenceMusicDto: MusicDto,
+        val artistDto: ArtistDto? = null,
+        val referenceMusicDto: MusicDto? = null,
         val musicDtos: MutableList<MusicDto>? = mutableListOf()
 ) {
     override fun equals(other: Any?): Boolean {

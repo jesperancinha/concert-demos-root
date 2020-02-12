@@ -38,7 +38,7 @@ class ArtistControllerImplSpec extends Specification {
 
     def "GetAllArtists"() {
         when:
-        when(artistService.getAllArtists()).thenReturn(Flux.just(new Artist[0]))
+        when(artistService.getAllArtists()).thenReturn(List.of())
         def target = '/concerts/data/artists'
 
         and:
@@ -46,7 +46,7 @@ class ArtistControllerImplSpec extends Specification {
                 .accept(MediaType.APPLICATION_JSON))
 
         then:
-        results.andExpect(content().string(""))
+        results.andExpect(content().string("[]"))
 
         and:
         results.andExpect(status().isOk())

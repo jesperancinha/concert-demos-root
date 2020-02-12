@@ -79,7 +79,7 @@ class ListingControllerImplITSpec extends Specification {
                 FEMALE,
                 1000L,
                 LocalDateTime.now().toString(),
-                "Trinidad en Tobago City",
+                "Port of Spain",
                 "Trinidad en Tobago",
                 "Rap")
 

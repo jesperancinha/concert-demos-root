@@ -1,20 +1,18 @@
 package org.jesperancinha.concerts.model
 
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
-import javax.persistence.OneToMany
+import javax.persistence.*
 
 @Entity
+@Table(name = "concert")
 data class Concert(
-        @Id @GeneratedValue
-        var id: Long? = null,
+        @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+        var id: Long = 0,
         val name: String? = null,
         val location: String? = null,
         val date: String? = null,
-
-        @OneToMany(mappedBy = "concert")
-        val listings: MutableSet<Listing> = HashSet()
+        @OneToMany(mappedBy = "concert", cascade = [CascadeType.ALL],
+                fetch = FetchType.EAGER)
+        var listings: MutableSet<Listing> = HashSet()
 ) {
 
     override fun equals(other: Any?): Boolean {
@@ -33,7 +31,7 @@ data class Concert(
     }
 
     override fun hashCode(): Int {
-        var result = id?.hashCode() ?: 0
+        var result = id.hashCode() ?: 0
         result = 31 * result + (name?.hashCode() ?: 0)
         result = 31 * result + (location?.hashCode() ?: 0)
         result = 31 * result + (date?.hashCode() ?: 0)

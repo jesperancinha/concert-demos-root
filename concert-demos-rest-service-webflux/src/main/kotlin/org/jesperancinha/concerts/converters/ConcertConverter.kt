@@ -14,6 +14,6 @@ object ConcertConverter {
     }
 
     fun toConcert(concert: ConcertDto): Concert {
-        return Concert(null, concert.name, concert.location, concert.date)
+        return Concert(null, concert.name!!, concert.location!!, concert.date!!)
     }
 }

@@ -1,6 +1,7 @@
 package org.jesperancinha.concerts.controllers
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import org.assertj.core.api.SoftAssertions
 import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.data.ListingDto
 import org.jesperancinha.concerts.data.MusicDto
@@ -13,8 +14,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
-import reactor.core.publisher.Flux
-import reactor.core.publisher.Mono
 import spock.lang.Specification
 
 import java.time.LocalDateTime
@@ -41,7 +40,7 @@ class ListingControllerImplSpec extends Specification {
 
     def "GetAllListings"() {
         when:
-        when(listingService.getAllListings()).thenReturn(Flux.just(new Listing[0]))
+        when(listingService.getAllListings()).thenReturn(List.of())
         def target = '/concerts/data/listings'
 
         and:
@@ -49,7 +48,7 @@ class ListingControllerImplSpec extends Specification {
                 .accept(MediaType.APPLICATION_JSON))
 
         then:
-        results.andExpect(content().string(""))
+        results.andExpect(content().string("[]"))
 
         and:
         results.andExpect(status().isOk())
@@ -69,7 +68,7 @@ class ListingControllerImplSpec extends Specification {
                 FEMALE,
                 1000L,
                 LocalDateTime.now().toString(),
-                "Trinidad en Tobago City",
+                "Port of Spain",
                 "Trinidad en Tobago",
                 "Rap")
         def listingDto = new ListingDto(
@@ -82,7 +81,7 @@ class ListingControllerImplSpec extends Specification {
         and:
         def objectMapper = new ObjectMapper()
         and:
-        when(listingService.createListing(listingDto)).thenReturn(Mono.just(listingDto))
+        when(listingService.createListing(listingDto)).thenReturn(listingDto)
         and:
         def results = mvc.perform(post(target)
                 .content(objectMapper.writeValueAsString(listingDto))
@@ -91,6 +90,11 @@ class ListingControllerImplSpec extends Specification {
         results.andExpect(status().isOk())
 
         and:
-        results.andExpect(content().string(""))
+        def contentAsString = results.andReturn().getResponse().getContentAsString()
+        def value = objectMapper.readValue(contentAsString, ListingDto)
+        SoftAssertions.assertSoftly { softly ->
+            softly.assertThat(value).isEqualTo(listingDto)
+ 
+        }
     }
 }

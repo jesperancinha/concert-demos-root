@@ -17,8 +17,8 @@ object ListingConverter {
     fun toListing(listingDto: ListingDto): Listing {
         return Listing(
                 listingDto.id,
-                listingDto.artistDto.id!!,
-                listingDto.referenceMusicDto.id!!
+                listingDto.artistDto?.id!!,
+                listingDto.referenceMusicDto?.id!!
         )
     }
 }

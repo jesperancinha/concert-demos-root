@@ -1,6 +1,7 @@
 package org.jesperancinha.concerts.controllers
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import org.assertj.core.api.SoftAssertions
 import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.data.ListingDto
 import org.jesperancinha.concerts.data.MusicDto
@@ -10,30 +11,28 @@ import org.jesperancinha.concerts.services.ListingService
 import org.mockito.ArgumentCaptor
 import org.mockito.Captor
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
+import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.data.r2dbc.core.DatabaseClient
 import org.springframework.http.MediaType
-import org.springframework.test.web.servlet.MockMvc
+import org.springframework.test.web.reactive.server.WebTestClient
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 import spock.lang.Specification
 
 import java.time.LocalDateTime
+import java.util.function.Consumer
 
 import static org.jesperancinha.concerts.controllers.TestConstants.HEY_MAMA
 import static org.jesperancinha.concerts.types.Gender.FEMALE
+import static org.mockito.ArgumentMatchers.any
 import static org.mockito.Mockito.when
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
-@WebMvcTest(controllers = [ListingControllerImpl, ListingController])
+@WebFluxTest(controllers = [ListingControllerImpl, ListingController])
 class ListingControllerImplSpec extends Specification {
 
     @Autowired
-    private MockMvc mvc
+    private WebTestClient webTestClient
 
     @MockBean
     private ListingService listingService
@@ -53,14 +52,19 @@ class ListingControllerImplSpec extends Specification {
         def target = '/concerts/data/listings'
 
         and:
-        def results = mvc.perform(get(target)
-                .accept(MediaType.APPLICATION_JSON))
-
+        def results = webTestClient.get().uri(target)
+                .accept(MediaType.APPLICATION_JSON)
+                .exchange()
+                .expectStatus().isOk()
         then:
-        results.andExpect(content().string(""))
-
-        and:
-        results.andExpect(status().isOk())
+        results.expectBody(ListingDto[]).value(new Consumer<ListingDto[]>() {
+            @Override
+            void accept(ListingDto[] responseListingDto) {
+                SoftAssertions.assertSoftly { softly ->
+                    softly.assertThat(responseListingDto).isEmpty()
+                }
+            }
+        })
     }
 
     def "CreateListing"() {
@@ -77,7 +81,7 @@ class ListingControllerImplSpec extends Specification {
                 FEMALE,
                 1000L,
                 LocalDateTime.now().toString(),
-                "Trinidad en Tobago City",
+                "Port of Spain",
                 "Trinidad en Tobago",
                 "Rap")
         def listingDto = new ListingDto(
@@ -88,17 +92,27 @@ class ListingControllerImplSpec extends Specification {
         )
 
         and:
-        def objectMapper = new ObjectMapper()
+        when(listingService.createListing(any())).thenReturn(Mono.fromCallable({ -> listingDto }))
         and:
-        when(listingService.createListing(listingDto)).thenReturn(Mono.just(listingDto))
-        and:
-        def results = mvc.perform(post(target)
-                .content(objectMapper.writeValueAsString(listingDto))
-                .contentType(MediaType.APPLICATION_JSON))
-        then:
-        results.andExpect(status().isOk())
+        def results = webTestClient.post().uri(target)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .body(Mono.just(listingDto), ListingDto.class)
+                .exchange()
+                .expectStatus().isOk()
 
-        and:
-        results.andExpect(content().string(""))
+        then:
+        results.expectBody(ListingDto).value(new Consumer<ListingDto>() {
+            @Override
+            void accept(ListingDto responseListingDto) {
+                SoftAssertions.assertSoftly { softly ->
+                    softly.assertThat(responseListingDto.id).isNotNull()
+                    softly.assertThat(responseListingDto.artistDto).isEqualTo(artistDto)
+                    softly.assertThat(responseListingDto.referenceMusicDto).isEqualTo(musicDto)
+                    softly.assertThat(responseListingDto.musicDtos).hasSize(1)
+                    softly.assertThat(responseListingDto.musicDtos.get(0)).isEqualTo(musicDto)
+                }
+            }
+        })
     }
 }

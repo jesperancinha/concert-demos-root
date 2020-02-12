@@ -3,9 +3,11 @@ package org.jesperancinha.concerts.model
 import javax.persistence.*
 
 @Entity
+@Table(name = "listing")
 data class Listing(
-        @Id @GeneratedValue
-        var id: Long? = null,
+        @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+        var id: Long = 0,
+
 
         @OneToOne
         val artist: Artist? = null,
@@ -14,10 +16,12 @@ data class Listing(
         val referenceMusic: Music? = null,
 
         @OneToMany(mappedBy = "listing")
-        val musics: MutableSet<Music> = HashSet()
+        val musics: MutableSet<Music>? = HashSet(),
+
+        @ManyToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
+        @JoinColumn(name = "concert_id")
+        var concert: Concert? = null
 ) {
-    @ManyToOne
-    lateinit var concert: Concert
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -28,7 +32,6 @@ data class Listing(
         if (id != other.id) return false
         if (artist != other.artist) return false
         if (referenceMusic != other.referenceMusic) return false
-        if (concert != other.concert) return false
         if (musics != other.musics) return false
 
         return true
@@ -38,7 +41,6 @@ data class Listing(
         var result = id?.hashCode() ?: 0
         result = 31 * result + (artist?.hashCode() ?: 0)
         result = 31 * result + (referenceMusic?.hashCode() ?: 0)
-        result = 31 * result + concert.hashCode()
         result = 31 * result + musics.hashCode()
         return result
     }

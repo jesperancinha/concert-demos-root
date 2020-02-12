@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS Concert
 DROP TABLE IF EXISTS Concert_Listing;
 CREATE TABLE IF NOT EXISTS Concert_Listing
 (
-    id                 LONG PRIMARY KEY AUTO_INCREMENT,
-    concert_id          LONG,
+    id         LONG PRIMARY KEY AUTO_INCREMENT,
+    concert_id LONG,
     listing_id LONG
 );

@@ -1,19 +1,16 @@
 package org.jesperancinha.concerts.model
 
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
-import javax.persistence.ManyToOne
+import javax.persistence.*
 
 @Entity
 data class Music(
-        @Id @GeneratedValue
+        @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
         var id: Long? = null,
         val name: String? = null,
         val lyrics: String? = null
 ) {
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
     lateinit var listing: Listing
 
     override fun equals(other: Any?): Boolean {
@@ -25,7 +22,6 @@ data class Music(
         if (id != other.id) return false
         if (name != other.name) return false
         if (lyrics != other.lyrics) return false
-        if (listing != other.listing) return false
 
         return true
     }
@@ -34,7 +30,6 @@ data class Music(
         var result = id?.hashCode() ?: 0
         result = 31 * result + (name?.hashCode() ?: 0)
         result = 31 * result + (lyrics?.hashCode() ?: 0)
-        result = 31 * result + listing.hashCode()
         return result
     }
 

@@ -2,8 +2,8 @@ package org.jesperancinha.concerts.data
 
 data class MusicDto(
         var id: Long? = null,
-        val name: String,
-        val lyrics: String
+        val name: String? = null,
+        val lyrics: String? = null
 ) {
 
     constructor(name: String,

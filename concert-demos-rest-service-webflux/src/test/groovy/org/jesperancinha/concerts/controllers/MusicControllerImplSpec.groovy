@@ -1,35 +1,36 @@
 package org.jesperancinha.concerts.controllers
 
-import com.fasterxml.jackson.databind.ObjectMapper
+
+import org.assertj.core.api.SoftAssertions
 import org.jesperancinha.concerts.data.MusicDto
 import org.jesperancinha.concerts.model.Music
 import org.jesperancinha.concerts.services.MusicService
 import org.mockito.ArgumentCaptor
 import org.mockito.Captor
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
+import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.data.r2dbc.core.DatabaseClient
 import org.springframework.http.MediaType
-import org.springframework.test.web.servlet.MockMvc
+import org.springframework.test.web.reactive.server.WebTestClient
 import reactor.core.publisher.Flux
+import reactor.core.publisher.Mono
 import spock.lang.Specification
 
-import static org.jesperancinha.concerts.controllers.TestConstants.HEY_MAMA
-import static org.mockito.Mockito.when
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
+import java.util.function.Consumer
 
-@WebMvcTest(controllers = [MusicControllerImpl, MusicController])
+import static org.jesperancinha.concerts.controllers.TestConstants.HEY_MAMA
+import static org.mockito.ArgumentMatchers.any
+import static org.mockito.Mockito.when
+
+@WebFluxTest(controllers = [MusicControllerImpl, MusicController])
 class MusicControllerImplSpec extends Specification {
 
     @Autowired
-    private MockMvc mvc
+    private WebTestClient webTestClient
 
     @MockBean
-    private MusicService artistService
+    private MusicService musicService
 
     @MockBean
     private DatabaseClient databaseClient
@@ -39,18 +40,23 @@ class MusicControllerImplSpec extends Specification {
 
     def "GetAllMusics"() {
         when:
-        when(artistService.getAllMusics()).thenReturn(Flux.just(new Music[0]))
+        when(musicService.getAllMusics()).thenReturn(Flux.just(new Music[0]))
         def target = '/concerts/data/musics'
-
         and:
-        def results = mvc.perform(get(target)
-                .accept(MediaType.APPLICATION_JSON))
+        def results = webTestClient.get().uri(target)
+                .accept(MediaType.APPLICATION_JSON)
+                .exchange()
+                .expectStatus().isOk()
 
         then:
-        results.andExpect(content().string(""))
-
-        and:
-        results.andExpect(status().isOk())
+        results.expectBody(MusicDto[]).value(new Consumer<MusicDto[]>() {
+            @Override
+            void accept(MusicDto[] responseMusicDto) {
+                SoftAssertions.assertSoftly { softly ->
+                    softly.assertThat(responseMusicDto).isEmpty()
+                }
+            }
+        })
     }
 
     def "CreateMusic"() {
@@ -59,21 +65,26 @@ class MusicControllerImplSpec extends Specification {
 
         and:
         def musicDto = new MusicDto(
-                1L,
                 "Hey mama",
                 HEY_MAMA)
-
         and:
-        def objectMapper = new ObjectMapper()
-
+        when(musicService.createMusic(any())).thenReturn(Mono.fromCallable({ -> musicDto }))
         and:
-        def results = mvc.perform(post(target)
-                .content(objectMapper.writeValueAsString(musicDto))
-                .contentType(MediaType.APPLICATION_JSON))
+        def results = webTestClient.post().uri(target)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .body(Mono.just(musicDto), MusicDto.class)
+                .exchange()
+                .expectStatus().isOk()
+
         then:
-        results.andExpect(status().isOk())
-
-        and:
-        results.andExpect(content().string(""))
+        results.expectBody(MusicDto).value(new Consumer<MusicDto>() {
+            @Override
+            void accept(MusicDto responseMusicDto) {
+                SoftAssertions.assertSoftly { softly ->
+                    softly.assertThat(responseMusicDto).isEqualTo(musicDto)
+                }
+            }
+        })
     }
 }
