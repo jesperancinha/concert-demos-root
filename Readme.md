@@ -23,7 +23,7 @@
 ## Description
 
 This application is a demo application to show the power of Kotlin in a Reactive Programming environment.
-We will also look at how to work with R2DBC
+We will also look at how to work with R2DBC and make comparisons between a typical Spring Boot Apllication and a Spring Boot WebFlux application with  [JMeter](http://jmeter.apache.org/).
 
 > In this example the domain revolves around the registration of concert dates, the artists and the show they belong to.
 > We want to be able to record the concert data and make it the more efficient as possible.

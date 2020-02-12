@@ -33,8 +33,9 @@
     </properties>
 
     <modules>
-        <module>concert-demos-rest-service</module>
         <module>concerts-demos-data</module>
+        <module>concert-demos-rest-service-webflux</module>
+        <module>concert-demos-rest-service-mvc</module>
     </modules>
 
     <dependencyManagement>

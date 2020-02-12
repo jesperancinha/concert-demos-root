@@ -8,9 +8,9 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>concert-demos-rest-service</artifactId>
+    <artifactId>concert-demos-rest-service-webflux</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Concerts REST Service</name>
+    <name>Concerts REST WebFlux Service</name>
     <description>Concerts rest service for Spring Boot</description>
 
     <dependencies>
