@@ -4,7 +4,6 @@ import org.jesperancinha.concerts.converters.ListingConverter
 import org.jesperancinha.concerts.data.ListingDto
 import org.jesperancinha.concerts.repos.ListingRepository
 import org.springframework.stereotype.Service
-import org.springframework.transaction.annotation.Transactional
 
 @Service
 class ListingServiceImpl(
@@ -20,8 +19,10 @@ class ListingServiceImpl(
         return listingConverter.toListingDto(listingRepository.findById(id).orElse(null))
     }
 
-    @Transactional
+
     override fun createListing(listingDto: ListingDto): ListingDto {
-        return listingConverter.toListingDto(listingRepository.save(listingConverter.toListing(listingDto)))
+        val listing = listingRepository.save(listingConverter.toListing(listingDto))
+        listingDto.id = listing.id
+        return listingConverter.toListingDto(listingRepository.save(listingConverter.toFullListing(listingDto)))
     }
 }

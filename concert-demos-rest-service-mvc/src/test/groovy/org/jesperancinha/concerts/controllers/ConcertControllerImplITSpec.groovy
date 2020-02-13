@@ -32,9 +32,6 @@ class ConcertControllerImplITSpec extends Specification {
     private int port
 
     @Autowired
-    private ConcertService artistService
-
-    @Autowired
     private ListingRepository listingRepository
 
     @Autowired
@@ -119,19 +116,20 @@ class ConcertControllerImplITSpec extends Specification {
             softly.assertThat(concertDtoResult.id).isEqualTo(savedConcertDto.id)
             softly.assertThat(concertDtoResult.name).isEqualTo("Nicki Wrld Tour")
             softly.assertThat(concertDtoResult.location).isEqualTo("Amsterdam")
-//            softly.assertThat(concertDtoResult.listingDtos).hasSize(1)
-//            final listingDtoResult = concertDtoResult.listingDtos[0]
-//            softly.assertThat(listingDtoResult.artistDto).isEqualTo(savedArtistDto)
-//            softly.assertThat(listingDtoResult.referenceMusicDto).isEqualTo(savedMusicDto)
-//            softly.assertThat(listingDtoResult.musicDtos).hasSize(1)
-//            softly.assertThat(listingDtoResult.musicDtos[0]).isEqualTo(savedMusicDto)
+            softly.assertThat(concertDtoResult.listingDtos).hasSize(1)
+            final listingDtoResult = concertDtoResult.listingDtos[0]
+            softly.assertThat(listingDtoResult).isNotNull()
+            softly.assertThat(listingDtoResult.artistDto).isEqualTo(savedArtistDto)
+            softly.assertThat(listingDtoResult.referenceMusicDto).isEqualTo(savedMusicDto)
+            softly.assertThat(listingDtoResult.musicDtos).hasSize(1)
+            softly.assertThat(listingDtoResult.musicDtos[0]).isEqualTo(savedMusicDto)
         }
     }
 
     def setup() {
+        concertRepository.deleteAll()
+        listingRepository.deleteAll()
         artistRepository.deleteAll()
         musicRepository.deleteAll()
-        listingRepository.deleteAll()
-        concertRepository.deleteAll()
     }
 }

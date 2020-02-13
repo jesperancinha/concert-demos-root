@@ -24,7 +24,7 @@ class ConcertServiceImpl(
                     concertListingRepository.findByConcertId(concert.id!!)
                             .flatMap { listingService.getListingById(it.listingId) }
                             .map {
-                                concert.listingDtos.add(it)
+                                concert.listingDtos?.add(it)
                                 concert
                             }
                 }
@@ -34,7 +34,7 @@ class ConcertServiceImpl(
         return concertRepository.save(ConcertConverter.toConcert(concertDto))
                 .flatMapMany {
                     concertDto.id = it.id
-                    Flux.fromIterable(concertDto.listingDtos)
+                    concertDto.listingDtos?.let { it1 -> Flux.fromIterable(it1) }
                 }.flatMap {
                     concertListingRepository.save(ConcertListing(concertDto.id!!, it.id!!))
                 }.map { concertDto }

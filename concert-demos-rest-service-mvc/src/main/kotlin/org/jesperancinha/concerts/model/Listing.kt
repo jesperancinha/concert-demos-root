@@ -12,15 +12,16 @@ data class Listing(
         val artist: Artist? = null,
 
         @OneToOne
-        val referenceMusic: Music? = null,
+        val referenceMusic: Music? = null
 
-        @OneToMany(mappedBy = "listing")
-        val musics: MutableSet<Music>? = HashSet(),
-
-        @ManyToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
-        @JoinColumn(name = "concert_id")
-        var concert: Concert? = null
 ) {
+    @OneToMany(mappedBy = "listing",
+             orphanRemoval = true)
+    var musics: MutableSet<Music>? = null
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = [CascadeType.DETACH])
+    @JoinColumn(name = "concert_id")
+    lateinit var concert: Concert
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

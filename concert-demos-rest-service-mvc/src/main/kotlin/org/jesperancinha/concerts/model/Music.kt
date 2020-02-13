@@ -9,8 +9,8 @@ data class Music(
         val name: String? = null,
         val lyrics: String? = null
 ) {
-
     @ManyToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
+    @JoinColumn(name = "listing_id")
     lateinit var listing: Listing
 
     override fun equals(other: Any?): Boolean {

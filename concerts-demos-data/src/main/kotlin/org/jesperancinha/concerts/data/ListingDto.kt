@@ -6,6 +6,11 @@ data class ListingDto(
         val referenceMusicDto: MusicDto? = null,
         val musicDtos: MutableList<MusicDto>? = mutableListOf()
 ) {
+    constructor(artistDto: ArtistDto?,
+                referenceMusicDto: MusicDto?,
+                musicDtos: MutableList<MusicDto>?) :
+            this(0, artistDto, referenceMusicDto, musicDtos)
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
