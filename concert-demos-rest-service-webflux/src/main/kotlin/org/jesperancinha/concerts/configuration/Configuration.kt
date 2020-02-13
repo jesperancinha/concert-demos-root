@@ -1,6 +1,7 @@
 package org.jesperancinha.concerts.configuration
 
 import mu.KotlinLogging
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.ApplicationRunner
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -13,7 +14,10 @@ import java.net.URISyntaxException
 private val logger = KotlinLogging.logger {}
 
 @Configuration
-class Configuration {
+class Configuration(
+        @Value("\${org.jesperancinha.concerts.schema.file}")
+        val schema: String
+) {
 
     @Bean
     fun seeder(client: DatabaseClient): ApplicationRunner? {
@@ -25,7 +29,7 @@ class Configuration {
 
     @Throws(URISyntaxException::class)
     private fun getSchema(): Mono<String> {
-        val reader = BufferedReader(getSystemResourceAsStream("schema.sql").reader())
+        val reader = BufferedReader(getSystemResourceAsStream(schema).reader())
         reader.use {
             val content: String = reader.readText()
             return Mono.just(content)
