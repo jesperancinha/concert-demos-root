@@ -6,7 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
 @Disabled
-class ConcertDemosRootApplicationTests {
+class ConcertDemosRootMvcApplicationTests {
 
     @Test
     fun contextLoads() {

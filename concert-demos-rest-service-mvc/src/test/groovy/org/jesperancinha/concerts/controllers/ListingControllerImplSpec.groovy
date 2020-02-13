@@ -94,7 +94,7 @@ class ListingControllerImplSpec extends Specification {
         def value = objectMapper.readValue(contentAsString, ListingDto)
         SoftAssertions.assertSoftly { softly ->
             softly.assertThat(value).isEqualTo(listingDto)
- 
+
         }
     }
 }

@@ -3,7 +3,6 @@ package org.jesperancinha.concerts.model
 import javax.persistence.*
 
 @Entity
-@Table(name = "listing")
 data class Listing(
         @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
         var id: Long = 0,

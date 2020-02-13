@@ -4,9 +4,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class ConcertDemosRootApplication
+class ConcertDemosRootMvcApplication
 
 fun main(args: Array<String>) {
-    runApplication<ConcertDemosRootApplication>(*args)
+    runApplication<ConcertDemosRootMvcApplication>(*args)
 }
 

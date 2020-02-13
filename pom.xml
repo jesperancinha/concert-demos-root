@@ -30,6 +30,7 @@
         <netty-all.version>4.1.44.Final</netty-all.version>
         <gmavenplus-plugin.version>1.8.1</gmavenplus-plugin.version>
         <assertj-core.version>3.15.0</assertj-core.version>
+        <postgresql.version>42.2.10</postgresql.version>
     </properties>
 
     <modules>

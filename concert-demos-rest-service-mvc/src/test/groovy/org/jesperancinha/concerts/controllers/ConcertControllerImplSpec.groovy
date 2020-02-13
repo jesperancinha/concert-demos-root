@@ -1,10 +1,6 @@
 package org.jesperancinha.concerts.controllers
 
-import com.fasterxml.jackson.databind.ObjectMapper
-import org.jesperancinha.concerts.data.ArtistDto
-import org.jesperancinha.concerts.data.ConcertDto
-import org.jesperancinha.concerts.data.ListingDto
-import org.jesperancinha.concerts.data.MusicDto
+
 import org.jesperancinha.concerts.model.Concert
 import org.jesperancinha.concerts.services.ConcertService
 import org.mockito.ArgumentCaptor
@@ -14,16 +10,10 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
-import reactor.core.publisher.Mono
 import spock.lang.Specification
 
-import java.time.LocalDateTime
-
-import static org.jesperancinha.concerts.controllers.TestConstants.HEY_MAMA
-import static org.jesperancinha.concerts.types.Gender.FEMALE
 import static org.mockito.Mockito.when
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
