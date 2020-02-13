@@ -49,6 +49,30 @@ This project makes use of the following docker images:
 
 All source code for the [JE](https://bitbucket.org/jesperancinha/docker-images) images reside in repo [Docker images](https://bitbucket.org/jesperancinha/docker-images).
 
+## Test Data
+
+* [`http://localhost:${port}/concerts/data/musics`](Readme.md)
+```json
+{
+  "name":"Hey mama",
+  "lyrics": "Hey mama"
+}
+```
+
+* [`http://localhost:${port}/concerts/data/artists`](Readme.md):
+```json
+{
+    "name": "Nicky Minaj",
+    "gender": "FEMALE",
+    "careerStart": 1000,
+    "birthDate": "a date",
+    "birthCity": "Port of Spain",
+    "country": "Trinidad en Tobago",
+    "keywords": "Rap"
+}
+```
+
+
 ## References
 
 -   [Reactive Manifesto](https://www.reactivemanifesto.org/)
