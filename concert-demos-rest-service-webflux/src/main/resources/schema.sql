@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS Artist;
 CREATE TABLE IF NOT EXISTS Artist
 (
     id           SERIAL PRIMARY KEY,
-    name         VARCHAR(50) UNIQUE NOT NULL,
+    name         VARCHAR(50)        NOT NULL,
     gender       VARCHAR(50)        NOT NULL,
     birth_city   VARCHAR(50)        NOT NULL,
     country      VARCHAR(50)        NOT NULL,
