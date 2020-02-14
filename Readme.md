@@ -87,6 +87,9 @@ All source code for the [JE](https://bitbucket.org/jesperancinha/docker-images) 
 -   [Spock Example](https://github.com/spockframework/spock-example)
 -   [JMeter](http://jmeter.apache.org/) 
 -   [Migrating From Lombok to Kotlin by Erik Pragt](https://dzone.com/articles/migrating-from-lombok-to-kotlin)
+-   [JMeter's Concurrency Thread Group](https://jmeter-plugins.org/wiki/ConcurrencyThreadGroup/)
+-   [JMeter's Plugin Manager](https://jmeter-plugins.org/wiki/PluginsManager/)
+-   [Blaze Meter](http://blazemeter.com/?utm_source=jmplinnerpages&utm_medium=cpc&utm_content=jmpininnerpgs&utm_campaign=JMeter%2BPlug%2BIn%2BWiki)
 
 ## About me
 

@@ -15,14 +15,17 @@ private val logger = KotlinLogging.logger {}
 
 @Configuration
 class Configuration(
-        @Value("\${org.jesperancinha.concerts.schema.file}")
+        @Value("\${org.jesperancinha.concerts.schema.file:schema.sql}")
         val schema: String
 ) {
 
     @Bean
     fun seeder(client: DatabaseClient): ApplicationRunner? {
         return ApplicationRunner {
-            getSchema().flatMap { sql: String -> executeSql(client, sql) }
+            getSchema().flatMap {
+                sql: String ->
+                executeSql(client, sql)
+            }
                     .subscribe { logger.info("Schema created") }
         }
     }
