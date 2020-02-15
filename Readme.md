@@ -71,6 +71,22 @@ All source code for the [JE](https://bitbucket.org/jesperancinha/docker-images) 
     "keywords": "Rap"
 }
 ```
+## Hints & Tricks
+
+-   Fix PostgreSQL
+
+```shell script
+sudo chown -R postgres:postgres /var/run/postgresql
+```
+
+```shell script
+psql -U postgres -c 'SHOW config_file'
+```
+
+```properties
+max_connections = 300
+shared_buffers = 80MB
+```
 
 
 ## References
@@ -90,6 +106,8 @@ All source code for the [JE](https://bitbucket.org/jesperancinha/docker-images) 
 -   [JMeter's Concurrency Thread Group](https://jmeter-plugins.org/wiki/ConcurrencyThreadGroup/)
 -   [JMeter's Plugin Manager](https://jmeter-plugins.org/wiki/PluginsManager/)
 -   [Blaze Meter](http://blazemeter.com/?utm_source=jmplinnerpages&utm_medium=cpc&utm_content=jmpininnerpgs&utm_campaign=JMeter%2BPlug%2BIn%2BWiki)
+-   [How to increase the max connections in postgres?](https://stackoverflow.com/questions/30778015/how-to-increase-the-max-connections-in-postgres)
+-   [Where are my postgres *.conf files?](https://stackoverflow.com/questions/3602450/where-are-my-postgres-conf-files)
 
 ## About me
 

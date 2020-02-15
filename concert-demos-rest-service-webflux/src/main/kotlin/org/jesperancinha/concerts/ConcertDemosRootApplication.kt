@@ -10,6 +10,7 @@ import org.springframework.boot.runApplication
 class ConcertDemosRootApplication
 
 fun main(args: Array<String>) {
+    System.setProperty("reactor.netty.ioWorkerCount", "1000");
     runApplication<ConcertDemosRootApplication>(*args)
 }
 
