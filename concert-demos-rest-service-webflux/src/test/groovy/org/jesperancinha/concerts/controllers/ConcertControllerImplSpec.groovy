@@ -1,6 +1,5 @@
 package org.jesperancinha.concerts.controllers
 
-
 import org.assertj.core.api.SoftAssertions
 import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.data.ConcertDto
@@ -27,8 +26,6 @@ import java.util.function.Consumer
 import static org.jesperancinha.concerts.controllers.TestConstants.HEY_MAMA
 import static org.jesperancinha.concerts.types.Gender.FEMALE
 import static org.mockito.Mockito.when
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
 @WebFluxTest(controllers = [ConcertControllerImpl, ConcertController])
 class ConcertControllerImplSpec extends Specification {

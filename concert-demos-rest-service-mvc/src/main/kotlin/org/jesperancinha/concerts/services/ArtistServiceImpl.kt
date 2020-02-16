@@ -1,6 +1,5 @@
 package org.jesperancinha.concerts.services
 
-import org.jesperancinha.concerts.converters.ArtistConverter
 import org.jesperancinha.concerts.converters.ArtistConverter.toArtist
 import org.jesperancinha.concerts.converters.ArtistConverter.toArtistDto
 import org.jesperancinha.concerts.data.ArtistDto
@@ -15,6 +14,6 @@ class ArtistServiceImpl(private val artistRepository: ArtistRepository) : Artist
     }
 
     override fun createArtist(artist: ArtistDto): ArtistDto {
-        return ArtistConverter.toArtistDto(artistRepository.save(toArtist(artist)))
+        return toArtistDto(artistRepository.save(toArtist(artist)))
     }
 }

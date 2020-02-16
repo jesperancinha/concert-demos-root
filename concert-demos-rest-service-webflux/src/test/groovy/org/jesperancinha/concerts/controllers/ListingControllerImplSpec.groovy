@@ -1,6 +1,6 @@
 package org.jesperancinha.concerts.controllers
 
-import com.fasterxml.jackson.databind.ObjectMapper
+
 import org.assertj.core.api.SoftAssertions
 import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.data.ListingDto

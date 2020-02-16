@@ -7,7 +7,6 @@ data class Listing(
         @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
         var id: Long = 0,
 
-
         @OneToOne
         val artist: Artist? = null,
 
@@ -42,7 +41,7 @@ data class Listing(
     }
 
     override fun hashCode(): Int {
-        var result = id?.hashCode() ?: 0
+        var result = id.hashCode() ?: 0
         result = 31 * result + (artist?.hashCode() ?: 0)
         result = 31 * result + (referenceMusic?.hashCode() ?: 0)
         result = 31 * result + musics.hashCode()

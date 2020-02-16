@@ -12,9 +12,11 @@ COPY docker-files/default.conf /etc/nginx/conf.d/default.conf
 
 COPY docker-files/nginx.conf /etc/nginx/nginx.conf
 
-COPY mancalaje-service/target/mancalaje-service-1.1.1-SNAPSHOT.jar ${runningFolder}
+COPY concert-demos-rest-service-mvc/target/concert-demos-rest-service-mvc-0.0.1-SNAPSHOT.jar ${runningFolder}
 
-COPY mancalaje-fe/build /usr/share/nginx/html
+COPY concert-demos-rest-service-webflux/target/concert-demos-rest-service-webflux-0.0.1-SNAPSHOT.jar ${runningFolder}
+
+#COPY concert-demos-gui/build /usr/share/nginx/html
 
 COPY entrypoint.sh ${runningFolder}
 

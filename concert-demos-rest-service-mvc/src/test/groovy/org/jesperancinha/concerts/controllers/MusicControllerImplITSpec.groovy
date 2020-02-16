@@ -7,7 +7,6 @@ import org.jesperancinha.concerts.repos.ArtistRepository
 import org.jesperancinha.concerts.repos.ConcertRepository
 import org.jesperancinha.concerts.repos.ListingRepository
 import org.jesperancinha.concerts.repos.MusicRepository
-import org.jesperancinha.concerts.services.MusicService
 import org.junit.jupiter.api.Disabled
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest

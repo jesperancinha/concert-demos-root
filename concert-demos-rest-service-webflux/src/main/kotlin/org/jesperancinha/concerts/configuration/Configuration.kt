@@ -22,8 +22,7 @@ class Configuration(
     @Bean
     fun seeder(client: DatabaseClient): ApplicationRunner? {
         return ApplicationRunner {
-            getSchema().flatMap {
-                sql: String ->
+            getSchema().flatMap { sql: String ->
                 executeSql(client, sql)
             }
                     .subscribe { logger.info("Schema created") }
