@@ -73,21 +73,31 @@ All source code for the [JE](https://bitbucket.org/jesperancinha/docker-images) 
 ```
 ## Hints & Tricks
 
--   Fix PostgreSQL
-
+-   Fix PostgreSQL:
 ```shell script
 sudo chown -R postgres:postgres /var/run/postgresql
 ```
 
+-   Find Postgres configuration file:
 ```shell script
 psql -U postgres -c 'SHOW config_file'
 ```
 
+-   Change connections properties:
 ```properties
-max_connections = 300
-shared_buffers = 80MB
+max_connections = 1000
+shared_buffers = 512MB
 ```
 
+-   Restart Postgresql
+```shell script
+service postgresql restart
+```
+-   Possible postgres locations:
+```text
+/etc/postgresql/9.5/main/postgresql.conf
+/var/lib/pgsql/data/postgresql.conf
+```
 
 ## References
 
