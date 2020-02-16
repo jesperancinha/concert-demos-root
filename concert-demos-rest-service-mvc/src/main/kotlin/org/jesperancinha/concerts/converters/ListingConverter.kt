@@ -34,7 +34,7 @@ class ListingConverter(
                 MusicConverter.toMusic(listingDto.referenceMusicDto!!))
         listing.musics = listingDto.musicDtos?.map {
             val music = musicRepository.findById(it.id!!).orElse(null)
-            music.listings?.add(listing)
+            music.listings.add(listing)
             musicRepository.save(music)
         }?.toMutableSet()!!
         return listing

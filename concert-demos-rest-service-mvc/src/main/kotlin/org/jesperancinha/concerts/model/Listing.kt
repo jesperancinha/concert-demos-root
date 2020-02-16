@@ -20,12 +20,12 @@ data class Listing(
                 joinColumns = [JoinColumn(name = "music_id")],
                 inverseJoinColumns = [JoinColumn(name = "listing_id")]
         )
-        var musics: MutableSet<Music>? = null
+        var musics: MutableSet<Music> = HashSet(),
+
+        @ManyToMany(mappedBy = "listings")
+        val concerts: MutableSet<Concert> = HashSet()
 ) {
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = [CascadeType.DETACH])
-    @JoinColumn(name = "concert_id")
-    lateinit var concert: Concert
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

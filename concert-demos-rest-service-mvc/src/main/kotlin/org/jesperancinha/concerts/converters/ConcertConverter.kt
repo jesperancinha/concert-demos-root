@@ -24,7 +24,7 @@ class ConcertConverter(
         val concert = Concert(concertDto.id, concertDto.name, concertDto.location, concertDto.date)
         concert.listings = concertDto.listingDtos?.map {
             val listing = listingRepository.findById(it.id!!).orElse(null)
-            listing.concert = concert
+            listing.concerts.add(concert)
             listing
         }?.toMutableSet()
         return concert
