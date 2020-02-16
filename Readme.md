@@ -99,6 +99,11 @@ service postgresql restart
 /var/lib/pgsql/data/postgresql.conf
 ```
 
+-   Start docker machine
+```shell script
+service docker start
+```
+
 ## References
 
 -   [Reactive Manifesto](https://www.reactivemanifesto.org/)

@@ -1,9 +1,15 @@
 version: "3.7"
 services:
+  concerts:
+    hostname: concerts
+    build:
+      context: .
+    ports:
+      - "8085:80"
+      - "8081:8081"
+      - "8082:8082"
   postgres:
     hostname: postgres
-    image: library/postgres:12
-    ports:
-      - "5432:5432"
+    image: postgres:12
     env_file:
       - docker-psql/.env
