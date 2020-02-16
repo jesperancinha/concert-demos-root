@@ -1,4 +1,4 @@
-version: "3.7"
+version: "2"
 services:
   concerts:
     hostname: concerts
@@ -10,6 +10,7 @@ services:
       - "8082:8082"
   postgres:
     hostname: postgres
-    image: postgres:12
+    build:
+      context: docker-psql/.
     env_file:
       - docker-psql/.env

@@ -1,4 +1,4 @@
-FROM jesperancinha/je-all-build:0.0.1
+FROM jesperancinha/je-all-build:0.0.3
 
 ENV runningFolder /usr/local/bin/
 
@@ -11,8 +11,6 @@ RUN touch /etc/postfix/main.cf
 COPY docker-files/default.conf /etc/nginx/conf.d/default.conf
 
 COPY docker-files/nginx.conf /etc/nginx/nginx.conf
-
-COPY docker-psql/init-dbs.sh /docker-entrypoint-initdb.d/
 
 COPY concert-demos-rest-service-mvc/target/concert-demos-rest-service-mvc-0.0.1-SNAPSHOT.jar ${runningFolder}
 

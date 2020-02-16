@@ -12,4 +12,6 @@ docker stop postgres-standalone
 
 docker rm postgres-standalone
 
-docker run --name postgres-standalone -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=concertsdb-webflux -p 5432:5432 -d postgres:12
+docker build . -t postgres-image
+
+docker run --name postgres-standalone -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=admin -p 5432:5432 -d postgres:12
