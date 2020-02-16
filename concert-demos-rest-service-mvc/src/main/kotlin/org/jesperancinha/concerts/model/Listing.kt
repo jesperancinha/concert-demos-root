@@ -12,12 +12,16 @@ data class Listing(
         val artist: Artist? = null,
 
         @OneToOne
-        val referenceMusic: Music? = null
+        val referenceMusic: Music? = null,
 
+        @ManyToMany(cascade = [CascadeType.ALL])
+        @JoinTable(
+                name = "listing_music",
+                joinColumns = [JoinColumn(name = "music_id")],
+                inverseJoinColumns = [JoinColumn(name = "listing_id")]
+        )
+        var musics: MutableSet<Music>? = null
 ) {
-    @OneToMany(mappedBy = "listing",
-             orphanRemoval = true)
-    var musics: MutableSet<Music>? = null
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = [CascadeType.DETACH])
     @JoinColumn(name = "concert_id")

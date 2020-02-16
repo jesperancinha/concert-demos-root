@@ -7,11 +7,10 @@ data class Music(
         @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
         var id: Long? = null,
         val name: String? = null,
-        val lyrics: String? = null
+        val lyrics: String? = null,
+        @ManyToMany(mappedBy = "musics")
+        var listings: MutableSet<Listing>? = HashSet()
 ) {
-    @ManyToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
-    @JoinColumn(name = "listing_id")
-    lateinit var listing: Listing
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
