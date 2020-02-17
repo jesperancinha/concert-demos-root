@@ -6,8 +6,6 @@ WORKDIR ${runningFolder}
 
 RUN apt-get update
 
-RUN touch /etc/postfix/main.cf
-
 #COPY docker-files/default.conf /etc/nginx/conf.d/default.conf
 #
 #COPY docker-files/nginx.conf /etc/nginx/nginx.conf

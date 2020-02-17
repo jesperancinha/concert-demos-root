@@ -8,7 +8,7 @@ eval $(docker-machine env dev)
 
 docker-compose down
 
-#mvn clean install
+mvn clean install
 
 #cd concert-demos-gui
 #yarn install --force

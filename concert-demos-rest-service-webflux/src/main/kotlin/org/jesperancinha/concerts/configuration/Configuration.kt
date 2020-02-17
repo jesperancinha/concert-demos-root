@@ -15,7 +15,7 @@ private val logger = KotlinLogging.logger {}
 
 @Configuration
 class Configuration(
-        @Value("\${org.jesperancinha.concerts.schema.file:schema.sql}")
+        @Value("\${org.jesperancinha.concerts.schema.file:/schema.sql}")
         val schema: String
 ) {
 
@@ -31,7 +31,7 @@ class Configuration(
 
     @Throws(URISyntaxException::class)
     private fun getSchema(): Mono<String> {
-        val reader = BufferedReader(getSystemResourceAsStream(schema).reader())
+        val reader = BufferedReader(Configuration::class.java.getResourceAsStream(schema).reader())
         reader.use {
             val content: String = reader.readText()
             return Mono.just(content)

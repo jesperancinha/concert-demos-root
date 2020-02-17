@@ -253,6 +253,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot-maven-plugin.version}</version>
                 <configuration>
+                    <addResources>true</addResources>
                     <mainClass>org.jesperancinha.concerts.ConcertDemosRootApplicationKt</mainClass>
                 </configuration>
                 <executions>
