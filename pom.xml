@@ -31,6 +31,7 @@
         <gmavenplus-plugin.version>1.8.1</gmavenplus-plugin.version>
         <assertj-core.version>3.15.0</assertj-core.version>
         <postgresql.version>42.2.10</postgresql.version>
+        <spring-boot-maven-plugin.version>2.2.2.RELEASE</spring-boot-maven-plugin.version>
     </properties>
 
     <modules>

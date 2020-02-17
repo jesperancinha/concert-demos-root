@@ -8,9 +8,9 @@ RUN apt-get update
 
 RUN touch /etc/postfix/main.cf
 
-COPY docker-files/default.conf /etc/nginx/conf.d/default.conf
-
-COPY docker-files/nginx.conf /etc/nginx/nginx.conf
+#COPY docker-files/default.conf /etc/nginx/conf.d/default.conf
+#
+#COPY docker-files/nginx.conf /etc/nginx/nginx.conf
 
 COPY concert-demos-rest-service-mvc/target/concert-demos-rest-service-mvc-0.0.1-SNAPSHOT.jar ${runningFolder}
 
@@ -20,7 +20,7 @@ COPY concert-demos-rest-service-webflux/target/concert-demos-rest-service-webflu
 
 COPY entrypoint.sh ${runningFolder}
 
-RUN nginx -t
+#RUN nginx -t
 
 EXPOSE 8080
 

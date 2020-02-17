@@ -104,6 +104,15 @@ service postgresql restart
 service docker start
 ```
 
+-   Git tag change
+```bash
+git tag new-tag old-tag
+git tag -d old-tag
+git push origin :refs/tags/old-tag
+git push --tags
+git pull --prune --tags
+```
+
 ## References
 
 -   [Reactive Manifesto](https://www.reactivemanifesto.org/)
