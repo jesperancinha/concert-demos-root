@@ -1,7 +1,6 @@
-FROM postgres:12
-
-COPY init-dbs.sh /docker-entrypoint-initdb.d/
+FROM postgres:11.5-alpine
 
 COPY postgresql.conf /etc/postgresql/postgresql.conf
 
 EXPOSE 5432
+
