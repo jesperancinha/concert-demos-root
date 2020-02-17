@@ -1,0 +1,4 @@
+Label,# Samples,Average,Min,Max,Std. Dev.,Error %,Throughput,Received KB/sec,Sent KB/sec,Avg. Bytes
+WebFlux GET artists,1444,8952,62,20804,6164.03,6.440%,23.85830,7209.95,2.99,309451.4
+WebFlux Post artists,1013,8254,6,20088,6155.44,4.837%,16.75876,7.39,6.43,451.6
+TOTAL,2457,8664,6,20804,6170.09,5.779%,40.59547,7217.33,9.41,182053.4
