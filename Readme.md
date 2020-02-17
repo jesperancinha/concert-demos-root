@@ -29,6 +29,10 @@ We will also look at how to work with R2DBC and make comparisons between a typic
 > We want to be able to record the concert data and make it the more efficient as possible.
 > For this Demo we will use WebFlow
 
+This project is also the official support project of my article on medium:
+
+[Comparing WebFlux and Spring MVC with JMeter](https://medium.com/@jofisaes/comparing-webflux-and-spring-mvc-with-jmeter-79dc134c3c04)
+
 ## Detail
 
 -  concert-demos-rest-service - WebFlux implementation of the Sprig Boot Back-End process for the concerts website.
