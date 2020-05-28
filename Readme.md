@@ -39,7 +39,7 @@ We will also look at how to work with R2DBC and make comparisons between a typic
 
 This project is also the official support project of my article on medium:
 
-[Comparing WebFlux and Spring MVC with JMeter](https://medium.com/@jofisaes/comparing-webflux-and-spring-mvc-with-jmeter-79dc134c3c04)
+[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/medium-20.png "Medium")](https://medium.com/@jofisaes/comparing-webflux-and-spring-mvc-with-jmeter-79dc134c3c04) [Comparing WebFlux and Spring MVC with JMeter](https://medium.com/@jofisaes/comparing-webflux-and-spring-mvc-with-jmeter-79dc134c3c04)
 
 ## Detail
 
