@@ -128,11 +128,7 @@ git pull --prune --tags
 ## References
 
 -   [Reactive Manifesto](https://www.reactivemanifesto.org/)
--   [Spring Data Reactive Repositories with MongoDB](https://www.baeldung.com/spring-data-mongodb-reactive)
 -   [Spring Boot Kotlin](https://spring.io/guides/tutorials/spring-boot-kotlin/)
--   [R2DBC – Reactive Relational Database Connectivity](https://www.baeldung.com/r2dbc)
--   [A Quick Look at R2DBC with Spring Data](https://www.baeldung.com/spring-data-r2dbc)
--   [Spring Webflux with Kotlin](https://www.baeldung.com/spring-webflux-kotlin)
 -   [Reactive relational databases with R2DBC and Spring](https://dimitr.im/reactive-relational-databases-r2dbc-spring)
 -   [R2DBC](https://r2dbc.io/)
 -   [Lesson 11 - Date and Time in Kotlin - Creating and formatting](https://www.ict.social/kotlin/oop/date-and-time-in-kotlin-creating-and-formatting)
