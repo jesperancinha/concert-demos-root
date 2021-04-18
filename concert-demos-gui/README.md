@@ -1,5 +1,26 @@
 # ConcertDemosGui
 
+
+## Installation notes
+
+```bash
+ncu -u
+yarn install
+npm install --legacy-peer-deps
+npm audit fix
+ng update
+npm uninstall -g @angular/cli
+npm cache verify
+npm cache clean --force
+npm install -g @angular/cli
+ng update @angular/cli
+ng update @angular/cli --migrateOnly
+ng update --all --force
+npm update --force
+npm cache clean --force
+npm install -g @angular/cli
+```
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.3.
 
 ## Development server
