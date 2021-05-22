@@ -1,6 +1,6 @@
 # Concert Demos
 
-[![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=Concert%20Demos&color=informational)](https://github.com/jesperancinha/concert-demos-root) 
+[![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=Concert%20Demos&color=informational)](https://github.com/jesperancinha/concert-demos-root)
 [![GitHub release](https://img.shields.io/github/release-pre/jesperancinha/concert-demos-root.svg)](#)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
@@ -24,13 +24,14 @@
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/mockito-50.png "Mockito")](https://site.mockito.org/)
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/assertj-50.png "AssertJ")](https://assertj.github.io/doc/)
 ---
+
 ## Status
 
 [Under construction...](https://github.com/jesperancinha/project-signer/blob/master/project-signer-templates/UnderConstruction.md)
 
 ## Description
 
-This application is a demo application to show the power of Kotlin in a Reactive Programming environment.
+This application is a demo application to show the power of Kotlin in a Reactive Programming environment.	  
 We will also look at how to work with R2DBC and make comparisons between a typical Spring Boot Apllication and a Spring Boot WebFlux application with  [JMeter](http://jmeter.apache.org/).
 
 > In this example the domain revolves around the registration of concert dates, the artists and the show they belong to.
@@ -39,7 +40,8 @@ We will also look at how to work with R2DBC and make comparisons between a typic
 
 This project is also the official support project of my article on medium:
 
-[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/medium-20.png "Medium")](https://medium.com/@jofisaes/comparing-webflux-and-spring-mvc-with-jmeter-79dc134c3c04) [Comparing WebFlux and Spring MVC with JMeter](https://medium.com/@jofisaes/comparing-webflux-and-spring-mvc-with-jmeter-79dc134c3c04)
+[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/medium-20.png "Medium")](https://medium.com/@jofisaes/comparing-webflux-and-spring-mvc-with-jmeter-79dc134c3c04)
+[Comparing WebFlux and Spring MVC with JMeter](https://medium.com/@jofisaes/comparing-webflux-and-spring-mvc-with-jmeter-79dc134c3c04)
 
 ## Detail
 
@@ -64,59 +66,70 @@ All source code for the [JE](https://bitbucket.org/jesperancinha/docker-images) 
 ## Test Data
 
 * [`http://localhost:${port}/concerts/data/musics`](Readme.md)
+
 ```json
 {
-  "name":"Hey mama",
+  "name": "Hey mama",
   "lyrics": "Hey mama"
 }
 ```
 
 * [`http://localhost:${port}/concerts/data/artists`](Readme.md):
+
 ```json
 {
-    "name": "Nicky Minaj",
-    "gender": "FEMALE",
-    "careerStart": 1000,
-    "birthDate": "a date",
-    "birthCity": "Port of Spain",
-    "country": "Trinidad en Tobago",
-    "keywords": "Rap"
+  "name": "Nicky Minaj",
+  "gender": "FEMALE",
+  "careerStart": 1000,
+  "birthDate": "a date",
+  "birthCity": "Port of Spain",
+  "country": "Trinidad en Tobago",
+  "keywords": "Rap"
 }
 ```
+
 ## Hints & Tricks
 
 -   Fix PostgreSQL:
+
 ```shell script
 sudo chown -R postgres:postgres /var/run/postgresql
 ```
 
 -   Find Postgres configuration file:
+
 ```shell script
 psql -U postgres -c 'SHOW config_file'
 ```
 
 -   Change connections properties:
+
 ```properties
-max_connections = 1000
-shared_buffers = 512MB
+max_connections=1000
+shared_buffers=512MB
 ```
 
 -   Restart Postgresql
+
 ```shell script
 service postgresql restart
 ```
+
 -   Possible postgres locations:
+
 ```text
 /etc/postgresql/9.5/main/postgresql.conf
 /var/lib/pgsql/data/postgresql.conf
 ```
 
 -   Start docker machine
+
 ```shell script
 service docker start
 ```
 
 -   Git tag change
+
 ```bash
 git tag new-tag old-tag
 git tag -d old-tag
@@ -133,7 +146,7 @@ git pull --prune --tags
 -   [R2DBC](https://r2dbc.io/)
 -   [Lesson 11 - Date and Time in Kotlin - Creating and formatting](https://www.ict.social/kotlin/oop/date-and-time-in-kotlin-creating-and-formatting)
 -   [Spock Example](https://github.com/spockframework/spock-example)
--   [JMeter](http://jmeter.apache.org/) 
+-   [JMeter](http://jmeter.apache.org/)
 -   [Migrating From Lombok to Kotlin by Erik Pragt](https://dzone.com/articles/migrating-from-lombok-to-kotlin)
 -   [JMeter's Concurrency Thread Group](https://jmeter-plugins.org/wiki/ConcurrencyThreadGroup/)
 -   [JMeter's Plugin Manager](https://jmeter-plugins.org/wiki/PluginsManager/)
