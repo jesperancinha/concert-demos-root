@@ -15,7 +15,7 @@ class ListingConverter(
                 listing.id,
                 ArtistConverter.toArtistDto(listing.artist!!),
                 MusicConverter.toMusicDto(listing.referenceMusic!!),
-                listing.musics?.map { MusicConverter.toMusicDto(it) }?.toMutableList()
+            listing.musics.map { MusicConverter.toMusicDto(it) }.toMutableList()
         )
 
     }

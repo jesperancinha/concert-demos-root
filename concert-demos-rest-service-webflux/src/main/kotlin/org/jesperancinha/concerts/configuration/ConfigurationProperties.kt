@@ -5,7 +5,7 @@ import javax.validation.constraints.NotEmpty
 
 
 @ConfigurationProperties(prefix = "r2dbc")
-class ConfigurationProperties {
+open class ConfigurationProperties {
     private var url: @NotEmpty String? = null
 
     private var user: String? = null
