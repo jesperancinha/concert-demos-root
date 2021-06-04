@@ -138,6 +138,25 @@ git push --tags
 git pull --prune --tags
 ```
 
+## NodeJS Update NPM Update
+
+```bash
+npm audit fix
+npm install npm@latest -g
+npm update -g
+npm install -g npm-check-updates
+ncu -u
+npm update
+npm update --legacy-peer-deps
+yarn install
+```
+
+Others
+
+```bash
+npm install -g npm@7.16.0
+```
+
 ## References
 
 -   [Reactive Manifesto](https://www.reactivemanifesto.org/)
