@@ -6,7 +6,7 @@ import org.jesperancinha.concerts.data.MusicDto
 import org.jesperancinha.concerts.model.Listing
 
 /**
- *
+ * From root this problem would happen.
  * add dummy line to get coveralls to work because of know issue (trauto…
  * https://github.com/societe-generale/github-crawler/commit/035e4290b19e8df682ff1ee92f9fcbd4b12c0b63
  */
@@ -26,9 +26,4 @@ object ListingConverter {
             listingDto.referenceMusicDto?.id!!
         )
     }
-
-
-
-
-
 }
