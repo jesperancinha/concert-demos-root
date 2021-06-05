@@ -1,4 +1,4 @@
-package org.jesperancinha.concerts.controllers
+package org.jesperancinha.concerts.webflux.controllers
 
 import org.assertj.core.api.SoftAssertions
 import org.jesperancinha.concerts.data.ArtistDto

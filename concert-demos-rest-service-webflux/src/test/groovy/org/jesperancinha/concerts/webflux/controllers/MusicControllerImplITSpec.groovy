@@ -1,4 +1,4 @@
-package org.jesperancinha.concerts.controllers
+package org.jesperancinha.concerts.webflux.controllers
 
 import org.assertj.core.api.SoftAssertions
 import org.jesperancinha.concerts.data.MusicDto
@@ -14,7 +14,7 @@ import org.springframework.test.context.ActiveProfiles
 import org.springframework.web.client.RestTemplate
 import spock.lang.Specification
 
-import static org.jesperancinha.concerts.controllers.TestConstants.HEY_MAMA
+import static TestConstants.HEY_MAMA
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)

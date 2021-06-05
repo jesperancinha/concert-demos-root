@@ -1,4 +1,4 @@
-package org.jesperancinha.concerts.controllers
+package org.jesperancinha.concerts.webflux.controllers
 
 class TestConstants {
 

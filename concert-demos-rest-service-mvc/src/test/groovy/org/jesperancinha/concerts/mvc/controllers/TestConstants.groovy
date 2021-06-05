@@ -1,4 +1,4 @@
-package org.jesperancinha.concerts.controllers
+package org.jesperancinha.concerts.mvc.controllers
 
 class TestConstants {
 

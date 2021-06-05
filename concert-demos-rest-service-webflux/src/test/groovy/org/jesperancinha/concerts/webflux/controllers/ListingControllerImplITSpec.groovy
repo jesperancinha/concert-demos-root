@@ -1,16 +1,17 @@
-package org.jesperancinha.concerts.controllers
+package org.jesperancinha.concerts.webflux.controllers
 
 import org.assertj.core.api.SoftAssertions
 import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.data.ListingDto
 import org.jesperancinha.concerts.data.MusicDto
-import org.jesperancinha.concerts.mvc.model.Music
-import org.jesperancinha.concerts.mvc.repos.ArtistRepository
-import org.jesperancinha.concerts.mvc.repos.ConcertRepository
-import org.jesperancinha.concerts.mvc.repos.ListingRepository
-import org.jesperancinha.concerts.mvc.repos.MusicRepository
-import org.junit.jupiter.api.Disabled
+import org.jesperancinha.concerts.webflux.configuration.ConfigurationProperties
+import org.jesperancinha.concerts.webflux.model.Music
+import org.jesperancinha.concerts.webflux.repos.ArtistRepository
+import org.jesperancinha.concerts.webflux.repos.ListingRepository
+import org.jesperancinha.concerts.webflux.repos.MusicRepository
+import org.jesperancinha.concerts.webflux.services.ListingService
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.web.server.LocalServerPort
 import org.springframework.test.context.ActiveProfiles
@@ -19,17 +20,20 @@ import spock.lang.Specification
 
 import java.time.LocalDateTime
 
-import static org.jesperancinha.concerts.controllers.TestConstants.HEY_MAMA
+import static TestConstants.HEY_MAMA
 import static org.jesperancinha.concerts.types.Gender.FEMALE
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
+@EnableConfigurationProperties(ConfigurationProperties)
 @ActiveProfiles("test")
-@Disabled
 class ListingControllerImplITSpec extends Specification {
 
     @LocalServerPort
-    private int port
+    private int port;
+
+    @Autowired
+    private ListingService artistService
 
     @Autowired
     private ListingRepository listingRepository
@@ -39,9 +43,6 @@ class ListingControllerImplITSpec extends Specification {
 
     @Autowired
     private MusicRepository musicRepository
-
-    @Autowired
-    private ConcertRepository concertRepository
 
 
     def "GetAllListings"() {
@@ -54,7 +55,7 @@ class ListingControllerImplITSpec extends Specification {
         final RestTemplate restTemplate = new RestTemplate()
 
         and: "Making the REST Call"
-        final List<Music> result = restTemplate.getForObject(uri, List.class)
+        final List<Music> result = restTemplate.getForObject(uri, List.class);
 
         then: "Assert response of an empty array"
         SoftAssertions.assertSoftly { softly ->
@@ -90,6 +91,7 @@ class ListingControllerImplITSpec extends Specification {
         def savedMusicDto = restTemplate.postForEntity(musicsUri, musicDto, MusicDto.class).body
         and:
         def listingDto = new ListingDto(
+                null,
                 savedArtistDto,
                 savedMusicDto,
                 List.of(savedMusicDto)
@@ -113,9 +115,8 @@ class ListingControllerImplITSpec extends Specification {
     }
 
     def setup() {
-        concertRepository.deleteAll()
-        listingRepository.deleteAll()
-        artistRepository.deleteAll()
-        musicRepository.deleteAll()
+        artistRepository.deleteAll().block()
+        musicRepository.deleteAll().block()
+        listingRepository.deleteAll().block()
     }
 }

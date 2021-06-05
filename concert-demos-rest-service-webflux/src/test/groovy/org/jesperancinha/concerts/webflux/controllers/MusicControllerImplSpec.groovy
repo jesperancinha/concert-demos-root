@@ -1,9 +1,7 @@
-package org.jesperancinha.concerts.controllers
+package org.jesperancinha.concerts.webflux.controllers
 
 import org.assertj.core.api.SoftAssertions
 import org.jesperancinha.concerts.data.MusicDto
-import org.jesperancinha.concerts.webflux.controllers.MusicController
-import org.jesperancinha.concerts.webflux.controllers.MusicControllerImpl
 import org.jesperancinha.concerts.webflux.model.Music
 import org.jesperancinha.concerts.webflux.services.MusicService
 import org.mockito.ArgumentCaptor
@@ -20,7 +18,7 @@ import spock.lang.Specification
 
 import java.util.function.Consumer
 
-import static org.jesperancinha.concerts.controllers.TestConstants.HEY_MAMA
+import static TestConstants.HEY_MAMA
 import static org.mockito.ArgumentMatchers.any
 import static org.mockito.Mockito.when
 

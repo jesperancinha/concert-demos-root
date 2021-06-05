@@ -1,4 +1,4 @@
-package org.jesperancinha.concerts.controllers
+package org.jesperancinha.concerts.mvc.controllers
 
 import org.assertj.core.api.SoftAssertions
 import org.jesperancinha.concerts.data.ArtistDto
@@ -19,7 +19,7 @@ import spock.lang.Specification
 
 import java.time.LocalDateTime
 
-import static org.jesperancinha.concerts.controllers.TestConstants.HEY_MAMA
+import static TestConstants.HEY_MAMA
 import static org.jesperancinha.concerts.types.Gender.FEMALE
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT
 

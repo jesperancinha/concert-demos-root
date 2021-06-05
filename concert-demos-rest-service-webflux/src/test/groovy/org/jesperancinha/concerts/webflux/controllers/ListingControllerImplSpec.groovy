@@ -1,11 +1,9 @@
-package org.jesperancinha.concerts.controllers
+package org.jesperancinha.concerts.webflux.controllers
 
 import org.assertj.core.api.SoftAssertions
 import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.data.ListingDto
 import org.jesperancinha.concerts.data.MusicDto
-import org.jesperancinha.concerts.webflux.controllers.ListingController
-import org.jesperancinha.concerts.webflux.controllers.ListingControllerImpl
 import org.jesperancinha.concerts.webflux.model.Listing
 import org.jesperancinha.concerts.webflux.services.ListingMusicService
 import org.jesperancinha.concerts.webflux.services.ListingService
@@ -24,7 +22,7 @@ import spock.lang.Specification
 import java.time.LocalDateTime
 import java.util.function.Consumer
 
-import static org.jesperancinha.concerts.controllers.TestConstants.HEY_MAMA
+import static TestConstants.HEY_MAMA
 import static org.jesperancinha.concerts.types.Gender.FEMALE
 import static org.mockito.ArgumentMatchers.any
 import static org.mockito.Mockito.when

@@ -1,4 +1,4 @@
-package org.jesperancinha.concerts.controllers
+package org.jesperancinha.concerts.mvc.controllers
 
 import org.jesperancinha.concerts.mvc.controllers.ConcertController
 import org.jesperancinha.concerts.mvc.controllers.ConcertControllerImpl
