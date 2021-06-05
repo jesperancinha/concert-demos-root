@@ -1,12 +1,12 @@
 package org.jesperancinha.concerts.controllers
 
 import org.assertj.core.api.SoftAssertions
-import org.jesperancinha.concerts.configuration.ConfigurationProperties
 import org.jesperancinha.concerts.data.ArtistDto
-import org.jesperancinha.concerts.model.Artist
-import org.jesperancinha.concerts.repos.ArtistRepository
-import org.jesperancinha.concerts.services.ArtistService
 import org.jesperancinha.concerts.types.Gender
+import org.jesperancinha.concerts.webflux.configuration.ConfigurationProperties
+import org.jesperancinha.concerts.webflux.model.Artist
+import org.jesperancinha.concerts.webflux.repos.ArtistRepository
+import org.jesperancinha.concerts.webflux.services.ArtistService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.test.context.SpringBootTest

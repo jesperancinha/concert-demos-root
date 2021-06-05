@@ -1,8 +1,9 @@
 package org.jesperancinha.concerts.controllers
 
-
-import org.jesperancinha.concerts.model.Music
-import org.jesperancinha.concerts.services.MusicService
+import org.jesperancinha.concerts.mvc.controllers.MusicController
+import org.jesperancinha.concerts.mvc.controllers.MusicControllerImpl
+import org.jesperancinha.concerts.mvc.model.Music
+import org.jesperancinha.concerts.mvc.services.MusicService
 import org.mockito.ArgumentCaptor
 import org.mockito.Captor
 import org.springframework.beans.factory.annotation.Autowired

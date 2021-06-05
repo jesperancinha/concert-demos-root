@@ -2,8 +2,10 @@ package org.jesperancinha.concerts.controllers
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.jesperancinha.concerts.data.ArtistDto
-import org.jesperancinha.concerts.model.Artist
-import org.jesperancinha.concerts.services.ArtistService
+import org.jesperancinha.concerts.mvc.controllers.ArtistController
+import org.jesperancinha.concerts.mvc.controllers.ArtistControllerImpl
+import org.jesperancinha.concerts.mvc.model.Artist
+import org.jesperancinha.concerts.mvc.services.ArtistService
 import org.mockito.ArgumentCaptor
 import org.mockito.Captor
 import org.springframework.beans.factory.annotation.Autowired

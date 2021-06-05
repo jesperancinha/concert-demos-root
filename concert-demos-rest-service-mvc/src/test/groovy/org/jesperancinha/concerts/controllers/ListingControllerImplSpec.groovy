@@ -5,8 +5,10 @@ import org.assertj.core.api.SoftAssertions
 import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.data.ListingDto
 import org.jesperancinha.concerts.data.MusicDto
-import org.jesperancinha.concerts.model.Listing
-import org.jesperancinha.concerts.services.ListingService
+import org.jesperancinha.concerts.mvc.controllers.ListingController
+import org.jesperancinha.concerts.mvc.controllers.ListingControllerImpl
+import org.jesperancinha.concerts.mvc.model.Listing
+import org.jesperancinha.concerts.mvc.services.ListingService
 import org.mockito.ArgumentCaptor
 import org.mockito.Captor
 import org.springframework.beans.factory.annotation.Autowired

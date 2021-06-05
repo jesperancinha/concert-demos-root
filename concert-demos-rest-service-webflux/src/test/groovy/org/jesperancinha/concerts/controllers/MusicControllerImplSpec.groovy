@@ -1,10 +1,11 @@
 package org.jesperancinha.concerts.controllers
 
-
 import org.assertj.core.api.SoftAssertions
 import org.jesperancinha.concerts.data.MusicDto
-import org.jesperancinha.concerts.model.Music
-import org.jesperancinha.concerts.services.MusicService
+import org.jesperancinha.concerts.webflux.controllers.MusicController
+import org.jesperancinha.concerts.webflux.controllers.MusicControllerImpl
+import org.jesperancinha.concerts.webflux.model.Music
+import org.jesperancinha.concerts.webflux.services.MusicService
 import org.mockito.ArgumentCaptor
 import org.mockito.Captor
 import org.springframework.beans.factory.annotation.Autowired

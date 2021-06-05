@@ -13,16 +13,6 @@ jobs:
         - .autoconf
         - $HOME/.m2
       script:
-        - mvn clean install package
+        - mvn clean install package coveralls:report -DrepoToken=${COVERALLS_TOKEN}
         - bash <(curl -s https://codecov.io/bash)
         - bash <(curl -Ls https://coverage.codacy.com/get.sh) report -l Java Kotlin $(find **/jacoco.xml -printf -r %p)
-      after_success:
-        - cd concert-demos-rest-service-mvc
-        - mvn coveralls:report -DrepoToken=${COVERALLS_TOKEN}
-        - cd ..
-        - cd concert-demos-rest-service-webflux
-        - mvn coveralls:report -DrepoToken=${COVERALLS_TOKEN}
-        - cd ..
-        - cd concerts-demos-data
-        - mvn coveralls:report -DrepoToken=${COVERALLS_TOKEN}
-        - cd ..

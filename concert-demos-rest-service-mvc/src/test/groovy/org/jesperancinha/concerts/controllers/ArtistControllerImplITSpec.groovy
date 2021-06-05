@@ -2,11 +2,11 @@ package org.jesperancinha.concerts.controllers
 
 import org.assertj.core.api.SoftAssertions
 import org.jesperancinha.concerts.data.ArtistDto
-import org.jesperancinha.concerts.model.Artist
-import org.jesperancinha.concerts.repos.ArtistRepository
-import org.jesperancinha.concerts.repos.ConcertRepository
-import org.jesperancinha.concerts.repos.ListingRepository
-import org.jesperancinha.concerts.repos.MusicRepository
+import org.jesperancinha.concerts.mvc.model.Artist
+import org.jesperancinha.concerts.mvc.repos.ArtistRepository
+import org.jesperancinha.concerts.mvc.repos.ConcertRepository
+import org.jesperancinha.concerts.mvc.repos.ListingRepository
+import org.jesperancinha.concerts.mvc.repos.MusicRepository
 import org.jesperancinha.concerts.types.Gender
 import org.junit.jupiter.api.Disabled
 import org.springframework.beans.factory.annotation.Autowired

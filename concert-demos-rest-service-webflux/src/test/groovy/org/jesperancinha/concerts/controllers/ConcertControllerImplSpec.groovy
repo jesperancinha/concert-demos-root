@@ -5,9 +5,11 @@ import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.data.ConcertDto
 import org.jesperancinha.concerts.data.ListingDto
 import org.jesperancinha.concerts.data.MusicDto
-import org.jesperancinha.concerts.model.Concert
-import org.jesperancinha.concerts.services.ConcertListingService
-import org.jesperancinha.concerts.services.ConcertService
+import org.jesperancinha.concerts.webflux.controllers.ConcertController
+import org.jesperancinha.concerts.webflux.controllers.ConcertControllerImpl
+import org.jesperancinha.concerts.webflux.model.Concert
+import org.jesperancinha.concerts.webflux.services.ConcertListingService
+import org.jesperancinha.concerts.webflux.services.ConcertService
 import org.mockito.ArgumentCaptor
 import org.mockito.Captor
 import org.springframework.beans.factory.annotation.Autowired

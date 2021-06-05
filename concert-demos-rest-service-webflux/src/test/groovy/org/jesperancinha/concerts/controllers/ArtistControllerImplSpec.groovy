@@ -2,8 +2,10 @@ package org.jesperancinha.concerts.controllers
 
 import org.assertj.core.api.SoftAssertions
 import org.jesperancinha.concerts.data.ArtistDto
-import org.jesperancinha.concerts.model.Artist
-import org.jesperancinha.concerts.services.ArtistService
+import org.jesperancinha.concerts.webflux.controllers.ArtistController
+import org.jesperancinha.concerts.webflux.controllers.ArtistControllerImpl
+import org.jesperancinha.concerts.webflux.model.Artist
+import org.jesperancinha.concerts.webflux.services.ArtistService
 import org.mockito.ArgumentCaptor
 import org.mockito.Captor
 import org.springframework.beans.factory.annotation.Autowired
