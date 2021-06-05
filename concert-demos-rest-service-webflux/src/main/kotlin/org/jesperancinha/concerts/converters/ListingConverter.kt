@@ -26,11 +26,9 @@ object ListingConverter {
             listingDto.referenceMusicDto?.id!!
         )
     }
-// Kotlin - Coveralls compiling issues
 
 
-// Kotlin - Coveralls compiling issues
 
 
-// Kotlin - Coveralls compiling issues
+
 }
