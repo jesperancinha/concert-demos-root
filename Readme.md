@@ -163,6 +163,10 @@ Others
 npm install -g npm@7.16.0
 ```
 
+```bash
+javap
+```
+
 ## References
 
 -   [Reactive Manifesto](https://www.reactivemanifesto.org/)
