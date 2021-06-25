@@ -1,6 +1,4 @@
 # ConcertDemosGui
-
-
 ## Installation notes
 
 ```bash
