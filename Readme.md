@@ -24,7 +24,6 @@
 ---
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/kotlin-50.png "Kotlin")](https://kotlinlang.org/)
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/groovy-50.png "Groovy")](https://groovy-lang.org/)
-[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/lombok-50.png "Lombok")](https://projectlombok.org/)
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/jupiter5-50.png "Jupiter 5")](https://junit.org/junit5/docs/current/user-guide/)
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/spock-50.png "Spock")](http://spockframework.org/)
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/mockito-50.png "Mockito")](https://site.mockito.org/)
@@ -92,6 +91,13 @@ All source code for the [JE](https://bitbucket.org/jesperancinha/docker-images) 
   "country": "Trinidad en Tobago",
   "keywords": "Rap"
 }
+```
+
+## Java version
+
+```bash
+sdk install java 16.0.1.hs-adpt
+sdk use java 16.0.1.hs-adpt
 ```
 
 ## Hints & Tricks
@@ -176,7 +182,6 @@ javap
 -   [Lesson 11 - Date and Time in Kotlin - Creating and formatting](https://www.ict.social/kotlin/oop/date-and-time-in-kotlin-creating-and-formatting)
 -   [Spock Example](https://github.com/spockframework/spock-example)
 -   [JMeter](http://jmeter.apache.org/)
--   [Migrating From Lombok to Kotlin by Erik Pragt](https://dzone.com/articles/migrating-from-lombok-to-kotlin)
 -   [JMeter's Concurrency Thread Group](https://jmeter-plugins.org/wiki/ConcurrencyThreadGroup/)
 -   [JMeter's Plugin Manager](https://jmeter-plugins.org/wiki/PluginsManager/)
 -   [Blaze Meter](http://blazemeter.com/?utm_source=jmplinnerpages&utm_medium=cpc&utm_content=jmpininnerpgs&utm_campaign=JMeter%2BPlug%2BIn%2BWiki)

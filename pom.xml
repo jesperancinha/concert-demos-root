@@ -17,29 +17,40 @@
     <packaging>pom</packaging>
 
     <properties>
-        <java.version>12</java.version>
+        <!-- Build -->
+        <java.version>16</java.version>
         <maven-compiler-plugin.source>${java.version}</maven-compiler-plugin.source>
         <maven-compiler-plugin.target>${java.version}</maven-compiler-plugin.target>
-        <maven-surefire-plugin.version>3.0.0-M4</maven-surefire-plugin.version>
-        <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
-        <kotlin.version>1.4.30</kotlin.version>
-        <groovy.version>2.5.8</groovy.version>
-        <lombok-maven-plugin.version>1.18.10.0</lombok-maven-plugin.version>
-        <spock-spring.version>2.0-M1-groovy-2.5</spock-spring.version>
+        <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <kotlin.version>1.5.20</kotlin.version>
         <kotlin-logging.version>1.7.8</kotlin-logging.version>
-        <lombok.version>1.18.10</lombok.version>
-        <netty-all.version>4.1.44.Final</netty-all.version>
-        <gmavenplus-plugin.version>1.8.1</gmavenplus-plugin.version>
-        <assertj-core.version>3.15.0</assertj-core.version>
-        <postgresql.version>42.2.10</postgresql.version>
+        <kotest-runner-junit5-jvm.version>4.6.0</kotest-runner-junit5-jvm.version>
+
+        <!-- Spring -->
+        <spring-boot-bom-r2dbc.version>0.1.0.M3</spring-boot-bom-r2dbc.version>
         <spring-boot-maven-plugin.version>2.2.2.RELEASE</spring-boot-maven-plugin.version>
+
+        <!-- Spock -->
+        <spock-spring.version>2.0-M1-groovy-2.5</spock-spring.version>
+        <spock-bom.version>2.0-M5-groovy-3.0</spock-bom.version>
+        <groovy.version>3.0.8</groovy.version>
+        <gmavenplus-plugin.version>1.12.1</gmavenplus-plugin.version>
+
+        <!-- Assetions -->
+        <assertj-core.version>3.15.0</assertj-core.version>
+
+        <netty-all.version>4.1.44.Final</netty-all.version>
+        <postgresql.version>42.2.10</postgresql.version>
+
+        <!-- Coverage -->
         <jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
         <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>
     </properties>
 
     <modules>
-        <module>concerts-demos-data</module>
+        <module>concert-demos-data</module>
         <module>concert-demos-rest-service-webflux</module>
         <module>concert-demos-rest-service-mvc</module>
     </modules>
@@ -49,14 +60,14 @@
             <dependency>
                 <groupId>org.springframework.boot.experimental</groupId>
                 <artifactId>spring-boot-bom-r2dbc</artifactId>
-                <version>0.1.0.M3</version>
+                <version>${spring-boot-bom-r2dbc.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>org.spockframework</groupId>
                 <artifactId>spock-bom</artifactId>
-                <version>2.0-M1-groovy-2.5</version>
+                <version>${spock-bom.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -68,7 +79,7 @@
             </dependency>
             <dependency>
                 <groupId>org.jesperancinha.concerts</groupId>
-                <artifactId>concerts-demos-data</artifactId>
+                <artifactId>concert-demos-data</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -96,12 +107,55 @@
                 <artifactId>kotlin-stdlib</artifactId>
                 <version>${kotlin.version}</version>
             </dependency>
+            <dependency>
+                <groupId>io.kotest</groupId>
+                <artifactId>kotest-runner-junit5-jvm</artifactId>
+                <version>${kotest-runner-junit5-jvm.version}</version>
+                <scope>test</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
     <build>
         <pluginManagement>
             <plugins>
+                <plugin>
+                    <groupId>org.jetbrains.kotlin</groupId>
+                    <artifactId>kotlin-maven-plugin</artifactId>
+                    <version>${kotlin.version}</version>
+                    <configuration>
+                        <experimentalCoroutines>enable</experimentalCoroutines>
+                        <jvmTarget>${java.version}</jvmTarget>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>compile</id>
+                            <phase>compile</phase>
+                            <goals>
+                                <goal>compile</goal>
+                            </goals>
+                            <configuration>
+                                <sourceDirs>
+                                    <sourceDir>${project.basedir}/src/main/java</sourceDir>
+                                    <sourceDir>${project.basedir}/src/main/kotlin</sourceDir>
+                                </sourceDirs>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>test-compile</id>
+                            <phase>test-compile</phase>
+                            <goals>
+                                <goal>test-compile</goal>
+                            </goals>
+                            <configuration>
+                                <sourceDirs>
+                                    <sourceDir>${project.basedir}/src/test/java</sourceDir>
+                                    <sourceDir>${project.basedir}/src/test/kotlin</sourceDir>
+                                </sourceDirs>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
                 <plugin>
                     <groupId>org.jacoco</groupId>
                     <artifactId>jacoco-maven-plugin</artifactId>
@@ -143,7 +197,7 @@
             <name>Spring Milestones</name>
             <url>https://repo.spring.io/milestone</url>
             <snapshots>
-                <enabled>false</enabled>
+                <enabled>true</enabled>
             </snapshots>
         </repository>
         <repository>

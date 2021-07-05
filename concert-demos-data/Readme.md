@@ -1,4 +1,4 @@
-# concerts-demos-data
+# concert-demos-data
 
 ## About me 👨🏽‍💻🚀🏳️‍🌈
 
