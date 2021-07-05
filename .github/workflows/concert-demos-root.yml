@@ -22,7 +22,7 @@ jobs:
         java-version: '16'
         distribution: 'adopt'
     - name: Build
-      run: mvn clean install package coveralls:report
+      run: mvn clean install package coveralls:report -DrepoToken=${COVERALLS_REPO_TOKEN}
       env:
          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
     - name: Coverage with Codecov
