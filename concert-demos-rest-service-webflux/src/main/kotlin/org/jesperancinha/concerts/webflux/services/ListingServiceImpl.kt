@@ -1,8 +1,8 @@
 package org.jesperancinha.concerts.webflux.services
 
 import org.jesperancinha.concerts.data.ListingDto
-import org.jesperancinha.concerts.mvc.converters.ListingConverter
 import org.jesperancinha.concerts.webflux.converters.ArtistConverter
+import org.jesperancinha.concerts.webflux.converters.ListingConverter
 import org.jesperancinha.concerts.webflux.converters.MusicConverter
 import org.jesperancinha.concerts.webflux.model.Listing
 import org.jesperancinha.concerts.webflux.model.ListingMusic
@@ -21,7 +21,7 @@ class ListingServiceImpl(
     private val listingRepository: ListingRepository,
     private val listingMusicRepository: ListingMusicRepository,
     private val musicRepository: MusicRepository,
-    private val artistRepository: ArtistRepository
+    private val artistRepository: ArtistRepository,
 ) : ListingService {
 
     override fun getAllListings(): Flux<ListingDto>? {
@@ -34,24 +34,24 @@ class ListingServiceImpl(
 
     override fun createListing(listingDto: ListingDto): Mono<ListingDto> {
         return listingRepository.save(ListingConverter.toListing(listingDto)).flatMap {
-                Mono.zip(
-                    musicRepository.findById(it.referenceMusicId).subscribeOn(Schedulers.parallel()),
-                    artistRepository.findById(it.artistId).subscribeOn(Schedulers.parallel())
-                ) { music, artist ->
-                    ListingConverter.toListingDto(
-                        it,
-                        ArtistConverter.toArtistDto(artist),
-                        MusicConverter.toMusicDto(music)
-                    )
-                }.subscribeOn(Schedulers.parallel())
-            }.flatMapMany { it ->
-                val listingId = it.id!!
-                Flux.fromIterable(listingDto.musicDtos!!)
-                    .map { listingMusicRepository.save(ListingMusic(null, listingId, it.id!!)) }
-            }.flatMap { it }.map {
-                listingDto.id = it.listingId
-                listingDto
-            }.toMono()
+            Mono.zip(
+                musicRepository.findById(it.referenceMusicId).subscribeOn(Schedulers.parallel()),
+                artistRepository.findById(it.artistId).subscribeOn(Schedulers.parallel())
+            ) { music, artist ->
+                ListingConverter.toListingDto(
+                    it,
+                    ArtistConverter.toArtistDto(artist),
+                    MusicConverter.toMusicDto(music)
+                )
+            }.subscribeOn(Schedulers.parallel())
+        }.flatMapMany { it ->
+            val listingId = it.id!!
+            Flux.fromIterable(listingDto.musicDtos!!)
+                .map { listingMusicRepository.save(ListingMusic(null, listingId, it.id!!)) }
+        }.flatMap { it }.map {
+            listingDto.id = it.listingId
+            listingDto
+        }.toMono()
     }
 
     private fun fetchListingTree(listing: Listing): Mono<ListingDto> {

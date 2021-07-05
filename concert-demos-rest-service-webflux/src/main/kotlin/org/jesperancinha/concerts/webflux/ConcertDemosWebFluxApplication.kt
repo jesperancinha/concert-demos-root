@@ -7,10 +7,12 @@ import org.springframework.boot.runApplication
 
 @SpringBootApplication
 @EnableConfigurationProperties(ConfigurationProperties::class)
-class ConcertDemosRootApplication
-
-fun main(args: Array<String>) {
-    System.setProperty("reactor.netty.ioWorkerCount", "1000");
-    runApplication<ConcertDemosRootApplication>(*args)
+class ConcertDemosWebFluxApplication {
+    companion object {
+        fun main(args: Array<String>) {
+            System.setProperty("reactor.netty.ioWorkerCount", "1000");
+            runApplication<ConcertDemosWebFluxApplication>(*args)
+        }
+    }
 }
 
