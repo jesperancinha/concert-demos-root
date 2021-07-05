@@ -21,5 +21,15 @@ jobs:
       with:
         java-version: '16'
         distribution: 'adopt'
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
+    - name: Build
+      run: mvn clean install package
+      env:
+         COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+    - name: Coverage with Codecov
+      run: bash <(curl -s https://codecov.io/bash)
+      env:
+         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+    - name: Coverage with Codacy
+      run: bash <(curl -Ls https://coverage.codacy.com/get.sh) report -l Kotlin $(find **/jacoco*.xml -printf '-r %p ')
+      env:
+         CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
