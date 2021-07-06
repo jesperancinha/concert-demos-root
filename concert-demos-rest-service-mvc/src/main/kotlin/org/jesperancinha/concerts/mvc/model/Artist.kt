@@ -17,9 +17,9 @@ data class Artist(
     val birthDate: String? = null,
     val birthCity: String? = null,
     val country: String? = null,
-    val keywords: String? = null
+    val keywords: String? = null,
 
-) {
+    ) {
 
 
     override fun equals(other: Any?): Boolean {

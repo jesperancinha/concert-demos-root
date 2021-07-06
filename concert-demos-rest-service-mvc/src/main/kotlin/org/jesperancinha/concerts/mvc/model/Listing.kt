@@ -4,25 +4,25 @@ import javax.persistence.*
 
 @Entity
 data class Listing(
-        @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-        var id: Long = 0,
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    var id: Long = 0,
 
-        @OneToOne
-        val artist: Artist? = null,
+    @OneToOne
+    val artist: Artist? = null,
 
-        @OneToOne
-        val referenceMusic: Music? = null,
+    @OneToOne
+    val referenceMusic: Music? = null,
 
-        @ManyToMany(cascade = [CascadeType.ALL])
-        @JoinTable(
-                name = "listing_music",
-                joinColumns = [JoinColumn(name = "music_id")],
-                inverseJoinColumns = [JoinColumn(name = "listing_id")]
-        )
-        var musics: MutableSet<Music> = HashSet(),
+    @ManyToMany(cascade = [CascadeType.ALL])
+    @JoinTable(
+        name = "listing_music",
+        joinColumns = [JoinColumn(name = "music_id")],
+        inverseJoinColumns = [JoinColumn(name = "listing_id")]
+    )
+    var musics: MutableSet<Music> = HashSet(),
 
-        @ManyToMany(mappedBy = "listings")
-        val concerts: MutableSet<Concert> = HashSet()
+    @ManyToMany(mappedBy = "listings")
+    val concerts: MutableSet<Concert> = HashSet(),
 ) {
 
 
@@ -41,7 +41,7 @@ data class Listing(
     }
 
     override fun hashCode(): Int {
-        var result = id.hashCode() ?: 0
+        var result = id.hashCode()
         result = 31 * result + (artist?.hashCode() ?: 0)
         result = 31 * result + (referenceMusic?.hashCode() ?: 0)
         result = 31 * result + musics.hashCode()

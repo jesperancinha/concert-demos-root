@@ -1,12 +1,10 @@
 package org.jesperancinha.concerts.webflux.configuration
 
 import org.springframework.boot.context.properties.ConfigurationProperties
-import javax.validation.constraints.NotEmpty
-
 
 @ConfigurationProperties(prefix = "r2dbc")
 open class ConfigurationProperties {
-    private var url: @NotEmpty String? = null
+    private var url: String? = null
 
     private var user: String? = null
     private var password: String? = null

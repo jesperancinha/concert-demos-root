@@ -6,7 +6,14 @@ import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.data.ListingDto
 import org.jesperancinha.concerts.data.MusicDto
 import org.jesperancinha.concerts.mvc.model.Listing
+import org.jesperancinha.concerts.mvc.repos.ArtistRepository
+import org.jesperancinha.concerts.mvc.repos.ConcertRepository
+import org.jesperancinha.concerts.mvc.repos.ListingRepository
+import org.jesperancinha.concerts.mvc.repos.MusicRepository
+import org.jesperancinha.concerts.mvc.services.ArtistService
+import org.jesperancinha.concerts.mvc.services.ConcertService
 import org.jesperancinha.concerts.mvc.services.ListingService
+import org.jesperancinha.concerts.mvc.services.MusicService
 import org.mockito.ArgumentCaptor
 import org.mockito.Captor
 import org.springframework.beans.factory.annotation.Autowired
@@ -33,7 +40,21 @@ class ListingControllerImplSpec extends Specification {
     private MockMvc mvc
 
     @MockBean
+    private MusicService musicService
+    @MockBean
+    private MusicRepository musicRepository;
+    @MockBean
+    private ArtistService artistService
+    @MockBean
+    private ArtistRepository artistRepository;
+    @MockBean
+    private ConcertService concertService
+    @MockBean
+    private ConcertRepository concertRepository
+    @MockBean
     private ListingService listingService
+    @MockBean
+    private ListingRepository repository;
 
     @Captor
     private ArgumentCaptor<Listing> argumentCaptor

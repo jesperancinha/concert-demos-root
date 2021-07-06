@@ -4,15 +4,15 @@ import javax.persistence.*
 
 @Entity
 data class Music(
-        @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-        var id: Long? = null,
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    var id: Long? = null,
 
-        val name: String? = null,
+    val name: String? = null,
 
-        val lyrics: String? = null,
+    val lyrics: String? = null,
 
-        @ManyToMany(mappedBy = "musics")
-        var listings: MutableSet<Listing> = HashSet()
+    @ManyToMany(mappedBy = "musics")
+    var listings: MutableSet<Listing> = HashSet(),
 ) {
 
     override fun equals(other: Any?): Boolean {

@@ -5,14 +5,15 @@ import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.webflux.controllers.ArtistController
 import org.jesperancinha.concerts.webflux.controllers.ArtistControllerImpl
 import org.jesperancinha.concerts.webflux.model.Artist
-import org.jesperancinha.concerts.webflux.services.ArtistService
+import org.jesperancinha.concerts.webflux.repos.*
+import org.jesperancinha.concerts.webflux.services.*
 import org.mockito.ArgumentCaptor
 import org.mockito.Captor
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest
 import org.springframework.boot.test.mock.mockito.MockBean
-import org.springframework.data.r2dbc.core.DatabaseClient
 import org.springframework.http.MediaType
+import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.web.reactive.server.WebTestClient
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
@@ -25,19 +26,39 @@ import static org.jesperancinha.concerts.types.Gender.AGENDER
 import static org.mockito.Mockito.when
 
 @WebFluxTest(controllers = [ArtistControllerImpl, ArtistController])
+@ActiveProfiles("test")
 class ArtistControllerImplSpec extends Specification {
 
     @Autowired
     private WebTestClient webTestClient
 
     @MockBean
-    private ArtistService artistService
-
+    private MusicService musicService
     @MockBean
-    private DatabaseClient databaseClient
+    private MusicRepository musicRepository;
+    @MockBean
+    private ArtistService artistService
+    @MockBean
+    private ArtistRepository artistRepository;
+    @MockBean
+    private ConcertService concertService
+    @MockBean
+    private ConcertRepository concertRepository
+    @MockBean
+    private ConcertListingService concertListingService
+    @MockBean
+    private ConcertListingRepository concertListingRepository
+    @MockBean
+    private ListingService listingService
+    @MockBean
+    private ListingRepository repository;
+    @MockBean
+    private ListingMusicService listingMusicService;
+    @MockBean
+    private ListingMusicRepository listingMusicRepository
 
     @Captor
-    private ArgumentCaptor<Artist> argumentCaptor;
+    private ArgumentCaptor<Artist> argumentCaptor
 
     def "GetAllArtists"() {
         when:

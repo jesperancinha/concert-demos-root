@@ -5,27 +5,27 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.ApplicationRunner
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.data.r2dbc.core.DatabaseClient
+import org.springframework.r2dbc.core.DatabaseClient
 import reactor.core.publisher.Mono
 import java.io.BufferedReader
-import java.lang.ClassLoader.getSystemResourceAsStream
 import java.net.URISyntaxException
+
 
 private val logger = KotlinLogging.logger {}
 
 @Configuration
 class Configuration(
-        @Value("\${org.jesperancinha.concerts.schema.file:/schema.sql}")
-        val schema: String
+    @Value("\${org.jesperancinha.concerts.schema.file:/schema.sql}")
+    val schema: String,
 ) {
 
     @Bean
-    fun seeder(client: DatabaseClient): ApplicationRunner? {
+    fun seeder(databaseClient: DatabaseClient): ApplicationRunner? {
         return ApplicationRunner {
             getSchema().flatMap { sql: String ->
-                executeSql(client, sql)
+                executeSql(databaseClient, sql)
             }
-                    .subscribe { logger.info("Schema created") }
+                .subscribe { logger.info("Schema created") }
         }
     }
 
@@ -42,6 +42,6 @@ class Configuration(
         if (sql.isEmpty()) {
             return Mono.just(0)
         }
-        return client.execute(sql).fetch().rowsUpdated()
+        return client.sql(sql).fetch().rowsUpdated()
     }
 }

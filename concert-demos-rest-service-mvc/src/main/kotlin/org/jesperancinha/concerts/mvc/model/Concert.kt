@@ -4,18 +4,18 @@ import javax.persistence.*
 
 @Entity
 data class Concert(
-        @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-        var id: Long? = 0,
-        val name: String? = null,
-        val location: String? = null,
-        val date: String? = null,
-        @ManyToMany(cascade = [CascadeType.ALL])
-        @JoinTable(
-                name = "concert_listing",
-                joinColumns = [JoinColumn(name = "listing_id")],
-                inverseJoinColumns = [JoinColumn(name = "concert_id")]
-        )
-        var listings: MutableSet<Listing>? = HashSet()
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    var id: Long? = 0,
+    val name: String? = null,
+    val location: String? = null,
+    val date: String? = null,
+    @ManyToMany(cascade = [CascadeType.ALL])
+    @JoinTable(
+        name = "concert_listing",
+        joinColumns = [JoinColumn(name = "listing_id")],
+        inverseJoinColumns = [JoinColumn(name = "concert_id")]
+    )
+    var listings: MutableSet<Listing>? = HashSet(),
 ) {
 
     override fun equals(other: Any?): Boolean {

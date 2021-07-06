@@ -5,8 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.4.RELEASE</version>
-        <relativePath/>
+        <version>2.4.3</version>
     </parent>
 
     <groupId>org.jesperancinha.concerts</groupId>
@@ -30,7 +29,7 @@
 
         <!-- Spring -->
         <spring-boot-bom-r2dbc.version>0.1.0.M3</spring-boot-bom-r2dbc.version>
-        <spring-boot-maven-plugin.version>2.2.2.RELEASE</spring-boot-maven-plugin.version>
+        <spring-boot-maven-plugin.version>2.5.2</spring-boot-maven-plugin.version>
 
         <!-- Spock -->
         <spock-spring.version>2.0-M1-groovy-2.5</spock-spring.version>

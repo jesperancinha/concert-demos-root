@@ -2,15 +2,21 @@ package org.jesperancinha.concerts.webflux.controllers
 
 import org.assertj.core.api.SoftAssertions
 import org.jesperancinha.concerts.data.MusicDto
+import org.jesperancinha.concerts.webflux.configuration.ConfigurationProperties
 import org.jesperancinha.concerts.webflux.model.Music
-import org.jesperancinha.concerts.webflux.services.MusicService
+import org.jesperancinha.concerts.webflux.repos.*
+import org.jesperancinha.concerts.webflux.services.*
+import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.ArgumentCaptor
 import org.mockito.Captor
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest
 import org.springframework.boot.test.mock.mockito.MockBean
-import org.springframework.data.r2dbc.core.DatabaseClient
+import org.springframework.context.annotation.ComponentScan
 import org.springframework.http.MediaType
+import org.springframework.test.context.ActiveProfiles
+import org.springframework.test.context.junit.jupiter.SpringExtension
 import org.springframework.test.web.reactive.server.WebTestClient
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
@@ -22,7 +28,11 @@ import static TestConstants.HEY_MAMA
 import static org.mockito.ArgumentMatchers.any
 import static org.mockito.Mockito.when
 
+@ExtendWith(SpringExtension.class)
 @WebFluxTest(controllers = [MusicControllerImpl, MusicController])
+@ActiveProfiles("test")
+@EnableConfigurationProperties(ConfigurationProperties)
+@ComponentScan("org.jesperancinha.concerts.webflux.controllers")
 class MusicControllerImplSpec extends Specification {
 
     @Autowired
@@ -30,9 +40,28 @@ class MusicControllerImplSpec extends Specification {
 
     @MockBean
     private MusicService musicService
-
     @MockBean
-    private DatabaseClient databaseClient
+    private MusicRepository musicRepository;
+    @MockBean
+    private ArtistService artistService
+    @MockBean
+    private ArtistRepository artistRepository;
+    @MockBean
+    private ConcertService concertService
+    @MockBean
+    private ConcertRepository concertRepository
+    @MockBean
+    private ConcertListingService concertListingService
+    @MockBean
+    private ConcertListingRepository concertListingRepository
+    @MockBean
+    private ListingService listingService
+    @MockBean
+    private ListingRepository repository;
+    @MockBean
+    private ListingMusicService listingMusicService;
+    @MockBean
+    private ListingMusicRepository listingMusicRepository
 
     @Captor
     private ArgumentCaptor<Music> argumentCaptor;

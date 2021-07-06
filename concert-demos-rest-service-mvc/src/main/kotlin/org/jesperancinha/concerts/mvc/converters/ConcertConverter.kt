@@ -7,16 +7,16 @@ import org.springframework.stereotype.Component
 
 @Component
 class ConcertConverter(
-        private val listingConverter: ListingConverter,
-        private val listingRepository: ListingRepository
+    private val listingConverter: ListingConverter,
+    private val listingRepository: ListingRepository,
 ) {
     fun toConcertDto(concert: Concert): ConcertDto {
         return ConcertDto(
-                concert.id,
-                concert.name!!,
-                concert.location!!,
-                concert.date!!,
-                concert.listings?.map { listingConverter.toListingDto(it) }?.toMutableList()
+            concert.id,
+            concert.name!!,
+            concert.location!!,
+            concert.date!!,
+            concert.listings?.map { listingConverter.toListingDto(it) }?.toMutableList()
         )
     }
 

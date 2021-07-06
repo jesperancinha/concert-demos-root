@@ -3,6 +3,13 @@ package org.jesperancinha.concerts.mvc.controllers
 import org.jesperancinha.concerts.mvc.controllers.MusicController
 import org.jesperancinha.concerts.mvc.controllers.MusicControllerImpl
 import org.jesperancinha.concerts.mvc.model.Music
+import org.jesperancinha.concerts.mvc.repos.ArtistRepository
+import org.jesperancinha.concerts.mvc.repos.ConcertRepository
+import org.jesperancinha.concerts.mvc.repos.ListingRepository
+import org.jesperancinha.concerts.mvc.repos.MusicRepository
+import org.jesperancinha.concerts.mvc.services.ArtistService
+import org.jesperancinha.concerts.mvc.services.ConcertService
+import org.jesperancinha.concerts.mvc.services.ListingService
 import org.jesperancinha.concerts.mvc.services.MusicService
 import org.mockito.ArgumentCaptor
 import org.mockito.Captor
@@ -25,14 +32,28 @@ class MusicControllerImplSpec extends Specification {
     private MockMvc mvc
 
     @MockBean
-    private MusicService artistService
+    private MusicService musicService
+    @MockBean
+    private MusicRepository musicRepository;
+    @MockBean
+    private ArtistService artistService
+    @MockBean
+    private ArtistRepository artistRepository;
+    @MockBean
+    private ConcertService concertService
+    @MockBean
+    private ConcertRepository concertRepository
+    @MockBean
+    private ListingService listingService
+    @MockBean
+    private ListingRepository repository;
 
     @Captor
     private ArgumentCaptor<Music> argumentCaptor
 
     def "GetAllMusics"() {
         when:
-        when(artistService.getAllMusics()).thenReturn(List.of())
+        when(musicService.getAllMusics()).thenReturn(List.of())
         def target = '/concerts/data/musics'
 
         and:
