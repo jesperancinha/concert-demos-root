@@ -97,8 +97,8 @@ All source code for the [JE](https://bitbucket.org/jesperancinha/docker-images) 
 ## Java version
 
 ```bash
-sdk install java 16.0.1.hs-adptsdk use java 16.0.1.hs-adpt
-
+sdk install java 16.0.1.hs-adpt
+sdk use java 16.0.1.hs-adpt
 ```
 
 ## Hints & Tricks

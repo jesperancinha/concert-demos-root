@@ -1,5 +1,12 @@
 # Concerts REST MVC Service
 
+## Java version
+
+```bash
+sdk install java 16.0.1.hs-adpt
+sdk use java 16.0.1.hs-adpt
+```
+
 ## About me 👨🏽‍💻🚀🏳️‍🌈
 
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/JEOrgLogo-20.png "João Esperancinha Homepage")](http://joaofilipesabinoesperancinha.nl)

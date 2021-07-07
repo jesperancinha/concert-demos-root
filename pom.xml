@@ -25,17 +25,18 @@
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <kotlin.version>1.5.20</kotlin.version>
         <kotlin-logging.version>1.7.8</kotlin-logging.version>
-        <kotest-runner-junit5-jvm.version>4.6.0</kotest-runner-junit5-jvm.version>
 
         <!-- Spring -->
         <spring-boot-bom-r2dbc.version>0.1.0.M3</spring-boot-bom-r2dbc.version>
         <spring-boot-maven-plugin.version>2.5.2</spring-boot-maven-plugin.version>
 
-        <!-- Spock -->
+        <!-- Tests -->
         <spock-spring.version>2.0-M1-groovy-2.5</spock-spring.version>
         <spock-bom.version>2.0-M5-groovy-3.0</spock-bom.version>
         <groovy.version>3.0.8</groovy.version>
         <gmavenplus-plugin.version>1.12.1</gmavenplus-plugin.version>
+        <kotest-runner-junit5-jvm.version>4.6.0</kotest-runner-junit5-jvm.version>
+        <junit-jupiter-api.version>5.7.1</junit-jupiter-api.version>
 
         <!-- Assetions -->
         <assertj-core.version>3.15.0</assertj-core.version>
