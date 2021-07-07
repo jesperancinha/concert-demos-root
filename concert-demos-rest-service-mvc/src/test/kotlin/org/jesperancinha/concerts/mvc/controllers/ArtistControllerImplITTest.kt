@@ -13,7 +13,6 @@ import org.jesperancinha.concerts.mvc.repos.ListingRepository
 import org.jesperancinha.concerts.mvc.repos.MusicRepository
 import org.jesperancinha.concerts.types.Gender.AGENDER
 import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -34,8 +33,7 @@ import javax.transaction.Transactional
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @ActiveProfiles("test")
-@Disabled
-class ArtistControllerImplITKSpec(
+class ArtistControllerImplITTest(
     @LocalServerPort
     val port: Int,
     @Autowired

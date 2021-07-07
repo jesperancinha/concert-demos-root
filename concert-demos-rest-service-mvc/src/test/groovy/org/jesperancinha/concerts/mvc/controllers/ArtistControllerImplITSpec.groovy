@@ -8,7 +8,6 @@ import org.jesperancinha.concerts.mvc.repos.ConcertRepository
 import org.jesperancinha.concerts.mvc.repos.ListingRepository
 import org.jesperancinha.concerts.mvc.repos.MusicRepository
 import org.jesperancinha.concerts.types.Gender
-import org.junit.jupiter.api.Disabled
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.web.server.LocalServerPort
@@ -24,7 +23,6 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @ActiveProfiles("test")
-@Disabled
 class ArtistControllerImplITSpec extends Specification {
 
     @LocalServerPort
