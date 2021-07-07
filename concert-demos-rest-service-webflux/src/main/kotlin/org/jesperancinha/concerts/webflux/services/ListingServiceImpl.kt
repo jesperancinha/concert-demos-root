@@ -47,7 +47,7 @@ class ListingServiceImpl(
         }.flatMapMany { it ->
             val listingId = it.id!!
             Flux.fromIterable(listingDto.musicDtos!!)
-                .map { listingMusicRepository.save(ListingMusic(null, listingId, it.id!!)) }
+                .map { listingMusicRepository.save(ListingMusic(null, listingId, it?.id!!)) }
         }.flatMap { it }.map {
             listingDto.id = it.listingId
             listingDto

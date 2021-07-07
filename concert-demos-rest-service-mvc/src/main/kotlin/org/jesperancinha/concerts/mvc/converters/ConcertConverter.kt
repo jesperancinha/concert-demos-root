@@ -13,17 +13,18 @@ class ConcertConverter(
     fun toConcertDto(concert: Concert): ConcertDto {
         return ConcertDto(
             concert.id,
-            concert.name!!,
-            concert.location!!,
-            concert.date!!,
+            concert.name,
+            concert.location,
+            concert.date,
             concert.listings?.map { listingConverter.toListingDto(it) }?.toMutableList()
         )
     }
 
     fun toConcert(concertDto: ConcertDto): Concert {
         val concert = Concert(concertDto.id, concertDto.name, concertDto.location, concertDto.date)
-        concert.listings = concertDto.listingDtos?.map {
-            val listing = listingRepository.findById(it.id!!).orElse(null)
+        concert.listings = concertDto.listingDtos?.
+        map {
+            val listing = listingRepository.findById(it?.id ?: -1).orElse(null)
             listing.concerts.add(concert)
             listing
         }?.toMutableSet()

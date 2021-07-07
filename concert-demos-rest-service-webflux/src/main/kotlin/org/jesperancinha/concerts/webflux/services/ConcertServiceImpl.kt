@@ -36,7 +36,7 @@ class ConcertServiceImpl(
                 concertDto.id = it.id
                 concertDto.listingDtos?.let { it1 -> Flux.fromIterable(it1) }
             }.flatMap {
-                concertListingRepository.save(ConcertListing(concertDto.id!!, it.id!!))
+                concertListingRepository.save(ConcertListing(concertDto.id!!, it?.id!!))
             }.map { concertDto }
             .toMono()
     }

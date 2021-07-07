@@ -5,9 +5,9 @@ data class ConcertDto(
         val name: String? = null,
         val location: String? = null,
         val date: String? = null,
-        val listingDtos: MutableList<ListingDto>? = mutableListOf()
+        val listingDtos: MutableList<ListingDto?>? = mutableListOf()
 ) {
-    constructor(name: String, location: String, localDateTime: String, listingDtos: MutableList<ListingDto>) :
+    constructor(name: String, location: String, localDateTime: String, listingDtos: MutableList<ListingDto?>) :
             this(null, name, location, localDateTime, listingDtos)
 
     override fun equals(other: Any?): Boolean {

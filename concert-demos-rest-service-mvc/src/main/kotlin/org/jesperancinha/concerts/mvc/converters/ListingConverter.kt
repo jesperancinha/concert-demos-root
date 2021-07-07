@@ -33,7 +33,7 @@ class ListingConverter(
             ArtistConverter.toArtist(listingDto.artistDto!!),
             MusicConverter.toMusic(listingDto.referenceMusicDto!!))
         listing.musics = listingDto.musicDtos?.map {
-            val music = musicRepository.findById(it.id!!).orElse(null)
+            val music = musicRepository.findById(it?.id ?: -1).orElse(null)
             music.listings.add(listing)
             musicRepository.save(music)
         }?.toMutableSet()!!
