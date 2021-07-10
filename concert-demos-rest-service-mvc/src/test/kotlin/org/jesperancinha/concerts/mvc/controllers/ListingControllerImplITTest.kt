@@ -8,7 +8,7 @@ import io.kotest.matchers.shouldNotBe
 import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.data.ListingDto
 import org.jesperancinha.concerts.data.MusicDto
-import org.jesperancinha.concerts.mvc.controllers.TestConstants.HEY_MAMA
+import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.HEY_MAMA
 import org.jesperancinha.concerts.mvc.model.Music
 import org.jesperancinha.concerts.mvc.repos.ArtistRepository
 import org.jesperancinha.concerts.mvc.repos.ConcertRepository
