@@ -47,7 +47,7 @@ class ConcertControllerImplITTest(
 
     @Test
     fun `retrieve all concerts`() {
-        val uri: String = "http://localhost:${port}/concerts/data/listings"
+        val uri = "http://localhost:${port}/concerts/data/listings"
         val restTemplate = RestTemplate()
         val result: List<ConcertDto> = restTemplate.getForObject(uri, List::class)
         result.shouldBeEmpty()
