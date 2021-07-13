@@ -3,9 +3,9 @@ package org.jesperancinha.concerts.webflux.model
 import org.springframework.data.annotation.Id
 
 data class Listing(
-        @Id var id: Long? = null,
-        val artistId: Long,
-        val referenceMusicId: Long
+    @Id val id: Long?,
+    val artistId: Long?,
+    val referenceMusicId: Long?,
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

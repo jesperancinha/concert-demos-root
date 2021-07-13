@@ -34,9 +34,13 @@ class ListingServiceImpl(
 
     override fun createListing(listingDto: ListingDto): Mono<ListingDto> {
         return listingRepository.save(ListingConverter.toListing(listingDto)).flatMap {
+            val referenceMusicId = it.referenceMusicId
+            val artistId = it.artistId
             Mono.zip(
-                musicRepository.findById(it.referenceMusicId).subscribeOn(Schedulers.parallel()),
-                artistRepository.findById(it.artistId).subscribeOn(Schedulers.parallel())
+                if (referenceMusicId == null) Mono.empty() else musicRepository.findById(referenceMusicId)
+                    .subscribeOn(Schedulers.parallel()),
+                if (artistId == null) Mono.empty() else artistRepository.findById(artistId)
+                    .subscribeOn(Schedulers.parallel())
             ) { music, artist ->
                 ListingConverter.toListingDto(
                     it,
@@ -47,17 +51,24 @@ class ListingServiceImpl(
         }.flatMapMany { it ->
             val listingId = it.id
             Flux.fromIterable(listingDto.musicDtos)
-                .map { listingMusicRepository.save(ListingMusic(null, listingId, it?.id)) }
+                .map {
+                    when (val id = it?.id) {
+                        null -> Mono.empty()
+                        else -> listingMusicRepository.save(ListingMusic(null, listingId, id))
+                    }
+                }
         }.flatMap { it }.map {
-            listingDto.id = it.listingId
-            listingDto
+            ListingDto(it.listingId, listingDto.artistDto, listingDto.referenceMusicDto, listingDto.musicDtos)
         }.toMono()
     }
 
     private fun fetchListingTree(listing: Listing): Mono<ListingDto> {
+        val referenceMusicId = listing.referenceMusicId
+        val artistId = listing.artistId
         return Mono.zip(
-            musicRepository.findById(listing.referenceMusicId).subscribeOn(Schedulers.parallel()),
-            artistRepository.findById(listing.artistId).subscribeOn(Schedulers.parallel())
+            (if (referenceMusicId == null) Mono.empty() else musicRepository.findById(referenceMusicId)).subscribeOn(
+                Schedulers.parallel()),
+            (if (artistId == null) Mono.empty() else artistRepository.findById(artistId)).subscribeOn(Schedulers.parallel())
         ) { music, artist ->
             ListingConverter.toListingDto(
                 listing,

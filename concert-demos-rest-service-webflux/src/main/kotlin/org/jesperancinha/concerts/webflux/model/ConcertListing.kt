@@ -4,10 +4,10 @@ import org.springframework.data.annotation.Id
 
 data class ConcertListing(
         @Id val id: Long?,
-        val concertId: Long,
-        val listingId: Long
+        val concertId: Long?,
+        val listingId: Long?
 ) {
-    constructor(concertId: Long, listingId: Long) : this(null, concertId, listingId)
+    constructor(concertId: Long?, listingId: Long?) : this(null, concertId, listingId)
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

@@ -3,7 +3,8 @@ package org.jesperancinha.concerts.webflux.model
 import org.springframework.data.annotation.Id
 
 data class Music(
-        @Id var id: Long? = null,
+        @Id
+        val id: Long?,
         val name: String,
         val lyrics: String
 ) {

@@ -1,11 +1,11 @@
 package org.jesperancinha.concerts.data
 
 data class ConcertDto(
-        var id: Long? = null,
-        val name: String? = null,
-        val location: String? = null,
-        val date: String? = null,
-        val listingDtos: MutableList<ListingDto?>? = mutableListOf()
+    val id: Long?,
+    val name: String,
+    val location: String,
+    val date: String,
+    val listingDtos: MutableList<ListingDto?>? = mutableListOf(),
 ) {
     constructor(name: String, location: String, localDateTime: String, listingDtos: MutableList<ListingDto?>) :
             this(null, name, location, localDateTime, listingDtos)

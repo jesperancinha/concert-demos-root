@@ -3,8 +3,8 @@ package org.jesperancinha.concerts.webflux.model
 import org.springframework.data.annotation.Id
 
 data class ListingMusic(
-        @Id val id: Long? = null,
-        val listingId: Long,
+        @Id val id: Long?,
+        val listingId: Long?,
         val musicId: Long
 ) {
     override fun equals(other: Any?): Boolean {

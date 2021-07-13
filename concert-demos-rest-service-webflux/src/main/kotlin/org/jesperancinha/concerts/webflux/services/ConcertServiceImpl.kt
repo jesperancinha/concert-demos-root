@@ -14,30 +14,51 @@ import reactor.core.publisher.toMono
 class ConcertServiceImpl(
     private val concertRepository: ConcertRepository,
     private val concertListingRepository: ConcertListingRepository,
-    private val listingService: ListingService
+    private val listingService: ListingService,
 
-) : ConcertService {
+    ) : ConcertService {
     override fun getAllConcerts(): Flux<ConcertDto> {
         return concertRepository.findAll()
             .map { ConcertConverter.toConcertDto(it) }
             .flatMap { concert ->
-                concertListingRepository.findByConcertId(concert.id)
-                    .flatMap { listingService.getListingById(it.listingId) }
-                    .map {
-                        concert.listingDtos?.add(it)
-                        concert
+                when (val concertId = concert.id) {
+                    null -> Flux.empty()
+                    else -> {
+                        concertListingRepository.findByConcertId(concertId)
+                            .flatMap {
+                                it.listingId.let { id ->
+                                    when (id) {
+                                        null -> Mono.empty()
+                                        else -> listingService.getListingById(id)
+                                    }
+                                }
+                            }
+                            .map {
+                                concert.listingDtos?.add(it)
+                                concert
+                            }
+
                     }
+                }
             }
     }
 
     override fun createConcert(concertDto: ConcertDto): Mono<ConcertDto> {
+        var concertId: Long? = null
         return concertRepository.save(ConcertConverter.toConcert(concertDto))
             .flatMapMany {
-                concertDto.id = it.id
-                concertDto.listingDtos?.let { it1 -> Flux.fromIterable(it1) }
+                concertId = it.id
+                ConcertDto(it.id, concertDto.name, concertDto.date, concertDto.location, concertDto.listingDtos)
+                    .listingDtos?.let { it1 -> Flux.fromIterable(it1) }
             }.flatMap {
-                concertListingRepository.save(ConcertListing(concertDto.id, it?.id))
-            }.map { concertDto }
+                concertListingRepository.save(ConcertListing(concertId, it?.id))
+            }.map {
+                ConcertDto(concertId,
+                    concertDto.name,
+                    concertDto.location,
+                    concertDto.date,
+                    concertDto.listingDtos)
+            }
             .toMono()
     }
 }

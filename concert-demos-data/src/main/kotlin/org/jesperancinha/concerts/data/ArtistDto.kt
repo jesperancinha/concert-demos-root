@@ -3,14 +3,14 @@ package org.jesperancinha.concerts.data
 import org.jesperancinha.concerts.types.Gender
 
 data class ArtistDto(
-        var id: Long? = null,
-        val name: String? = null,
-        val gender: Gender? = null,
-        val careerStart: Long? = null,
-        val birthDate: String? = null,
-        val birthCity: String? = null,
-        val country: String? = null,
-        val keywords: String? = null
+        val id: Long?,
+        val name: String,
+        val gender: Gender,
+        val careerStart: Long,
+        val birthDate: String,
+        val birthCity: String,
+        val country: String,
+        val keywords: String
 
 ) {
     constructor(name: String,

@@ -5,11 +5,11 @@ import javax.persistence.*
 @Entity
 data class Music(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long? = null,
+    val id: Long,
 
-    val name: String? = null,
+    val name: String,
 
-    val lyrics: String? = null,
+    val lyrics: String,
 
     @ManyToMany(mappedBy = "musics")
     var listings: MutableSet<Listing> = HashSet(),

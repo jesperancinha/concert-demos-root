@@ -10,15 +10,16 @@ object ListingConverter {
         return ListingDto(
             listing.id,
             artistDto,
-            musicDto
+            musicDto,
+            mutableListOf()
         )
     }
 
     fun toListing(listingDto: ListingDto): Listing {
         return Listing(
             listingDto.id,
-            listingDto.artistDto?.id,
-            listingDto.referenceMusicDto?.id
+            listingDto.artistDto.id,
+            listingDto.referenceMusicDto.id
         )
     }
 }

@@ -1,16 +1,18 @@
 package org.jesperancinha.concerts.data
 
 data class MusicDto(
-        var id: Long? = null,
-        val name: String? = null,
-        val lyrics: String? = null
+    val id: Long?,
+    val name: String,
+    val lyrics: String,
 ) {
 
-    constructor(name: String,
-                lyrics: String) :
+    constructor(
+        name: String,
+        lyrics: String,
+    ) :
             this(null,
-                    name,
-                    lyrics
+                name,
+                lyrics
             )
 
     override fun equals(other: Any?): Boolean {
