@@ -5,14 +5,14 @@ import javax.persistence.*
 @Entity
 data class Music(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long,
+    val id: Long?,
 
     val name: String,
 
     val lyrics: String,
 
     @ManyToMany(mappedBy = "musics")
-    var listings: MutableSet<Listing> = HashSet(),
+    var listings: MutableSet<Listing> = mutableSetOf(),
 ) {
 
     override fun equals(other: Any?): Boolean {

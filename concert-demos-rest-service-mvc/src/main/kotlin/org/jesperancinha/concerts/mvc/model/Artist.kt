@@ -10,7 +10,7 @@ import javax.persistence.Id
 data class Artist(
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long,
+    val id: Long?,
     val name: String,
     val gender: Gender,
     val careerStart: Long,

@@ -1,7 +1,6 @@
 package org.jesperancinha.concerts.mvc.controllers
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import io.kotest.matchers.shouldBe
 import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.data.ListingDto
 import org.jesperancinha.concerts.data.MusicDto
@@ -98,10 +97,8 @@ class ListingControllerImplTest(
         val results = mvc.perform(post(target)
             .content(objectMapper.writeValueAsString(listingDto))
             .contentType(MediaType.APPLICATION_JSON))
-        results.andExpect(status().isOk)
-        val contentAsString = results.andReturn().response.contentAsString
-        val value = objectMapper.readValue(contentAsString, ListingDto::class.java)
-
-        value shouldBe listingDto
+        results
+            .andExpect(status().isOk)
+            .andExpect(content().string(objectMapper.writeValueAsString(listingDto)))
     }
 }

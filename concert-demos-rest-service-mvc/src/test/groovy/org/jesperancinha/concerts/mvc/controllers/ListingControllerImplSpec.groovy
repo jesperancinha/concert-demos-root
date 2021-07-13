@@ -1,7 +1,6 @@
 package org.jesperancinha.concerts.mvc.controllers
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import org.assertj.core.api.SoftAssertions
 import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.data.ListingDto
 import org.jesperancinha.concerts.data.MusicDto
@@ -109,13 +108,6 @@ class ListingControllerImplSpec extends Specification {
                 .contentType(MediaType.APPLICATION_JSON))
         then:
         results.andExpect(status().isOk())
-
-        and:
-        def contentAsString = results.andReturn().getResponse().getContentAsString()
-        def value = objectMapper.readValue(contentAsString, ListingDto)
-        SoftAssertions.assertSoftly { softly ->
-            softly.assertThat(value).isEqualTo(listingDto)
-
-        }
+                .andExpect(content().string(objectMapper.writeValueAsString(listingDto)))
     }
 }

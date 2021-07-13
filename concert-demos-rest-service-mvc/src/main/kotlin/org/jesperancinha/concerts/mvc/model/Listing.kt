@@ -5,7 +5,7 @@ import javax.persistence.*
 @Entity
 data class Listing(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long,
+    val id: Long?,
 
     @OneToOne
     val artist: Artist,
