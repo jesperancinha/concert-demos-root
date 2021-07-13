@@ -29,7 +29,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import java.time.LocalDateTime
 
 @WebMvcTest(controllers = [ArtistControllerImpl::class, ArtistController::class])
-class ArtistControllerImplKoITTest(
+class ArtistControllerImplKoTest(
     @Autowired val mvc: MockMvc,
 ) : WordSpec() {
 
@@ -64,8 +64,8 @@ class ArtistControllerImplKoITTest(
 
 
     init {
-        "SpringExtension" should {
-            "retrieve all mocked artists" {
+        "artist controller integration test" should {
+            "retrieve all artists" {
                 `when`(artistService.getAllArtists()).thenReturn(listOf())
                 val target = "/concerts/data/artists"
                 val results = mvc.perform(get(target)
