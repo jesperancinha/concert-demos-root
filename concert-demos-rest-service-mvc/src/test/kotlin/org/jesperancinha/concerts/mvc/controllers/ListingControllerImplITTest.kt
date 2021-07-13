@@ -3,6 +3,7 @@ package org.jesperancinha.concerts.mvc.controllers
 import io.kotest.matchers.collections.shouldBeEmpty
 import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.collections.shouldNotBeEmpty
+import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import org.jesperancinha.concerts.data.ArtistDto
@@ -80,6 +81,10 @@ class ListingControllerImplITTest(
 
         val savedArtistDto = restTemplate.postForEntity<ArtistDto>(artistsUri, artistDto, ArtistDto::class).body
         val savedMusicDto = restTemplate.postForEntity<MusicDto>(musicsUri, musicDto, MusicDto::class).body
+
+        savedArtistDto.shouldNotBeNull()
+        savedMusicDto.shouldNotBeNull()
+
         val listingDto = ListingDto(
             savedArtistDto,
             savedMusicDto,

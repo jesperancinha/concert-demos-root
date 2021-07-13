@@ -22,7 +22,8 @@ class ListingServiceImpl(
 
     override fun createListing(listingDto: ListingDto): ListingDto {
         val listing = listingRepository.save(listingConverter.toListing(listingDto))
-        listingDto.id = listing.id
-        return listingConverter.toListingDto(listingRepository.save(listingConverter.toFullListing(listingDto)))
+        val newListingDto = ListingDto(listing.id, listingDto.artistDto, listingDto.referenceMusicDto, listingDto.musicDtos)
+        return listingConverter
+            .toListingDto(listingRepository.save(listingConverter.toFullListing(newListingDto)))
     }
 }

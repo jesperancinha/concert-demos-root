@@ -4,6 +4,7 @@ import io.kotest.core.spec.style.WordSpec
 import io.kotest.core.test.TestCase
 import io.kotest.extensions.spring.SpringExtension
 import io.kotest.matchers.collections.shouldBeEmpty
+import io.kotest.matchers.nulls.shouldNotBeNull
 import org.assertj.core.api.Assertions.assertThat
 import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.data.ConcertDto
@@ -78,6 +79,8 @@ class ConcertControllerImplITKoTest(
                 val savedArtistDto = restTemplate.postForEntity<ArtistDto>(artistsUri, artistDto, ArtistDto::class).body
                 val savedMusicDto = restTemplate.postForEntity<MusicDto>(musicsUri, musicDto, MusicDto::class).body
 
+                savedArtistDto.shouldNotBeNull()
+                savedMusicDto.shouldNotBeNull()
 
                 val listingDto = ListingDto(
                     0,
@@ -115,7 +118,6 @@ class ConcertControllerImplITKoTest(
                 assertThat(listingDtoResult?.referenceMusicDto).isEqualTo(savedMusicDto)
                 assertThat(listingDtoResult?.musicDtos).hasSize(1)
                 assertThat(listingDtoResult?.musicDtos?.getOrNull(0)).isEqualTo(savedMusicDto)
-
             }
         }
     }

@@ -20,13 +20,13 @@ object ArtistConverter {
     fun toArtist(artistDto: ArtistDto): Artist {
         return Artist(
             artistDto.id,
-            artistDto.name!!,
-            artistDto.gender!!,
-            artistDto.careerStart!!,
-            artistDto.birthDate!!,
-            artistDto.birthCity!!,
-            artistDto.country!!,
-            artistDto.keywords!!
+            artistDto.name,
+            artistDto.gender,
+            artistDto.careerStart,
+            artistDto.birthDate,
+            artistDto.birthCity,
+            artistDto.country,
+            artistDto.keywords
         )
     }
 }

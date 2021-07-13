@@ -1,13 +1,13 @@
 package org.jesperancinha.concerts.data
 
 data class ListingDto(
-    var id: Long? = null,
-    val artistDto: ArtistDto? = null,
-    val referenceMusicDto: MusicDto? = null,
+    val id: Long,
+    val artistDto: ArtistDto,
+    val referenceMusicDto: MusicDto,
     val musicDtos: MutableList<MusicDto?>? = mutableListOf()
 ) {
-    constructor(artistDto: ArtistDto?,
-                referenceMusicDto: MusicDto?,
+    constructor(artistDto: ArtistDto,
+                referenceMusicDto: MusicDto,
                 musicDtos: MutableList<MusicDto?>?) :
             this(0, artistDto, referenceMusicDto, musicDtos)
 

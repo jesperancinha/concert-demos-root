@@ -5,13 +5,13 @@ import javax.persistence.*
 @Entity
 data class Listing(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long = 0,
+    val id: Long,
 
     @OneToOne
-    val artist: Artist? = null,
+    val artist: Artist,
 
     @OneToOne
-    val referenceMusic: Music? = null,
+    val referenceMusic: Music,
 
     @ManyToMany(cascade = [CascadeType.ALL])
     @JoinTable(

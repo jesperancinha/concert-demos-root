@@ -16,8 +16,8 @@ object MusicConverter {
     fun toMusic(musicDto: MusicDto): Music {
         return Music(
             musicDto.id,
-            musicDto.name!!,
-            musicDto.lyrics!!
+            musicDto.name,
+            musicDto.lyrics
         )
     }
 }

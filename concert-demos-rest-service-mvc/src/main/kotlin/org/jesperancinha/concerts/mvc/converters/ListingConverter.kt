@@ -13,8 +13,8 @@ class ListingConverter(
     fun toListingDto(listing: Listing): ListingDto {
         return ListingDto(
             listing.id,
-            ArtistConverter.toArtistDto(listing.artist!!),
-            MusicConverter.toMusicDto(listing.referenceMusic!!),
+            ArtistConverter.toArtistDto(listing.artist),
+            MusicConverter.toMusicDto(listing.referenceMusic),
             listing.musics.map { MusicConverter.toMusicDto(it) }.toMutableList()
         )
 
@@ -22,21 +22,21 @@ class ListingConverter(
 
     fun toListing(listingDto: ListingDto): Listing {
         return Listing(
-            listingDto.id!!,
-            ArtistConverter.toArtist(listingDto.artistDto!!),
-            MusicConverter.toMusic(listingDto.referenceMusicDto!!))
+            listingDto.id,
+            ArtistConverter.toArtist(listingDto.artistDto),
+            MusicConverter.toMusic(listingDto.referenceMusicDto))
     }
 
     fun toFullListing(listingDto: ListingDto): Listing {
         val listing = Listing(
-            listingDto.id!!,
-            ArtistConverter.toArtist(listingDto.artistDto!!),
-            MusicConverter.toMusic(listingDto.referenceMusicDto!!))
+            listingDto.id,
+            ArtistConverter.toArtist(listingDto.artistDto),
+            MusicConverter.toMusic(listingDto.referenceMusicDto))
         listing.musics = listingDto.musicDtos?.map {
             val music = musicRepository.findById(it?.id ?: -1).orElse(null)
             music.listings.add(listing)
             musicRepository.save(music)
-        }?.toMutableSet()!!
+        }?.toMutableSet() ?: mutableSetOf()
         return listing
     }
 }
