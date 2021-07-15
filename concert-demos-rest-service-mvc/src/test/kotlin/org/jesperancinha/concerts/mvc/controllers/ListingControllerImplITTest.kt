@@ -104,8 +104,8 @@ class ListingControllerImplITTest(
         listingDto1.id shouldBe savedListingDto?.id
         listingDto1.artistDto shouldBe artistDto
         listingDto1.referenceMusicDto shouldBe musicDto
-        listingDto1.musicDtos?.shouldHaveSize(1)
-        listingDto1.musicDtos?.get(0).shouldBe(musicDto)
+        listingDto1.musicDtos.shouldHaveSize(1)
+        listingDto1.musicDtos.get(0).shouldBe(musicDto)
     }
 
     @BeforeEach

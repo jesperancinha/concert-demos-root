@@ -4,11 +4,10 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import io.kotest.core.spec.style.WordSpec
 import io.kotest.extensions.spring.SpringExtension
 import org.jesperancinha.concerts.data.ArtistDto
-import org.jesperancinha.concerts.data.ConcertDto
 import org.jesperancinha.concerts.data.ListingDto
 import org.jesperancinha.concerts.data.MusicDto
 import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.HEY_MAMA
-import org.jesperancinha.concerts.mvc.model.Concert
+import org.jesperancinha.concerts.mvc.model.Listing
 import org.jesperancinha.concerts.mvc.repos.ArtistRepository
 import org.jesperancinha.concerts.mvc.repos.ConcertRepository
 import org.jesperancinha.concerts.mvc.repos.ListingRepository
@@ -32,8 +31,8 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import java.time.LocalDateTime
 
-@WebMvcTest(controllers = [ConcertControllerImpl::class, ConcertController::class])
-class ConcertControllerImplKoTest(
+@WebMvcTest(controllers = [ListingControllerImpl::class, ListingController::class])
+class ListingControllerImplKoTest(
     @Autowired val mvc: MockMvc,
 ) : WordSpec() {
     @MockBean
@@ -61,28 +60,27 @@ class ConcertControllerImplKoTest(
     lateinit var repository: ListingRepository
 
     @Captor
-    lateinit var argumentCaptor: ArgumentCaptor<Concert>
+    lateinit var argumentCaptor: ArgumentCaptor<Listing>
 
     override fun extensions() = listOf(SpringExtension)
 
     init {
-        "concert controller extended integration tests" should {
-            "retrieve all concerts" {
-                val target = "/concerts/data/concerts"
-                `when`(concertService.getAllConcerts()).thenReturn(listOf())
+        "Spring Extension" should {
+            "retrieve all listings"{
+                `when`(listingService.getAllListings()).thenReturn(listOf())
+                val target = "/concerts/data/listings"
                 val results = mvc.perform(get(target)
                     .accept(MediaType.APPLICATION_JSON))
                 results.andExpect(content().string("[]"))
                 results.andExpect(status().isOk)
             }
-            "create concert"{
-                val target = "/concerts/data/concerts"
+            "create listing" {
+                val target = "/concerts/data/listings"
                 val musicDto = MusicDto(
-                    1,
+                    1L,
                     "Hey mama",
                     HEY_MAMA)
                 val artistDto = ArtistDto(
-                    1,
                     "Nicky Minaj",
                     FEMALE,
                     1000L,
@@ -91,25 +89,21 @@ class ConcertControllerImplKoTest(
                     "Trinidad en Tobago",
                     "Rap")
                 val listingDto = ListingDto(
-                    1,
+                    1L,
                     artistDto,
                     musicDto,
-                    mutableListOf(musicDto)
-                )
-                val concertDto = ConcertDto(
-                    "Nicki Wrld Tour",
-                    "Amsterdam",
-                    LocalDateTime.of(2019, 3, 25, 0, 0, 0).toString(),
-                    mutableListOf(listingDto)
+                    mutableListOf()
                 )
                 val objectMapper = ObjectMapper()
-                `when`(concertService.createConcert(concertDto)).thenReturn(concertDto)
+                `when`(listingService.createListing(listingDto)).thenReturn(listingDto)
                 val results = mvc.perform(post(target)
-                    .content(objectMapper.writeValueAsString(concertDto))
+                    .content(objectMapper.writeValueAsString(listingDto))
                     .contentType(MediaType.APPLICATION_JSON))
-                results.andExpect(status().isOk)
-                results.andExpect(content().string(objectMapper.writeValueAsString(concertDto)))
+                results
+                    .andExpect(status().isOk)
+                    .andExpect(content().string(objectMapper.writeValueAsString(listingDto)))
             }
         }
     }
+
 }
