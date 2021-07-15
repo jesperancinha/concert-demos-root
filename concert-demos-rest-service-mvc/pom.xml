@@ -148,6 +148,12 @@
             <artifactId>kotlin-stdlib</artifactId>
             <version>${kotlin.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.ninja-squad</groupId>
+            <artifactId>springmockk</artifactId>
+            <version>3.0.1</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -178,6 +184,7 @@
                             <sourceDirs>
                                 <source>${project.basedir}/src/test/kotlin</source>
                                 <source>${project.basedir}/src/test/kotest</source>
+                                <source>${project.basedir}/src/test/kmockk</source>
                             </sourceDirs>
                         </configuration>
                     </execution>
