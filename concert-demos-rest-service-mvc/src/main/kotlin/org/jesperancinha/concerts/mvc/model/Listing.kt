@@ -42,8 +42,8 @@ data class Listing(
 
     override fun hashCode(): Int {
         var result = id.hashCode()
-        result = 31 * result + (artist?.hashCode() ?: 0)
-        result = 31 * result + (referenceMusic?.hashCode() ?: 0)
+        result = 31 * result + artist.hashCode()
+        result = 31 * result + referenceMusic.hashCode()
         result = 31 * result + musics.hashCode()
         return result
     }

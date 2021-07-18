@@ -1,5 +1,8 @@
 package org.jesperancinha.concerts.mvc.controllers
 
+import com.fasterxml.jackson.databind.ObjectMapper
+import org.assertj.core.api.SoftAssertions
+import org.jesperancinha.concerts.data.MusicDto
 import org.jesperancinha.concerts.mvc.controllers.MusicController
 import org.jesperancinha.concerts.mvc.controllers.MusicControllerImpl
 import org.jesperancinha.concerts.mvc.model.Music
@@ -20,17 +23,17 @@ import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
 import spock.lang.Specification
 
+import static TestConstants.HEY_MAMA
 import static org.mockito.Mockito.when
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
 @WebMvcTest(controllers = [MusicControllerImpl, MusicController])
 class MusicControllerImplSpec extends Specification {
-
     @Autowired
     private MockMvc mvc
-
     @MockBean
     private MusicService musicService
     @MockBean
@@ -68,31 +71,31 @@ class MusicControllerImplSpec extends Specification {
     }
 
     def "CreateMusic"() {
-//        when:
-//        def target = '/concerts/data/musics'
-//
-//        and:
-//        def musicDto = new MusicDto(
-//                1L,
-//                "Hey mama",
-//                HEY_MAMA)
-//
-//        and:
-//        def objectMapper = new ObjectMapper()
-//
-//        and:
-//        def results = mvc.perform(post(target)
-//                .content(objectMapper.writeValueAsString(musicDto))
-//                .contentType(MediaType.APPLICATION_JSON))
-//        then:
-//        results.andExpect(status().isOk())
-//
-//        and:
-//        def contentAsString = results.andReturn().getResponse().getContentAsString()
-//        def value = objectMapper.readValue(contentAsString, MusicDto)
-//        SoftAssertions.assertSoftly { softly ->
-//            softly.assertThat(value).isEqualTo(musicDto)
-//
-//        }
+        when:
+        def target = '/concerts/data/musics'
+
+        and:
+        def musicDto = new MusicDto(
+                1L,
+                "Hey mama",
+                HEY_MAMA)
+        when(musicService.createMusic(musicDto)).thenReturn(musicDto)
+
+        and:
+        def objectMapper = new ObjectMapper()
+
+        and:
+        def results = mvc.perform(post(target)
+                .content(objectMapper.writeValueAsString(musicDto))
+                .contentType(MediaType.APPLICATION_JSON))
+        then:
+        results.andExpect(status().isOk())
+
+        and:
+        def contentAsString = results.andReturn().getResponse().getContentAsString()
+        SoftAssertions.assertSoftly { softly ->
+            softly.assertThat(contentAsString).isEqualTo(objectMapper.writeValueAsString(musicDto))
+
+        }
     }
 }

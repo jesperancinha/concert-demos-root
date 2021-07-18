@@ -20,7 +20,6 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @ActiveProfiles("test")
-@Disabled
 class MusicControllerImplITSpec extends Specification {
 
     @LocalServerPort
