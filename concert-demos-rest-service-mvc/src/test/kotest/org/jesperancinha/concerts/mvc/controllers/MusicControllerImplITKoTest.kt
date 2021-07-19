@@ -8,41 +8,39 @@ import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.collections.shouldNotBeEmpty
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
-import org.jesperancinha.concerts.data.ArtistDto
-import org.jesperancinha.concerts.mvc.model.Artist
+import org.jesperancinha.concerts.data.MusicDto
+import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.HEY_MAMA
+import org.jesperancinha.concerts.mvc.model.Music
 import org.jesperancinha.concerts.mvc.repos.ArtistRepository
 import org.jesperancinha.concerts.mvc.repos.ConcertRepository
 import org.jesperancinha.concerts.mvc.repos.ListingRepository
 import org.jesperancinha.concerts.mvc.repos.MusicRepository
-import org.jesperancinha.concerts.types.Gender.AGENDER
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT
 import org.springframework.boot.web.server.LocalServerPort
 import org.springframework.core.ParameterizedTypeReference
 import org.springframework.http.HttpMethod
-import org.springframework.http.HttpStatus
 import org.springframework.http.RequestEntity
-import org.springframework.http.ResponseEntity
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.web.client.RestTemplate
-import org.springframework.web.client.getForObject
-import org.springframework.web.client.postForEntity
 import java.net.URI
-import java.time.LocalDateTime
-import javax.transaction.Transactional
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @ActiveProfiles("test")
-class ArtistControllerImplITKoTest(
+class MusicControllerImplITKoTest(
     @LocalServerPort
     val port: Int,
+
     @Autowired
     val listingRepository: ListingRepository,
+
     @Autowired
     val artistRepository: ArtistRepository,
+
     @Autowired
     val musicRepository: MusicRepository,
+
     @Autowired
     val concertRepository: ConcertRepository,
 ) : WordSpec() {
@@ -50,55 +48,44 @@ class ArtistControllerImplITKoTest(
     override fun extensions() = listOf(SpringExtension)
 
     init {
-        "artist controller extended integration tests" should {
-            "retrieve list of all artists" {
-                val uri = "http://localhost:${port}/concerts/data/artists"
+        "Spring Extension" should {
+            "retrieve all music" {
+                val uri = "http://localhost:${port}/concerts/data/musics"
                 val restTemplate = RestTemplate()
-                val result: List<Artist> = restTemplate.getForObject(uri, List::class)
+                val request = RequestEntity<Any>(HttpMethod.GET, URI.create(uri))
+                val respType = object : ParameterizedTypeReference<List<MusicDto>>() {}
+                val response = restTemplate.exchange(request, respType)
+                val result: List<MusicDto> = response.body ?: listOf()
                 result.shouldBeEmpty()
             }
-            "create an artist" @Transactional {
-                val uri = "http://localhost:${port}/concerts/data/artists"
-                val artist = ArtistDto(
-                    "Duran Duran",
-                    AGENDER,
-                    1000L,
-                    LocalDateTime.now().toString(),
-                    "Birmingham",
-                    "Great Britain",
-                    "test")
+
+            "create music" {
+                val uri = "http://localhost:${port}/concerts/data/musics"
+                val musicDto = MusicDto(
+                    "Hey mama",
+                    HEY_MAMA)
                 val restTemplate = RestTemplate()
-                val test: ResponseEntity<Unit> = restTemplate.postForEntity(uri, artist, Artist::class)
-
-                test shouldNotBe null
-                test.statusCode shouldBe HttpStatus.OK
-
+                restTemplate.postForEntity(uri, musicDto, Music::class.java)
                 val request = RequestEntity<Any>(HttpMethod.GET, URI.create(uri))
-                val respType = object : ParameterizedTypeReference<List<Artist>>() {}
+                val respType = object : ParameterizedTypeReference<List<MusicDto>>() {}
                 val response = restTemplate.exchange(request, respType)
-                val result: List<Artist> = response.body ?: listOf()
-
+                val result: List<MusicDto> = response.body ?: listOf()
                 result.shouldNotBeEmpty()
-                result shouldHaveSize 1
-
-                val artistResult = result[0]
-                artistResult.id shouldNotBe 0
-                artist.name shouldBe "Duran Duran"
-                artist.gender shouldBe AGENDER
-                artist.birthCity shouldBe "Birmingham"
+                result.shouldHaveSize(1)
+                val musicDto1 = result[0]
+                musicDto1.id shouldNotBe 0
+                musicDto1.name shouldBe "Hey mama"
+                musicDto1.lyrics shouldBe HEY_MAMA
             }
+
         }
     }
 
     override fun beforeEach(testCase: TestCase) {
+        super.beforeEach(testCase)
         concertRepository.deleteAll()
         listingRepository.deleteAll()
         artistRepository.deleteAll()
         musicRepository.deleteAll()
-        super.beforeEach(testCase)
     }
-
-
 }
-
-
