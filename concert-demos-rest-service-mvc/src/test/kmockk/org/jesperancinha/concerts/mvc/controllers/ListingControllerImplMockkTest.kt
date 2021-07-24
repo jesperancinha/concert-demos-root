@@ -5,7 +5,6 @@ import com.ninjasquad.springmockk.MockkBean
 import io.kotest.core.spec.style.WordSpec
 import io.kotest.extensions.spring.SpringExtension
 import io.mockk.every
-import io.mockk.impl.annotations.MockK
 import io.mockk.verify
 import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.data.ListingDto
