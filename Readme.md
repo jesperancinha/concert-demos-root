@@ -180,6 +180,14 @@ npm install -g npm@7.16.0
 javap
 ```
 
+## Coverage report Graphs
+
+<img src="https://codecov.io/gh/jesperancinha/concert-demos-root/branch/master/graphs/sunburst.svg"/>
+<img src="https://codecov.io/gh/jesperancinha/concert-demos-root/branch/master/graphs/icicle.svg"/>
+<img src="https://codecov.io/gh/jesperancinha/concert-demos-root/branch/master/graphs/tree.svg"/>
+
+<img src="https://codecov.io/gh/jesperancinha/concert-demos-root/branch/master/graphs/commits.svg"/>
+
 ## References
 
 -   [Reactive Manifesto](https://www.reactivemanifesto.org/)
