@@ -191,6 +191,9 @@ javap
 
 <img src="https://codecov.io/gh/jesperancinha/concert-demos-root/branch/master/graphs/commits.svg"/>
 </div>
+
+---
+
 ## References
 
 -   [Reactive Manifesto](https://www.reactivemanifesto.org/)
