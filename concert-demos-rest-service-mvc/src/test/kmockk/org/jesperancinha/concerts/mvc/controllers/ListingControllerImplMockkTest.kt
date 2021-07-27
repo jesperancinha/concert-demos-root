@@ -15,6 +15,7 @@ import org.jesperancinha.concerts.mvc.repos.ArtistRepository
 import org.jesperancinha.concerts.mvc.repos.ConcertRepository
 import org.jesperancinha.concerts.mvc.repos.ListingRepository
 import org.jesperancinha.concerts.mvc.repos.MusicRepository
+import org.jesperancinha.concerts.mvc.services.ArtistService
 import org.jesperancinha.concerts.mvc.services.ConcertService
 import org.jesperancinha.concerts.mvc.services.ListingService
 import org.jesperancinha.concerts.mvc.services.MusicService
@@ -35,7 +36,7 @@ import java.time.LocalDateTime
 @MockkBean(classes = [
     MusicService::class, MusicRepository::class,
     MusicRepository::class, ArtistRepository::class,
-    ArtistRepository::class, ConcertService::class,
+    ArtistService::class, ConcertService::class,
     ConcertRepository::class, ListingService::class,
     ListingRepository::class])
 class ListingControllerImplMockkTest(

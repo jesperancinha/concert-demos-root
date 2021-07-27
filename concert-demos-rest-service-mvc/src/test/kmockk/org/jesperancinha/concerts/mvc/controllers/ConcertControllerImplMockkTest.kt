@@ -34,35 +34,18 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import java.time.LocalDateTime
 
 @WebMvcTest(controllers = [ConcertControllerImpl::class, ConcertController::class])
+@MockkBean(classes = [
+    MusicService::class, MusicRepository::class,
+    MusicRepository::class, ArtistRepository::class,
+    ArtistService::class, ConcertService::class,
+    ConcertRepository::class, ListingService::class,
+    ListingRepository::class])
 class ConcertControllerImplMockkTest(
     @Autowired val mvc: MockMvc,
+    @Autowired val concertService: ConcertService
 ) : WordSpec() {
 
     override fun extensions() = listOf(SpringExtension)
-
-    @MockkBean
-    lateinit var musicService: MusicService
-
-    @MockkBean
-    lateinit var musicRepository: MusicRepository
-
-    @MockkBean
-    lateinit var artistService: ArtistService
-
-    @MockkBean
-    lateinit var artistRepository: ArtistRepository
-
-    @MockkBean
-    lateinit var concertService: ConcertService
-
-    @MockkBean
-    lateinit var concertRepository: ConcertRepository
-
-    @MockkBean
-    lateinit var listingService: ListingService
-
-    @MockkBean
-    lateinit var repository: ListingRepository
 
     @Captor
     lateinit var argumentCaptor: ArgumentCaptor<Concert>

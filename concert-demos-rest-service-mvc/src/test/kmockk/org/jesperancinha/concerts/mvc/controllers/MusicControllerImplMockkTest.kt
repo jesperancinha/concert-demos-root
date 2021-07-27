@@ -30,34 +30,16 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
 @WebMvcTest(controllers = [MusicControllerImpl::class, MusicController::class])
+@MockkBean(classes = [
+    MusicService::class, MusicRepository::class,
+    MusicRepository::class, ArtistRepository::class,
+    ArtistService::class, ConcertService::class,
+    ConcertRepository::class, ListingService::class,
+    ListingRepository::class])
 class MusicControllerImplMockkTest(
-    @Autowired
-    val mvc: MockMvc,
+    @Autowired val mvc: MockMvc,
+    @Autowired val musicService: MusicService
 ) : WordSpec() {
-
-    @MockkBean
-    lateinit var musicService: MusicService
-
-    @MockkBean
-    lateinit var musicRepository: MusicRepository
-
-    @MockkBean
-    lateinit var artistService: ArtistService
-
-    @MockkBean
-    lateinit var artistRepository: ArtistRepository
-
-    @MockkBean
-    lateinit var concertService: ConcertService
-
-    @MockkBean
-    lateinit var concertRepository: ConcertRepository
-
-    @MockkBean
-    lateinit var listingService: ListingService
-
-    @MockkBean
-    lateinit var repository: ListingRepository
 
     @Captor
     lateinit var argumentCaptor: ArgumentCaptor<Music>
