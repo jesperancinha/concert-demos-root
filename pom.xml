@@ -147,15 +147,15 @@
                 <scope>test</scope>
             </dependency>
             <dependency>
-                <groupId>com.ninja-squad</groupId>
-                <artifactId>springmockk</artifactId>
-                <version>${springmockk.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
                 <groupId>io.kotest</groupId>
                 <artifactId>kotest-runner-junit5</artifactId>
                 <version>${kotest.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.ninja-squad</groupId>
+                <artifactId>springmockk</artifactId>
+                <version>${springmockk.version}</version>
                 <scope>test</scope>
             </dependency>
         </dependencies>
