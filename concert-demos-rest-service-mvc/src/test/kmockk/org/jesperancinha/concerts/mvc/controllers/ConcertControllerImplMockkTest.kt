@@ -5,7 +5,6 @@ import com.ninjasquad.springmockk.MockkBean
 import io.kotest.core.spec.style.WordSpec
 import io.kotest.extensions.spring.SpringExtension
 import io.mockk.every
-import io.mockk.impl.annotations.MockK
 import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.data.ConcertDto
 import org.jesperancinha.concerts.data.ListingDto
@@ -42,7 +41,7 @@ import java.time.LocalDateTime
     ListingRepository::class])
 class ConcertControllerImplMockkTest(
     @Autowired val mvc: MockMvc,
-    @Autowired val concertService: ConcertService
+    @Autowired val concertService: ConcertService,
 ) : WordSpec() {
 
     override fun extensions() = listOf(SpringExtension)
