@@ -35,8 +35,10 @@
         <spock-bom.version>2.0-M5-groovy-3.0</spock-bom.version>
         <groovy.version>3.0.8</groovy.version>
         <gmavenplus-plugin.version>1.12.1</gmavenplus-plugin.version>
-        <kotest-runner-junit5-jvm.version>4.6.0</kotest-runner-junit5-jvm.version>
+        <kotest.version>4.4.0</kotest.version>
         <junit-jupiter.version>5.7.1</junit-jupiter.version>
+        <springmockk.version>3.0.1</springmockk.version>
+        <kotest-extensions-spring.version>1.0.0</kotest-extensions-spring.version>
 
         <!-- Assetions -->
         <assertj-core.version>3.15.0</assertj-core.version>
@@ -109,9 +111,51 @@
                 <version>${kotlin.version}</version>
             </dependency>
             <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter</artifactId>
+                <version>${junit-jupiter.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-api</artifactId>
+                <version>${junit-jupiter.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-engine</artifactId>
+                <version>${junit-jupiter.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.mockk</groupId>
+                <artifactId>mockk</artifactId>
+                <version>${mockk.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.kotest.extensions</groupId>
+                <artifactId>kotest-extensions-spring</artifactId>
+                <version>${kotest-extensions-spring.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
                 <groupId>io.kotest</groupId>
                 <artifactId>kotest-runner-junit5-jvm</artifactId>
-                <version>${kotest-runner-junit5-jvm.version}</version>
+                <version>${kotest.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.ninja-squad</groupId>
+                <artifactId>springmockk</artifactId>
+                <version>${springmockk.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.kotest</groupId>
+                <artifactId>kotest-runner-junit5</artifactId>
+                <version>${kotest.version}</version>
                 <scope>test</scope>
             </dependency>
         </dependencies>
