@@ -143,6 +143,12 @@
             <artifactId>kotest-mpp-jvm</artifactId>
             <version>4.0.7</version>
         </dependency>
+<!-- https://mvnrepository.com/artifact/io.kotest/kotest-mpp-native -->
+<dependency>
+    <groupId>io.kotest</groupId>
+    <artifactId>kotest-mpp-native</artifactId>
+    <version>4.0.7</version>
+</dependency>
     </dependencies>
 
     <build>
