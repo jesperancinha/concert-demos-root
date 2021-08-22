@@ -200,6 +200,7 @@ javap
 - Migrate experimentatl modules to R2DBC
 - Make reference to [Locust](https://locust.io/)
 - Complete GUI for clarity examples
+- Cleanup unnecessary Junit 5 libraries and update kotlin for a stricter version
 
 ## References
 
