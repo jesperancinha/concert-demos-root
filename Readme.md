@@ -197,6 +197,8 @@ javap
 - Update all versions
 - Separate container for all processes
 - Change context
+- Migrate experimentatl modules to R2DBC
+- Make reference to [Locust](https://locust.io/)
 
 ## References
 

@@ -28,7 +28,6 @@
 
         <!-- Spring -->
         <spring-boot-bom-r2dbc.version>0.1.0.M3</spring-boot-bom-r2dbc.version>
-        <spring-boot-maven-plugin.version>2.5.2</spring-boot-maven-plugin.version>
 
         <!-- Tests -->
         <spock-spring.version>2.0-groovy-3.0</spock-spring.version>
