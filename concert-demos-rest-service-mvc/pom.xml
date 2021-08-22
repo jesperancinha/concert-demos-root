@@ -137,6 +137,12 @@
             <artifactId>springmockk</artifactId>
             <scope>test</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/io.kotest/kotest-mpp-jvm -->
+        <dependency>
+            <groupId>io.kotest</groupId>
+            <artifactId>kotest-mpp-jvm</artifactId>
+            <version>4.0.7</version>
+        </dependency>
     </dependencies>
 
     <build>
