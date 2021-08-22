@@ -147,7 +147,7 @@
 <dependency>
     <groupId>io.kotest</groupId>
     <artifactId>kotest-mpp-native</artifactId>
-    <version>4.0.7</version>
+    <version>4.0.6</version>
 </dependency>
     </dependencies>
 
