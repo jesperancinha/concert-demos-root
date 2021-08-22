@@ -206,6 +206,16 @@
     </build>
 
     <repositories>
+
+<repository>
+            <id>maven-central</id>
+            <name>Maven Central</name>
+            <url>https://repo1.maven.org/maven2/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+
         <repository>
             <id>spring-milestones</id>
             <name>Spring Milestones</name>
@@ -223,14 +233,7 @@
             </snapshots>
         </repository>
 
-        <repository>
-            <id>maven-central</id>
-            <name>Maven Central</name>
-            <url>https://repo1.maven.org/maven2/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
+       
 
     </repositories>
 
