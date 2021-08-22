@@ -37,14 +37,10 @@
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/apache-maven-50.png "Maven")](https://maven.apache.org/)
 ---
 
-## Status
-
-[Under construction...](https://github.com/jesperancinha/project-signer/blob/master/project-signer-templates/UnderConstruction.md)
-
 ## Description
 
 This application is a demo application to show the power of Kotlin in a Reactive Programming environment.	  
-We will also look at how to work with R2DBC and make comparisons between a typical Spring Boot Apllication and a Spring Boot WebFlux application with  [JMeter](http://jmeter.apache.org/).
+We will also look at how to work with R2DBC and make comparisons between a typical Spring Boot Application and a Spring Boot WebFlux application with  [JMeter](http://jmeter.apache.org/).
 
 > In this example the domain revolves around the registration of concert dates, the artists and the show they belong to.
 > We want to be able to record the concert data and make it the more efficient as possible.
@@ -193,6 +189,14 @@ javap
 </div>
 
 ---
+
+## Roadmap to v2.0.0
+
+- Kotest, Mockk, Testcontainers and Coverage
+- Show clearer example
+- Update all versions
+- Separate container for all processes
+- Change context
 
 ## References
 
