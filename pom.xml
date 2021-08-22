@@ -24,7 +24,7 @@
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <kotlin.version>1.5.20</kotlin.version>
-        <kotlin-logging.version>1.7.8</kotlin-logging.version>
+        <kotlin-logging.version>1.12.5</kotlin-logging.version>
 
         <!-- Spring -->
         <spring-boot-bom-r2dbc.version>0.1.0.M3</spring-boot-bom-r2dbc.version>
@@ -110,6 +110,12 @@
                 <artifactId>kotlin-stdlib</artifactId>
                 <version>${kotlin.version}</version>
             </dependency>
+            <dependency>
+                <groupId>io.github.microutils</groupId>
+                <artifactId>kotlin-logging</artifactId>
+                <version>${kotlin-logging.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>org.junit.jupiter</groupId>
                 <artifactId>junit-jupiter</artifactId>
