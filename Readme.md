@@ -71,11 +71,9 @@ Please find all JMeter files in [jmeter](jmeter)
 
 This project makes use of the following docker images:
 
-[![dockeri.co](https://dockeri.co/image/jesperancinha/je-all-build)](https://hub.docker.com/r/jesperancinha/je-all-build)
+[![dockeri.co](https://dockeri.co/image/adoptopenjdk/openjdk16)](https://hub.docker.com/r/adoptopenjdk/openjdk16)
 
 [![dockeri.co](https://dockeri.co/image/library/postgres)](https://hub.docker.com/r/library/postgres)
-
-All source code for the [JE](https://bitbucket.org/jesperancinha/docker-images) images reside in repo [Docker images](https://bitbucket.org/jesperancinha/docker-images).
 
 ## Test Data
 
