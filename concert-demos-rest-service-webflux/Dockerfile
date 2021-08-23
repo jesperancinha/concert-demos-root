@@ -10,6 +10,6 @@ COPY target/concert-demos-rest-service-webflux-*.jar ${runningFolder}/concert-de
 
 COPY entrypoint.sh ${runningFolder}
 
-EXPOSE 8080
+EXPOSE 8081
 
 ENTRYPOINT ["entrypoint.sh"]

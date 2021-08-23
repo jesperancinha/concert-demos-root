@@ -14,11 +14,18 @@ services:
       - POSTGRES_MULTIPLE_DATABASES=concertsdbmvc,concertsdbwebflux
     ports:
       - "5432:5432"
-  concerts:
-    hostname: concerts
+
+  mvc:
+    hostname: mvc
     build:
-      context: .
+      context: ./concert-demos-rest-service-mvc/.
     ports:
-      - "8085:80"
       - "8080:8080"
+
+  webflux:
+    hostname: webflux
+    build:
+      context: ./concert-demos-rest-service-webflux/.
+    ports:
       - "8081:8081"
+
