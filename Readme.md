@@ -51,6 +51,12 @@ This project is also the official support project of my article on medium:
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/medium-20.png "Medium")](https://medium.com/swlh/comparing-webflux-and-spring-mvc-with-jmeter-79dc134c3c04)
 [Comparing WebFlux and Spring MVC with JMeter](https://medium.com/swlh/comparing-webflux-and-spring-mvc-with-jmeter-79dc134c3c04)
 
+
+Note that for the moment I'm keeping Kotest at version 4.4.0. This is to avoid an issue with MPP implementation.
+Check the [Issues](./issues.md) document for more details
+
+For further developments please have a look at branch [feature/research_and_development]()
+
 ## Detail
 
 -  concert-demos-rest-service - WebFlux implementation of the Sprig Boot Back-End process for the concerts website.
@@ -190,7 +196,7 @@ javap
 
 ---
 
-## Roadmap to v2.0.0
+## [Roadmap to v2.0.0](./ReviewLogs.md)
 
 - Kotest, Mockk, Testcontainers and Coverage
 - Show clearer example

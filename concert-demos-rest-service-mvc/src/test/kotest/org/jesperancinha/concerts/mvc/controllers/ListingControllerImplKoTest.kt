@@ -1,12 +1,13 @@
 package org.jesperancinha.concerts.mvc.controllers
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import io.kotest.core.listeners.TestListener
 import io.kotest.core.spec.style.WordSpec
 import io.kotest.extensions.spring.SpringExtension
+import io.kotest.spring.SpringListener
 import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.data.ListingDto
 import org.jesperancinha.concerts.data.MusicDto
-import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.HEY_MAMA
 import org.jesperancinha.concerts.mvc.model.Listing
 import org.jesperancinha.concerts.mvc.repos.ArtistRepository
 import org.jesperancinha.concerts.mvc.repos.ConcertRepository
@@ -62,7 +63,7 @@ class ListingControllerImplKoTest(
     @Captor
     lateinit var argumentCaptor: ArgumentCaptor<Listing>
 
-    override fun extensions() = listOf(SpringExtension)
+    override fun listeners(): List<TestListener>  = listOf(SpringListener)
 
     init {
         "Spring Extension" should {
@@ -79,7 +80,7 @@ class ListingControllerImplKoTest(
                 val musicDto = MusicDto(
                     1L,
                     "Hey mama",
-                    HEY_MAMA)
+                    "HEY_MAMA")
                 val artistDto = ArtistDto(
                     "Nicky Minaj",
                     FEMALE,

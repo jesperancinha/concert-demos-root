@@ -23,7 +23,7 @@
         <maven-compiler-plugin.target>${java.version}</maven-compiler-plugin.target>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-        <kotlin.version>1.5.20</kotlin.version>
+        <kotlin.version>1.5.21</kotlin.version>
         <kotlin-logging.version>1.12.5</kotlin-logging.version>
 
         <!-- Spring -->
@@ -34,7 +34,7 @@
         <spock-bom.version>2.0-groovy-3.0</spock-bom.version>
         <groovy.version>3.0.8</groovy.version>
         <gmavenplus-plugin.version>1.12.1</gmavenplus-plugin.version>
-        <kotest.version>4.6.1</kotest.version>
+        <kotest.version>4.4.0</kotest.version>
         <springmockk.version>3.0.1</springmockk.version>
         <kotest-extensions-spring.version>1.0.0</kotest-extensions-spring.version>
         <mockk.version>1.12.0</mockk.version>
@@ -134,6 +134,11 @@
                 <groupId>com.h2database</groupId>
                 <artifactId>h2</artifactId>
                 <version>${h2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-all</artifactId>
+                <version>${netty-all.version}</version>
             </dependency>
 
             <dependency>

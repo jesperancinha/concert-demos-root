@@ -156,10 +156,6 @@
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <useFile>false</useFile>
-                    <includes>
-                        <include>**/*Test.*</include>
-                        <include>**/*Spec.*</include>
-                    </includes>
                 </configuration>
             </plugin>
             <plugin>
