@@ -2,7 +2,6 @@ package org.jesperancinha.concerts.mvc.controllers
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import io.kotest.matchers.shouldBe
-import io.kotest.mpp.timeInMillis
 import org.jesperancinha.concerts.data.MusicDto
 import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.HEY_MAMA
 import org.jesperancinha.concerts.mvc.model.Music

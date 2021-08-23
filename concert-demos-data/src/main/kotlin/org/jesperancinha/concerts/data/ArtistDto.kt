@@ -3,32 +3,35 @@ package org.jesperancinha.concerts.data
 import org.jesperancinha.concerts.types.Gender
 
 data class ArtistDto(
-        val id: Long?,
-        val name: String,
-        val gender: Gender,
-        val careerStart: Long,
-        val birthDate: String,
-        val birthCity: String,
-        val country: String,
-        val keywords: String
+    val id: Long?,
+    val name: String,
+    val gender: Gender,
+    val careerStart: Long,
+    val birthDate: String,
+    val birthCity: String,
+    val country: String,
+    val keywords: String,
 
-) {
-    constructor(name: String,
-                gender: Gender,
-                careerStart: Long,
-                birthDate: String,
-                birthCity: String,
-                country: String,
-                keywords: String) :
+    ) {
+    constructor() : this(null, "", Gender.AGENDER, 0, "", "", "", "")
+    constructor(
+        name: String,
+        gender: Gender,
+        careerStart: Long,
+        birthDate: String,
+        birthCity: String,
+        country: String,
+        keywords: String,
+    ) :
             this(
-                    null,
-                    name,
-                    gender,
-                    careerStart,
-                    birthDate,
-                    birthCity,
-                    country,
-                    keywords)
+                null,
+                name,
+                gender,
+                careerStart,
+                birthDate,
+                birthCity,
+                country,
+                keywords)
 
 
     override fun equals(other: Any?): Boolean {

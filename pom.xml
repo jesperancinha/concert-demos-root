@@ -35,7 +35,6 @@
         <groovy.version>3.0.8</groovy.version>
         <gmavenplus-plugin.version>1.12.1</gmavenplus-plugin.version>
         <kotest.version>4.6.1</kotest.version>
-        <junit-jupiter.version>5.7.1</junit-jupiter.version>
         <springmockk.version>3.0.1</springmockk.version>
         <kotest-extensions-spring.version>1.0.0</kotest-extensions-spring.version>
         <mockk.version>1.12.0</mockk.version>
@@ -43,13 +42,15 @@
         <!-- Assetions -->
         <assertj-core.version>3.15.0</assertj-core.version>
 
-        <netty-all.version>4.1.44.Final</netty-all.version>
-        <postgresql.version>42.2.10</postgresql.version>
+        <netty-all.version>4.1.67.Final</netty-all.version>
+        <postgresql.version>42.2.23</postgresql.version>
 
         <!-- Coverage -->
         <jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
         <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>
+        <h2.version>1.4.200</h2.version>
+        <spring-boot-starter-data-r2dbc.version>2.5.3</spring-boot-starter-data-r2dbc.version>
     </properties>
 
     <modules>
@@ -60,12 +61,12 @@
 
     <dependencyManagement>
         <dependencies>
-<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-r2dbc -->
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-data-r2dbc</artifactId>
-    <version>2.5.4</version>
-</dependency>
+            <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-r2dbc -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-r2dbc</artifactId>
+                <version>${spring-boot-starter-data-r2dbc.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.spockframework</groupId>
                 <artifactId>spock-bom</artifactId>
@@ -110,29 +111,31 @@
                 <version>${kotlin.version}</version>
             </dependency>
             <dependency>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-maven-allopen</artifactId>
+                <version>${kotlin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-maven-noarg</artifactId>
+                <version>${kotlin.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>io.github.microutils</groupId>
                 <artifactId>kotlin-logging</artifactId>
                 <version>${kotlin-logging.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>${postgresql.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>${h2.version}</version>
+            </dependency>
 
-            <dependency>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter</artifactId>
-                <version>${junit-jupiter.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter-api</artifactId>
-                <version>${junit-jupiter.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter-engine</artifactId>
-                <version>${junit-jupiter.version}</version>
-                <scope>test</scope>
-            </dependency>
             <dependency>
                 <groupId>io.mockk</groupId>
                 <artifactId>mockk</artifactId>
@@ -154,6 +157,12 @@
             <dependency>
                 <groupId>io.kotest</groupId>
                 <artifactId>kotest-runner-junit5</artifactId>
+                <version>${kotest.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.kotest</groupId>
+                <artifactId>kotest-assertions-core-jvm</artifactId>
                 <version>${kotest.version}</version>
                 <scope>test</scope>
             </dependency>
@@ -204,4 +213,4 @@
         </pluginManagement>
     </build>
 
- </project>
+</project>

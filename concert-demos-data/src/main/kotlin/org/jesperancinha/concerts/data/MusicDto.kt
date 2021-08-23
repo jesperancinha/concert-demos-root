@@ -6,6 +6,7 @@ data class MusicDto(
     val lyrics: String,
 ) {
 
+    constructor() : this(null, "", "")
     constructor(
         name: String,
         lyrics: String,
