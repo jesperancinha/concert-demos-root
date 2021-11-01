@@ -188,8 +188,6 @@ javap
 </div>
 <div align="center">
 <img width="60%" src="https://codecov.io/gh/jesperancinha/concert-demos-root/branch/master/graphs/icicle.svg"/>
-
-<img src="https://codecov.io/gh/jesperancinha/concert-demos-root/branch/master/graphs/commits.svg"/>
 </div>
 
 ---
