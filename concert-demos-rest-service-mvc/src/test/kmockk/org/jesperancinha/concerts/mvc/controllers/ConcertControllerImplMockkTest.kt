@@ -33,12 +33,14 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import java.time.LocalDateTime
 
 @WebMvcTest(controllers = [ConcertControllerImpl::class, ConcertController::class])
-@MockkBean(classes = [
-    MusicService::class, MusicRepository::class,
-    MusicRepository::class, ArtistRepository::class,
-    ArtistService::class, ConcertService::class,
-    ConcertRepository::class, ListingService::class,
-    ListingRepository::class])
+@MockkBean(
+    classes = [
+        MusicService::class, MusicRepository::class,
+        MusicRepository::class, ArtistRepository::class,
+        ArtistService::class, ConcertService::class,
+        ConcertRepository::class, ListingService::class,
+        ListingRepository::class]
+)
 class ConcertControllerImplMockkTest(
     @Autowired val mvc: MockMvc,
     @Autowired val concertService: ConcertService,
@@ -54,8 +56,10 @@ class ConcertControllerImplMockkTest(
             "retrieve all concerts" {
                 val target = "/concerts/data/concerts"
                 every { concertService.getAllConcerts() } returns (listOf())
-                val results = mvc.perform(get(target)
-                    .accept(MediaType.APPLICATION_JSON))
+                val results = mvc.perform(
+                    get(target)
+                        .accept(MediaType.APPLICATION_JSON)
+                )
                 results.andExpect(content().string("[]"))
                 results.andExpect(status().isOk)
             }
@@ -64,16 +68,18 @@ class ConcertControllerImplMockkTest(
                 val musicDto = MusicDto(
                     1,
                     "Hey mama",
-                    HEY_MAMA)
+                    HEY_MAMA
+                )
                 val artistDto = ArtistDto(
-                    1,
-                    "Nicky Minaj",
-                    FEMALE,
-                    1000L,
-                    LocalDateTime.now().toString(),
-                    "Port of Spain",
-                    "Trinidad en Tobago",
-                    "Rap")
+                    id = 1,
+                    name = "Nicky Minaj",
+                    gender = FEMALE,
+                    careerStart = 1000L,
+                    birthDate = LocalDateTime.now().toString(),
+                    birthCity = "Port of Spain",
+                    country = "Trinidad en Tobago",
+                    keywords = "Rap"
+                )
                 val listingDto = ListingDto(
                     1,
                     artistDto,
@@ -81,16 +87,18 @@ class ConcertControllerImplMockkTest(
                     mutableListOf(musicDto)
                 )
                 val concertDto = ConcertDto(
-                    "Nicki Wrld Tour",
-                    "Amsterdam",
-                    LocalDateTime.of(2019, 3, 25, 0, 0, 0).toString(),
-                    mutableListOf(listingDto)
+                    name = "Nicki Wrld Tour",
+                    location = "Amsterdam",
+                    date = LocalDateTime.of(2019, 3, 25, 0, 0, 0).toString(),
+                    listingDtos = mutableListOf(listingDto)
                 )
                 val objectMapper = ObjectMapper()
                 every { concertService.createConcert(concertDto) } returns concertDto
-                val results = mvc.perform(post(target)
-                    .content(objectMapper.writeValueAsString(concertDto))
-                    .contentType(MediaType.APPLICATION_JSON))
+                val results = mvc.perform(
+                    post(target)
+                        .content(objectMapper.writeValueAsString(concertDto))
+                        .contentType(MediaType.APPLICATION_JSON)
+                )
                 results.andExpect(status().isOk)
                 results.andExpect(content().string(objectMapper.writeValueAsString(concertDto)))
             }

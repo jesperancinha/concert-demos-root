@@ -71,10 +71,10 @@ class ListingControllerImplITSpec extends Specification {
         final String listingsUri = "http://localhost:${port}/concerts/data/listings"
 
         and:
-        def musicDto = new MusicDto(
+        def musicDto = new MusicDto(null,
                 "Hey mama",
                 HEY_MAMA)
-        def artistDto = new ArtistDto(
+        def artistDto = new ArtistDto(null,
                 "Nicky Minaj",
                 FEMALE,
                 1000L,

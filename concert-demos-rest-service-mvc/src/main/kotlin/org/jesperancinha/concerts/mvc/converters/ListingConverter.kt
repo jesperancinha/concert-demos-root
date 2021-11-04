@@ -2,6 +2,7 @@ package org.jesperancinha.concerts.mvc.converters
 
 import org.jesperancinha.concerts.data.ListingDto
 import org.jesperancinha.concerts.mvc.model.Listing
+import org.jesperancinha.concerts.mvc.model.toArtistDto
 import org.jesperancinha.concerts.mvc.repos.MusicRepository
 import org.springframework.stereotype.Component
 
@@ -13,7 +14,7 @@ class ListingConverter(
     fun toListingDto(listing: Listing): ListingDto {
         return ListingDto(
             listing.id,
-            ArtistConverter.toArtistDto(listing.artist),
+            listing.artist.toArtistDto(),
             MusicConverter.toMusicDto(listing.referenceMusic),
             listing.musics.map { MusicConverter.toMusicDto(it) }.toMutableList()
         )

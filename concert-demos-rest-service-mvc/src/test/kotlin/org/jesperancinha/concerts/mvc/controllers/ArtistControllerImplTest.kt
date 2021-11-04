@@ -62,8 +62,10 @@ class ArtistControllerImplTest(
     fun `Retrieve all mocked artists`() {
         `when`(artistService.getAllArtists()).thenReturn(listOf())
         val target = "/concerts/data/artists"
-        val results = mvc.perform(get(target)
-            .accept(MediaType.APPLICATION_JSON))
+        val results = mvc.perform(
+            get(target)
+                .accept(MediaType.APPLICATION_JSON)
+        )
         results.andExpect(content().string("[]"))
         results.andExpect(status().isOk)
     }
@@ -73,17 +75,20 @@ class ArtistControllerImplTest(
     fun `Create Artist`() {
         val target = "/concerts/data/artists"
         val artist = ArtistDto(
-            "Duran Duran",
-            AGENDER,
-            1000L,
-            LocalDateTime.now().toString(),
-            "Birmingham",
-            "Great Britain",
-            "test")
+            name = "Duran Duran",
+            gender = AGENDER,
+            careerStart = 1000L,
+            birthDate = LocalDateTime.now().toString(),
+            birthCity = "Birmingham",
+            country = "Great Britain",
+            keywords = "test"
+        )
         val objectMapper = ObjectMapper()
-        val results = mvc.perform(post(target)
-            .content(objectMapper.writeValueAsString(artist))
-            .contentType(MediaType.APPLICATION_JSON))
+        val results = mvc.perform(
+            post(target)
+                .content(objectMapper.writeValueAsString(artist))
+                .contentType(MediaType.APPLICATION_JSON)
+        )
         results.andExpect(status().isOk)
         results.andExpect(content().string(""))
     }

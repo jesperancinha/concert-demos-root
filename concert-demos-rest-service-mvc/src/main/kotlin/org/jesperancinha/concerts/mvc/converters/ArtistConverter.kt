@@ -4,18 +4,6 @@ import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.mvc.model.Artist
 
 object ArtistConverter {
-    fun toArtistDto(artist: Artist): ArtistDto {
-        return ArtistDto(
-            artist.id,
-            artist.name,
-            artist.gender,
-            artist.careerStart,
-            artist.birthDate,
-            artist.birthCity,
-            artist.country,
-            artist.keywords
-        )
-    }
 
     fun toArtist(artistDto: ArtistDto): Artist {
         return Artist(

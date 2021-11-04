@@ -76,13 +76,14 @@ class ArtistControllerImplKoTest(
             "create Artist" {
                 val target = "/concerts/data/artists"
                 val artist = ArtistDto(
-                    "Duran Duran",
-                    AGENDER,
-                    1000L,
-                    LocalDateTime.now().toString(),
-                    "Birmingham",
-                    "Great Britain",
-                    "test")
+                    name = "Duran Duran",
+                    gender = AGENDER,
+                    careerStart = 1000L,
+                    birthDate = LocalDateTime.now().toString(),
+                    birthCity = "Birmingham",
+                    country = "Great Britain",
+                    keywords = "test"
+                )
                 val objectMapper = ObjectMapper()
                 val results = mvc.perform(post(target)
                     .content(objectMapper.writeValueAsString(artist))

@@ -1,5 +1,6 @@
 package org.jesperancinha.concerts.mvc.model
 
+import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.types.Gender
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
@@ -18,3 +19,16 @@ data class Artist(
     val country: String,
     val keywords: String,
 )
+
+fun Artist.toArtistDto(): ArtistDto {
+    return ArtistDto(
+        id = this.id,
+        name = this.name,
+        gender = this.gender,
+        careerStart = this.careerStart,
+        birthDate = this.birthDate,
+        birthCity = this.birthCity,
+        country = this.country,
+        keywords = this.keywords
+    )
+}

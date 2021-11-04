@@ -76,10 +76,10 @@ class ConcertControllerImplITSpec extends Specification {
         final String concertsUri = "http://localhost:${port}/concerts/data/concerts"
 
         and:
-        def musicDto = new MusicDto(
+        def musicDto = new MusicDto(null,
                 "Hey mama",
                 HEY_MAMA)
-        def artistDto = new ArtistDto(
+        def artistDto = new ArtistDto(null,
                 "Nicky Minaj",
                 FEMALE,
                 1000L,
@@ -103,6 +103,7 @@ class ConcertControllerImplITSpec extends Specification {
         def savedListingDto = restTemplate.postForEntity(listingsUri, listingDto, ListingDto).body
         and:
         def concertDto = new ConcertDto(
+                null,
                 "Nicki Wrld Tour",
                 "Amsterdam",
                 LocalDateTime.of(2019, 3, 25, 0, 0, 0).toString(),

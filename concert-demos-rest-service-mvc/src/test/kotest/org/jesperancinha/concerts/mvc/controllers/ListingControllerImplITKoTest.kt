@@ -68,16 +68,18 @@ class ListingControllerImplITKoTest(
                 val musicsUri = "http://localhost:${port}/concerts/data/musics"
                 val listingsUri = "http://localhost:${port}/concerts/data/listings"
                 val musicDto = MusicDto(
-                    "Hey mama",
-                    HEY_MAMA)
+                    name = "Hey mama",
+                    lyrics = HEY_MAMA
+                )
                 val artistDto = ArtistDto(
-                    "Nicky Minaj",
-                    FEMALE,
-                    1000L,
-                    LocalDateTime.now().toString(),
-                    "Port of Spain",
-                    "Trinidad en Tobago",
-                    "Rap")
+                    name = "Nicky Minaj",
+                    gender = FEMALE,
+                    careerStart = 1000L,
+                    birthDate = LocalDateTime.now().toString(),
+                    birthCity = "Port of Spain",
+                    country = "Trinidad en Tobago",
+                    keywords = "Rap"
+                )
 
                 val restTemplate = RestTemplate()
 
@@ -88,9 +90,9 @@ class ListingControllerImplITKoTest(
                 savedMusicDto.shouldNotBeNull()
 
                 val listingDto = ListingDto(
-                    savedArtistDto,
-                    savedMusicDto,
-                    mutableListOf(savedMusicDto)
+                    artistDto = savedArtistDto,
+                    referenceMusicDto = savedMusicDto,
+                    musicDtos = mutableListOf(savedMusicDto)
                 )
                 val savedListingDto =
                     restTemplate.postForEntity<ListingDto>(listingsUri, listingDto, ListingDto::class).body

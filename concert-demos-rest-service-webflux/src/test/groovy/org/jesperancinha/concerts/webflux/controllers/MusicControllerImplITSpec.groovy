@@ -57,7 +57,7 @@ class MusicControllerImplITSpec extends Specification {
         final String uri = "http://localhost:${port}/concerts/data/musics"
 
         and:
-        def musicDto = new MusicDto(
+        def musicDto = new MusicDto(null,
                 "Hey mama",
                 HEY_MAMA)
 

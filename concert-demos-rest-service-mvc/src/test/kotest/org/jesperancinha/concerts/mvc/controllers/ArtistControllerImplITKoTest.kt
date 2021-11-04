@@ -60,13 +60,14 @@ class ArtistControllerImplITKoTest(
             "create an artist" @Transactional {
                 val uri = "http://localhost:${port}/concerts/data/artists"
                 val artist = ArtistDto(
-                    "Duran Duran",
-                    AGENDER,
-                    1000L,
-                    LocalDateTime.now().toString(),
-                    "Birmingham",
-                    "Great Britain",
-                    "test")
+                    name = "Duran Duran",
+                    gender = AGENDER,
+                    careerStart = 1000L,
+                    birthDate = LocalDateTime.now().toString(),
+                    birthCity = "Birmingham",
+                    country = "Great Britain",
+                    keywords = "test"
+                )
                 val restTemplate = RestTemplate()
                 val test: ResponseEntity<Unit> = restTemplate.postForEntity(uri, artist, Artist::class)
 

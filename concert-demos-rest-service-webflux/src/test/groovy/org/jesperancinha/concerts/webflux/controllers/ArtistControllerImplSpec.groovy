@@ -85,7 +85,7 @@ class ArtistControllerImplSpec extends Specification {
         def target = '/concerts/data/artists'
 
         and:
-        def artistDto = new ArtistDto(
+        def artistDto = new ArtistDto(null,
                 "Duran Duran",
                 AGENDER,
                 1000L,

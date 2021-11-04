@@ -92,7 +92,7 @@ class MusicControllerImplSpec extends Specification {
         def target = '/concerts/data/musics'
 
         and:
-        def musicDto = new MusicDto(
+        def musicDto = new MusicDto(null,
                 "Hey mama",
                 HEY_MAMA)
         and:

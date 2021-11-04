@@ -58,16 +58,17 @@ class ArtistControllerImplITTest(
     @Transactional
     fun `Create an artist`() {
         val uri = "http://localhost:${port}/concerts/data/artists"
-        val artist = ArtistDto(
-            "Duran Duran",
-            AGENDER,
-            1000L,
-            LocalDateTime.now().toString(),
-            "Birmingham",
-            "Great Britain",
-            "test")
+        val artistDto = ArtistDto(
+            name = "Duran Duran",
+            gender = AGENDER,
+            careerStart = 1000L,
+            birthDate = LocalDateTime.now().toString(),
+            birthCity = "Birmingham",
+            country = "Great Britain",
+            keywords = "test"
+        )
         val restTemplate = RestTemplate()
-        val test: ResponseEntity<Unit> = restTemplate.postForEntity(uri, artist, Artist::class)
+        val test: ResponseEntity<Unit> = restTemplate.postForEntity(uri, artistDto, Artist::class)
 
         test shouldNotBe null
         test.statusCode shouldBe HttpStatus.OK
@@ -82,9 +83,9 @@ class ArtistControllerImplITTest(
 
         val artistResult = result[0]
         artistResult.id shouldNotBe 0
-        artist.name shouldBe "Duran Duran"
-        artist.gender shouldBe AGENDER
-        artist.birthCity shouldBe "Birmingham"
+        artistDto.name shouldBe "Duran Duran"
+        artistDto.gender shouldBe AGENDER
+        artistDto.birthCity shouldBe "Birmingham"
     }
 
     @BeforeEach

@@ -59,8 +59,8 @@ class MusicControllerImplITTest(
     fun `create music`() {
         val uri = "http://localhost:${port}/concerts/data/musics"
         val musicDto = MusicDto(
-            "Hey mama",
-            HEY_MAMA)
+            name = "Hey mama",
+            lyrics = HEY_MAMA)
         val restTemplate = RestTemplate()
         restTemplate.postForEntity(uri, musicDto, Music::class.java)
         val request = RequestEntity<Any>(HttpMethod.GET, URI.create(uri))

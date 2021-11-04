@@ -81,14 +81,15 @@ class ListingControllerImplKoTest(
                     1L,
                     "Hey mama",
                     "HEY_MAMA")
-                val artistDto = ArtistDto(
-                    "Nicky Minaj",
-                    FEMALE,
-                    1000L,
-                    LocalDateTime.now().toString(),
-                    "Port of Spain",
-                    "Trinidad en Tobago",
-                    "Rap")
+              val artistDto = ArtistDto(
+                    name = "Nicky Minaj",
+                    gender = FEMALE,
+                    careerStart = 1000L,
+                    birthDate = LocalDateTime.now().toString(),
+                    birthCity = "Port of Spain",
+                    country = "Trinidad en Tobago",
+                    keywords = "Rap"
+                )
                 val listingDto = ListingDto(
                     1L,
                     artistDto,

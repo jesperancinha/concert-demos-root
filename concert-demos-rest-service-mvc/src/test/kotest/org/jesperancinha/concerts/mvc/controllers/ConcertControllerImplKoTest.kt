@@ -70,8 +70,10 @@ class ConcertControllerImplKoTest(
             "retrieve all concerts" {
                 val target = "/concerts/data/concerts"
                 `when`(concertService.getAllConcerts()).thenReturn(listOf())
-                val results = mvc.perform(get(target)
-                    .accept(MediaType.APPLICATION_JSON))
+                val results = mvc.perform(
+                    get(target)
+                        .accept(MediaType.APPLICATION_JSON)
+                )
                 results.andExpect(content().string("[]"))
                 results.andExpect(status().isOk)
             }
@@ -80,16 +82,18 @@ class ConcertControllerImplKoTest(
                 val musicDto = MusicDto(
                     1,
                     "Hey mama",
-                    HEY_MAMA)
+                    HEY_MAMA
+                )
                 val artistDto = ArtistDto(
-                    1,
-                    "Nicky Minaj",
-                    FEMALE,
-                    1000L,
-                    LocalDateTime.now().toString(),
-                    "Port of Spain",
-                    "Trinidad en Tobago",
-                    "Rap")
+                    id = 1,
+                    name = "Nicky Minaj",
+                    gender = FEMALE,
+                    careerStart = 1000L,
+                    birthDate = LocalDateTime.now().toString(),
+                    birthCity = "Port of Spain",
+                    country = "Trinidad en Tobago",
+                    keywords = "Rap"
+                )
                 val listingDto = ListingDto(
                     1,
                     artistDto,
@@ -97,16 +101,18 @@ class ConcertControllerImplKoTest(
                     mutableListOf(musicDto)
                 )
                 val concertDto = ConcertDto(
-                    "Nicki Wrld Tour",
-                    "Amsterdam",
-                    LocalDateTime.of(2019, 3, 25, 0, 0, 0).toString(),
-                    mutableListOf(listingDto)
+                    name = "Nicki Wrld Tour",
+                    location = "Amsterdam",
+                    date = LocalDateTime.of(2019, 3, 25, 0, 0, 0).toString(),
+                    listingDtos = mutableListOf(listingDto)
                 )
                 val objectMapper = ObjectMapper()
                 `when`(concertService.createConcert(concertDto)).thenReturn(concertDto)
-                val results = mvc.perform(post(target)
-                    .content(objectMapper.writeValueAsString(concertDto))
-                    .contentType(MediaType.APPLICATION_JSON))
+                val results = mvc.perform(
+                    post(target)
+                        .content(objectMapper.writeValueAsString(concertDto))
+                        .contentType(MediaType.APPLICATION_JSON)
+                )
                 results.andExpect(status().isOk)
                 results.andExpect(content().string(objectMapper.writeValueAsString(concertDto)))
             }

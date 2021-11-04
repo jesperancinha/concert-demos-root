@@ -1,17 +1,11 @@
 package org.jesperancinha.concerts.data
 
 data class ListingDto(
-    val id: Long?,
+    val id: Long? = 0,
     val artistDto: ArtistDto,
     val referenceMusicDto: MusicDto,
     val musicDtos: MutableList<MusicDto?>,
 ) {
-    constructor(
-        artistDto: ArtistDto,
-        referenceMusicDto: MusicDto,
-        musicDtos: MutableList<MusicDto?>,
-    ) :
-            this(0, artistDto, referenceMusicDto, musicDtos)
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

@@ -60,7 +60,7 @@ class ArtistControllerImplITSpec extends Specification {
         final String uri = "http://localhost:${port}/concerts/data/artists"
 
         and:
-        def artist = new ArtistDto(
+        def artist = new ArtistDto(null,
                 "Duran Duran",
                 AGENDER,
                 1000L,

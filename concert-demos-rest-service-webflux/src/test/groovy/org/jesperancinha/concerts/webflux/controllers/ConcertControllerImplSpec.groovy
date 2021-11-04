@@ -120,6 +120,7 @@ class ConcertControllerImplSpec extends Specification {
                 List.of(musicDto)
         )
         def concertDto = new ConcertDto(
+                null,
                 "Nicki Wrld Tour",
                 "Amsterdam",
                 LocalDateTime.of(2019, 3, 25, 0, 0, 0).toString(),

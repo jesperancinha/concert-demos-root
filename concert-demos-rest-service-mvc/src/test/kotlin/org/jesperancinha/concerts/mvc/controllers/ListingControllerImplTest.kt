@@ -65,8 +65,10 @@ class ListingControllerImplTest(
     fun `retrieve all listings`() {
         `when`(listingService.getAllListings()).thenReturn(listOf())
         val target = "/concerts/data/listings"
-        val results = mvc.perform(get(target)
-            .accept(MediaType.APPLICATION_JSON))
+        val results = mvc.perform(
+            get(target)
+                .accept(MediaType.APPLICATION_JSON)
+        )
         results.andExpect(content().string("[]"))
         results.andExpect(status().isOk)
     }
@@ -77,15 +79,17 @@ class ListingControllerImplTest(
         val musicDto = MusicDto(
             1L,
             "Hey mama",
-            HEY_MAMA)
+            HEY_MAMA
+        )
         val artistDto = ArtistDto(
-            "Nicky Minaj",
-            FEMALE,
-            1000L,
-            LocalDateTime.now().toString(),
-            "Port of Spain",
-            "Trinidad en Tobago",
-            "Rap")
+            name = "Nicky Minaj",
+            gender = FEMALE,
+            careerStart = 1000L,
+            birthDate = LocalDateTime.now().toString(),
+            birthCity = "Port of Spain",
+            country = "Trinidad en Tobago",
+            keywords = "Rap"
+        )
         val listingDto = ListingDto(
             1L,
             artistDto,
@@ -94,9 +98,11 @@ class ListingControllerImplTest(
         )
         val objectMapper = ObjectMapper()
         `when`(listingService.createListing(listingDto)).thenReturn(listingDto)
-        val results = mvc.perform(post(target)
-            .content(objectMapper.writeValueAsString(listingDto))
-            .contentType(MediaType.APPLICATION_JSON))
+        val results = mvc.perform(
+            post(target)
+                .content(objectMapper.writeValueAsString(listingDto))
+                .contentType(MediaType.APPLICATION_JSON)
+        )
         results
             .andExpect(status().isOk)
             .andExpect(content().string(objectMapper.writeValueAsString(listingDto)))

@@ -10,12 +10,11 @@ import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.data.ListingDto
 import org.jesperancinha.concerts.data.MusicDto
 import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.HEY_MAMA
-import org.jesperancinha.concerts.mvc.model.Music
 import org.jesperancinha.concerts.mvc.repos.ArtistRepository
 import org.jesperancinha.concerts.mvc.repos.ConcertRepository
 import org.jesperancinha.concerts.mvc.repos.ListingRepository
 import org.jesperancinha.concerts.mvc.repos.MusicRepository
-import org.jesperancinha.concerts.types.Gender
+import org.jesperancinha.concerts.types.Gender.FEMALE
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -24,6 +23,7 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDO
 import org.springframework.boot.web.server.LocalServerPort
 import org.springframework.core.ParameterizedTypeReference
 import org.springframework.http.HttpMethod
+import org.springframework.http.HttpMethod.GET
 import org.springframework.http.RequestEntity
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.web.client.RestTemplate
@@ -53,7 +53,7 @@ class ListingControllerImplITTest(
     fun `retrieve all listings`() {
         val uri = "http://localhost:${port}/concerts/data/listings"
         val restTemplate = RestTemplate()
-        val request = RequestEntity<Any>(HttpMethod.GET, URI.create(uri))
+        val request = RequestEntity<Any>(GET, URI.create(uri))
         val respType = object : ParameterizedTypeReference<List<ListingDto>>() {}
         val response = restTemplate.exchange(request, respType)
         val result: List<ListingDto> = response.body ?: listOf()
@@ -66,16 +66,18 @@ class ListingControllerImplITTest(
         val musicsUri = "http://localhost:${port}/concerts/data/musics"
         val listingsUri = "http://localhost:${port}/concerts/data/listings"
         val musicDto = MusicDto(
-            "Hey mama",
-            HEY_MAMA)
+            name = "Hey mama",
+            lyrics = HEY_MAMA
+        )
         val artistDto = ArtistDto(
-            "Nicky Minaj",
-            Gender.FEMALE,
-            1000L,
-            LocalDateTime.now().toString(),
-            "Port of Spain",
-            "Trinidad en Tobago",
-            "Rap")
+            name = "Nicky Minaj",
+            gender = FEMALE,
+            careerStart = 1000L,
+            birthDate = LocalDateTime.now().toString(),
+            birthCity = "Port of Spain",
+            country = "Trinidad en Tobago",
+            keywords = "Rap"
+        )
 
         val restTemplate = RestTemplate()
 
@@ -86,13 +88,13 @@ class ListingControllerImplITTest(
         savedMusicDto.shouldNotBeNull()
 
         val listingDto = ListingDto(
-            savedArtistDto,
-            savedMusicDto,
-            mutableListOf(savedMusicDto)
+            artistDto = savedArtistDto,
+            referenceMusicDto = savedMusicDto,
+            musicDtos = mutableListOf(savedMusicDto)
         )
         val savedListingDto = restTemplate.postForEntity<ListingDto>(listingsUri, listingDto, ListingDto::class).body
 
-        val request = RequestEntity<Any>(HttpMethod.GET, URI.create(listingsUri))
+        val request = RequestEntity<Any>(GET, URI.create(listingsUri))
         val respType = object : ParameterizedTypeReference<List<ListingDto>>() {}
         val response = restTemplate.exchange(request, respType)
         val result: List<ListingDto> = response.body ?: listOf()
