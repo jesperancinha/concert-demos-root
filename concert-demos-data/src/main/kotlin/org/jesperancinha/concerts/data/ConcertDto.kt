@@ -7,8 +7,6 @@ data class ConcertDto(
     val date: String,
     val listingDtos: MutableList<ListingDto?>? = mutableListOf(),
 ) {
-    constructor() : this(null, "", "", "")
-
     constructor(name: String, location: String, localDateTime: String, listingDtos: MutableList<ListingDto?>) :
             this(null, name, location, localDateTime, listingDtos)
 

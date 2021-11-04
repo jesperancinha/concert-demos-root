@@ -6,8 +6,6 @@ data class ListingDto(
     val referenceMusicDto: MusicDto,
     val musicDtos: MutableList<MusicDto?>,
 ) {
-    constructor() : this(null, ArtistDto(), MusicDto(), mutableListOf())
-
     constructor(
         artistDto: ArtistDto,
         referenceMusicDto: MusicDto,

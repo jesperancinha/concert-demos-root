@@ -5,8 +5,6 @@ data class MusicDto(
     val name: String,
     val lyrics: String,
 ) {
-
-    constructor() : this(null, "", "")
     constructor(
         name: String,
         lyrics: String,

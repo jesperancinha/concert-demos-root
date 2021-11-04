@@ -13,7 +13,6 @@ data class ArtistDto(
     val keywords: String,
 
     ) {
-    constructor() : this(null, "", Gender.AGENDER, 0, "", "", "", "")
     constructor(
         name: String,
         gender: Gender,
