@@ -70,14 +70,15 @@ class MusicControllerImplMockkTest(
                 )
                 every { musicService.createMusic(musicDto) } returns musicDto
                 val objectMapper = ObjectMapper()
+                val writeValueAsString = objectMapper.writeValueAsString(musicDto)
                 val results = mvc.perform(post(target).apply {
-                    content(objectMapper.writeValueAsString(musicDto))
+                    content(writeValueAsString)
                     contentType(MediaType.APPLICATION_JSON)
                 })
                 results.andExpect(status().isOk)
                 val contentAsString = results.andReturn().response.contentAsString
 
-                contentAsString shouldBe objectMapper.writeValueAsString(musicDto)
+                contentAsString shouldBe writeValueAsString
 
                 verify(exactly = 1) { musicService.createMusic(musicDto = musicDto) }
             }
