@@ -32,3 +32,15 @@ fun Artist.toArtistDto(): ArtistDto {
         keywords = this.keywords
     )
 }
+fun ArtistDto.toArtist(): Artist {
+    return Artist(
+        this.id,
+        this.name,
+        this.gender,
+        this.careerStart,
+        this.birthDate,
+        this.birthCity,
+        this.country,
+        this.keywords
+    )
+}

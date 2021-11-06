@@ -1,7 +1,7 @@
 package org.jesperancinha.concerts.mvc.services
 
 import org.jesperancinha.concerts.data.ArtistDto
-import org.jesperancinha.concerts.mvc.converters.ArtistConverter.toArtist
+import org.jesperancinha.concerts.mvc.model.toArtist
 import org.jesperancinha.concerts.mvc.model.toArtistDto
 import org.jesperancinha.concerts.mvc.repos.ArtistRepository
 import org.springframework.stereotype.Service
@@ -14,6 +14,6 @@ class ArtistServiceImpl(private val artistRepository: ArtistRepository) : Artist
     }
 
     override fun createArtist(artist: ArtistDto): ArtistDto {
-        return artistRepository.save(toArtist(artist)).toArtistDto()
+        return artistRepository.save(artist.toArtist()).toArtistDto()
     }
 }
