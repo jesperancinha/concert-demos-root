@@ -1,6 +1,11 @@
 package org.jesperancinha.concerts.mvc.model
 
-import javax.persistence.*
+import org.jesperancinha.concerts.data.MusicDto
+import javax.persistence.Entity
+import javax.persistence.GeneratedValue
+import javax.persistence.GenerationType
+import javax.persistence.Id
+import javax.persistence.ManyToMany
 
 @Entity
 data class Music(
@@ -35,4 +40,20 @@ data class Music(
         return result
     }
 
+}
+
+fun Music.toMusicDto(): MusicDto {
+    return MusicDto(
+        this.id,
+        this.name,
+        this.lyrics
+    )
+}
+
+fun MusicDto.toMusic(): Music {
+    return Music(
+        this.id,
+        this.name,
+        this.lyrics
+    )
 }

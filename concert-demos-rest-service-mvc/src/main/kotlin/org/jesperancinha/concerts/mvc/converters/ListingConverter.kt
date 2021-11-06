@@ -4,6 +4,8 @@ import org.jesperancinha.concerts.data.ListingDto
 import org.jesperancinha.concerts.mvc.model.Listing
 import org.jesperancinha.concerts.mvc.model.toArtist
 import org.jesperancinha.concerts.mvc.model.toArtistDto
+import org.jesperancinha.concerts.mvc.model.toMusic
+import org.jesperancinha.concerts.mvc.model.toMusicDto
 import org.jesperancinha.concerts.mvc.repos.MusicRepository
 import org.springframework.stereotype.Component
 
@@ -16,8 +18,8 @@ class ListingConverter(
         return ListingDto(
             listing.id,
             listing.artist.toArtistDto(),
-            MusicConverter.toMusicDto(listing.referenceMusic),
-            listing.musics.map { MusicConverter.toMusicDto(it) }.toMutableList()
+            listing.referenceMusic.toMusicDto(),
+            listing.musics.map { it.toMusicDto() }.toMutableList()
         )
 
     }
@@ -26,7 +28,7 @@ class ListingConverter(
         return Listing(
             listingDto.id,
             listingDto.artistDto.toArtist(),
-            MusicConverter.toMusic(listingDto.referenceMusicDto)
+            listingDto.referenceMusicDto.toMusic()
         )
     }
 
@@ -34,7 +36,7 @@ class ListingConverter(
         val listing = Listing(
             listingDto.id,
             listingDto.artistDto.toArtist(),
-            MusicConverter.toMusic(listingDto.referenceMusicDto)
+            listingDto.referenceMusicDto.toMusic()
         )
         listing.musics = listingDto.musicDtos.map {
             val music = musicRepository.findById(it?.id ?: -1).orElse(null)

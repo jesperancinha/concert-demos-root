@@ -30,12 +30,14 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
 @WebMvcTest(controllers = [MusicControllerImpl::class, MusicController::class])
-@MockkBean(classes = [
-    MusicService::class, MusicRepository::class,
-    MusicRepository::class, ArtistRepository::class,
-    ArtistService::class, ConcertService::class,
-    ConcertRepository::class, ListingService::class,
-    ListingRepository::class])
+@MockkBean(
+    classes = [
+        MusicService::class, MusicRepository::class,
+        MusicRepository::class, ArtistRepository::class,
+        ArtistService::class, ConcertService::class,
+        ConcertRepository::class, ListingService::class,
+        ListingRepository::class]
+)
 class MusicControllerImplMockkTest(
     @Autowired val mvc: MockMvc,
     @Autowired val musicService: MusicService
@@ -51,8 +53,10 @@ class MusicControllerImplMockkTest(
             "retrieve all music" {
                 every { musicService.getAllMusics() } returns listOf()
                 val target = "/concerts/data/musics"
-                val results = mvc.perform(get(target)
-                    .accept(MediaType.APPLICATION_JSON))
+                val results = mvc.perform(
+                    get(target)
+                        .accept(MediaType.APPLICATION_JSON)
+                )
                 results.andExpect(content().string("[]"))
                 results.andExpect(status().isOk)
             }
@@ -62,18 +66,20 @@ class MusicControllerImplMockkTest(
                 val musicDto = MusicDto(
                     1L,
                     "Hey mama",
-                    HEY_MAMA)
+                    HEY_MAMA
+                )
                 every { musicService.createMusic(musicDto) } returns musicDto
                 val objectMapper = ObjectMapper()
-                val results = mvc.perform(post(target)
-                    .content(objectMapper.writeValueAsString(musicDto))
-                    .contentType(MediaType.APPLICATION_JSON))
+                val results = mvc.perform(post(target).apply {
+                    content(objectMapper.writeValueAsString(musicDto))
+                    contentType(MediaType.APPLICATION_JSON)
+                })
                 results.andExpect(status().isOk)
                 val contentAsString = results.andReturn().response.contentAsString
 
                 contentAsString shouldBe objectMapper.writeValueAsString(musicDto)
 
-                verify(exactly = 1) { musicService.createMusic(music = musicDto) }
+                verify(exactly = 1) { musicService.createMusic(musicDto = musicDto) }
             }
         }
     }
