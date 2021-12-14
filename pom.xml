@@ -18,12 +18,12 @@
     <properties>
         <!-- Build -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>16</java.version>
+        <java.version>17</java.version>
         <maven-compiler-plugin.source>${java.version}</maven-compiler-plugin.source>
         <maven-compiler-plugin.target>${java.version}</maven-compiler-plugin.target>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-        <kotlin.version>1.5.21</kotlin.version>
+        <kotlin.version>1.6.0</kotlin.version>
         <kotlin-logging.version>1.12.5</kotlin-logging.version>
 
         <!-- Spring -->
@@ -33,7 +33,7 @@
         <spock-spring.version>2.0-groovy-3.0</spock-spring.version>
         <spock-bom.version>2.0-groovy-3.0</spock-bom.version>
         <groovy.version>3.0.8</groovy.version>
-        <gmavenplus-plugin.version>1.12.1</gmavenplus-plugin.version>
+        <gmavenplus-plugin.version>1.13.1</gmavenplus-plugin.version>
         <kotest.version>4.4.0</kotest.version>
         <springmockk.version>3.0.1</springmockk.version>
         <kotest-extensions-spring.version>1.0.0</kotest-extensions-spring.version>

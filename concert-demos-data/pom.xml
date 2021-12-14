@@ -72,7 +72,6 @@
                 </executions>
                 <configuration>
                     <experimentalCoroutines>enable</experimentalCoroutines>
-                    <jvmTarget>${java.version}</jvmTarget>
                     <compilerPlugins>
                         <plugin>no-arg</plugin>
                         <plugin>jpa</plugin>
