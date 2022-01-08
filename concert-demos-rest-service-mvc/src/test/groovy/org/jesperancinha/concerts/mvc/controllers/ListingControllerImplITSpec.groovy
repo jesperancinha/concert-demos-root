@@ -9,11 +9,9 @@ import org.jesperancinha.concerts.mvc.repos.ArtistRepository
 import org.jesperancinha.concerts.mvc.repos.ConcertRepository
 import org.jesperancinha.concerts.mvc.repos.ListingRepository
 import org.jesperancinha.concerts.mvc.repos.MusicRepository
-import org.junit.jupiter.api.Disabled
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.web.server.LocalServerPort
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.web.client.RestTemplate
 import spock.lang.Specification
@@ -71,9 +69,11 @@ class ListingControllerImplITSpec extends Specification {
 
         and:
         def musicDto = new MusicDto(
+                null,
                 "Hey mama",
                 HEY_MAMA)
         def artistDto = new ArtistDto(
+                null,
                 "Nicky Minaj",
                 FEMALE,
                 1000L,
@@ -90,6 +90,7 @@ class ListingControllerImplITSpec extends Specification {
         def savedMusicDto = restTemplate.postForEntity(musicsUri, musicDto, MusicDto.class).body
         and:
         def listingDto = new ListingDto(
+                null,
                 savedArtistDto,
                 savedMusicDto,
                 List.of(savedMusicDto)
