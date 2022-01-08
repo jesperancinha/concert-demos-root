@@ -7,7 +7,6 @@ import org.jesperancinha.concerts.mvc.repos.ArtistRepository
 import org.jesperancinha.concerts.mvc.repos.ConcertRepository
 import org.jesperancinha.concerts.mvc.repos.ListingRepository
 import org.jesperancinha.concerts.mvc.repos.MusicRepository
-import org.junit.jupiter.api.Disabled
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.web.server.LocalServerPort
@@ -64,6 +63,7 @@ class MusicControllerImplITSpec extends Specification {
 
         and:
         def musicDto = new MusicDto(
+                null,
                 "Hey mama",
                 HEY_MAMA)
 

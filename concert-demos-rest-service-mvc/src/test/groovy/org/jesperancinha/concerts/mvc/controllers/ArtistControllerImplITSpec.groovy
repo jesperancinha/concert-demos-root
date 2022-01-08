@@ -68,6 +68,7 @@ class ArtistControllerImplITSpec extends Specification {
 
         and:
         def artist = new ArtistDto(
+                null,
                 "Duran Duran",
                 AGENDER,
                 1000L,
