@@ -21,15 +21,13 @@ jobs:
       with:
         java-version: '17'
         distribution: 'adopt'
-    - name: Build
-      run: mvn clean install package coveralls:report -DrepoToken=${COVERALLS_REPO_TOKEN}
+
+    - name: Build and Test
+      run:  mvn clean install jacoco:prepare-agent package jacoco:report
+
+    - name: Coverage Reports
+      run: mvn omni-coveragereporter:report
       env:
          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
-    - name: Coverage with Codecov
-      run: bash <(curl -s https://codecov.io/bash)
-      env:
          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-    - name: Coverage with Codacy
-      run: bash <(curl -Ls https://coverage.codacy.com/get.sh) report -l Kotlin $(find **/jacoco*.xml -printf '-r %p ')
-      env:
          CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
