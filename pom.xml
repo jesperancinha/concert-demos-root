@@ -47,7 +47,6 @@
 
         <!-- Coverage -->
         <jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
-        <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>
         <spring-boot-starter-data-r2dbc.version>2.5.3</spring-boot-starter-data-r2dbc.version>
         <omni-coveragereporter-maven-plugin.version>0.0.10</omni-coveragereporter-maven-plugin.version>
