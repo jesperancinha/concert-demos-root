@@ -34,7 +34,7 @@
         <spock-bom.version>2.0-groovy-3.0</spock-bom.version>
         <groovy.version>3.0.8</groovy.version>
         <gmavenplus-plugin.version>1.13.1</gmavenplus-plugin.version>
-        <kotest.version>4.4.0</kotest.version>
+        <kotest.version>5.0.3</kotest.version>
         <springmockk.version>3.1.0</springmockk.version>
         <kotest-extensions-spring.version>1.0.0</kotest-extensions-spring.version>
         <mockk.version>1.12.0</mockk.version>
