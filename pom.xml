@@ -32,7 +32,7 @@
         <gmavenplus-plugin.version>1.13.1</gmavenplus-plugin.version>
         <kotest.version>5.0.3</kotest.version>
         <springmockk.version>3.1.0</springmockk.version>
-        <kotest-extensions-spring.version>1.0.0</kotest-extensions-spring.version>
+        <kotest-extensions-spring.version>1.1.0</kotest-extensions-spring.version>
         <mockk.version>1.12.2</mockk.version>
 
         <!-- Assetions -->
@@ -158,6 +158,24 @@
             <dependency>
                 <groupId>io.kotest</groupId>
                 <artifactId>kotest-assertions-core-jvm</artifactId>
+                <version>${kotest.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.kotest</groupId>
+                <artifactId>kotest-framework-api-jvm</artifactId>
+                <version>${kotest.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.kotest</groupId>
+                <artifactId>kotest-framework-engine-jvm</artifactId>
+                <version>${kotest.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.kotest</groupId>
+                <artifactId>kotest-common-jvm</artifactId>
                 <version>${kotest.version}</version>
                 <scope>test</scope>
             </dependency>

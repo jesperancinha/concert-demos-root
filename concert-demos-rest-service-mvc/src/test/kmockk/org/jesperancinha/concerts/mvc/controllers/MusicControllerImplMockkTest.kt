@@ -38,10 +38,12 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
         ConcertRepository::class, ListingService::class,
         ListingRepository::class]
 )
-class MusicControllerImplMockkTest(
-    @Autowired val mvc: MockMvc,
-    @Autowired val musicService: MusicService
-) : WordSpec() {
+class MusicControllerImplMockkTest : WordSpec() {
+    @Autowired
+    lateinit var mvc: MockMvc
+
+    @Autowired
+    lateinit var musicService: MusicService
 
     @Captor
     lateinit var argumentCaptor: ArgumentCaptor<Music>

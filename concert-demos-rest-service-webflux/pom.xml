@@ -171,7 +171,6 @@
                         </goals>
                         <configuration>
                             <sourceDirs>
-                                <source>src/test/groovy</source>
                                 <source>src/test/resources</source>
                             </sourceDirs>
                         </configuration>

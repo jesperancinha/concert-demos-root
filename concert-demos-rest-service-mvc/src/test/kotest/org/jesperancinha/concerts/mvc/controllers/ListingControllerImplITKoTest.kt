@@ -22,8 +22,8 @@ import org.jesperancinha.concerts.types.Gender.FEMALE
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT
-import org.springframework.boot.web.server.LocalServerPort
 import org.springframework.core.ParameterizedTypeReference
+import org.springframework.core.env.Environment
 import org.springframework.http.HttpMethod
 import org.springframework.http.RequestEntity
 import org.springframework.test.context.ActiveProfiles
@@ -31,26 +31,30 @@ import org.springframework.web.client.RestTemplate
 import org.springframework.web.client.postForEntity
 import java.net.URI
 import java.time.LocalDateTime
+import kotlin.properties.Delegates
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @ActiveProfiles("test")
-class ListingControllerImplITKoTest(
-    @LocalServerPort
-    val port: Int,
-    @Autowired
-    val listingRepository: ListingRepository,
+class ListingControllerImplITKoTest : WordSpec() {
 
     @Autowired
-    val artistRepository: ArtistRepository,
+    lateinit var environment: Environment
 
     @Autowired
-    val musicRepository: MusicRepository,
+    lateinit var listingRepository: ListingRepository
 
     @Autowired
-    val concertRepository: ConcertRepository,
-) : WordSpec() {
+    lateinit var artistRepository: ArtistRepository
+
+    @Autowired
+    lateinit var musicRepository: MusicRepository
+
+    @Autowired
+    lateinit var concertRepository: ConcertRepository
 
     override fun extensions() = listOf(SpringExtension)
+
+    final var port by Delegates.notNull<Int>()
 
     init {
         "Spring Extension" should {
@@ -121,6 +125,7 @@ class ListingControllerImplITKoTest(
         listingRepository.deleteAll()
         artistRepository.deleteAll()
         musicRepository.deleteAll()
+        port = environment.getProperty("local.server.port")?.toInt() ?: -1
         super.beforeEach(testCase)
     }
 }

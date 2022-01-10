@@ -33,17 +33,20 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import java.time.LocalDateTime
 
 @WebMvcTest(controllers = [ListingControllerImpl::class, ListingController::class])
-@MockkBean(classes = [
-    MusicService::class, MusicRepository::class,
-    MusicRepository::class, ArtistRepository::class,
-    ArtistService::class, ConcertService::class,
-    ConcertRepository::class, ListingService::class,
-    ListingRepository::class])
-class ListingControllerImplMockkTest(
-    @Autowired val mvc: MockMvc,
-    @Autowired val listingService: ListingService,
-) : WordSpec() {
+@MockkBean(
+    classes = [
+        MusicService::class, MusicRepository::class,
+        MusicRepository::class, ArtistRepository::class,
+        ArtistService::class, ConcertService::class,
+        ConcertRepository::class, ListingService::class,
+        ListingRepository::class]
+)
+class ListingControllerImplMockkTest : WordSpec() {
+    @Autowired
+    lateinit var mvc: MockMvc
 
+    @Autowired
+    lateinit var listingService: ListingService
     override fun extensions() = listOf(SpringExtension)
 
     @Captor
@@ -54,8 +57,10 @@ class ListingControllerImplMockkTest(
             "retrieve all listings"{
                 every { listingService.getAllListings() } returns listOf()
                 val target = "/concerts/data/listings"
-                val results = mvc.perform(get(target)
-                    .accept(MediaType.APPLICATION_JSON))
+                val results = mvc.perform(
+                    get(target)
+                        .accept(MediaType.APPLICATION_JSON)
+                )
                 results.andExpect(content().string("[]"))
                 results.andExpect(status().isOk)
             }
@@ -64,8 +69,9 @@ class ListingControllerImplMockkTest(
                 val musicDto = MusicDto(
                     1L,
                     "Hey mama",
-                    HEY_MAMA)
-              val artistDto = ArtistDto(
+                    HEY_MAMA
+                )
+                val artistDto = ArtistDto(
                     name = "Nicky Minaj",
                     gender = FEMALE,
                     careerStart = 1000L,
@@ -82,9 +88,11 @@ class ListingControllerImplMockkTest(
                 )
                 val objectMapper = ObjectMapper()
                 every { listingService.createListing(listingDto) } returns listingDto
-                val results = mvc.perform(post(target)
-                    .content(objectMapper.writeValueAsString(listingDto))
-                    .contentType(MediaType.APPLICATION_JSON))
+                val results = mvc.perform(
+                    post(target)
+                        .content(objectMapper.writeValueAsString(listingDto))
+                        .contentType(MediaType.APPLICATION_JSON)
+                )
                 results
                     .andExpect(status().isOk)
                     .andExpect(content().string(objectMapper.writeValueAsString(listingDto)))

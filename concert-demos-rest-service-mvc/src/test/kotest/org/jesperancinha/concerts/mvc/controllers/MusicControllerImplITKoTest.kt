@@ -18,34 +18,37 @@ import org.jesperancinha.concerts.mvc.repos.MusicRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT
-import org.springframework.boot.web.server.LocalServerPort
 import org.springframework.core.ParameterizedTypeReference
+import org.springframework.core.env.Environment
 import org.springframework.http.HttpMethod
 import org.springframework.http.RequestEntity
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.web.client.RestTemplate
 import java.net.URI
+import kotlin.properties.Delegates
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @ActiveProfiles("test")
-class MusicControllerImplITKoTest(
-    @LocalServerPort
-    val port: Int,
+class MusicControllerImplITKoTest : WordSpec() {
 
     @Autowired
-    val listingRepository: ListingRepository,
+    lateinit var environment: Environment
 
     @Autowired
-    val artistRepository: ArtistRepository,
+    lateinit var listingRepository: ListingRepository
 
     @Autowired
-    val musicRepository: MusicRepository,
+    lateinit var artistRepository: ArtistRepository
 
     @Autowired
-    val concertRepository: ConcertRepository,
-) : WordSpec() {
+    lateinit var musicRepository: MusicRepository
+
+    @Autowired
+    lateinit var concertRepository: ConcertRepository
 
     override fun extensions() = listOf(SpringExtension)
+
+    final var port by Delegates.notNull<Int>()
 
     init {
         "Spring Extension" should {
@@ -62,8 +65,9 @@ class MusicControllerImplITKoTest(
             "create music" {
                 val uri = "http://localhost:${port}/concerts/data/musics"
                 val musicDto = MusicDto(
-                    name="Hey mama",
-                   lyrics= HEY_MAMA)
+                    name = "Hey mama",
+                    lyrics = HEY_MAMA
+                )
                 val restTemplate = RestTemplate()
                 restTemplate.postForEntity(uri, musicDto, Music::class.java)
                 val request = RequestEntity<Any>(HttpMethod.GET, URI.create(uri))
@@ -87,5 +91,7 @@ class MusicControllerImplITKoTest(
         listingRepository.deleteAll()
         artistRepository.deleteAll()
         musicRepository.deleteAll()
+        port = environment.getProperty("local.server.port")?.toInt() ?: -1
+
     }
 }

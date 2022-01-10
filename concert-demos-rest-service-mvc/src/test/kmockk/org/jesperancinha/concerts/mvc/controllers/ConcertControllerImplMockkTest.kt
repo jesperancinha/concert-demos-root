@@ -41,10 +41,13 @@ import java.time.LocalDateTime
         ConcertRepository::class, ListingService::class,
         ListingRepository::class]
 )
-class ConcertControllerImplMockkTest(
-    @Autowired val mvc: MockMvc,
-    @Autowired val concertService: ConcertService,
-) : WordSpec() {
+class ConcertControllerImplMockkTest : WordSpec() {
+
+    @Autowired
+    lateinit var mvc: MockMvc
+
+    @Autowired
+    lateinit var concertService: ConcertService
 
     override fun extensions() = listOf(SpringExtension)
 
