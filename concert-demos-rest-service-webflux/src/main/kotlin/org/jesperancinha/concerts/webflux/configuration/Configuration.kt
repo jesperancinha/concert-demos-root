@@ -1,6 +1,6 @@
 package org.jesperancinha.concerts.webflux.configuration
 
-import mu.KotlinLogging
+import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.ApplicationRunner
 import org.springframework.context.annotation.Bean
@@ -11,7 +11,7 @@ import java.io.BufferedReader
 import java.net.URISyntaxException
 
 
-private val logger = KotlinLogging.logger {}
+private val logger = LoggerFactory.getLogger(org.jesperancinha.concerts.webflux.configuration.Configuration::class.java)
 
 @Configuration
 class Configuration(
