@@ -1,10 +1,9 @@
 package org.jesperancinha.concerts.mvc.controllers
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import io.kotest.core.listeners.TestListener
+import io.kotest.core.extensions.Extension
 import io.kotest.core.spec.style.WordSpec
 import io.kotest.extensions.spring.SpringExtension
-import io.kotest.spring.SpringListener
 import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.data.ListingDto
 import org.jesperancinha.concerts.data.MusicDto
@@ -33,9 +32,11 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import java.time.LocalDateTime
 
 @WebMvcTest(controllers = [ListingControllerImpl::class, ListingController::class])
-class ListingControllerImplKoTest(
-    @Autowired val mvc: MockMvc,
-) : WordSpec() {
+class ListingControllerImplKoTest : WordSpec() {
+
+    @Autowired
+    lateinit var mvc: MockMvc
+
     @MockBean
     lateinit var musicService: MusicService
 
@@ -63,15 +64,17 @@ class ListingControllerImplKoTest(
     @Captor
     lateinit var argumentCaptor: ArgumentCaptor<Listing>
 
-    override fun listeners(): List<TestListener>  = listOf(SpringListener)
+    override fun extensions(): List<Extension> = listOf(SpringExtension)
 
     init {
         "Spring Extension" should {
             "retrieve all listings"{
                 `when`(listingService.getAllListings()).thenReturn(listOf())
                 val target = "/concerts/data/listings"
-                val results = mvc.perform(get(target)
-                    .accept(MediaType.APPLICATION_JSON))
+                val results = mvc.perform(
+                    get(target)
+                        .accept(MediaType.APPLICATION_JSON)
+                )
                 results.andExpect(content().string("[]"))
                 results.andExpect(status().isOk)
             }
@@ -80,8 +83,9 @@ class ListingControllerImplKoTest(
                 val musicDto = MusicDto(
                     1L,
                     "Hey mama",
-                    "HEY_MAMA")
-              val artistDto = ArtistDto(
+                    "HEY_MAMA"
+                )
+                val artistDto = ArtistDto(
                     name = "Nicky Minaj",
                     gender = FEMALE,
                     careerStart = 1000L,
@@ -98,9 +102,11 @@ class ListingControllerImplKoTest(
                 )
                 val objectMapper = ObjectMapper()
                 `when`(listingService.createListing(listingDto)).thenReturn(listingDto)
-                val results = mvc.perform(post(target)
-                    .content(objectMapper.writeValueAsString(listingDto))
-                    .contentType(MediaType.APPLICATION_JSON))
+                val results = mvc.perform(
+                    post(target)
+                        .content(objectMapper.writeValueAsString(listingDto))
+                        .contentType(MediaType.APPLICATION_JSON)
+                )
                 results
                     .andExpect(status().isOk)
                     .andExpect(content().string(objectMapper.writeValueAsString(listingDto)))

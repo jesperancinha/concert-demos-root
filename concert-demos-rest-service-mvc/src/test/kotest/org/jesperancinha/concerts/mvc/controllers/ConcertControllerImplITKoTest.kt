@@ -19,8 +19,8 @@ import org.jesperancinha.concerts.types.Gender.FEMALE
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT
-import org.springframework.boot.web.server.LocalServerPort
 import org.springframework.core.ParameterizedTypeReference
+import org.springframework.core.env.Environment
 import org.springframework.http.HttpMethod
 import org.springframework.http.RequestEntity
 import org.springframework.test.context.ActiveProfiles
@@ -29,21 +29,28 @@ import org.springframework.web.client.getForObject
 import org.springframework.web.client.postForEntity
 import java.net.URI
 import java.time.LocalDateTime
+import kotlin.properties.Delegates
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @ActiveProfiles("test")
-class ConcertControllerImplITKoTest(
-    @LocalServerPort
-    val port: Int,
+class ConcertControllerImplITKoTest : WordSpec() {
+
     @Autowired
-    val listingRepository: ListingRepository,
+    lateinit var environment: Environment
+
     @Autowired
-    val artistRepository: ArtistRepository,
+    lateinit var listingRepository: ListingRepository
+
     @Autowired
-    val musicRepository: MusicRepository,
+    lateinit var artistRepository: ArtistRepository
+
     @Autowired
-    val concertRepository: ConcertRepository,
-) : WordSpec() {
+    lateinit var musicRepository: MusicRepository
+
+    @Autowired
+    lateinit var concertRepository: ConcertRepository
+
+    final var port by Delegates.notNull<Int>()
 
     override fun extensions() = listOf(SpringExtension)
 
@@ -63,8 +70,9 @@ class ConcertControllerImplITKoTest(
 
                 val musicDto = MusicDto(
                     name = "Hey mama",
-                    lyrics = HEY_MAMA)
-              val artistDto = ArtistDto(
+                    lyrics = HEY_MAMA
+                )
+                val artistDto = ArtistDto(
                     name = "Nicky Minaj",
                     gender = FEMALE,
                     careerStart = 1000L,
@@ -127,6 +135,7 @@ class ConcertControllerImplITKoTest(
         listingRepository.deleteAll()
         artistRepository.deleteAll()
         musicRepository.deleteAll()
+        port = environment.getProperty("local.server.port")?.toInt() ?: -1
         super.beforeEach(testCase)
     }
 }

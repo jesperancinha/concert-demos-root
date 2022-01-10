@@ -84,6 +84,7 @@ class ListingControllerImplSpec extends Specification {
                 "Hey mama",
                 HEY_MAMA)
         def artistDto = new ArtistDto(
+                null,
                 "Nicky Minaj",
                 FEMALE,
                 1000L,

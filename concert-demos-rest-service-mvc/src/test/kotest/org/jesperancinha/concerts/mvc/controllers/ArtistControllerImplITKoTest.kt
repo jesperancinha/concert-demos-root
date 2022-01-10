@@ -18,8 +18,8 @@ import org.jesperancinha.concerts.types.Gender.AGENDER
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT
-import org.springframework.boot.web.server.LocalServerPort
 import org.springframework.core.ParameterizedTypeReference
+import org.springframework.core.env.Environment
 import org.springframework.http.HttpMethod
 import org.springframework.http.HttpStatus
 import org.springframework.http.RequestEntity
@@ -31,21 +31,28 @@ import org.springframework.web.client.postForEntity
 import java.net.URI
 import java.time.LocalDateTime
 import javax.transaction.Transactional
+import kotlin.properties.Delegates
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @ActiveProfiles("test")
-class ArtistControllerImplITKoTest(
-    @LocalServerPort
-    val port: Int,
+class ArtistControllerImplITKoTest : WordSpec() {
+
     @Autowired
-    val listingRepository: ListingRepository,
+    lateinit var environment: Environment
+
     @Autowired
-    val artistRepository: ArtistRepository,
+    lateinit var listingRepository: ListingRepository
+
     @Autowired
-    val musicRepository: MusicRepository,
+    lateinit var artistRepository: ArtistRepository
+
     @Autowired
-    val concertRepository: ConcertRepository,
-) : WordSpec() {
+    lateinit var musicRepository: MusicRepository
+
+    @Autowired
+    lateinit var concertRepository: ConcertRepository
+
+    final var port by Delegates.notNull<Int>()
 
     override fun extensions() = listOf(SpringExtension)
 
@@ -96,6 +103,7 @@ class ArtistControllerImplITKoTest(
         listingRepository.deleteAll()
         artistRepository.deleteAll()
         musicRepository.deleteAll()
+        port  = environment.getProperty("local.server.port")?.toInt() ?: -1
         super.beforeEach(testCase)
     }
 
