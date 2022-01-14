@@ -43,7 +43,7 @@
 
         <!-- Coverage -->
         <jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
-        <omni-coveragereporter-maven-plugin.version>0.0.10</omni-coveragereporter-maven-plugin.version>
+        <omni-coveragereporter-maven-plugin.version>0.0.11</omni-coveragereporter-maven-plugin.version>
         <spring-boot.version>2.6.2</spring-boot.version>
     </properties>
 
