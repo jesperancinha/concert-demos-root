@@ -216,9 +216,9 @@
   dependencies:
     tslib "^2.1.0"
 
-"@angular/language-service@~13.2.0":
-  version "13.2.0"
-  resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-13.2.0.tgz#f198f3108fade0bc329f15e8d28c335ba4f4c549"
+"@angular/language-service@~13.2.1":
+  version "13.2.1"
+  resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-13.2.1.tgz#3da6993a364225aad15252ec21f7104386fe5c69"
 
 "@angular/platform-browser-dynamic@~12.0.3":
   version "12.0.3"
