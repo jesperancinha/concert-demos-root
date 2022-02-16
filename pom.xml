@@ -39,7 +39,7 @@
         <assertj-core.version>3.22.0</assertj-core.version>
 
         <netty-all.version>4.1.74.Final</netty-all.version>
-        <postgresql.version>42.3.2</postgresql.version>
+        <postgresql.version>42.3.3</postgresql.version>
 
         <!-- Coverage -->
         <jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
