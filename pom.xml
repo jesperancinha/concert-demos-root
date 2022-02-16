@@ -27,7 +27,7 @@
 
         <!-- Tests -->
         <spock-spring.version>2.0-groovy-3.0</spock-spring.version>
-        <spock-bom.version>2.0-groovy-3.0</spock-bom.version>
+        <spock-bom.version>2.1-groovy-3.0</spock-bom.version>
         <groovy.version>3.0.8</groovy.version>
         <gmavenplus-plugin.version>1.13.1</gmavenplus-plugin.version>
         <kotest.version>5.1.0</kotest.version>
