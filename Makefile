@@ -29,3 +29,9 @@ stop:
 	docker ps -a -q --filter="name=concert-demos-rest-service-webflux" | xargs docker rm
 	docker ps -a -q --filter="name=concert-demos-rest-service-mvc" | xargs docker stop
 	docker ps -a -q --filter="name=concert-demos-rest-service-mvc" | xargs docker rm
+install-update:
+	npm i -g snyk
+	npm install -g npm-check-updates
+	cd concert-demos-gui && ncu -u && yarn
+audit:
+	cd concert-demos-gui && npm audit fix && yarn
