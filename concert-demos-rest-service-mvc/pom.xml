@@ -9,7 +9,6 @@
     </parent>
 
     <artifactId>concert-demos-rest-service-mvc</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <name>Concerts REST MVC Service</name>
     <description>Concerts rest service for Spring Boot</description>
 
@@ -99,6 +98,14 @@
         <dependency>
             <groupId>io.kotest</groupId>
             <artifactId>kotest-runner-junit5</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains.kotlinx</groupId>
+            <artifactId>kotlinx-coroutines-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains.kotlinx</groupId>
+            <artifactId>kotlinx-coroutines-core-jvm</artifactId>
         </dependency>
         <dependency>
             <groupId>io.kotest</groupId>

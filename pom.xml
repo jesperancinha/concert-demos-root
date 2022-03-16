@@ -45,6 +45,7 @@
         <jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
         <omni-coveragereporter-maven-plugin.version>0.3.0</omni-coveragereporter-maven-plugin.version>
         <spring-boot.version>2.6.4</spring-boot.version>
+        <kotlinx-coroutines.version>1.6.0</kotlinx-coroutines.version>
     </properties>
 
     <modules>
@@ -184,6 +185,16 @@
                 <artifactId>springmockk</artifactId>
                 <version>${springmockk.version}</version>
                 <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jetbrains.kotlinx</groupId>
+                <artifactId>kotlinx-coroutines-core</artifactId>
+                <version>${kotlinx-coroutines.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jetbrains.kotlinx</groupId>
+                <artifactId>kotlinx-coroutines-core-jvm</artifactId>
+                <version>${kotlinx-coroutines.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

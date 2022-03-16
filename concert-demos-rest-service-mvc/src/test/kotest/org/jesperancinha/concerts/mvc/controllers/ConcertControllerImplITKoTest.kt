@@ -5,6 +5,8 @@ import io.kotest.core.test.TestCase
 import io.kotest.extensions.spring.SpringExtension
 import io.kotest.matchers.collections.shouldBeEmpty
 import io.kotest.matchers.nulls.shouldNotBeNull
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import org.assertj.core.api.Assertions.assertThat
 import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.data.ConcertDto
@@ -130,11 +132,13 @@ class ConcertControllerImplITKoTest : WordSpec() {
         }
     }
 
-    override fun beforeEach(testCase: TestCase) {
-        concertRepository.deleteAll()
-        listingRepository.deleteAll()
-        artistRepository.deleteAll()
-        musicRepository.deleteAll()
+    override suspend fun beforeEach(testCase: TestCase) {
+        withContext(Dispatchers.IO) {
+            concertRepository.deleteAll()
+            listingRepository.deleteAll()
+            artistRepository.deleteAll()
+            musicRepository.deleteAll()
+        }
         port = environment.getProperty("local.server.port")?.toInt() ?: -1
         super.beforeEach(testCase)
     }
