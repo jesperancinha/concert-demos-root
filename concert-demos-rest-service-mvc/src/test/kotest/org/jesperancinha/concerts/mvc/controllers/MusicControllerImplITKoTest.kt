@@ -1,4 +1,4 @@
-package org.jesperancinha.concerts.mvc.controllers
+ package org.jesperancinha.concerts.mvc.controllers
 
 import io.kotest.core.spec.style.WordSpec
 import io.kotest.core.test.TestCase
@@ -8,6 +8,8 @@ import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.collections.shouldNotBeEmpty
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import org.jesperancinha.concerts.data.MusicDto
 import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.HEY_MAMA
 import org.jesperancinha.concerts.mvc.model.Music
@@ -85,12 +87,14 @@ class MusicControllerImplITKoTest : WordSpec() {
         }
     }
 
-    override fun beforeEach(testCase: TestCase) {
+    override suspend fun beforeEach(testCase: TestCase) {
         super.beforeEach(testCase)
-        concertRepository.deleteAll()
-        listingRepository.deleteAll()
-        artistRepository.deleteAll()
-        musicRepository.deleteAll()
+        withContext(Dispatchers.IO) {
+            concertRepository.deleteAll()
+            listingRepository.deleteAll()
+            artistRepository.deleteAll()
+            musicRepository.deleteAll()
+        }
         port = environment.getProperty("local.server.port")?.toInt() ?: -1
 
     }
