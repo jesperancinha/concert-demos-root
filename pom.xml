@@ -32,7 +32,7 @@
         <gmavenplus-plugin.version>1.13.1</gmavenplus-plugin.version>
         <kotest.version>5.2.3</kotest.version>
         <springmockk.version>3.1.1</springmockk.version>
-        <kotest-extensions-spring.version>1.1.0</kotest-extensions-spring.version>
+        <kotest-extensions-spring.version>1.1.1</kotest-extensions-spring.version>
         <mockk.version>1.12.3</mockk.version>
 
         <!-- Assetions -->
@@ -44,7 +44,7 @@
         <!-- Coverage -->
         <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
         <omni-coveragereporter-maven-plugin.version>0.3.0</omni-coveragereporter-maven-plugin.version>
-        <spring-boot.version>2.6.6</spring-boot.version>
+        <spring-boot.version>2.6.7</spring-boot.version>
         <kotlinx-coroutines.version>1.6.1-native-mt</kotlinx-coroutines.version>
     </properties>
 
