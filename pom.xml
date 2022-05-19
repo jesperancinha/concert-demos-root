@@ -131,6 +131,11 @@
                 <artifactId>netty-all</artifactId>
                 <version>${netty-all.version}</version>
             </dependency>
+            <dependency>
+                <groupId>io.r2dbc</groupId>
+                <artifactId>r2dbc-postgresql</artifactId>
+                <version>0.8.12.RELEASE</version>
+            </dependency>
 
             <dependency>
                 <groupId>io.mockk</groupId>
