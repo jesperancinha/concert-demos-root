@@ -44,7 +44,7 @@
         <!-- Coverage -->
         <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
         <omni-coveragereporter-maven-plugin.version>0.3.0</omni-coveragereporter-maven-plugin.version>
-        <spring-boot.version>2.6.7</spring-boot.version>
+        <spring-boot.version>2.7.0</spring-boot.version>
         <kotlinx-coroutines.version>1.6.1-native-mt</kotlinx-coroutines.version>
     </properties>
 
@@ -130,6 +130,11 @@
                 <groupId>io.netty</groupId>
                 <artifactId>netty-all</artifactId>
                 <version>${netty-all.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.r2dbc</groupId>
+                <artifactId>r2dbc-postgresql</artifactId>
+                <version>0.8.12.RELEASE</version>
             </dependency>
 
             <dependency>
