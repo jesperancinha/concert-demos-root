@@ -7,6 +7,10 @@ sdk install java 16.0.1.hs-adpt
 sdk use java 16.0.1.hs-adpt
 ```
 
+## Links
+
+- Spring Open API: [V3 API-Docs](http://localhost:8080/v3/api-docs)
+
 ## References
 
 ### Online
