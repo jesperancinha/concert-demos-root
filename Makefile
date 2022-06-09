@@ -36,3 +36,5 @@ update:
 	cd concert-demos-gui && npx browserslist --update-db && ncu -u && yarn
 audit:
 	cd concert-demos-gui && npm audit fix && yarn
+dcup-light:
+	docker-compose up -d postgres
