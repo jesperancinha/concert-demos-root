@@ -8,10 +8,10 @@ import org.jesperancinha.concerts.data.ConcertDto
 import org.jesperancinha.concerts.data.ListingDto
 import org.jesperancinha.concerts.data.MusicDto
 import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.HEY_MAMA
-import org.jesperancinha.concerts.mvc.repos.ArtistRepository
-import org.jesperancinha.concerts.mvc.repos.ConcertRepository
-import org.jesperancinha.concerts.mvc.repos.ListingRepository
-import org.jesperancinha.concerts.mvc.repos.MusicRepository
+import org.jesperancinha.concerts.mvc.daos.ArtistRepository
+import org.jesperancinha.concerts.mvc.daos.ConcertRepository
+import org.jesperancinha.concerts.mvc.daos.ListingRepository
+import org.jesperancinha.concerts.mvc.daos.MusicRepository
 import org.jesperancinha.concerts.types.Gender.FEMALE
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -63,15 +63,15 @@ class ConcertControllerImplITTest(
             name = "Hey mama",
             lyrics = HEY_MAMA
         )
-              val artistDto = ArtistDto(
-                    name = "Nicky Minaj",
-                    gender = FEMALE,
-                    careerStart = 1000L,
-                    birthDate = LocalDateTime.now().toString(),
-                    birthCity = "Port of Spain",
-                    country = "Trinidad en Tobago",
-                    keywords = "Rap"
-                )
+        val artistDto = ArtistDto(
+            name = "Nicky Minaj",
+            gender = FEMALE,
+            careerStart = 1000L,
+            birthDate = LocalDateTime.now().toString(),
+            birthCity = "Port of Spain",
+            country = "Trinidad en Tobago",
+            keywords = "Rap"
+        )
         val restTemplate = RestTemplate()
 
 

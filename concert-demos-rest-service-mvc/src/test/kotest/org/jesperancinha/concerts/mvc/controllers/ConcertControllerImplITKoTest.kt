@@ -13,10 +13,10 @@ import org.jesperancinha.concerts.data.ConcertDto
 import org.jesperancinha.concerts.data.ListingDto
 import org.jesperancinha.concerts.data.MusicDto
 import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.HEY_MAMA
-import org.jesperancinha.concerts.mvc.repos.ArtistRepository
-import org.jesperancinha.concerts.mvc.repos.ConcertRepository
-import org.jesperancinha.concerts.mvc.repos.ListingRepository
-import org.jesperancinha.concerts.mvc.repos.MusicRepository
+import org.jesperancinha.concerts.mvc.daos.ArtistRepository
+import org.jesperancinha.concerts.mvc.daos.ConcertRepository
+import org.jesperancinha.concerts.mvc.daos.ListingRepository
+import org.jesperancinha.concerts.mvc.daos.MusicRepository
 import org.jesperancinha.concerts.types.Gender.FEMALE
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest

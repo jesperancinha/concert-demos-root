@@ -1,8 +1,8 @@
 package org.jesperancinha.concerts.mvc.services
 
 import org.jesperancinha.concerts.data.ConcertDto
-import org.jesperancinha.concerts.mvc.converters.ConcertConverter
-import org.jesperancinha.concerts.mvc.repos.ConcertRepository
+import org.jesperancinha.concerts.mvc.daos.ConcertConverter
+import org.jesperancinha.concerts.mvc.daos.ConcertRepository
 import org.springframework.stereotype.Service
 
 @Service

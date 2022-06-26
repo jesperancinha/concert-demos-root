@@ -6,11 +6,11 @@ import io.kotest.matchers.collections.shouldNotBeEmpty
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import org.jesperancinha.concerts.data.ArtistDto
-import org.jesperancinha.concerts.mvc.model.Artist
-import org.jesperancinha.concerts.mvc.repos.ArtistRepository
-import org.jesperancinha.concerts.mvc.repos.ConcertRepository
-import org.jesperancinha.concerts.mvc.repos.ListingRepository
-import org.jesperancinha.concerts.mvc.repos.MusicRepository
+import org.jesperancinha.concerts.mvc.daos.Artist
+import org.jesperancinha.concerts.mvc.daos.ArtistRepository
+import org.jesperancinha.concerts.mvc.daos.ConcertRepository
+import org.jesperancinha.concerts.mvc.daos.ListingRepository
+import org.jesperancinha.concerts.mvc.daos.MusicRepository
 import org.jesperancinha.concerts.types.Gender.AGENDER
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test

@@ -6,10 +6,8 @@ import io.kotest.extensions.spring.SpringExtension
 import io.kotest.matchers.collections.shouldBeEmpty
 import io.kotest.matchers.shouldNotBe
 import io.mockk.every
-import io.mockk.impl.annotations.MockK
-import org.jesperancinha.concerts.mvc.repos.ArtistRepository
+import org.jesperancinha.concerts.mvc.daos.ArtistRepository
 import org.jesperancinha.concerts.mvc.services.ArtistServiceImpl
-import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.test.context.ContextConfiguration
 
 @ContextConfiguration(classes = [(ArtistServiceImpl::class)])

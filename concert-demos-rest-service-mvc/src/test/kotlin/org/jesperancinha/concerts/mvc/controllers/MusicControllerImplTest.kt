@@ -4,11 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import io.kotest.matchers.shouldBe
 import org.jesperancinha.concerts.data.MusicDto
 import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.HEY_MAMA
-import org.jesperancinha.concerts.mvc.model.Music
-import org.jesperancinha.concerts.mvc.repos.ArtistRepository
-import org.jesperancinha.concerts.mvc.repos.ConcertRepository
-import org.jesperancinha.concerts.mvc.repos.ListingRepository
-import org.jesperancinha.concerts.mvc.repos.MusicRepository
+import org.jesperancinha.concerts.mvc.daos.*
 import org.jesperancinha.concerts.mvc.services.ArtistService
 import org.jesperancinha.concerts.mvc.services.ConcertService
 import org.jesperancinha.concerts.mvc.services.ListingService
@@ -63,8 +59,10 @@ class MusicControllerImplTest(
     fun `retrieve all music`() {
         `when`(musicService.getAllMusics()).thenReturn(listOf())
         val target = "/concerts/data/musics"
-        val results = mvc.perform(get(target)
-            .accept(MediaType.APPLICATION_JSON))
+        val results = mvc.perform(
+            get(target)
+                .accept(MediaType.APPLICATION_JSON)
+        )
         results.andExpect(content().string("[]"))
         results.andExpect(status().isOk())
     }
@@ -75,12 +73,15 @@ class MusicControllerImplTest(
         val musicDto = MusicDto(
             1L,
             "Hey mama",
-            HEY_MAMA)
+            HEY_MAMA
+        )
         `when`(musicService.createMusic(musicDto)).thenReturn(musicDto)
         val objectMapper = ObjectMapper()
-        val results = mvc.perform(post(target)
-            .content(objectMapper.writeValueAsString(musicDto))
-            .contentType(MediaType.APPLICATION_JSON))
+        val results = mvc.perform(
+            post(target)
+                .content(objectMapper.writeValueAsString(musicDto))
+                .contentType(MediaType.APPLICATION_JSON)
+        )
         results.andExpect(status().isOk)
         val contentAsString = results.andReturn().response.contentAsString
 

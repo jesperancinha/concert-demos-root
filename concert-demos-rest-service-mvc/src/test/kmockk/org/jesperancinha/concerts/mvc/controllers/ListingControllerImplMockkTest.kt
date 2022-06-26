@@ -10,11 +10,11 @@ import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.data.ListingDto
 import org.jesperancinha.concerts.data.MusicDto
 import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.HEY_MAMA
-import org.jesperancinha.concerts.mvc.model.Listing
-import org.jesperancinha.concerts.mvc.repos.ArtistRepository
-import org.jesperancinha.concerts.mvc.repos.ConcertRepository
-import org.jesperancinha.concerts.mvc.repos.ListingRepository
-import org.jesperancinha.concerts.mvc.repos.MusicRepository
+import org.jesperancinha.concerts.mvc.daos.Listing
+import org.jesperancinha.concerts.mvc.daos.ArtistRepository
+import org.jesperancinha.concerts.mvc.daos.ConcertRepository
+import org.jesperancinha.concerts.mvc.daos.ListingRepository
+import org.jesperancinha.concerts.mvc.daos.MusicRepository
 import org.jesperancinha.concerts.mvc.services.ArtistService
 import org.jesperancinha.concerts.mvc.services.ConcertService
 import org.jesperancinha.concerts.mvc.services.ListingService
