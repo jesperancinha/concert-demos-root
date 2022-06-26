@@ -38,3 +38,13 @@ audit:
 	cd concert-demos-gui && npm audit fix && yarn
 dcup-light:
 	docker-compose up -d postgres
+dcup: dcd
+	docker-compose up -d --build --remove-orphans
+dcd:
+	docker-compose down
+log-mvc:
+	docker-compose logs -f mvc
+log-webflux:
+	docker-compose logs -f webflux
+log-postgres:
+	docker-compose logs -f postgres

@@ -38,6 +38,10 @@
             <artifactId>spring-boot-starter-webflux</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.fasterxml.jackson.module</groupId>
             <artifactId>jackson-module-kotlin</artifactId>
         </dependency>
@@ -127,6 +131,7 @@
     </dependencies>
 
     <build>
+        <finalName>${artifactId}</finalName>
         <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
         <resources>
             <resource>
@@ -229,7 +234,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <addResources>true</addResources>
-                    <mainClass>org.jesperancinha.concerts.webflux.ConcertDemosWebFluxApplication</mainClass>
+                    <mainClass>org.jesperancinha.concerts.webflux.ConcertDemosWebFluxApplicationKt</mainClass>
                 </configuration>
                 <executions>
                     <execution>

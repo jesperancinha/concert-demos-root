@@ -46,6 +46,7 @@
         <omni-coveragereporter-maven-plugin.version>0.3.0</omni-coveragereporter-maven-plugin.version>
         <spring-boot.version>2.7.0</spring-boot.version>
         <kotlinx-coroutines.version>1.6.3-native-mt</kotlinx-coroutines.version>
+        <springdoc-openapi-ui.version>1.6.9</springdoc-openapi-ui.version>
     </properties>
 
     <modules>
@@ -69,6 +70,11 @@
                 <version>${spock-bom.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-ui</artifactId>
+                <version>${springdoc-openapi-ui.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.assertj</groupId>

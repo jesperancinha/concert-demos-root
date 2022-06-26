@@ -4,6 +4,7 @@
 
 set -e
 set -u
+initdb --username postgres --pgdata=/var/lib/postgresql/concerts-data
 
 function create_user_and_database() {
 	local database=$1
