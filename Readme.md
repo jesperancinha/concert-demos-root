@@ -49,7 +49,7 @@ We will also look at how to work with R2DBC and make comparisons between a typic
 This project is also the official support project of my article on medium:
 
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/medium-20.png "Medium")](https://medium.com/swlh/comparing-webflux-and-spring-mvc-with-jmeter-79dc134c3c04)
-[Comparing WebFlux and Spring MVC with JMeter  - A Concert Demos Example](https://medium.com/swlh/comparing-webflux-and-spring-mvc-with-jmeter-79dc134c3c04)
+[Comparing WebFlux and Spring MVC with JMeter - A Concert Demos Example](https://medium.com/swlh/comparing-webflux-and-spring-mvc-with-jmeter-79dc134c3c04)
 
 <div align="center">
       <a title="Comparing WebFlux and Spring MVC with JMeter - A Concert Demos Example" href="https://medium.com/swlh/comparing-webflux-and-spring-mvc-with-jmeter-79dc134c3c04">
@@ -66,9 +66,11 @@ For further developments please have a look at branch [feature/research_and_deve
 
 ---
 
-## Detail
+## Structure
 
-- concert-demos-rest-service - WebFlux implementation of the Sprig Boot Back-End process for the concerts website.
+- [concert-demos-rest-service-webflux](./concert-demos-rest-service-webflux) - WebFlux implementation of the Sprig Boot Back-End process for the concerts website.
+- [concert-demos-rest-service-mvc](./concert-demos-rest-service-mvc) - MVC blocking implementation of the Sprig Boot Back-End process for the concerts website.
+- [concert-demos-data](./concert-demos-data) - Common data model
 
 ---
 
@@ -106,9 +108,7 @@ make build-docker
 make dcup
 ```
 
->Always have Docker Environment running
-
-
+> Always have Docker Environment running
 
 #### Swagger tests
 
