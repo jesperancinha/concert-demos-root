@@ -64,9 +64,13 @@ Check the [Issues](./issues.md) document for more details
 
 For further developments please have a look at branch [feature/research_and_development]()
 
+---
+
 ## Detail
 
 - concert-demos-rest-service - WebFlux implementation of the Sprig Boot Back-End process for the concerts website.
+
+---
 
 ## JMeter
 
@@ -74,23 +78,37 @@ Part of this project is to perform benchmarking tests. For this, we will be usin
 
 Please find all JMeter files in [jmeter](jmeter)
 
+---
+
 ## Docker images
 
 This project makes use of the following docker images:
 
-[![dockeri.co](https://dockeri.co/image/adoptopenjdk/openjdk16)](https://hub.docker.com/r/adoptopenjdk/openjdk16)
+[![dockeri.co](https://dockeri.co/image/openjdk)](https://hub.docker.com/r/library/openjdk)
 
 [![dockeri.co](https://dockeri.co/image/library/postgres)](https://hub.docker.com/r/library/postgres)
+
+---
 
 ## Test Data
 
 #### Star Running
 
+- To build from scratch:
+
+```shell
+make build-docker
+```
+
+- To just run:
+
 ```shell
 make dcup
 ```
 
->Always have Docker running
+>Always have Docker Environment running
+
+
 
 #### Swagger tests
 

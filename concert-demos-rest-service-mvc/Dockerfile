@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk16
+FROM openjdk:17-slim-buster
 
 ENV runningFolder /usr/local/bin/
 
