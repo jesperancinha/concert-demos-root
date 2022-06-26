@@ -8,7 +8,7 @@ import org.jesperancinha.concerts.webflux.repos.ConcertRepository
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
-import reactor.core.publisher.toMono
+import reactor.kotlin.core.publisher.toMono
 
 @Service
 class ConcertServiceImpl(

@@ -89,7 +89,7 @@ make dcup
 You can make tests for this application using the Swagger UI at:
 
 - [MVC Non-Reactive Solution (blocking) Swagger UI](http://localhost:8080/swagger-ui/index.html)
-- [WebFlux MVC Reactive Solution (non-blocking) Swagger UI](http://localhost:8081/swagger-ui/index.html)
+- [WebFlux MVC Reactive Solution (non-blocking) Swagger UI](http://localhost:8081/webjars/swagger-ui/index.html)
 
 #### Manual Tests
 

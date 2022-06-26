@@ -17,10 +17,8 @@ docker-databases: stop local
 build-images:
 	docker build concert-demos-rest-service-mvc/. -t concert-demos-rest-service-mvc
 	docker build concert-demos-rest-service-webflux/. -t concert-demos-rest-service-webflux
-build-docker: stop no-test
-	docker-compose up -d --build --remove-orphans
-stop:
-	docker-compose down
+build-docker: stop no-test dcup
+stop: dcd
 	docker ps -a -q --filter="name=postgres" | xargs docker stop
 	docker ps -a -q --filter="name=postgres" | xargs docker rm
 	docker ps -a -q --filter="name=postgres-image" | xargs docker stop
