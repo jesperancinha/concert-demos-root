@@ -49,7 +49,15 @@ We will also look at how to work with R2DBC and make comparisons between a typic
 This project is also the official support project of my article on medium:
 
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/medium-20.png "Medium")](https://medium.com/swlh/comparing-webflux-and-spring-mvc-with-jmeter-79dc134c3c04)
-[Comparing WebFlux and Spring MVC with JMeter](https://medium.com/swlh/comparing-webflux-and-spring-mvc-with-jmeter-79dc134c3c04)
+[Comparing WebFlux and Spring MVC with JMeter  - A Concert Demos Example](https://medium.com/swlh/comparing-webflux-and-spring-mvc-with-jmeter-79dc134c3c04)
+
+<div align="center">
+      <a title="Comparing WebFlux and Spring MVC with JMeter - A Concert Demos Example" href="https://medium.com/swlh/comparing-webflux-and-spring-mvc-with-jmeter-79dc134c3c04">
+     <img 
+          src="./docs/images/articles.concerts.intro.jpeg" 
+          style="width:100%;">
+      </a>
+</div>
 
 Note that for the moment I'm keeping Kotest at version 4.4.0. This is to avoid an issue with MPP implementation.
 Check the [Issues](./issues.md) document for more details
