@@ -4,11 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import io.kotest.core.spec.style.WordSpec
 import io.kotest.extensions.spring.SpringExtension
 import org.jesperancinha.concerts.data.ArtistDto
-import org.jesperancinha.concerts.mvc.model.Artist
-import org.jesperancinha.concerts.mvc.repos.ArtistRepository
-import org.jesperancinha.concerts.mvc.repos.ConcertRepository
-import org.jesperancinha.concerts.mvc.repos.ListingRepository
-import org.jesperancinha.concerts.mvc.repos.MusicRepository
+import org.jesperancinha.concerts.mvc.daos.*
 import org.jesperancinha.concerts.mvc.services.ArtistService
 import org.jesperancinha.concerts.mvc.services.ConcertService
 import org.jesperancinha.concerts.mvc.services.ListingService
@@ -68,8 +64,10 @@ class ArtistControllerImplKoTest(
             "retrieve all artists" {
                 `when`(artistService.getAllArtists()).thenReturn(listOf())
                 val target = "/concerts/data/artists"
-                val results = mvc.perform(get(target)
-                    .accept(MediaType.APPLICATION_JSON))
+                val results = mvc.perform(
+                    get(target)
+                        .accept(MediaType.APPLICATION_JSON)
+                )
                 results.andExpect(content().string("[]"))
                 results.andExpect(status().isOk)
             }
@@ -85,9 +83,11 @@ class ArtistControllerImplKoTest(
                     keywords = "test"
                 )
                 val objectMapper = ObjectMapper()
-                val results = mvc.perform(post(target)
-                    .content(objectMapper.writeValueAsString(artist))
-                    .contentType(MediaType.APPLICATION_JSON))
+                val results = mvc.perform(
+                    post(target)
+                        .content(objectMapper.writeValueAsString(artist))
+                        .contentType(MediaType.APPLICATION_JSON)
+                )
                 results.andExpect(status().isOk)
                 results.andExpect(content().string(""))
             }

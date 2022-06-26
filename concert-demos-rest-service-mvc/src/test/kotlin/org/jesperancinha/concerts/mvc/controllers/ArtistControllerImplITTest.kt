@@ -6,18 +6,18 @@ import io.kotest.matchers.collections.shouldNotBeEmpty
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import org.jesperancinha.concerts.data.ArtistDto
-import org.jesperancinha.concerts.mvc.model.Artist
-import org.jesperancinha.concerts.mvc.repos.ArtistRepository
-import org.jesperancinha.concerts.mvc.repos.ConcertRepository
-import org.jesperancinha.concerts.mvc.repos.ListingRepository
-import org.jesperancinha.concerts.mvc.repos.MusicRepository
+import org.jesperancinha.concerts.mvc.daos.Artist
+import org.jesperancinha.concerts.mvc.daos.ArtistRepository
+import org.jesperancinha.concerts.mvc.daos.ConcertRepository
+import org.jesperancinha.concerts.mvc.daos.ListingRepository
+import org.jesperancinha.concerts.mvc.daos.MusicRepository
 import org.jesperancinha.concerts.types.Gender.AGENDER
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT
-import org.springframework.boot.web.server.LocalServerPort
+import org.springframework.boot.test.web.server.LocalServerPort
 import org.springframework.core.ParameterizedTypeReference
 import org.springframework.http.HttpMethod
 import org.springframework.http.HttpStatus
@@ -35,6 +35,7 @@ import javax.transaction.Transactional
 @ActiveProfiles("test")
 class ArtistControllerImplITTest(
     @LocalServerPort
+
     val port: Int,
     @Autowired
     val listingRepository: ListingRepository,

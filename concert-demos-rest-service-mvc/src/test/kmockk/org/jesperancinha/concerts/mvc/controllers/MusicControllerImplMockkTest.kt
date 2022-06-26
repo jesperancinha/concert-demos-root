@@ -9,11 +9,7 @@ import io.mockk.every
 import io.mockk.verify
 import org.jesperancinha.concerts.data.MusicDto
 import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.HEY_MAMA
-import org.jesperancinha.concerts.mvc.model.Music
-import org.jesperancinha.concerts.mvc.repos.ArtistRepository
-import org.jesperancinha.concerts.mvc.repos.ConcertRepository
-import org.jesperancinha.concerts.mvc.repos.ListingRepository
-import org.jesperancinha.concerts.mvc.repos.MusicRepository
+import org.jesperancinha.concerts.mvc.daos.*
 import org.jesperancinha.concerts.mvc.services.ArtistService
 import org.jesperancinha.concerts.mvc.services.ConcertService
 import org.jesperancinha.concerts.mvc.services.ListingService
@@ -63,7 +59,7 @@ class MusicControllerImplMockkTest : WordSpec() {
                 results.andExpect(status().isOk)
             }
 
-            "create music"{
+            "create music" {
                 val target = "/concerts/data/musics"
                 val musicDto = MusicDto(
                     1L,

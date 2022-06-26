@@ -49,17 +49,28 @@ We will also look at how to work with R2DBC and make comparisons between a typic
 This project is also the official support project of my article on medium:
 
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/medium-20.png "Medium")](https://medium.com/swlh/comparing-webflux-and-spring-mvc-with-jmeter-79dc134c3c04)
-[Comparing WebFlux and Spring MVC with JMeter](https://medium.com/swlh/comparing-webflux-and-spring-mvc-with-jmeter-79dc134c3c04)
+[Comparing WebFlux and Spring MVC with JMeter  - A Concert Demos Example](https://medium.com/swlh/comparing-webflux-and-spring-mvc-with-jmeter-79dc134c3c04)
 
+<div align="center">
+      <a title="Comparing WebFlux and Spring MVC with JMeter - A Concert Demos Example" href="https://medium.com/swlh/comparing-webflux-and-spring-mvc-with-jmeter-79dc134c3c04">
+     <img 
+          src="./docs/images/articles.concerts.intro.jpeg" 
+          style="width:100%;">
+      </a>
+</div>
 
 Note that for the moment I'm keeping Kotest at version 4.4.0. This is to avoid an issue with MPP implementation.
 Check the [Issues](./issues.md) document for more details
 
 For further developments please have a look at branch [feature/research_and_development]()
 
+---
+
 ## Detail
 
--  concert-demos-rest-service - WebFlux implementation of the Sprig Boot Back-End process for the concerts website.
+- concert-demos-rest-service - WebFlux implementation of the Sprig Boot Back-End process for the concerts website.
+
+---
 
 ## JMeter
 
@@ -67,17 +78,50 @@ Part of this project is to perform benchmarking tests. For this, we will be usin
 
 Please find all JMeter files in [jmeter](jmeter)
 
+---
+
 ## Docker images
 
 This project makes use of the following docker images:
 
-[![dockeri.co](https://dockeri.co/image/adoptopenjdk/openjdk16)](https://hub.docker.com/r/adoptopenjdk/openjdk16)
+[![dockeri.co](https://dockeri.co/image/openjdk)](https://hub.docker.com/r/library/openjdk)
 
 [![dockeri.co](https://dockeri.co/image/library/postgres)](https://hub.docker.com/r/library/postgres)
 
+---
+
 ## Test Data
 
-* [`http://localhost:${port}/concerts/data/musics`](Readme.md)
+#### Star Running
+
+- To build from scratch:
+
+```shell
+make build-docker
+```
+
+- To just run:
+
+```shell
+make dcup
+```
+
+>Always have Docker Environment running
+
+
+
+#### Swagger tests
+
+You can make tests for this application using the Swagger UI at:
+
+- [MVC Non-Reactive Solution (blocking) Swagger UI](http://localhost:8080/swagger-ui/index.html)
+- [WebFlux MVC Reactive Solution (non-blocking) Swagger UI](http://localhost:8081/webjars/swagger-ui/index.html)
+
+#### Manual Tests
+
+* [http://localhost:8080/concerts/data/musics](http://localhost:8080/concerts/data/musics)
+
+- `POST` payload example:
 
 ```json
 {
@@ -86,7 +130,9 @@ This project makes use of the following docker images:
 }
 ```
 
-* [`http://localhost:${port}/concerts/data/artists`](Readme.md):
+* [http://localhost:${port}/concerts/data/artists](http://localhost:${port}/concerts/data/artists):
+
+- `POST` payload example:
 
 ```json
 {
@@ -103,81 +149,8 @@ This project makes use of the following docker images:
 ## Java version
 
 ```bash
-sdk install java 16.0.1.hs-adpt
-sdk use java 16.0.1.hs-adpt
-```
-
-## Hints & Tricks
-
--   Fix PostgreSQL:
-
-```shell script
-sudo chown -R postgres:postgres /var/run/postgresql
-```
-
--   Find Postgres configuration file:
-
-```shell script
-psql -U postgres -c 'SHOW config_file'
-```
-
--   Change connections properties:
-
-```properties
-max_connections=1000
-shared_buffers=512MB
-```
-
--   Restart Postgresql
-
-```shell script
-service postgresql restart
-```
-
--   Possible postgres locations:
-
-```text
-/etc/postgresql/9.5/main/postgresql.conf
-/var/lib/pgsql/data/postgresql.conf
-```
-
--   Start docker machine
-
-```shell script
-service docker start
-```
-
--   Git tag change
-
-```bash
-git tag new-tag old-tag
-git tag -d old-tag
-git push origin :refs/tags/old-tag
-git push --tags
-git pull --prune --tags
-```
-
-## NodeJS Update NPM Update
-
-```bash
-npm audit fix
-npm install npm@latest -g
-npm update -g
-npm install -g npm-check-updates
-ncu -u
-npm update
-npm update --legacy-peer-deps
-yarn install
-```
-
-Others
-
-```bash
-npm install -g npm@7.16.0
-```
-
-```bash
-javap
+sdk install 17-open
+sdk use 17-open
 ```
 
 ## Coverage report Graphs
@@ -193,30 +166,31 @@ javap
 ---
 
 ## [Roadmap to v2.0.0](./ReviewLogs.md)
--   Kotest, Mockk, Testcontainers and Coverage
--   Show clearer example
--   Update all versions
--   Separate container for all processes
--   Change context
--   Migrate experimentatl modules to R2DBC
--   Make reference to [Locust](https://locust.io/)
--   Complete GUI for clarity examples
--   Cleanup unnecessary Junit 5 libraries and update kotlin for a stricter version
+
+- Kotest, Mockk, Testcontainers and Coverage
+- Show clearer example
+- Update all versions
+- Separate container for all processes
+- Change context
+- Migrate experimentatl modules to R2DBC
+- Make reference to [Locust](https://locust.io/)
+- Complete GUI for clarity examples
+- Cleanup unnecessary Junit 5 libraries and update kotlin for a stricter version
 
 ## References
 
--   [Reactive Manifesto](https://www.reactivemanifesto.org/)
--   [Spring Boot Kotlin](https://spring.io/guides/tutorials/spring-boot-kotlin/)
--   [Reactive relational databases with R2DBC and Spring](https://dimitr.im/reactive-relational-databases-r2dbc-spring)
--   [R2DBC](https://r2dbc.io/)
--   [Lesson 11 - Date and Time in Kotlin - Creating and formatting](https://www.ict.social/kotlin/oop/date-and-time-in-kotlin-creating-and-formatting)
--   [Spock Example](https://github.com/spockframework/spock-example)
--   [JMeter](http://jmeter.apache.org/)
--   [JMeter's Concurrency Thread Group](https://jmeter-plugins.org/wiki/ConcurrencyThreadGroup/)
--   [JMeter's Plugin Manager](https://jmeter-plugins.org/wiki/PluginsManager/)
--   [Blaze Meter](http://blazemeter.com/?utm_source=jmplinnerpages&utm_medium=cpc&utm_content=jmpininnerpgs&utm_campaign=JMeter%2BPlug%2BIn%2BWiki)
--   [How to increase the max connections in postgres?](https://stackoverflow.com/questions/30778015/how-to-increase-the-max-connections-in-postgres)
--   [Where are my postgres *.conf files?](https://stackoverflow.com/questions/3602450/where-are-my-postgres-conf-files)
+- [Reactive Manifesto](https://www.reactivemanifesto.org/)
+- [Spring Boot Kotlin](https://spring.io/guides/tutorials/spring-boot-kotlin/)
+- [Reactive relational databases with R2DBC and Spring](https://dimitr.im/reactive-relational-databases-r2dbc-spring)
+- [R2DBC](https://r2dbc.io/)
+- [Lesson 11 - Date and Time in Kotlin - Creating and formatting](https://www.ict.social/kotlin/oop/date-and-time-in-kotlin-creating-and-formatting)
+- [Spock Example](https://github.com/spockframework/spock-example)
+- [JMeter](http://jmeter.apache.org/)
+- [JMeter's Concurrency Thread Group](https://jmeter-plugins.org/wiki/ConcurrencyThreadGroup/)
+- [JMeter's Plugin Manager](https://jmeter-plugins.org/wiki/PluginsManager/)
+- [Blaze Meter](http://blazemeter.com/?utm_source=jmplinnerpages&utm_medium=cpc&utm_content=jmpininnerpgs&utm_campaign=JMeter%2BPlug%2BIn%2BWiki)
+- [How to increase the max connections in postgres?](https://stackoverflow.com/questions/30778015/how-to-increase-the-max-connections-in-postgres)
+- [Where are my postgres *.conf files?](https://stackoverflow.com/questions/3602450/where-are-my-postgres-conf-files)
 
 ## About me 👨🏽‍💻🚀🏳️‍🌈
 

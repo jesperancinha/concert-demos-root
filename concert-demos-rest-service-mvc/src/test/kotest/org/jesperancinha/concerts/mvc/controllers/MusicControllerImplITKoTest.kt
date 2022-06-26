@@ -12,11 +12,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.jesperancinha.concerts.data.MusicDto
 import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.HEY_MAMA
-import org.jesperancinha.concerts.mvc.model.Music
-import org.jesperancinha.concerts.mvc.repos.ArtistRepository
-import org.jesperancinha.concerts.mvc.repos.ConcertRepository
-import org.jesperancinha.concerts.mvc.repos.ListingRepository
-import org.jesperancinha.concerts.mvc.repos.MusicRepository
+import org.jesperancinha.concerts.mvc.daos.*
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT
@@ -29,7 +25,7 @@ import org.springframework.web.client.RestTemplate
 import java.net.URI
 import kotlin.properties.Delegates
 
-@SpringBootTest(webEnvironment = RANDOM_PORT)
+ @SpringBootTest(webEnvironment = RANDOM_PORT)
 @ActiveProfiles("test")
 class MusicControllerImplITKoTest : WordSpec() {
 

@@ -11,11 +11,7 @@ import io.kotest.matchers.shouldNotBe
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.jesperancinha.concerts.data.ArtistDto
-import org.jesperancinha.concerts.mvc.model.Artist
-import org.jesperancinha.concerts.mvc.repos.ArtistRepository
-import org.jesperancinha.concerts.mvc.repos.ConcertRepository
-import org.jesperancinha.concerts.mvc.repos.ListingRepository
-import org.jesperancinha.concerts.mvc.repos.MusicRepository
+import org.jesperancinha.concerts.mvc.daos.*
 import org.jesperancinha.concerts.types.Gender.AGENDER
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -107,7 +103,7 @@ class ArtistControllerImplITKoTest : WordSpec() {
             artistRepository.deleteAll()
             musicRepository.deleteAll()
         }
-        port  = environment.getProperty("local.server.port")?.toInt() ?: -1
+        port = environment.getProperty("local.server.port")?.toInt() ?: -1
         super.beforeEach(testCase)
     }
 

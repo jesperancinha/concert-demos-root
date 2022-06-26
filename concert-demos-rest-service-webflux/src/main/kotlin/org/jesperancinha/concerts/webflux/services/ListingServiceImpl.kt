@@ -13,8 +13,8 @@ import org.jesperancinha.concerts.webflux.repos.MusicRepository
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
-import reactor.core.publisher.toMono
 import reactor.core.scheduler.Schedulers
+import reactor.kotlin.core.publisher.toMono
 
 @Service
 class ListingServiceImpl(
@@ -88,6 +88,6 @@ class ListingServiceImpl(
                         listingDto.musicDtos?.add(it)
                         listingDto
                     }
-            }
+            }.toMono()
     }
 }

@@ -19,6 +19,31 @@ npm cache clean --force
 npm install -g @angular/cli
 ```
 
+## NodeJS Update NPM Update
+
+```bash
+npm audit fix
+npm install npm@latest -g
+npm update -g
+npm install -g npm-check-updates
+ncu -u
+npm update
+npm update --legacy-peer-deps
+yarn install
+```
+
+Others
+
+```bash
+npm install -g npm@7.16.0
+```
+
+```bash
+javap
+```
+
+---
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.3.
 
 ## Development server
