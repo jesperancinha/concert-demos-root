@@ -47,6 +47,7 @@
         <spring-boot.version>2.7.1</spring-boot.version>
         <kotlinx-coroutines.version>1.6.3-native-mt</kotlinx-coroutines.version>
         <springdoc-openapi.version>1.6.9</springdoc-openapi.version>
+        <kotlinx-coroutines-debug.version>1.6.3</kotlinx-coroutines-debug.version>
     </properties>
 
     <modules>
@@ -211,6 +212,20 @@
                 <groupId>org.jetbrains.kotlinx</groupId>
                 <artifactId>kotlinx-coroutines-core-jvm</artifactId>
                 <version>${kotlinx-coroutines.version}</version>
+            </dependency>
+            <!-- This Dependency is added as a workaround for the following issue -->
+            <!--- https://github.com/Kotlin/kotlinx.coroutines/issues/3334 -->
+            <dependency>
+                <groupId>org.jetbrains.kotlinx</groupId>
+                <artifactId>kotlinx-coroutines-debug</artifactId>
+                <version>${kotlinx-coroutines-debug.version}</version>
+                <scope>test</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.jetbrains.kotlinx</groupId>
+                        <artifactId>kotlinx-coroutines-bom</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
         </dependencies>
     </dependencyManagement>
