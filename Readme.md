@@ -68,9 +68,9 @@ For further developments please have a look at branch [feature/research_and_deve
 
 ## Structure
 
-- [concert-demos-rest-service-webflux](./concert-demos-rest-service-webflux) - WebFlux implementation of the Sprig Boot Back-End process for the concerts website.
-- [concert-demos-rest-service-mvc](./concert-demos-rest-service-mvc) - MVC blocking implementation of the Sprig Boot Back-End process for the concerts website.
-- [concert-demos-data](./concert-demos-data) - Common data model
+-   [concert-demos-rest-service-webflux](./concert-demos-rest-service-webflux) - WebFlux implementation of the Sprig Boot Back-End process for the concerts website.
+-   [concert-demos-rest-service-mvc](./concert-demos-rest-service-mvc) - MVC blocking implementation of the Sprig Boot Back-End process for the concerts website.
+-   [concert-demos-data](./concert-demos-data) - Common data model
 
 ---
 
@@ -96,13 +96,13 @@ This project makes use of the following docker images:
 
 #### Star Running
 
-- To build from scratch:
+-   To build from scratch:
 
 ```shell
 make build-docker
 ```
 
-- To just run:
+-   To just run:
 
 ```shell
 make dcup
@@ -114,8 +114,8 @@ make dcup
 
 You can make tests for this application using the Swagger UI at:
 
-- [MVC Non-Reactive Solution (blocking) Swagger UI](http://localhost:8080/swagger-ui/index.html)
-- [WebFlux MVC Reactive Solution (non-blocking) Swagger UI](http://localhost:8081/webjars/swagger-ui/index.html)
+-   [MVC Non-Reactive Solution (blocking) Swagger UI](http://localhost:8080/swagger-ui/index.html)
+-   [WebFlux MVC Reactive Solution (non-blocking) Swagger UI](http://localhost:8081/webjars/swagger-ui/index.html)
 
 #### Manual Tests
 
@@ -167,18 +167,18 @@ sdk use 17-open
 
 ## References
 
-- [Reactive Manifesto](https://www.reactivemanifesto.org/)
-- [Spring Boot Kotlin](https://spring.io/guides/tutorials/spring-boot-kotlin/)
-- [Reactive relational databases with R2DBC and Spring](https://dimitr.im/reactive-relational-databases-r2dbc-spring)
-- [R2DBC](https://r2dbc.io/)
-- [Lesson 11 - Date and Time in Kotlin - Creating and formatting](https://www.ict.social/kotlin/oop/date-and-time-in-kotlin-creating-and-formatting)
-- [Spock Example](https://github.com/spockframework/spock-example)
-- [JMeter](http://jmeter.apache.org/)
-- [JMeter's Concurrency Thread Group](https://jmeter-plugins.org/wiki/ConcurrencyThreadGroup/)
-- [JMeter's Plugin Manager](https://jmeter-plugins.org/wiki/PluginsManager/)
-- [Blaze Meter](http://blazemeter.com/?utm_source=jmplinnerpages&utm_medium=cpc&utm_content=jmpininnerpgs&utm_campaign=JMeter%2BPlug%2BIn%2BWiki)
-- [How to increase the max connections in postgres?](https://stackoverflow.com/questions/30778015/how-to-increase-the-max-connections-in-postgres)
-- [Where are my postgres *.conf files?](https://stackoverflow.com/questions/3602450/where-are-my-postgres-conf-files)
+-   [Reactive Manifesto](https://www.reactivemanifesto.org/)
+-   [Spring Boot Kotlin](https://spring.io/guides/tutorials/spring-boot-kotlin/)
+-   [Reactive relational databases with R2DBC and Spring](https://dimitr.im/reactive-relational-databases-r2dbc-spring)
+-   [R2DBC](https://r2dbc.io/)
+-   [Lesson 11 - Date and Time in Kotlin - Creating and formatting](https://www.ict.social/kotlin/oop/date-and-time-in-kotlin-creating-and-formatting)
+-   [Spock Example](https://github.com/spockframework/spock-example)
+-   [JMeter](http://jmeter.apache.org/)
+-   [JMeter's Concurrency Thread Group](https://jmeter-plugins.org/wiki/ConcurrencyThreadGroup/)
+-   [JMeter's Plugin Manager](https://jmeter-plugins.org/wiki/PluginsManager/)
+-   [Blaze Meter](http://blazemeter.com/?utm_source=jmplinnerpages&utm_medium=cpc&utm_content=jmpininnerpgs&utm_campaign=JMeter%2BPlug%2BIn%2BWiki)
+-   [How to increase the max connections in postgres?](https://stackoverflow.com/questions/30778015/how-to-increase-the-max-connections-in-postgres)
+-   [Where are my postgres *.conf files?](https://stackoverflow.com/questions/3602450/where-are-my-postgres-conf-files)
 
 ## About me 👨🏽‍💻🚀🏳️‍🌈
 
