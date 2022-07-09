@@ -1,8 +1,8 @@
-name: e2e-staco-app
+name: concert-demos-root-e2e
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   e2e-electron:
