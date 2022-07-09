@@ -1,4 +1,4 @@
-describe('empty spec', () => {
+describe('WebFlux E2E Tests', () => {
   it('shows swagger', () => {
     cy.visit('http://localhost:8081/webjars/swagger-ui/index.html');
     cy.get('h2').contains('OpenAPI definition').should('not.be.null');
