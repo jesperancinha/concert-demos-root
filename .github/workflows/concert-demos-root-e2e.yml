@@ -19,7 +19,7 @@ jobs:
         run: make dcup-full-action
 
       - name: Run Cypress
-        run: make cypress
+        run: make cypress-electron
 
   e2e-chrome:
     runs-on: ubuntu-latest
