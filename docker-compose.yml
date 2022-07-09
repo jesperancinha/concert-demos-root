@@ -8,8 +8,6 @@ services:
     user: postgres
     volumes:
       - ./docker-psql/init-scripts:/docker-entrypoint-initdb.d
-    ports:
-      - "5432:5432"
 
   mvc:
     hostname: mvc
@@ -24,4 +22,3 @@ services:
       context: ./concert-demos-rest-service-webflux/.
     ports:
       - "8081:8081"
-

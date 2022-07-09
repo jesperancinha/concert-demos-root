@@ -35,3 +35,9 @@ build/
 
 ### OSX
 .DS_Store
+
+### NPM
+node_modules
+
+### Logs
+logs
