@@ -8,6 +8,8 @@ services:
     user: postgres
     volumes:
       - ./docker-psql/init-scripts:/docker-entrypoint-initdb.d
+    networks:
+      - concerts
 
   mvc:
     hostname: mvc
@@ -15,6 +17,10 @@ services:
       context: ./concert-demos-rest-service-mvc/.
     ports:
       - "8080:8080"
+    networks:
+      - concerts
+    expose:
+      - 8080
 
   webflux:
     hostname: webflux
@@ -22,3 +28,11 @@ services:
       context: ./concert-demos-rest-service-webflux/.
     ports:
       - "8081:8081"
+    networks:
+      - concerts
+    expose:
+      - 8081
+
+networks:
+  concerts:
+    driver: bridge

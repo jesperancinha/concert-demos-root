@@ -1,6 +1,6 @@
 describe('MVC E2E Tests', () => {
   it('shows swagger', () => {
-    let host = Cypress.env('host..vma') ? Cypress.env('host.vma') : 'localhost';
+    let host = Cypress.env('host_mvc') ? Cypress.env('host_mvc') : 'localhost';
     cy.visit(`http://${host}:8080/swagger-ui/index.html`);
     cy.get('h2').contains('OpenAPI definition').should('not.be.null');
     cy.wait(1000);

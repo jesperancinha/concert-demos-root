@@ -43,6 +43,7 @@ dcup-light:
 	docker-compose up -d postgres
 dcup: dcd
 	docker-compose up -d --build --remove-orphans
+	make concerts-wait
 dcd:
 	docker-compose down
 concerts-wait:
