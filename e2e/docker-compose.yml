@@ -1,0 +1,37 @@
+version: '3.7'
+services:
+  e2e-electron:
+    image: "cypress/included:10.3.0"
+    working_dir: /e2e
+    command: "--browser electron --env host.mvc=mvc,host.webflux=webflux"
+    volumes:
+      - ./e2e:/e2e
+    networks:
+      - fla_net
+
+  e2e-chrome:
+    image: "cypress/included:10.3.0"
+    working_dir: /e2e
+    command: "--browser chrome --env host.mvc=mvc,host.webflux=webflux"
+    volumes:
+      - ./e2e:/e2e
+    networks:
+      - fla_net
+
+  e2e-firefox:
+    image: "cypress/included:10.3.0"
+    working_dir: /e2e
+    command: "--browser firefox --env host.mvc=mvc,host.webflux=webflux"
+    volumes:
+      - ./e2e:/e2e
+    networks:
+      - fla_net
+
+  e2e-edge:
+    image: "cypress/included:10.3.0"
+    working_dir: /e2e
+    command: "--browser edge --env host.mvc=mvc,host.webflux=webflux"
+    volumes:
+      - ./e2e:/e2e
+    networks:
+      - fla_net

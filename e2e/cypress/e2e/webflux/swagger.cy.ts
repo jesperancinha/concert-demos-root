@@ -1,6 +1,7 @@
 describe('WebFlux E2E Tests', () => {
   it('shows swagger', () => {
-    cy.visit('http://localhost:8081/webjars/swagger-ui/index.html');
+    let host = Cypress.env('host.webflux') ? Cypress.env('host.webflux') : 'localhost';
+    cy.visit(`http://${host}:8081/webjars/swagger-ui/index.html`);
     cy.get('h2').contains('OpenAPI definition').should('not.be.null');
     cy.wait(1000);
 
