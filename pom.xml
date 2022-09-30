@@ -26,7 +26,7 @@
         <spring-boot-bom-r2dbc.version>0.1.0.M3</spring-boot-bom-r2dbc.version>
 
         <!-- Tests -->
-        <spock-bom.version>2.2-groovy-4.0</spock-bom.version>
+        <spock-bom.version>2.3-groovy-4.0</spock-bom.version>
         <groovy.version>4.0.5</groovy.version>
         <gmavenplus-plugin.version>1.13.1</gmavenplus-plugin.version>
         <kotest.version>5.4.2</kotest.version>
