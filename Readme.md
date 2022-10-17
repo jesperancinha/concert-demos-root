@@ -9,6 +9,7 @@
 [![CircleCI](https://circleci.com/gh/jesperancinha/concert-demos-root.svg?style=svg)](https://circleci.com/gh/jesperancinha/concert-demos-root)
 [![Build status](https://ci.appveyor.com/api/projects/status/eka55ffpbjkxq55p?svg=true)](https://ci.appveyor.com/project/jesperancinha/concert-demos-root)
 [![concert-demos-root](https://github.com/jesperancinha/concert-demos-root/actions/workflows/concert-demos-root.yml/badge.svg)](https://github.com/jesperancinha/concert-demos-root/actions/workflows/concert-demos-root.yml)
+[![concert-demos-root-e2e](https://github.com/jesperancinha/concert-demos-root/actions/workflows/concert-demos-root-e2e.yml/badge.svg)](https://github.com/jesperancinha/concert-demos-root/actions/workflows/concert-demos-root-e2e.yml)
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/0ddf4a0b338e4644b416824298e33127)](https://www.codacy.com/manual/jofisaes/concert-demos-root?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/concert-demos-root&amp;utm_campaign=Badge_Grade)
 [![codebeat badge](https://codebeat.co/badges/c36571eb-ca0f-4abe-9af2-c66ffc3a4002)](https://codebeat.co/projects/github-com-jesperancinha-concert-demos-root-master)
@@ -34,7 +35,9 @@
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/mockk-50.png "MockK")](https://mockk.io/)
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/assertj-50.png "AssertJ")](https://assertj.github.io/doc/)
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/angular-50.png "Angular")](https://angular.io/)
-[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/apache-maven-50.png "Maven")](https://maven.apache.org/)
+[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/swagger-50.png "Swagger")](https://swagger.io/)
+[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/cypress-50.png "Cypress")](https://www.cypress.io/)
+
 ---
 
 ## Description
@@ -49,7 +52,7 @@ We will also look at how to work with R2DBC and make comparisons between a typic
 This project is also the official support project of my article on medium:
 
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/medium-20.png "Medium")](https://medium.com/swlh/comparing-webflux-and-spring-mvc-with-jmeter-79dc134c3c04)
-[Comparing WebFlux and Spring MVC with JMeter  - A Concert Demos Example](https://medium.com/swlh/comparing-webflux-and-spring-mvc-with-jmeter-79dc134c3c04)
+[Comparing WebFlux and Spring MVC with JMeter - A Concert Demos Example](https://medium.com/swlh/comparing-webflux-and-spring-mvc-with-jmeter-79dc134c3c04)
 
 <div align="center">
       <a title="Comparing WebFlux and Spring MVC with JMeter - A Concert Demos Example" href="https://medium.com/swlh/comparing-webflux-and-spring-mvc-with-jmeter-79dc134c3c04">
@@ -66,9 +69,11 @@ For further developments please have a look at branch [feature/research_and_deve
 
 ---
 
-## Detail
+## Structure
 
-- concert-demos-rest-service - WebFlux implementation of the Sprig Boot Back-End process for the concerts website.
+-   [concert-demos-rest-service-webflux](./concert-demos-rest-service-webflux) - WebFlux implementation of the Sprig Boot Back-End process for the concerts website.
+-   [concert-demos-rest-service-mvc](./concert-demos-rest-service-mvc) - MVC blocking implementation of the Sprig Boot Back-End process for the concerts website.
+-   [concert-demos-data](./concert-demos-data) - Common data model
 
 ---
 
@@ -94,28 +99,26 @@ This project makes use of the following docker images:
 
 #### Star Running
 
-- To build from scratch:
+-   To build from scratch:
 
 ```shell
 make build-docker
 ```
 
-- To just run:
+-   To just run:
 
 ```shell
 make dcup
 ```
 
->Always have Docker Environment running
-
-
+> Always have Docker Environment running
 
 #### Swagger tests
 
 You can make tests for this application using the Swagger UI at:
 
-- [MVC Non-Reactive Solution (blocking) Swagger UI](http://localhost:8080/swagger-ui/index.html)
-- [WebFlux MVC Reactive Solution (non-blocking) Swagger UI](http://localhost:8081/webjars/swagger-ui/index.html)
+-   [MVC Non-Reactive Solution (blocking) Swagger UI](http://localhost:8080/swagger-ui/index.html)
+-   [WebFlux MVC Reactive Solution (non-blocking) Swagger UI](http://localhost:8081/webjars/swagger-ui/index.html)
 
 #### Manual Tests
 
@@ -165,32 +168,20 @@ sdk use 17-open
 
 ---
 
-## [Roadmap to v2.0.0](./ReviewLogs.md)
-
-- Kotest, Mockk, Testcontainers and Coverage
-- Show clearer example
-- Update all versions
-- Separate container for all processes
-- Change context
-- Migrate experimentatl modules to R2DBC
-- Make reference to [Locust](https://locust.io/)
-- Complete GUI for clarity examples
-- Cleanup unnecessary Junit 5 libraries and update kotlin for a stricter version
-
 ## References
 
-- [Reactive Manifesto](https://www.reactivemanifesto.org/)
-- [Spring Boot Kotlin](https://spring.io/guides/tutorials/spring-boot-kotlin/)
-- [Reactive relational databases with R2DBC and Spring](https://dimitr.im/reactive-relational-databases-r2dbc-spring)
-- [R2DBC](https://r2dbc.io/)
-- [Lesson 11 - Date and Time in Kotlin - Creating and formatting](https://www.ict.social/kotlin/oop/date-and-time-in-kotlin-creating-and-formatting)
-- [Spock Example](https://github.com/spockframework/spock-example)
-- [JMeter](http://jmeter.apache.org/)
-- [JMeter's Concurrency Thread Group](https://jmeter-plugins.org/wiki/ConcurrencyThreadGroup/)
-- [JMeter's Plugin Manager](https://jmeter-plugins.org/wiki/PluginsManager/)
-- [Blaze Meter](http://blazemeter.com/?utm_source=jmplinnerpages&utm_medium=cpc&utm_content=jmpininnerpgs&utm_campaign=JMeter%2BPlug%2BIn%2BWiki)
-- [How to increase the max connections in postgres?](https://stackoverflow.com/questions/30778015/how-to-increase-the-max-connections-in-postgres)
-- [Where are my postgres *.conf files?](https://stackoverflow.com/questions/3602450/where-are-my-postgres-conf-files)
+-   [Reactive Manifesto](https://www.reactivemanifesto.org/)
+-   [Spring Boot Kotlin](https://spring.io/guides/tutorials/spring-boot-kotlin/)
+-   [Reactive relational databases with R2DBC and Spring](https://dimitr.im/reactive-relational-databases-r2dbc-spring)
+-   [R2DBC](https://r2dbc.io/)
+-   [Lesson 11 - Date and Time in Kotlin - Creating and formatting](https://www.ict.social/kotlin/oop/date-and-time-in-kotlin-creating-and-formatting)
+-   [Spock Example](https://github.com/spockframework/spock-example)
+-   [JMeter](http://jmeter.apache.org/)
+-   [JMeter's Concurrency Thread Group](https://jmeter-plugins.org/wiki/ConcurrencyThreadGroup/)
+-   [JMeter's Plugin Manager](https://jmeter-plugins.org/wiki/PluginsManager/)
+-   [Blaze Meter](http://blazemeter.com/?utm_source=jmplinnerpages&utm_medium=cpc&utm_content=jmpininnerpgs&utm_campaign=JMeter%2BPlug%2BIn%2BWiki)
+-   [How to increase the max connections in postgres?](https://stackoverflow.com/questions/30778015/how-to-increase-the-max-connections-in-postgres)
+-   [Where are my postgres *.conf files?](https://stackoverflow.com/questions/3602450/where-are-my-postgres-conf-files)
 
 ## About me 👨🏽‍💻🚀🏳️‍🌈
 

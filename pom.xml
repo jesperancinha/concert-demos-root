@@ -18,35 +18,35 @@
         <maven-compiler-plugin.target>${java.version}</maven-compiler-plugin.target>
         <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
         <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
-        <kotlin.version>1.7.0</kotlin.version>
-        <kotlin-logging.version>2.1.23</kotlin-logging.version>
+        <kotlin.version>1.7.20</kotlin.version>
+        <kotlin-logging.version>3.0.2</kotlin-logging.version>
         <build-helper-maven-plugin.version>3.3.0</build-helper-maven-plugin.version>
 
         <!-- Spring -->
         <spring-boot-bom-r2dbc.version>0.1.0.M3</spring-boot-bom-r2dbc.version>
 
         <!-- Tests -->
-        <spock-spring.version>2.0-groovy-3.0</spock-spring.version>
-        <spock-bom.version>2.1-groovy-3.0</spock-bom.version>
-        <groovy.version>3.0.8</groovy.version>
-        <gmavenplus-plugin.version>1.13.1</gmavenplus-plugin.version>
-        <kotest.version>5.3.1</kotest.version>
+        <spock-bom.version>2.3-groovy-4.0</spock-bom.version>
+        <groovy.version>4.0.5</groovy.version>
+        <gmavenplus-plugin.version>2.0.0</gmavenplus-plugin.version>
+        <kotest.version>5.5.1</kotest.version>
         <springmockk.version>3.1.1</springmockk.version>
-        <kotest-extensions-spring.version>1.1.1</kotest-extensions-spring.version>
-        <mockk.version>1.12.4</mockk.version>
+        <kotest-extensions-spring.version>1.1.2</kotest-extensions-spring.version>
+        <mockk.version>1.13.2</mockk.version>
 
         <!-- Assetions -->
         <assertj-core.version>3.23.1</assertj-core.version>
 
-        <netty-all.version>4.1.78.Final</netty-all.version>
-        <postgresql.version>42.4.0</postgresql.version>
+        <netty-all.version>4.1.84.Final</netty-all.version>
+        <postgresql.version>42.5.0</postgresql.version>
 
         <!-- Coverage -->
         <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
         <omni-coveragereporter-maven-plugin.version>0.3.0</omni-coveragereporter-maven-plugin.version>
-        <spring-boot.version>2.7.0</spring-boot.version>
+        <spring-boot.version>2.7.4</spring-boot.version>
         <kotlinx-coroutines.version>1.6.3-native-mt</kotlinx-coroutines.version>
-        <springdoc-openapi.version>1.6.9</springdoc-openapi.version>
+        <springdoc-openapi.version>1.6.12</springdoc-openapi.version>
+        <kotlinx-coroutines-debug.version>1.6.4</kotlinx-coroutines-debug.version>
     </properties>
 
     <modules>
@@ -70,6 +70,12 @@
                 <version>${spock-bom.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.groovy</groupId>
+                <artifactId>groovy</artifactId>
+                <version>${groovy.version}</version>
+                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.springdoc</groupId>
@@ -145,12 +151,12 @@
             <dependency>
                 <groupId>io.r2dbc</groupId>
                 <artifactId>r2dbc-postgresql</artifactId>
-                <version>0.8.12.RELEASE</version>
+                <version>0.8.13.RELEASE</version>
             </dependency>
 
             <dependency>
                 <groupId>io.mockk</groupId>
-                <artifactId>mockk</artifactId>
+                <artifactId>mockk-jvm</artifactId>
                 <version>${mockk.version}</version>
                 <scope>test</scope>
             </dependency>
@@ -211,6 +217,20 @@
                 <groupId>org.jetbrains.kotlinx</groupId>
                 <artifactId>kotlinx-coroutines-core-jvm</artifactId>
                 <version>${kotlinx-coroutines.version}</version>
+            </dependency>
+            <!-- This Dependency is added as a workaround for the following issue -->
+            <!--- https://github.com/Kotlin/kotlinx.coroutines/issues/3334 -->
+            <dependency>
+                <groupId>org.jetbrains.kotlinx</groupId>
+                <artifactId>kotlinx-coroutines-debug</artifactId>
+                <version>${kotlinx-coroutines-debug.version}</version>
+                <scope>test</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.jetbrains.kotlinx</groupId>
+                        <artifactId>kotlinx-coroutines-bom</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -1,0 +1,13 @@
+version: "3.7"
+services:
+  postgres:
+    ports:
+      - "5432:5432"
+
+  mvc:
+    ports:
+      - "8080:8080"
+
+  webflux:
+    ports:
+      - "8081:8081"

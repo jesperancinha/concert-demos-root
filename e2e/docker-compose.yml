@@ -1,0 +1,37 @@
+version: '3.7'
+services:
+  e2e-electron:
+    image: "cypress/included:10.3.0"
+    working_dir: /e2e
+    command: "--browser electron --env host_mvc=mvc,host_webflux=webflux"
+    volumes:
+      - ./e2e:/e2e
+    networks:
+      - concerts
+
+  e2e-chrome:
+    image: "cypress/included:10.3.0"
+    working_dir: /e2e
+    command: "--browser chrome --env host_mvc=mvc,host_webflux=webflux"
+    volumes:
+      - ./e2e:/e2e
+    networks:
+      - concerts
+
+  e2e-firefox:
+    image: "cypress/included:10.3.0"
+    working_dir: /e2e
+    command: "--browser firefox --env host_mvc=mvc,host_webflux=webflux"
+    volumes:
+      - ./e2e:/e2e
+    networks:
+      - concerts
+
+  e2e-edge:
+    image: "cypress/included:10.3.0"
+    working_dir: /e2e
+    command: "--browser edge --env host_mvc=mvc,host_webflux=webflux"
+    volumes:
+      - ./e2e:/e2e
+    networks:
+      - concerts
