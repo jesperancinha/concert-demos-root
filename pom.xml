@@ -19,7 +19,7 @@
         <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
         <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
         <kotlin.version>1.7.20</kotlin.version>
-        <kotlin-logging.version>3.0.3</kotlin-logging.version>
+        <kotlin-logging.version>3.0.4</kotlin-logging.version>
         <build-helper-maven-plugin.version>3.3.0</build-helper-maven-plugin.version>
 
         <!-- Spring -->
