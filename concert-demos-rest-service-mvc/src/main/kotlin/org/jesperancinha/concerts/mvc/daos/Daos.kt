@@ -1,5 +1,6 @@
 package org.jesperancinha.concerts.mvc.daos
 
+import jakarta.persistence.*
 import org.hibernate.Hibernate
 import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.data.ConcertDto
@@ -8,7 +9,6 @@ import org.jesperancinha.concerts.data.MusicDto
 import org.jesperancinha.concerts.types.Gender
 import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Component
-import javax.persistence.*
 
 @Entity
 data class Concert(

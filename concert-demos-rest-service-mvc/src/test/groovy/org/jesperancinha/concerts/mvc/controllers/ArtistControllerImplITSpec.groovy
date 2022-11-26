@@ -1,17 +1,17 @@
 package org.jesperancinha.concerts.mvc.controllers
 
+import jakarta.transaction.Transactional
 import org.assertj.core.api.SoftAssertions
 import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.mvc.daos.*
 import org.jesperancinha.concerts.types.Gender
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.boot.web.server.LocalServerPort
+import org.springframework.boot.test.web.server.LocalServerPort
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.web.client.RestTemplate
 import spock.lang.Specification
 
-import javax.transaction.Transactional
 import java.time.LocalDateTime
 
 import static org.jesperancinha.concerts.types.Gender.AGENDER

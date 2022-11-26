@@ -9,7 +9,7 @@ import org.jesperancinha.concerts.webflux.services.MusicService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.boot.web.server.LocalServerPort
+import org.springframework.boot.test.web.server.LocalServerPort
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.web.client.RestTemplate
 import spock.lang.Specification
@@ -23,7 +23,7 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 class MusicControllerImplITSpec extends Specification {
 
     @LocalServerPort
-    private int port;
+    private int port
 
     @Autowired
     private MusicService artistService
@@ -42,7 +42,7 @@ class MusicControllerImplITSpec extends Specification {
         final RestTemplate restTemplate = new RestTemplate()
 
         and: "Making the REST Call"
-        final List<Music> result = restTemplate.getForObject(uri, List.class);
+        final List<Music> result = restTemplate.getForObject(uri, List.class)
 
         then: "Assert response of an empty array"
         SoftAssertions.assertSoftly { softly ->
