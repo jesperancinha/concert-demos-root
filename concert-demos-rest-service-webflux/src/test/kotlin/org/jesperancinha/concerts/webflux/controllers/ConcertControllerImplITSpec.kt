@@ -6,7 +6,6 @@ import io.kotest.matchers.collections.shouldNotBeEmpty
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
-import org.assertj.core.api.SoftAssertions
 import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.data.ConcertDto
 import org.jesperancinha.concerts.data.ListingDto
@@ -14,7 +13,6 @@ import org.jesperancinha.concerts.data.MusicDto
 import org.jesperancinha.concerts.types.Gender
 import org.jesperancinha.concerts.webflux.configuration.ConfigurationProperties
 import org.jesperancinha.concerts.webflux.controllers.TestConstants.HEY_MAMA
-import org.jesperancinha.concerts.webflux.model.Artist
 import org.jesperancinha.concerts.webflux.model.Concert
 import org.jesperancinha.concerts.webflux.repos.ArtistRepository
 import org.jesperancinha.concerts.webflux.repos.ConcertRepository
@@ -120,6 +118,7 @@ class ConcertControllerImplITSpec {
         object : ParameterizedTypeReference<List<ConcertDto>>() {}
         ).body
 
+        savedConcertDto.shouldNotBeNull()
         result.shouldNotBeNull()
         result.shouldNotBeEmpty()
         result.shouldHaveSize(1)
