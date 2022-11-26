@@ -132,6 +132,10 @@
             <artifactId>r2dbc-h2</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>io.kotest</groupId>
+            <artifactId>kotest-assertions-core-jvm</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
