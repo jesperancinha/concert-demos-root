@@ -26,9 +26,6 @@
         <spring-boot-bom-r2dbc.version>0.1.0.M3</spring-boot-bom-r2dbc.version>
 
         <!-- Tests -->
-        <spock-bom.version>2.3-groovy-4.0</spock-bom.version>
-        <groovy.version>4.0.6</groovy.version>
-        <gmavenplus-plugin.version>2.1.0</gmavenplus-plugin.version>
         <kotest.version>5.5.4</kotest.version>
         <springmockk.version>3.1.1</springmockk.version>
         <kotest-extensions-spring.version>1.1.2</kotest-extensions-spring.version>
@@ -63,19 +60,6 @@
                 <version>${spring-boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.spockframework</groupId>
-                <artifactId>spock-bom</artifactId>
-                <version>${spock-bom.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.groovy</groupId>
-                <artifactId>groovy</artifactId>
-                <version>${groovy.version}</version>
-                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.springdoc</groupId>

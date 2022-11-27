@@ -7,7 +7,7 @@ import org.jesperancinha.concerts.data.ConcertDto
 import org.jesperancinha.concerts.data.ListingDto
 import org.jesperancinha.concerts.data.MusicDto
 import org.jesperancinha.concerts.types.Gender.FEMALE
-import org.jesperancinha.concerts.webflux.controllers.TestConstants.HEY_MAMA
+import org.jesperancinha.concerts.webflux.controllers.TestConstants.Companion.HEY_MAMA
 import org.jesperancinha.concerts.webflux.model.Concert
 import org.jesperancinha.concerts.webflux.repos.*
 import org.jesperancinha.concerts.webflux.services.*

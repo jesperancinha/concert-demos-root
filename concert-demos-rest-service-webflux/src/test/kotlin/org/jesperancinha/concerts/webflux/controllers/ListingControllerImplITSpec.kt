@@ -11,7 +11,7 @@ import org.jesperancinha.concerts.data.ListingDto
 import org.jesperancinha.concerts.data.MusicDto
 import org.jesperancinha.concerts.types.Gender.FEMALE
 import org.jesperancinha.concerts.webflux.configuration.ConfigurationProperties
-import org.jesperancinha.concerts.webflux.controllers.TestConstants.HEY_MAMA
+import org.jesperancinha.concerts.webflux.controllers.TestConstants.Companion.HEY_MAMA
 import org.jesperancinha.concerts.webflux.model.Listing
 import org.jesperancinha.concerts.webflux.repos.ArtistRepository
 import org.jesperancinha.concerts.webflux.repos.ListingRepository
@@ -88,6 +88,8 @@ class ListingControllerImplITSpec {
 
         val savedArtistDto = restTemplate.postForEntity(artistsUri, artistDto, ArtistDto::class.java).body
         val savedMusicDto = restTemplate.postForEntity(musicsUri, musicDto, MusicDto::class.java).body
+        savedArtistDto.shouldNotBeNull()
+        savedMusicDto.shouldNotBeNull()
         val listingDto = ListingDto(
             null,
             savedArtistDto,
@@ -101,6 +103,7 @@ class ListingControllerImplITSpec {
             null,
             object : ParameterizedTypeReference<List<ListingDto>>() {}
         ).body
+        savedListingDto.shouldNotBeNull()
         result.shouldNotBeNull()
         result.shouldNotBeEmpty()
         result.shouldHaveSize(1)

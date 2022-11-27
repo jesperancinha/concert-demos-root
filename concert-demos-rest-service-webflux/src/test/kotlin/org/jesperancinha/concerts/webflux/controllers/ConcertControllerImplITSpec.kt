@@ -12,7 +12,7 @@ import org.jesperancinha.concerts.data.ListingDto
 import org.jesperancinha.concerts.data.MusicDto
 import org.jesperancinha.concerts.types.Gender
 import org.jesperancinha.concerts.webflux.configuration.ConfigurationProperties
-import org.jesperancinha.concerts.webflux.controllers.TestConstants.HEY_MAMA
+import org.jesperancinha.concerts.webflux.controllers.TestConstants.Companion.HEY_MAMA
 import org.jesperancinha.concerts.webflux.model.Concert
 import org.jesperancinha.concerts.webflux.repos.ArtistRepository
 import org.jesperancinha.concerts.webflux.repos.ConcertRepository
@@ -93,16 +93,16 @@ class ConcertControllerImplITSpec {
         )
 
         val restTemplate = RestTemplate()
-        val savedArtistDto = restTemplate. postForEntity(artistsUri, artistDto, ArtistDto::class.java).body
-            val savedMusicDto = restTemplate.postForEntity (musicsUri, musicDto, MusicDto::class.java).body
-        val listingDto =  ListingDto (
-                null,
-        savedArtistDto,
-        savedMusicDto,
-        mutableListOf(savedMusicDto)
+        val savedArtistDto = restTemplate.postForEntity(artistsUri, artistDto, ArtistDto::class.java).body
+        val savedMusicDto = restTemplate.postForEntity(musicsUri, musicDto, MusicDto::class.java).body
+        val listingDto = ListingDto(
+            null,
+            savedArtistDto,
+            savedMusicDto,
+            mutableListOf(savedMusicDto)
         )
-        val savedListingDto = restTemplate . postForEntity (listingsUri, listingDto, ListingDto::class.java).body
-        val concertDto =  ConcertDto(
+        val savedListingDto = restTemplate.postForEntity(listingsUri, listingDto, ListingDto::class.java).body
+        val concertDto = ConcertDto(
             null,
             "Nicki Wrld Tour",
             "Amsterdam",
@@ -110,24 +110,24 @@ class ConcertControllerImplITSpec {
             mutableListOf(savedListingDto)
 
         )
-        val savedConcertDto = restTemplate . postForEntity (concertsUri, concertDto, ConcertDto::class.java).body
-            val result = restTemplate.exchange(
-                concertsUri,
-        HttpMethod.GET,
-        null,
-        object : ParameterizedTypeReference<List<ConcertDto>>() {}
+        val savedConcertDto = restTemplate.postForEntity(concertsUri, concertDto, ConcertDto::class.java).body
+        val result = restTemplate.exchange(
+            concertsUri,
+            HttpMethod.GET,
+            null,
+            object : ParameterizedTypeReference<List<ConcertDto>>() {}
         ).body
 
         savedConcertDto.shouldNotBeNull()
         result.shouldNotBeNull()
         result.shouldNotBeEmpty()
         result.shouldHaveSize(1)
-        val concertDtoResult = result [0]
+        val concertDtoResult = result[0]
         concertDtoResult.id shouldNotBe 0
-        concertDtoResult.id shouldBe  savedConcertDto.id
+        concertDtoResult.id shouldBe savedConcertDto.id
         concertDtoResult.name shouldBe "Nicki Wrld Tour"
         concertDtoResult.location shouldBe "Amsterdam"
-       val listings = concertDtoResult.listingDtos
+        val listings = concertDtoResult.listingDtos
         listings.shouldNotBeNull()
         listings.shouldHaveSize(1)
         val listingDtoResult = listings[0]
@@ -139,8 +139,7 @@ class ConcertControllerImplITSpec {
     }
 
     @BeforeEach
-    fun setup()
-    {
+    fun setup() {
         artistRepository.deleteAll().block()
         musicRepository.deleteAll().block()
         listingRepository.deleteAll().block()
