@@ -32,7 +32,7 @@
         <kotest.version>5.5.4</kotest.version>
         <springmockk.version>3.1.2</springmockk.version>
         <kotest-extensions-spring.version>1.1.2</kotest-extensions-spring.version>
-        <mockk.version>1.13.2</mockk.version>
+        <mockk.version>1.13.3</mockk.version>
 
         <!-- Assetions -->
         <assertj-core.version>3.23.1</assertj-core.version>
