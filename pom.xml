@@ -18,7 +18,7 @@
         <maven-compiler-plugin.target>${java.version}</maven-compiler-plugin.target>
         <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
         <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
-        <kotlin.version>1.7.21</kotlin.version>
+        <kotlin.version>1.7.22</kotlin.version>
         <kotlin-logging.version>3.0.4</kotlin-logging.version>
         <build-helper-maven-plugin.version>3.3.0</build-helper-maven-plugin.version>
 
@@ -27,9 +27,9 @@
 
         <!-- Tests -->
         <kotest.version>5.5.4</kotest.version>
-        <springmockk.version>3.1.1</springmockk.version>
+        <springmockk.version>3.1.2</springmockk.version>
         <kotest-extensions-spring.version>1.1.2</kotest-extensions-spring.version>
-        <mockk.version>1.13.2</mockk.version>
+        <mockk.version>1.13.3</mockk.version>
 
         <!-- Assetions -->
         <assertj-core.version>3.23.1</assertj-core.version>
