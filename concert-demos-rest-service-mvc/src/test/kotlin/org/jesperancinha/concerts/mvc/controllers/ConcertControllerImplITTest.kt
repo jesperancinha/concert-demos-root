@@ -119,7 +119,7 @@ class ConcertControllerImplITTest(
     }
 
     @BeforeEach
-    private fun setup() {
+    fun setup() {
         concertRepository.deleteAll()
         listingRepository.deleteAll()
         artistRepository.deleteAll()
