@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.r2dbc.core.DatabaseClient
 import reactor.core.publisher.Mono
 import java.io.BufferedReader
+import java.lang.RuntimeException
 import java.net.URISyntaxException
 
 
@@ -31,14 +32,14 @@ class Configuration(
 
     @Throws(URISyntaxException::class)
     private fun getSchema(): Mono<String> {
-        val reader = BufferedReader(Configuration::class.java.getResourceAsStream(schema).reader())
+        val reader = BufferedReader(Configuration::class.java.getResourceAsStream(schema)?.reader() ?: throw RuntimeException("Resource not found!"))
         reader.use {
             val content: String = reader.readText()
             return Mono.just(content)
         }
     }
 
-    private fun executeSql(client: DatabaseClient, sql: String): Mono<Int> {
+    private fun executeSql(client: DatabaseClient, sql: String): Mono<Long> {
         if (sql.isEmpty()) {
             return Mono.just(0)
         }

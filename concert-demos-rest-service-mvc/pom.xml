@@ -55,7 +55,7 @@
         </dependency>
         <dependency>
             <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-ui</artifactId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
         </dependency>
 
         <dependency>
@@ -65,26 +65,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.groovy</groupId>
-            <artifactId>groovy</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.spockframework</groupId>
-            <artifactId>spock-core</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.spockframework</groupId>
-            <artifactId>spock-junit4</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.spockframework</groupId>
-            <artifactId>spock-spring</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -150,6 +130,7 @@
                 <artifactId>kotlin-maven-plugin</artifactId>
                 <version>${kotlin.version}</version>
                 <configuration>
+                    <jvmTarget>${java.version}</jvmTarget>
                     <compilerPlugins>
                         <plugin>spring</plugin>
                         <plugin>jpa</plugin>
@@ -191,29 +172,6 @@
                 <configuration>
                     <useFile>false</useFile>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.gmavenplus</groupId>
-                <artifactId>gmavenplus-plugin</artifactId>
-                <version>${gmavenplus-plugin.version}</version>
-                <extensions>true</extensions>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>compileTests</goal>
-                        </goals>
-                        <configuration>
-                            <testSources>
-                                <fileset>
-                                    <directory>${pom.basedir}/src/test/groovy</directory>
-                                    <includes>
-                                        <include>**/*.groovy</include>
-                                    </includes>
-                                </fileset>
-                            </testSources>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

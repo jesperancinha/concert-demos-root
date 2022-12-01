@@ -8,6 +8,7 @@ import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.collections.shouldNotBeEmpty
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
+import jakarta.transaction.Transactional
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.jesperancinha.concerts.data.ArtistDto
@@ -28,7 +29,6 @@ import org.springframework.web.client.getForObject
 import org.springframework.web.client.postForEntity
 import java.net.URI
 import java.time.LocalDateTime
-import javax.transaction.Transactional
 import kotlin.properties.Delegates
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
