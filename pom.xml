@@ -26,7 +26,7 @@
         <spring-boot-bom-r2dbc.version>0.1.0.M3</spring-boot-bom-r2dbc.version>
 
         <!-- Tests -->
-        <kotest.version>5.5.4</kotest.version>
+        <kotest.version>5.5.5</kotest.version>
         <springmockk.version>4.0.0</springmockk.version>
         <kotest-extensions-spring.version>1.1.2</kotest-extensions-spring.version>
         <mockk.version>1.13.4</mockk.version>
