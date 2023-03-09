@@ -27,7 +27,7 @@
 
         <!-- Tests -->
         <kotest.version>5.5.5</kotest.version>
-        <springmockk.version>4.0.1</springmockk.version>
+        <springmockk.version>4.0.2</springmockk.version>
         <kotest-extensions-spring.version>1.1.2</kotest-extensions-spring.version>
         <mockk.version>1.13.4</mockk.version>
 
