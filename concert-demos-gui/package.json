@@ -29,7 +29,7 @@
     "@angular/compiler-cli": "~13.3.9",
     "@angular/language-service": "~16.2.5",
     "@types/jasmine": "~4.3.5",
-    "@types/jasminewd2": "~2.0.10",
+    "@types/jasminewd2": "~2.0.11",
     "@types/node": "~20.6.1",
     "codelyzer": "^6.0.2",
     "jasmine-core": "~5.1.1",
