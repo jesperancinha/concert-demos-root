@@ -11,10 +11,10 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~16.2.11",
+    "@angular/animations": "~16.2.12",
     "@angular/common": "~13.3.5",
     "@angular/compiler": "~13.3.5",
-    "@angular/core": "~16.2.11",
+    "@angular/core": "~16.2.12",
     "@angular/forms": "~13.3.5",
     "@angular/platform-browser": "~13.3.5",
     "@angular/platform-browser-dynamic": "~13.3.5",
