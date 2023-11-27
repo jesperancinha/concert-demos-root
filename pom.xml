@@ -20,7 +20,7 @@
         <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
         <kotlin.version>1.9.21</kotlin.version>
         <kotlin-logging.version>3.0.5</kotlin-logging.version>
-        <build-helper-maven-plugin.version>3.4.0</build-helper-maven-plugin.version>
+        <build-helper-maven-plugin.version>3.5.0</build-helper-maven-plugin.version>
 
         <!-- Spring -->
         <spring-boot-bom-r2dbc.version>0.1.0.M3</spring-boot-bom-r2dbc.version>
