@@ -34,7 +34,7 @@
         <!-- Assetions -->
         <assertj-core.version>3.24.2</assertj-core.version>
 
-        <netty-all.version>4.1.103.Final</netty-all.version>
+        <netty-all.version>4.1.104.Final</netty-all.version>
         <postgresql.version>42.7.1</postgresql.version>
 
         <!-- Coverage -->
