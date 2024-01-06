@@ -41,7 +41,7 @@
         <jacoco-maven-plugin.version>0.8.11</jacoco-maven-plugin.version>
         <omni-coveragereporter-maven-plugin.version>0.4.3</omni-coveragereporter-maven-plugin.version>
         <spring-boot.version>3.1.5</spring-boot.version>
-        <kotlinx-coroutines.version>1.6.3-native-mt</kotlinx-coroutines.version>
+        <kotlinx-coroutines.version>1.8.0-RC2</kotlinx-coroutines.version>
         <springdoc-openapi.version>1.6.13</springdoc-openapi.version>
         <kotlinx-coroutines-debug.version>1.7.3</kotlinx-coroutines-debug.version>
         <springdoc-openapi-starter.version>2.3.0</springdoc-openapi-starter.version>
