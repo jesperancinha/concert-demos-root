@@ -10,7 +10,7 @@ data class ArtistDto(
     val birthDate: String,
     val birthCity: String,
     val country: String,
-    val keywords: String,
+    val keywords: String
     ) {
 
     override fun equals(other: Any?): Boolean {

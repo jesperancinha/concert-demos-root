@@ -33,7 +33,7 @@ import java.time.LocalDateTime
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @ActiveProfiles("test")
-class ArtistControllerImplITTest(
+class ArtistControllerITTest(
     @LocalServerPort
 
     val port: Int,

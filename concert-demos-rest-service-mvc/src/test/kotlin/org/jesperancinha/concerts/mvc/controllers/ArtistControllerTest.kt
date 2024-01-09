@@ -8,13 +8,14 @@ import org.jesperancinha.concerts.mvc.services.ConcertService
 import org.jesperancinha.concerts.mvc.services.ListingService
 import org.jesperancinha.concerts.mvc.services.MusicService
 import org.jesperancinha.concerts.types.Gender.AGENDER
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Test
 import org.mockito.ArgumentCaptor
 import org.mockito.Captor
+import org.mockito.Mockito.verifyNoInteractions
 import org.mockito.Mockito.`when`
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.http.MediaType
@@ -27,7 +28,7 @@ import java.time.LocalDateTime
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
-class ArtistControllerImplTest(
+class ArtistControllerTest(
     @Autowired val mvc: MockMvc,
 ) {
     @MockBean
@@ -52,7 +53,7 @@ class ArtistControllerImplTest(
     lateinit var listingService: ListingService
 
     @MockBean
-    lateinit var repository: ListingRepository
+    lateinit var listingRepository: ListingRepository
 
     @Captor
     lateinit var argumentCaptor: ArgumentCaptor<Artist>
@@ -90,5 +91,13 @@ class ArtistControllerImplTest(
         )
         results.andExpect(status().isOk)
         results.andExpect(content().string(""))
+    }
+
+    @AfterEach
+    fun tearDown() {
+        verifyNoInteractions(musicService)
+        verifyNoInteractions(concertService)
+        verifyNoInteractions(listingService)
+        verifyNoInteractions(listingRepository)
     }
 }
