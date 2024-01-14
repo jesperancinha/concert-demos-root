@@ -38,16 +38,8 @@ We will also look at how to work with R2DBC and make comparisons between a typic
 
 This project is also the official support project of my article on medium:
 
-[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/medium-20.png "Medium")](https://medium.com/swlh/comparing-webflux-and-spring-mvc-with-jmeter-79dc134c3c04)
-[Comparing WebFlux and Spring MVC with JMeter - A Concert Demos Example](https://medium.com/swlh/comparing-webflux-and-spring-mvc-with-jmeter-79dc134c3c04)
 
-<div align="center">
-      <a title="Comparing WebFlux and Spring MVC with JMeter - A Concert Demos Example" href="https://medium.com/swlh/comparing-webflux-and-spring-mvc-with-jmeter-79dc134c3c04">
-     <img 
-          src="./docs/images/articles.concerts.intro.jpeg" 
-          style="width:100%;">
-      </a>
-</div>
+[![](https://img.shields.io/badge/Comparing%20WebFlux%20and%20Spring%20MVC%20with%20JMeter%20--%20A%20Concert%20Demos%20Example-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/swlh/comparing-webflux-and-spring-mvc-with-jmeter-79dc134c3c04)
 
 Note that for the moment I'm keeping Kotest at version 4.4.0. This is to avoid an issue with MPP implementation.
 Check the [Issues](./issues.md) document for more details
@@ -146,11 +138,11 @@ sdk use 17-open
 ## Coverage report Graphs
 
 <div align="center">
-<img width="30%" src="https://codecov.io/gh/jesperancinha/concert-demos-root/branch/master/graphs/sunburst.svg"/>
-<img width="30%" src="https://codecov.io/gh/jesperancinha/concert-demos-root/branch/master/graphs/tree.svg"/>
+<img width="30%" src="https://codecov.io/gh/jesperancinha/concert-demos-root/branch/master/graphs/sunburst.svg" alt=""/>
+<img width="30%" src="https://codecov.io/gh/jesperancinha/concert-demos-root/branch/master/graphs/tree.svg" alt=""/>
 </div>
 <div align="center">
-<img width="60%" src="https://codecov.io/gh/jesperancinha/concert-demos-root/branch/master/graphs/icicle.svg"/>
+<img width="60%" src="https://codecov.io/gh/jesperancinha/concert-demos-root/branch/master/graphs/icicle.svg" alt=""/>
 </div>
 
 ---
