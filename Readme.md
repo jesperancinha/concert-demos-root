@@ -64,16 +64,6 @@ Please find all JMeter files in [jmeter](jmeter)
 
 ---
 
-## Docker images
-
-This project makes use of the following docker images:
-
-[![dockeri.co](https://dockeri.co/image/openjdk)](https://hub.docker.com/r/library/openjdk)
-
-[![dockeri.co](https://dockeri.co/image/library/postgres)](https://hub.docker.com/r/library/postgres)
-
----
-
 ## Test Data
 
 #### Star Running

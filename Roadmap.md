@@ -1,4 +1,10 @@
-# Concert Demos Roadmap
+# Concert Demos Roadmap (Notes)
+
+## Docker images
+
+[![dockeri.co](https://dockeri.co/image/openjdk)](https://hub.docker.com/r/library/openjdk)
+
+[![dockeri.co](https://dockeri.co/image/library/postgres)](https://hub.docker.com/r/library/postgres)
 
 ## [Roadmap to v2.0.0](./ReviewLogs.md)
 
