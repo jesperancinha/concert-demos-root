@@ -32,7 +32,7 @@
         <mockk.version>1.13.9</mockk.version>
 
         <!-- Assetions -->
-        <assertj-core.version>3.25.2</assertj-core.version>
+        <assertj-core.version>3.25.3</assertj-core.version>
 
         <netty-all.version>4.1.106.Final</netty-all.version>
         <postgresql.version>42.7.1</postgresql.version>
