@@ -17,7 +17,7 @@
         <maven-compiler-plugin.source>${java.version}</maven-compiler-plugin.source>
         <maven-compiler-plugin.target>${java.version}</maven-compiler-plugin.target>
         <maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
-        <maven-compiler-plugin.version>3.12.1</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
         <kotlin.version>1.9.23</kotlin.version>
         <kotlin-logging.version>3.0.5</kotlin-logging.version>
         <build-helper-maven-plugin.version>3.5.0</build-helper-maven-plugin.version>
@@ -35,7 +35,7 @@
         <assertj-core.version>3.25.3</assertj-core.version>
 
         <netty-all.version>4.1.107.Final</netty-all.version>
-        <postgresql.version>42.7.2</postgresql.version>
+        <postgresql.version>42.7.3</postgresql.version>
 
         <!-- Coverage -->
         <jacoco-maven-plugin.version>0.8.11</jacoco-maven-plugin.version>
