@@ -34,13 +34,13 @@
         <!-- Assetions -->
         <assertj-core.version>3.25.3</assertj-core.version>
 
-        <netty-all.version>4.1.107.Final</netty-all.version>
+        <netty-all.version>4.1.108.Final</netty-all.version>
         <postgresql.version>42.7.3</postgresql.version>
 
         <!-- Coverage -->
         <jacoco-maven-plugin.version>0.8.11</jacoco-maven-plugin.version>
         <omni-coveragereporter-maven-plugin.version>0.4.3</omni-coveragereporter-maven-plugin.version>
-        <spring-boot.version>3.2.3</spring-boot.version>
+        <spring-boot.version>3.2.4</spring-boot.version>
         <kotlinx-coroutines.version>1.8.0</kotlinx-coroutines.version>
         <springdoc-openapi.version>1.6.13</springdoc-openapi.version>
         <kotlinx-coroutines-debug.version>1.8.0</kotlinx-coroutines-debug.version>
