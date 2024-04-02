@@ -38,7 +38,7 @@
         <postgresql.version>42.7.3</postgresql.version>
 
         <!-- Coverage -->
-        <jacoco-maven-plugin.version>0.8.11</jacoco-maven-plugin.version>
+        <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
         <omni-coveragereporter-maven-plugin.version>0.4.3</omni-coveragereporter-maven-plugin.version>
         <spring-boot.version>3.2.4</spring-boot.version>
         <kotlinx-coroutines.version>1.8.0</kotlinx-coroutines.version>
