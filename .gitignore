@@ -38,6 +38,8 @@ build/
 
 ### NPM
 node_modules
+package-lock.json
+yarn.lock
 
 ### Logs
 logs
@@ -45,3 +47,4 @@ logs
 ### Cypress
 videos
 screenshots
+
