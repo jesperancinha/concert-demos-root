@@ -39,7 +39,10 @@ remove-lock-files:
 	find . -name "yarn.lock" | xargs -I {} rm {};
 update: remove-lock-files
 	npm install -g npm-check-updates
-	cd concert-demos-gui && npx browserslist --update-db && ncu -u && yarn
+	cd concert-demos-gui;\
+ 	npx browserslist --update-db;\
+ 	ncu -u;\
+ 	yarn
 audit:
 	cd concert-demos-gui && npm audit fix && yarn
 dcup-light:
@@ -69,3 +72,13 @@ cypress-firefox:
 	cd e2e && make cypress-firefox
 cypress-edge:
 	cd e2e && make cypress-edge
+deps-cypress-update:
+	curl -sL https://raw.githubusercontent.com/jesperancinha/project-signer/master/cypressUpdateOne.sh | bash
+deps-plugins-update:
+	curl -sL https://raw.githubusercontent.com/jesperancinha/project-signer/master/pluginUpdatesOne.sh | bash
+deps-update: update
+revert-deps-cypress-update:
+	if [ -f  e2e/docker-composetmp.yml ]; then rm e2e/docker-composetmp.yml; fi
+	if [ -f  e2e/packagetmp.json ]; then rm e2e/packagetmp.json; fi
+	git checkout e2e/docker-compose.yml
+	git checkout e2e/package.json

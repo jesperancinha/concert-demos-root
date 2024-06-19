@@ -48,3 +48,8 @@ logs
 videos
 screenshots
 
+## Automation
+cypressUpdateOne.sh
+docker-composetmp.yml
+packagetmp.json
+pluginUpdatesOne.sh
