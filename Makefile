@@ -82,3 +82,5 @@ revert-deps-cypress-update:
 	if [ -f  e2e/packagetmp.json ]; then rm e2e/packagetmp.json; fi
 	git checkout e2e/docker-compose.yml
 	git checkout e2e/package.json
+accept-prs:
+	curl -sL https://raw.githubusercontent.com/jesperancinha/project-signer/master/acceptPR.sh | bash
