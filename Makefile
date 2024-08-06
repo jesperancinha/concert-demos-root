@@ -54,8 +54,8 @@ dcd: dc-migration
 	docker-compose down
 concerts-wait:
 	bash concerts_wait.sh
-dcup-full: docker-clean-build-start concerts-wait
-dcup-full-action: docker-clean no-test docker-action concerts-wait
+dcup-full: dcd docker-clean-build-start concerts-wait
+dcup-full-action: dcd docker-clean no-test docker-action concerts-wait
 log-mvc:
 	docker-compose logs -f mvc
 log-webflux:
