@@ -50,7 +50,7 @@ dcup-light:
 dcup: dcd
 	docker-compose up -d --build --remove-orphans
 	make concerts-wait
-dcd:
+dcd: dc-migration
 	docker-compose down
 concerts-wait:
 	bash concerts_wait.sh
@@ -84,3 +84,5 @@ revert-deps-cypress-update:
 	git checkout e2e/package.json
 accept-prs:
 	curl -sL https://raw.githubusercontent.com/jesperancinha/project-signer/master/acceptPR.sh | bash
+dc-migration:
+	curl -sL https://raw.githubusercontent.com/jesperancinha/project-signer/master/setupDockerCompose.sh | bash
