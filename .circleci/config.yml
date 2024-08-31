@@ -22,7 +22,7 @@ jobs:
 
     steps:
       - checkout
-
+      - run: apk add make maven
       - run: mvn clean install
 
       - save_cache:
