@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: cimg/openjdk:17.0.1
+      - image: eclipse-temurin:21-alpine
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -22,7 +22,7 @@ jobs:
 
     steps:
       - checkout
-
+      - run: apk add make maven
       - run: mvn clean install
 
       - save_cache:
