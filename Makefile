@@ -72,10 +72,6 @@ cypress-firefox:
 	cd e2e && make cypress-firefox
 cypress-edge:
 	cd e2e && make cypress-edge
-deps-cypress-update:
-	curl -sL https://raw.githubusercontent.com/jesperancinha/project-signer/master/cypressUpdateOne.sh | bash
-deps-plugins-update:
-	curl -sL https://raw.githubusercontent.com/jesperancinha/project-signer/master/pluginUpdatesOne.sh | bash
 deps-update: update
 revert-deps-cypress-update:
 	if [ -f  e2e/docker-composetmp.yml ]; then rm e2e/docker-composetmp.yml; fi
