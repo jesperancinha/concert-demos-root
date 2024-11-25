@@ -11,7 +11,6 @@
     <packaging>pom</packaging>
 
     <properties>
-        <!-- Build -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>21</java.version>
         <maven-compiler-plugin.source>${java.version}</maven-compiler-plugin.source>
@@ -22,29 +21,19 @@
         <kotlin-logging.version>3.0.5</kotlin-logging.version>
         <build-helper-maven-plugin.version>3.6.0</build-helper-maven-plugin.version>
 
-        <!-- Spring -->
-        <spring-boot-bom-r2dbc.version>0.1.0.M3</spring-boot-bom-r2dbc.version>
-
-        <!-- Tests -->
         <kotest.version>5.9.1</kotest.version>
         <springmockk.version>4.0.2</springmockk.version>
         <kotest-extensions-spring.version>1.3.0</kotest-extensions-spring.version>
         <mockk.version>1.13.13</mockk.version>
 
-        <!-- Assetions -->
-        <assertj-core.version>3.26.3</assertj-core.version>
-
         <netty-all.version>4.1.115.Final</netty-all.version>
         <postgresql.version>42.7.4</postgresql.version>
 
-        <!-- Coverage -->
         <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
         <omni-coveragereporter-maven-plugin.version>0.4.4</omni-coveragereporter-maven-plugin.version>
-        <spring-boot.version>3.3.6</spring-boot.version>
         <kotlinx-coroutines.version>1.9.0</kotlinx-coroutines.version>
-        <springdoc-openapi.version>1.6.13</springdoc-openapi.version>
-        <kotlinx-coroutines-debug.version>1.9.0</kotlinx-coroutines-debug.version>
         <springdoc-openapi-starter.version>2.6.0</springdoc-openapi-starter.version>
+        <spring-boot.version>3.3.6</spring-boot.version>
     </properties>
 
     <modules>
@@ -71,12 +60,6 @@
                 <groupId>org.springdoc</groupId>
                 <artifactId>springdoc-openapi-starter-webflux-ui</artifactId>
                 <version>${springdoc-openapi-starter.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.assertj</groupId>
-                <artifactId>assertj-core</artifactId>
-                <version>${assertj-core.version}</version>
-                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.jesperancinha.concerts</groupId>
@@ -202,20 +185,6 @@
                 <groupId>org.jetbrains.kotlinx</groupId>
                 <artifactId>kotlinx-coroutines-core-jvm</artifactId>
                 <version>${kotlinx-coroutines.version}</version>
-            </dependency>
-            <!-- This Dependency is added as a workaround for the following issue -->
-            <!--- https://github.com/Kotlin/kotlinx.coroutines/issues/3334 -->
-            <dependency>
-                <groupId>org.jetbrains.kotlinx</groupId>
-                <artifactId>kotlinx-coroutines-debug</artifactId>
-                <version>${kotlinx-coroutines-debug.version}</version>
-                <scope>test</scope>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.jetbrains.kotlinx</groupId>
-                        <artifactId>kotlinx-coroutines-bom</artifactId>
-                    </exclusion>
-                </exclusions>
             </dependency>
         </dependencies>
     </dependencyManagement>
