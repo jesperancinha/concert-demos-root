@@ -153,7 +153,6 @@
                         <configuration>
                             <sourceDirs>
                                 <source>src/main/kotlin</source>
-                                <source>src/main/resources</source>
                             </sourceDirs>
                         </configuration>
                     </execution>
@@ -165,7 +164,7 @@
                         </goals>
                         <configuration>
                             <sourceDirs>
-                                <source>src/test/resources</source>
+                                <source>src/test/kotlin</source>
                             </sourceDirs>
                         </configuration>
                     </execution>
