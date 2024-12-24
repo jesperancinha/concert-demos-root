@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component
 
 @Entity
 data class Concert(
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     var id: Long? = 0,
     val name: String,
     val location: String,
@@ -28,7 +28,7 @@ data class Concert(
 
 @Entity
 data class Listing(
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     val id: Long?,
 
     @OneToOne
@@ -75,7 +75,7 @@ data class Listing(
 
 @Entity
 data class Music(
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     val id: Long?,
 
     val name: String,
@@ -110,7 +110,7 @@ data class Music(
 
 @Entity
 data class Artist(
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     val id: Long?,
     val name: String,
     val gender: Gender,
