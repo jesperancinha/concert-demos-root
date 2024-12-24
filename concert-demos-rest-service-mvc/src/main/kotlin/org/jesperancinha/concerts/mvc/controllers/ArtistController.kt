@@ -3,6 +3,7 @@ package org.jesperancinha.concerts.mvc.controllers
 import jakarta.validation.constraints.NotNull
 import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.mvc.services.ArtistService
+import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -17,5 +18,6 @@ class ArtistController(private val artistService: ArtistService) {
     fun getAllArtists(): List<ArtistDto>? = artistService.getAllArtists()
 
     @PostMapping
+    @Transactional
     fun createArtist(@RequestBody @NotNull artistDto: ArtistDto) = artistService.createArtist(artistDto)
 }
