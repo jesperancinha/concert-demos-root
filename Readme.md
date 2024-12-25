@@ -108,11 +108,11 @@ You can make tests for this application using the Swagger UI at:
 
 ```json
 {
-  "name": "Nicky Minaj",
+  "name": SPARROW,
   "gender": "FEMALE",
   "careerStart": 1000,
   "birthDate": "a date",
-  "birthCity": "Port of Spain",
+  "birthCity": FORREST_PLACE,
   "country": "Trinidad en Tobago",
   "keywords": "Rap"
 }

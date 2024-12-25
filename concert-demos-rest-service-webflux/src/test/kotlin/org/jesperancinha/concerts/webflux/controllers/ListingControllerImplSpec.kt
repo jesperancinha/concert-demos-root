@@ -2,21 +2,21 @@ package org.jesperancinha.concerts.webflux.controllers
 
 import io.kotest.matchers.collections.shouldBeEmpty
 import io.kotest.matchers.collections.shouldHaveSize
-import io.kotest.matchers.collections.shouldNotBeEmpty
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.shouldBe
 import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.data.ListingDto
 import org.jesperancinha.concerts.data.MusicDto
 import org.jesperancinha.concerts.types.Gender
-import org.jesperancinha.concerts.webflux.controllers.TestConstants.Companion.HEY_MAMA
+import org.jesperancinha.concerts.webflux.controllers.TestConstants.Companion.FORREST_PLACE
+import org.jesperancinha.concerts.webflux.controllers.TestConstants.Companion.LYRICS_TEXT
+import org.jesperancinha.concerts.webflux.controllers.TestConstants.Companion.SPARROW
 import org.jesperancinha.concerts.webflux.model.Listing
 import org.jesperancinha.concerts.webflux.repos.*
 import org.jesperancinha.concerts.webflux.services.*
 import org.junit.jupiter.api.Test
 import org.mockito.ArgumentCaptor
 import org.mockito.Captor
-import org.mockito.Mockito.any
 import org.mockito.Mockito.`when`
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest
@@ -91,23 +91,22 @@ class ListingControllerImplSpec {
         val musicDto = MusicDto(
             1L,
             "Hey mama",
-            HEY_MAMA
+            LYRICS_TEXT
         )
         val artistDto = ArtistDto(
-            null,
-            "Nicky Minaj",
-            Gender.FEMALE,
-            1000L,
-            LocalDateTime.now().toString(),
-            "Port of Spain",
-            "Trinidad en Tobago",
-            "Rap"
+            name = SPARROW,
+            gender = Gender.FEMALE,
+            careerStart = 1000L,
+            birthDate = LocalDateTime.now().toString(),
+            birthCity = FORREST_PLACE,
+            country = "Trinidad en Tobago",
+            keywords = "Rap"
         )
         val listingDto = ListingDto(
-            1L,
-            artistDto,
-            musicDto,
-            mutableListOf(musicDto)
+            id = 1L,
+            artistDto = artistDto,
+            referenceMusicDto = musicDto,
+            musicDtos = mutableListOf(musicDto)
         )
 
         `when`(listingService.createListing(listingDto)).thenReturn(Mono.fromCallable { listingDto })

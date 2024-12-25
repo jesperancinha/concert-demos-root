@@ -7,7 +7,7 @@ import org.jesperancinha.concerts.mvc.services.ArtistService
 import org.jesperancinha.concerts.mvc.services.ConcertService
 import org.jesperancinha.concerts.mvc.services.ListingService
 import org.jesperancinha.concerts.mvc.services.MusicService
-import org.jesperancinha.concerts.types.Gender.AGENDER
+import org.jesperancinha.concerts.types.Gender.NONAPPLICABLE
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Test
 import org.mockito.ArgumentCaptor
@@ -76,7 +76,7 @@ class ArtistControllerTest(
         val target = "/concerts/data/artists"
         val artist = ArtistDto(
             name = "Duran Duran",
-            gender = AGENDER,
+            gender = NONAPPLICABLE,
             careerStart = 1000L,
             birthDate = LocalDateTime.now().toString(),
             birthCity = "Birmingham",

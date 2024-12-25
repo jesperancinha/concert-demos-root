@@ -2,6 +2,7 @@ package org.jesperancinha.concerts.mvc.controllers
 
 import org.jesperancinha.concerts.data.MusicDto
 import org.jesperancinha.concerts.mvc.services.MusicService
+import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
@@ -16,6 +17,7 @@ class MusicControllerImpl(private val musicService: MusicService) : MusicControl
         return musicService.getMusicById(id)
     }
 
+    @Transactional
     override fun createMusic(musicDto: MusicDto): MusicDto {
         return musicService.createMusic(musicDto)
     }

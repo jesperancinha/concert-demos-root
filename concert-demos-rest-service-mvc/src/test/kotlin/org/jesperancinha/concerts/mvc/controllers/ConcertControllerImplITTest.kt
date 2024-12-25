@@ -7,7 +7,9 @@ import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.data.ConcertDto
 import org.jesperancinha.concerts.data.ListingDto
 import org.jesperancinha.concerts.data.MusicDto
-import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.HEY_MAMA
+import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.FORREST_PLACE
+import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.LYRICS_TEXT
+import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.SPARROW
 import org.jesperancinha.concerts.mvc.daos.ArtistRepository
 import org.jesperancinha.concerts.mvc.daos.ConcertRepository
 import org.jesperancinha.concerts.mvc.daos.ListingRepository
@@ -23,6 +25,7 @@ import org.springframework.core.ParameterizedTypeReference
 import org.springframework.http.HttpMethod
 import org.springframework.http.RequestEntity
 import org.springframework.test.context.ActiveProfiles
+import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.client.RestTemplate
 import org.springframework.web.client.getForObject
 import org.springframework.web.client.postForEntity
@@ -52,6 +55,7 @@ class ConcertControllerImplITTest(
         result.shouldBeEmpty()
     }
 
+    @Transactional
     @Test
     fun `create concerts`() {
         val artistsUri = "http://localhost:${port}/concerts/data/artists"
@@ -61,14 +65,14 @@ class ConcertControllerImplITTest(
 
         val musicDto = MusicDto(
             name = "Hey mama",
-            lyrics = HEY_MAMA
+            lyrics = LYRICS_TEXT
         )
         val artistDto = ArtistDto(
-            name = "Nicky Minaj",
+            name = SPARROW,
             gender = FEMALE,
             careerStart = 1000L,
             birthDate = LocalDateTime.now().toString(),
-            birthCity = "Port of Spain",
+            birthCity = FORREST_PLACE,
             country = "Trinidad en Tobago",
             keywords = "Rap"
         )
@@ -82,10 +86,9 @@ class ConcertControllerImplITTest(
         savedMusicDto.shouldNotBeNull()
 
         val listingDto = ListingDto(
-            0,
-            savedArtistDto,
-            savedMusicDto,
-            mutableListOf(savedMusicDto)
+            artistDto = savedArtistDto,
+            referenceMusicDto = savedMusicDto,
+            musicDtos = mutableListOf(savedMusicDto)
         )
         val savedListingDto = restTemplate.postForEntity<ListingDto>(listingsUri, listingDto, ListingDto::class).body
         val concertDto = ConcertDto(

@@ -9,13 +9,12 @@ import org.jesperancinha.concerts.mvc.services.ArtistService
 import org.jesperancinha.concerts.mvc.services.ConcertService
 import org.jesperancinha.concerts.mvc.services.ListingService
 import org.jesperancinha.concerts.mvc.services.MusicService
-import org.jesperancinha.concerts.types.Gender.AGENDER
+import org.jesperancinha.concerts.types.Gender.NONAPPLICABLE
 import org.mockito.ArgumentCaptor
 import org.mockito.Captor
 import org.mockito.Mockito.`when`
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.http.MediaType
@@ -78,7 +77,7 @@ class ArtistControllerImplKoTest(
                 val target = "/concerts/data/artists"
                 val artist = ArtistDto(
                     name = "Duran Duran",
-                    gender = AGENDER,
+                    gender = NONAPPLICABLE,
                     careerStart = 1000L,
                     birthDate = LocalDateTime.now().toString(),
                     birthCity = "Birmingham",

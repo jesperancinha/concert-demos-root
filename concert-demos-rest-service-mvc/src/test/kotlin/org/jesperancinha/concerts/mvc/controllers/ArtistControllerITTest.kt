@@ -12,7 +12,7 @@ import org.jesperancinha.concerts.mvc.daos.ArtistRepository
 import org.jesperancinha.concerts.mvc.daos.ConcertRepository
 import org.jesperancinha.concerts.mvc.daos.ListingRepository
 import org.jesperancinha.concerts.mvc.daos.MusicRepository
-import org.jesperancinha.concerts.types.Gender.AGENDER
+import org.jesperancinha.concerts.types.Gender.NONAPPLICABLE
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -61,7 +61,7 @@ class ArtistControllerITTest(
         val uri = "http://localhost:${port}/concerts/data/artists"
         val artistDto = ArtistDto(
             name = "Duran Duran",
-            gender = AGENDER,
+            gender = NONAPPLICABLE,
             careerStart = 1000L,
             birthDate = LocalDateTime.now().toString(),
             birthCity = "Birmingham",
@@ -85,7 +85,7 @@ class ArtistControllerITTest(
         val artistResult = result[0]
         artistResult.id shouldNotBe 0
         artistDto.name shouldBe "Duran Duran"
-        artistDto.gender shouldBe AGENDER
+        artistDto.gender shouldBe NONAPPLICABLE
         artistDto.birthCity shouldBe "Birmingham"
     }
 

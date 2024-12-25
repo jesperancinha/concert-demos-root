@@ -13,7 +13,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.mvc.daos.*
-import org.jesperancinha.concerts.types.Gender.AGENDER
+import org.jesperancinha.concerts.types.Gender.NONAPPLICABLE
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT
@@ -66,7 +66,7 @@ class ArtistControllerImplITKoTest : WordSpec() {
                 val uri = "http://localhost:${port}/concerts/data/artists"
                 val artist = ArtistDto(
                     name = "Duran Duran",
-                    gender = AGENDER,
+                    gender = NONAPPLICABLE,
                     careerStart = 1000L,
                     birthDate = LocalDateTime.now().toString(),
                     birthCity = "Birmingham",
@@ -90,7 +90,7 @@ class ArtistControllerImplITKoTest : WordSpec() {
                 val artistResult = result[0]
                 artistResult.id shouldNotBe 0
                 artist.name shouldBe "Duran Duran"
-                artist.gender shouldBe AGENDER
+                artist.gender shouldBe NONAPPLICABLE
                 artist.birthCity shouldBe "Birmingham"
             }
         }

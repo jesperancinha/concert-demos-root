@@ -76,7 +76,7 @@ data class Listing(
 @Entity
 data class Music(
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    val id: Long?,
+    var id: Long?,
 
     val name: String,
 
