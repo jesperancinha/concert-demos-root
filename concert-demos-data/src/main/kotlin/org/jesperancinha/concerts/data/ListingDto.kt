@@ -1,7 +1,7 @@
 package org.jesperancinha.concerts.data
 
 data class ListingDto(
-    val id: Long? = 0,
+    val id: Long? = null,
     val artistDto: ArtistDto,
     val referenceMusicDto: MusicDto,
     val musicDtos: MutableList<MusicDto?>,

@@ -23,6 +23,7 @@ import org.springframework.core.ParameterizedTypeReference
 import org.springframework.http.HttpMethod
 import org.springframework.http.RequestEntity
 import org.springframework.test.context.ActiveProfiles
+import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.client.RestTemplate
 import org.springframework.web.client.getForObject
 import org.springframework.web.client.postForEntity
@@ -52,6 +53,7 @@ class ConcertControllerImplITTest(
         result.shouldBeEmpty()
     }
 
+    @Transactional
     @Test
     fun `create concerts`() {
         val artistsUri = "http://localhost:${port}/concerts/data/artists"
@@ -82,10 +84,9 @@ class ConcertControllerImplITTest(
         savedMusicDto.shouldNotBeNull()
 
         val listingDto = ListingDto(
-            0,
-            savedArtistDto,
-            savedMusicDto,
-            mutableListOf(savedMusicDto)
+            artistDto = savedArtistDto,
+            referenceMusicDto = savedMusicDto,
+            musicDtos = mutableListOf(savedMusicDto)
         )
         val savedListingDto = restTemplate.postForEntity<ListingDto>(listingsUri, listingDto, ListingDto::class).body
         val concertDto = ConcertDto(
