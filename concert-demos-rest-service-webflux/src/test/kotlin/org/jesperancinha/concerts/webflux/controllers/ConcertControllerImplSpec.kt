@@ -7,7 +7,9 @@ import org.jesperancinha.concerts.data.ConcertDto
 import org.jesperancinha.concerts.data.ListingDto
 import org.jesperancinha.concerts.data.MusicDto
 import org.jesperancinha.concerts.types.Gender.FEMALE
-import org.jesperancinha.concerts.webflux.controllers.TestConstants.Companion.HEY_MAMA
+import org.jesperancinha.concerts.webflux.controllers.TestConstants.Companion.FORREST_PLACE
+import org.jesperancinha.concerts.webflux.controllers.TestConstants.Companion.LYRICS_TEXT
+import org.jesperancinha.concerts.webflux.controllers.TestConstants.Companion.SPARROW
 import org.jesperancinha.concerts.webflux.model.Concert
 import org.jesperancinha.concerts.webflux.repos.*
 import org.jesperancinha.concerts.webflux.services.*
@@ -88,15 +90,15 @@ class ConcertControllerImplSpec {
         val musicDto = MusicDto(
             1,
             "Hey mama",
-            HEY_MAMA
+            LYRICS_TEXT
         )
         val artistDto = ArtistDto(
             1,
-            "Nicky Minaj",
+            SPARROW,
             FEMALE,
             1000L,
             LocalDateTime.now().toString(),
-            "Port of Spain",
+            FORREST_PLACE,
             "Trinidad en Tobago",
             "Rap"
         )

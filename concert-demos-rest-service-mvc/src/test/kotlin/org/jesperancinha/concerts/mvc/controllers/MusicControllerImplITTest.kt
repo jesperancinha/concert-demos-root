@@ -6,7 +6,7 @@ import io.kotest.matchers.collections.shouldNotBeEmpty
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import org.jesperancinha.concerts.data.MusicDto
-import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.HEY_MAMA
+import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.LYRICS_TEXT
 import org.jesperancinha.concerts.mvc.daos.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -56,7 +56,7 @@ class MusicControllerImplITTest(
         val uri = "http://localhost:${port}/concerts/data/musics"
         val musicDto = MusicDto(
             name = "Hey mama",
-            lyrics = HEY_MAMA)
+            lyrics = LYRICS_TEXT)
         val restTemplate = RestTemplate()
         restTemplate.postForEntity(uri, musicDto, Music::class.java)
         val request = RequestEntity<Any>(HttpMethod.GET, URI.create(uri))
@@ -68,7 +68,7 @@ class MusicControllerImplITTest(
         val musicDto1 = result[0]
         musicDto1.id shouldNotBe 0
         musicDto1.name shouldBe "Hey mama"
-        musicDto1.lyrics shouldBe HEY_MAMA
+        musicDto1.lyrics shouldBe LYRICS_TEXT
     }
 
     @BeforeEach

@@ -12,7 +12,9 @@ import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.data.ConcertDto
 import org.jesperancinha.concerts.data.ListingDto
 import org.jesperancinha.concerts.data.MusicDto
-import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.HEY_MAMA
+import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.FORREST_PLACE
+import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.LYRICS_TEXT
+import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.SPARROW
 import org.jesperancinha.concerts.mvc.daos.ArtistRepository
 import org.jesperancinha.concerts.mvc.daos.ConcertRepository
 import org.jesperancinha.concerts.mvc.daos.ListingRepository
@@ -72,14 +74,14 @@ class ConcertControllerImplITKoTest : WordSpec() {
 
                 val musicDto = MusicDto(
                     name = "Hey mama",
-                    lyrics = HEY_MAMA
+                    lyrics = LYRICS_TEXT
                 )
                 val artistDto = ArtistDto(
-                    name = "Nicky Minaj",
+                    name = SPARROW,
                     gender = FEMALE,
                     careerStart = 1000L,
                     birthDate = LocalDateTime.now().toString(),
-                    birthCity = "Port of Spain",
+                    birthCity = FORREST_PLACE,
                     country = "Trinidad en Tobago",
                     keywords = "Rap"
                 )
@@ -94,10 +96,9 @@ class ConcertControllerImplITKoTest : WordSpec() {
                 savedMusicDto.shouldNotBeNull()
 
                 val listingDto = ListingDto(
-                    0,
-                    savedArtistDto,
-                    savedMusicDto,
-                    mutableListOf(savedMusicDto)
+                    artistDto = savedArtistDto,
+                    referenceMusicDto = savedMusicDto,
+                    musicDtos = mutableListOf(savedMusicDto)
                 )
                 val savedListingDto =
                     restTemplate.postForEntity<ListingDto>(listingsUri, listingDto, ListingDto::class).body

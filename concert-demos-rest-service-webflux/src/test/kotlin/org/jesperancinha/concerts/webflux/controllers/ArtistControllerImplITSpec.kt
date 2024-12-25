@@ -7,7 +7,7 @@ import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import org.jesperancinha.concerts.data.ArtistDto
-import org.jesperancinha.concerts.types.Gender.AGENDER
+import org.jesperancinha.concerts.types.Gender.NONAPPLICABLE
 import org.jesperancinha.concerts.webflux.configuration.ConfigurationProperties
 import org.jesperancinha.concerts.webflux.model.Artist
 import org.jesperancinha.concerts.webflux.repos.ArtistRepository
@@ -55,7 +55,7 @@ class ArtistControllerImplITSpec {
         val artist = ArtistDto(
             null,
             "Duran Duran",
-            AGENDER,
+            NONAPPLICABLE,
             1000L,
             LocalDateTime.now().toString(),
             "Birmingham",
@@ -77,7 +77,7 @@ class ArtistControllerImplITSpec {
         artist0.apply {
             id shouldNotBe 0
             name shouldBe "Duran Duran"
-            gender shouldBe AGENDER
+            gender shouldBe NONAPPLICABLE
             birthCity shouldBe "Birmingham"
         }
     }

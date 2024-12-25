@@ -9,7 +9,9 @@ import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.data.ConcertDto
 import org.jesperancinha.concerts.data.ListingDto
 import org.jesperancinha.concerts.data.MusicDto
-import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.HEY_MAMA
+import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.FORREST_PLACE
+import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.LYRICS_TEXT
+import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.SPARROW
 import org.jesperancinha.concerts.mvc.daos.*
 import org.jesperancinha.concerts.mvc.services.ArtistService
 import org.jesperancinha.concerts.mvc.services.ConcertService
@@ -20,7 +22,6 @@ import org.mockito.ArgumentCaptor
 import org.mockito.Captor
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
@@ -68,25 +69,25 @@ class ConcertControllerImplMockkTest : WordSpec() {
             "create concert"{
                 val target = "/concerts/data/concerts"
                 val musicDto = MusicDto(
-                    1,
-                    "Hey mama",
-                    HEY_MAMA
+                    id = 1,
+                    name = "Hey mama",
+                    lyrics = LYRICS_TEXT
                 )
                 val artistDto = ArtistDto(
                     id = 1,
-                    name = "Nicky Minaj",
+                    name = SPARROW,
                     gender = FEMALE,
                     careerStart = 1000L,
                     birthDate = LocalDateTime.now().toString(),
-                    birthCity = "Port of Spain",
+                    birthCity = FORREST_PLACE,
                     country = "Trinidad en Tobago",
                     keywords = "Rap"
                 )
                 val listingDto = ListingDto(
-                    1,
-                    artistDto,
-                    musicDto,
-                    mutableListOf(musicDto)
+                    id = 1,
+                    artistDto = artistDto,
+                    referenceMusicDto = musicDto,
+                    musicDtos = mutableListOf(musicDto)
                 )
                 val concertDto = ConcertDto(
                     name = "Nicki Wrld Tour",

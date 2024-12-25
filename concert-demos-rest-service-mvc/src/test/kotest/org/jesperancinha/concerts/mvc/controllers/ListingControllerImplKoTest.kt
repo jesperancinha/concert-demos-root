@@ -7,6 +7,8 @@ import io.kotest.extensions.spring.SpringExtension
 import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.data.ListingDto
 import org.jesperancinha.concerts.data.MusicDto
+import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.FORREST_PLACE
+import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.SPARROW
 import org.jesperancinha.concerts.mvc.daos.Listing
 import org.jesperancinha.concerts.mvc.daos.ArtistRepository
 import org.jesperancinha.concerts.mvc.daos.ConcertRepository
@@ -89,11 +91,11 @@ class ListingControllerImplKoTest : WordSpec() {
                     "HEY_MAMA"
                 )
                 val artistDto = ArtistDto(
-                    name = "Nicky Minaj",
+                    name = SPARROW,
                     gender = FEMALE,
                     careerStart = 1000L,
                     birthDate = LocalDateTime.now().toString(),
-                    birthCity = "Port of Spain",
+                    birthCity = FORREST_PLACE,
                     country = "Trinidad en Tobago",
                     keywords = "Rap"
                 )

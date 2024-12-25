@@ -85,7 +85,7 @@ class ArtistControllerImplSpec {
         val artistDto = ArtistDto(
             null,
             "Duran Duran",
-            Gender.AGENDER,
+            Gender.NONAPPLICABLE,
             1000L,
             LocalDateTime.now().toString(),
             "Birmingham",

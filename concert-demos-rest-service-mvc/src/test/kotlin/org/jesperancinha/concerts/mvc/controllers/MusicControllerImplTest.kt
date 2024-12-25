@@ -3,7 +3,7 @@ package org.jesperancinha.concerts.mvc.controllers
 import com.fasterxml.jackson.databind.ObjectMapper
 import io.kotest.matchers.shouldBe
 import org.jesperancinha.concerts.data.MusicDto
-import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.HEY_MAMA
+import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.LYRICS_TEXT
 import org.jesperancinha.concerts.mvc.daos.*
 import org.jesperancinha.concerts.mvc.services.ArtistService
 import org.jesperancinha.concerts.mvc.services.ConcertService
@@ -15,7 +15,6 @@ import org.mockito.Captor
 import org.mockito.Mockito.*
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.http.MediaType
@@ -65,7 +64,7 @@ class MusicControllerImplTest(
         val musicDto = MusicDto(
             1L,
             "Hey mama",
-            HEY_MAMA
+            LYRICS_TEXT
         )
         `when`(musicService.createMusic(musicDto)).thenReturn(musicDto)
         val objectMapper = ObjectMapper()

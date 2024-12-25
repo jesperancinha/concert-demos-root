@@ -8,7 +8,7 @@ import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import org.jesperancinha.concerts.data.MusicDto
 import org.jesperancinha.concerts.webflux.configuration.ConfigurationProperties
-import org.jesperancinha.concerts.webflux.controllers.TestConstants.Companion.HEY_MAMA
+import org.jesperancinha.concerts.webflux.controllers.TestConstants.Companion.LYRICS_TEXT
 import org.jesperancinha.concerts.webflux.model.Music
 import org.jesperancinha.concerts.webflux.repos.MusicRepository
 import org.jesperancinha.concerts.webflux.services.ArtistService
@@ -58,7 +58,7 @@ class MusicControllerImplITSpec {
         val musicDto = MusicDto(
             null,
             "Hey mama",
-            HEY_MAMA
+            LYRICS_TEXT
         )
         val restTemplate = RestTemplate()
         restTemplate.postForEntity(uri, musicDto, Music::class.java)
@@ -77,7 +77,7 @@ class MusicControllerImplITSpec {
         music.shouldNotBeNull()
         music.id shouldNotBe 0
         music.name shouldBe "Hey mama"
-        music.lyrics shouldBe HEY_MAMA
+        music.lyrics shouldBe LYRICS_TEXT
     }
 
     @BeforeEach

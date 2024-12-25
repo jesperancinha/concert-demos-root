@@ -5,7 +5,9 @@ import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.data.ConcertDto
 import org.jesperancinha.concerts.data.ListingDto
 import org.jesperancinha.concerts.data.MusicDto
-import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.HEY_MAMA
+import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.FORREST_PLACE
+import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.LYRICS_TEXT
+import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.SPARROW
 import org.jesperancinha.concerts.mvc.daos.*
 import org.jesperancinha.concerts.mvc.services.ArtistService
 import org.jesperancinha.concerts.mvc.services.ConcertService
@@ -18,7 +20,6 @@ import org.mockito.Captor
 import org.mockito.Mockito.`when`
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.http.MediaType
@@ -79,15 +80,15 @@ class ConcertControllerImplTest(
         val musicDto = MusicDto(
             1,
             "Hey mama",
-            HEY_MAMA
+            LYRICS_TEXT
         )
         val artistDto = ArtistDto(
             1,
-            "Nicky Minaj",
+            SPARROW,
             FEMALE,
             1000L,
             LocalDateTime.now().toString(),
-            "Port of Spain",
+            FORREST_PLACE,
             "Trinidad en Tobago",
             "Rap"
         )
