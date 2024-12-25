@@ -8,7 +8,7 @@ import io.kotest.matchers.shouldBe
 import io.mockk.every
 import io.mockk.verify
 import org.jesperancinha.concerts.data.MusicDto
-import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.HEY_MAMA
+import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.LYRICS_TEXT
 import org.jesperancinha.concerts.mvc.daos.*
 import org.jesperancinha.concerts.mvc.services.ArtistService
 import org.jesperancinha.concerts.mvc.services.ConcertService
@@ -18,7 +18,6 @@ import org.mockito.ArgumentCaptor
 import org.mockito.Captor
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
@@ -67,7 +66,7 @@ class MusicControllerImplMockkTest : WordSpec() {
                 val musicDto = MusicDto(
                     1L,
                     "Hey mama",
-                    HEY_MAMA
+                    LYRICS_TEXT
                 )
                 every { musicService.createMusic(musicDto) } returns musicDto
                 val objectMapper = ObjectMapper()

@@ -14,7 +14,9 @@ import kotlinx.coroutines.withContext
 import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.data.ListingDto
 import org.jesperancinha.concerts.data.MusicDto
-import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.HEY_MAMA
+import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.FORREST_PLACE
+import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.LYRICS_TEXT
+import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.SPARROW
 import org.jesperancinha.concerts.mvc.daos.Music
 import org.jesperancinha.concerts.mvc.daos.ArtistRepository
 import org.jesperancinha.concerts.mvc.daos.ConcertRepository
@@ -75,14 +77,14 @@ class ListingControllerImplITKoTest : WordSpec() {
                 val listingsUri = "http://localhost:${port}/concerts/data/listings"
                 val musicDto = MusicDto(
                     name = "Hey mama",
-                    lyrics = HEY_MAMA
+                    lyrics = LYRICS_TEXT
                 )
                 val artistDto = ArtistDto(
-                    name = "Nicky Minaj",
+                    name = SPARROW,
                     gender = FEMALE,
                     careerStart = 1000L,
                     birthDate = LocalDateTime.now().toString(),
-                    birthCity = "Port of Spain",
+                    birthCity = FORREST_PLACE,
                     country = "Trinidad en Tobago",
                     keywords = "Rap"
                 )

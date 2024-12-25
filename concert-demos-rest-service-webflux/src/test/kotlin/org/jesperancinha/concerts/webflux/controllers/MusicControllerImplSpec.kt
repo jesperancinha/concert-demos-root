@@ -4,14 +4,13 @@ import io.kotest.matchers.collections.shouldBeEmpty
 import io.kotest.matchers.shouldBe
 import org.jesperancinha.concerts.data.MusicDto
 import org.jesperancinha.concerts.webflux.configuration.ConfigurationProperties
-import org.jesperancinha.concerts.webflux.controllers.TestConstants.Companion.HEY_MAMA
+import org.jesperancinha.concerts.webflux.controllers.TestConstants.Companion.LYRICS_TEXT
 import org.jesperancinha.concerts.webflux.model.Music
 import org.jesperancinha.concerts.webflux.repos.*
 import org.jesperancinha.concerts.webflux.services.*
 import org.junit.jupiter.api.Test
 import org.mockito.ArgumentCaptor
 import org.mockito.Captor
-import org.mockito.Mockito.any
 import org.mockito.Mockito.`when`
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.context.properties.EnableConfigurationProperties
@@ -89,7 +88,7 @@ class MusicControllerImplSpec {
         val musicDto = MusicDto(
             null,
             "Hey mama",
-            HEY_MAMA
+            LYRICS_TEXT
         )
         `when`(musicService.createMusic(musicDto)).thenReturn(Mono.fromCallable { musicDto })
         val results = webTestClient.post().uri(target)

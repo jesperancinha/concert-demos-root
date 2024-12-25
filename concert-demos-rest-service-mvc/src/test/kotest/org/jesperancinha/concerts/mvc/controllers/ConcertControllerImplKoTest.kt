@@ -7,7 +7,9 @@ import org.jesperancinha.concerts.data.ArtistDto
 import org.jesperancinha.concerts.data.ConcertDto
 import org.jesperancinha.concerts.data.ListingDto
 import org.jesperancinha.concerts.data.MusicDto
-import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.HEY_MAMA
+import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.FORREST_PLACE
+import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.LYRICS_TEXT
+import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.SPARROW
 import org.jesperancinha.concerts.mvc.daos.Concert
 import org.jesperancinha.concerts.mvc.daos.ArtistRepository
 import org.jesperancinha.concerts.mvc.daos.ConcertRepository
@@ -23,7 +25,6 @@ import org.mockito.Captor
 import org.mockito.Mockito.`when`
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.http.MediaType
@@ -85,15 +86,15 @@ class ConcertControllerImplKoTest(
                 val musicDto = MusicDto(
                     1,
                     "Hey mama",
-                    HEY_MAMA
+                    LYRICS_TEXT
                 )
                 val artistDto = ArtistDto(
                     id = 1,
-                    name = "Nicky Minaj",
+                    name = SPARROW,
                     gender = FEMALE,
                     careerStart = 1000L,
                     birthDate = LocalDateTime.now().toString(),
-                    birthCity = "Port of Spain",
+                    birthCity = FORREST_PLACE,
                     country = "Trinidad en Tobago",
                     keywords = "Rap"
                 )

@@ -5,7 +5,7 @@ import io.kotest.core.spec.style.WordSpec
 import io.kotest.extensions.spring.SpringExtension
 import io.kotest.matchers.shouldBe
 import org.jesperancinha.concerts.data.MusicDto
-import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.HEY_MAMA
+import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.LYRICS_TEXT
 import org.jesperancinha.concerts.mvc.daos.Music
 import org.jesperancinha.concerts.mvc.daos.ArtistRepository
 import org.jesperancinha.concerts.mvc.daos.ConcertRepository
@@ -20,7 +20,6 @@ import org.mockito.Captor
 import org.mockito.Mockito.*
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.http.MediaType
@@ -81,7 +80,7 @@ class MusicControllerImplKoTest(
                 val musicDto = MusicDto(
                     1L,
                     "Hey mama",
-                    HEY_MAMA)
+                    LYRICS_TEXT)
                 `when`(musicService.createMusic(musicDto)).thenReturn(musicDto)
                 val objectMapper = ObjectMapper()
                 val results = mvc.perform(post(target)

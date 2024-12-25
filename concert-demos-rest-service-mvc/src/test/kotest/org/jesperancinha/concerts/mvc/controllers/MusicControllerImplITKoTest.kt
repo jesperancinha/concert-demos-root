@@ -11,7 +11,7 @@ import io.kotest.matchers.shouldNotBe
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.jesperancinha.concerts.data.MusicDto
-import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.HEY_MAMA
+import org.jesperancinha.concerts.mvc.controllers.TestKUtils.Companion.LYRICS_TEXT
 import org.jesperancinha.concerts.mvc.daos.*
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -64,7 +64,7 @@ class MusicControllerImplITKoTest : WordSpec() {
                 val uri = "http://localhost:${port}/concerts/data/musics"
                 val musicDto = MusicDto(
                     name = "Hey mama",
-                    lyrics = HEY_MAMA
+                    lyrics = LYRICS_TEXT
                 )
                 val restTemplate = RestTemplate()
                 restTemplate.postForEntity(uri, musicDto, Music::class.java)
@@ -77,7 +77,7 @@ class MusicControllerImplITKoTest : WordSpec() {
                 val musicDto1 = result[0]
                 musicDto1.id shouldNotBe 0
                 musicDto1.name shouldBe "Hey mama"
-                musicDto1.lyrics shouldBe HEY_MAMA
+                musicDto1.lyrics shouldBe LYRICS_TEXT
             }
 
         }
