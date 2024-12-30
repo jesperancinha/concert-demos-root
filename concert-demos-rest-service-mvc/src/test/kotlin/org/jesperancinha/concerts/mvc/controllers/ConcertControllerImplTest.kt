@@ -89,7 +89,7 @@ class ConcertControllerImplTest(
             1000L,
             LocalDateTime.now().toString(),
             FORREST_PLACE,
-            "Trinidad en Tobago",
+            "The Kingdom Land",
             "Rap"
         )
         val listingDto = ListingDto(

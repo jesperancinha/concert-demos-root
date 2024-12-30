@@ -73,7 +73,7 @@ class ConcertControllerImplITTest(
             careerStart = 1000L,
             birthDate = LocalDateTime.now().toString(),
             birthCity = FORREST_PLACE,
-            country = "Trinidad en Tobago",
+            country = "The Kingdom Land",
             keywords = "Rap"
         )
         val restTemplate = RestTemplate()

@@ -113,7 +113,7 @@ You can make tests for this application using the Swagger UI at:
   "careerStart": 1000,
   "birthDate": "a date",
   "birthCity": "The Forrest",
-  "country": "Trinidad en Tobago",
+  "country": "The Kingdom Land",
   "keywords": "Rap"
 }
 ```
