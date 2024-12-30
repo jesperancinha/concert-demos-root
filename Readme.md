@@ -108,11 +108,11 @@ You can make tests for this application using the Swagger UI at:
 
 ```json
 {
-  "name": SPARROW,
+  "name": "The singing sparrow Lursi",
   "gender": "FEMALE",
   "careerStart": 1000,
   "birthDate": "a date",
-  "birthCity": FORREST_PLACE,
+  "birthCity": "The Forrest",
   "country": "Trinidad en Tobago",
   "keywords": "Rap"
 }
