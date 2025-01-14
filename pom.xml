@@ -27,7 +27,7 @@
         <mockk.version>1.13.16</mockk.version>
 
         <netty-all.version>4.1.116.Final</netty-all.version>
-        <postgresql.version>42.7.4</postgresql.version>
+        <postgresql.version>42.7.5</postgresql.version>
 
         <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
         <omni-coveragereporter-maven-plugin.version>0.4.4</omni-coveragereporter-maven-plugin.version>
