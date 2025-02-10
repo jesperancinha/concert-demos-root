@@ -26,7 +26,7 @@
         <kotest-extensions-spring.version>1.3.0</kotest-extensions-spring.version>
         <mockk.version>1.13.16</mockk.version>
 
-        <netty-all.version>4.1.117.Final</netty-all.version>
+        <netty-all.version>4.1.118.Final</netty-all.version>
         <postgresql.version>42.7.5</postgresql.version>
 
         <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
