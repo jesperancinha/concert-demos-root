@@ -17,7 +17,7 @@
         <maven-compiler-plugin.target>${java.version}</maven-compiler-plugin.target>
         <maven-surefire-plugin.version>3.5.3</maven-surefire-plugin.version>
         <maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
-        <kotlin.version>2.1.20</kotlin.version>
+        <kotlin.version>2.1.21</kotlin.version>
         <kotlin-logging.version>3.0.5</kotlin-logging.version>
         <build-helper-maven-plugin.version>3.6.0</build-helper-maven-plugin.version>
 
@@ -30,7 +30,7 @@
         <postgresql.version>42.7.5</postgresql.version>
 
         <jacoco-maven-plugin.version>0.8.13</jacoco-maven-plugin.version>
-        <omni-coveragereporter-maven-plugin.version>0.4.4</omni-coveragereporter-maven-plugin.version>
+        <omni-coveragereporter-maven-plugin.version>0.4.5</omni-coveragereporter-maven-plugin.version>
         <kotlinx-coroutines.version>1.10.2</kotlinx-coroutines.version>
         <springdoc-openapi-starter.version>2.8.5</springdoc-openapi-starter.version>
         <spring-boot.version>3.4.3</spring-boot.version>
