@@ -33,7 +33,7 @@
         <omni-coveragereporter-maven-plugin.version>0.4.5</omni-coveragereporter-maven-plugin.version>
         <kotlinx-coroutines.version>1.10.2</kotlinx-coroutines.version>
         <springdoc-openapi-starter.version>2.8.11</springdoc-openapi-starter.version>
-        <spring-boot.version>3.4.2</spring-boot.version>
+        <spring-boot.version>3.5.5</spring-boot.version>
     </properties>
 
     <modules>
