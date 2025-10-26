@@ -17,7 +17,7 @@
         <maven-compiler-plugin.target>${java.version}</maven-compiler-plugin.target>
         <maven-surefire-plugin.version>3.5.4</maven-surefire-plugin.version>
         <maven-compiler-plugin.version>3.14.1</maven-compiler-plugin.version>
-        <kotlin.version>2.2.20</kotlin.version>
+        <kotlin.version>2.2.21</kotlin.version>
         <kotlin-logging.version>3.0.5</kotlin-logging.version>
         <build-helper-maven-plugin.version>3.6.1</build-helper-maven-plugin.version>
 
@@ -33,7 +33,7 @@
         <omni-coveragereporter-maven-plugin.version>0.4.5</omni-coveragereporter-maven-plugin.version>
         <kotlinx-coroutines.version>1.10.2</kotlinx-coroutines.version>
         <springdoc-openapi-starter.version>2.8.13</springdoc-openapi-starter.version>
-        <spring-boot.version>3.5.6</spring-boot.version>
+        <spring-boot.version>3.5.7</spring-boot.version>
     </properties>
 
     <modules>
