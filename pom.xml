@@ -22,7 +22,7 @@
         <build-helper-maven-plugin.version>3.6.1</build-helper-maven-plugin.version>
 
         <kotest.version>5.9.1</kotest.version>
-        <springmockk.version>4.0.2</springmockk.version>
+        <springmockk.version>5.0.1</springmockk.version>
         <kotest-extensions-spring.version>1.3.0</kotest-extensions-spring.version>
         <mockk.version>1.14.7</mockk.version>
 
@@ -32,8 +32,8 @@
         <jacoco-maven-plugin.version>0.8.14</jacoco-maven-plugin.version>
         <omni-coveragereporter-maven-plugin.version>0.4.5</omni-coveragereporter-maven-plugin.version>
         <kotlinx-coroutines.version>1.10.2</kotlinx-coroutines.version>
-        <springdoc-openapi-starter.version>2.8.14</springdoc-openapi-starter.version>
-        <spring-boot.version>3.5.8</spring-boot.version>
+        <springdoc-openapi-starter.version>3.0.0</springdoc-openapi-starter.version>
+        <spring-boot.version>4.0.0</spring-boot.version>
     </properties>
 
     <modules>
