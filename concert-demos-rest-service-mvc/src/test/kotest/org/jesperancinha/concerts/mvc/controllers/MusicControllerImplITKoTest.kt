@@ -22,27 +22,19 @@ import org.springframework.http.HttpMethod
 import org.springframework.http.RequestEntity
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.web.client.RestTemplate
+import org.springframework.web.client.postForEntity
 import java.net.URI
 import kotlin.properties.Delegates
 
  @SpringBootTest(webEnvironment = RANDOM_PORT)
 @ActiveProfiles("test")
-class MusicControllerImplITKoTest : WordSpec() {
-
-    @Autowired
-    lateinit var environment: Environment
-
-    @Autowired
-    lateinit var listingRepository: ListingRepository
-
-    @Autowired
-    lateinit var artistRepository: ArtistRepository
-
-    @Autowired
-    lateinit var musicRepository: MusicRepository
-
-    @Autowired
-    lateinit var concertRepository: ConcertRepository
+class MusicControllerImplITKoTest @Autowired constructor(
+    private val environment: Environment,
+    private val listingRepository: ListingRepository,
+    private val artistRepository: ArtistRepository,
+    private val musicRepository: MusicRepository,
+    private val concertRepository: ConcertRepository,
+) : WordSpec() {
 
     override fun extensions() = listOf(SpringExtension)
 
@@ -67,7 +59,7 @@ class MusicControllerImplITKoTest : WordSpec() {
                     lyrics = LYRICS_TEXT
                 )
                 val restTemplate = RestTemplate()
-                restTemplate.postForEntity(uri, musicDto, Music::class.java)
+                restTemplate.postForEntity<Music>(uri, musicDto)
                 val request = RequestEntity<Any>(HttpMethod.GET, URI.create(uri))
                 val respType = object : ParameterizedTypeReference<List<MusicDto>>() {}
                 val response = restTemplate.exchange(request, respType)

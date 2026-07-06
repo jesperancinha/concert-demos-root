@@ -45,12 +45,10 @@ import java.time.LocalDateTime
         ConcertRepository::class, ListingService::class,
         ListingRepository::class]
 )
-class ListingControllerImplMockkTest : WordSpec() {
-    @Autowired
-    lateinit var mvc: MockMvc
-
-    @Autowired
-    lateinit var listingService: ListingService
+class ListingControllerImplMockkTest @Autowired constructor(
+    private val mvc: MockMvc,
+    private val listingService: ListingService,
+) : WordSpec() {
     override fun extensions() = listOf(SpringExtension)
 
     @Captor

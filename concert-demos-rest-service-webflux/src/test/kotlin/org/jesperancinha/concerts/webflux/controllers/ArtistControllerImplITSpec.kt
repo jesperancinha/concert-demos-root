@@ -22,18 +22,18 @@ import org.springframework.core.ParameterizedTypeReference
 import org.springframework.http.HttpMethod
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.web.client.RestTemplate
+import org.springframework.web.client.postForEntity
 import java.time.LocalDateTime
 
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @EnableConfigurationProperties(ConfigurationProperties::class)
 @ActiveProfiles("test")
-class ArtistControllerImplITSpec {
+class ArtistControllerImplITSpec @Autowired constructor(
+    private val artistRepository: ArtistRepository
+) {
     @LocalServerPort
     var port: Int = 0
-
-    @Autowired
-    lateinit var artistRepository: ArtistRepository
 
     @Test
     fun `should GetAllArtists`() {
@@ -63,7 +63,7 @@ class ArtistControllerImplITSpec {
             "test"
         )
         val restTemplate = RestTemplate()
-        restTemplate.postForEntity(uri, artist, Artist::class.java)
+        restTemplate.postForEntity<Artist>(uri, artist)
         val result = restTemplate.exchange(
             uri,
             HttpMethod.GET,

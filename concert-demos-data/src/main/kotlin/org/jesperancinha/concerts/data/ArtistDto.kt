@@ -1,6 +1,7 @@
 package org.jesperancinha.concerts.data
 
 import org.jesperancinha.concerts.types.Gender
+import java.util.Objects
 
 data class ArtistDto(
     val id: Long? = null,
@@ -30,15 +31,7 @@ data class ArtistDto(
         return true
     }
 
-    override fun hashCode(): Int {
-        var result = name.hashCode()
-        result = 31 * result + gender.hashCode()
-        result = 31 * result + careerStart.hashCode()
-        result = 31 * result + birthDate.hashCode()
-        result = 31 * result + birthCity.hashCode()
-        result = 31 * result + country.hashCode()
-        result = 31 * result + keywords.hashCode()
-        return result
-    }
+    override fun hashCode(): Int =
+        Objects.hash(name, gender, careerStart, birthDate, birthCity, country, keywords)
 
 }

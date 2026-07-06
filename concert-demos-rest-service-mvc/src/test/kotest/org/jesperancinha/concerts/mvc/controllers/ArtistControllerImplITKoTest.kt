@@ -33,22 +33,13 @@ import kotlin.properties.Delegates
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @ActiveProfiles("test")
-class ArtistControllerImplITKoTest : WordSpec() {
-
-    @Autowired
-    lateinit var environment: Environment
-
-    @Autowired
-    lateinit var listingRepository: ListingRepository
-
-    @Autowired
-    lateinit var artistRepository: ArtistRepository
-
-    @Autowired
-    lateinit var musicRepository: MusicRepository
-
-    @Autowired
-    lateinit var concertRepository: ConcertRepository
+class ArtistControllerImplITKoTest @Autowired constructor(
+    private val environment: Environment,
+    private val listingRepository: ListingRepository,
+    private val artistRepository: ArtistRepository,
+    private val musicRepository: MusicRepository,
+    private val concertRepository: ConcertRepository,
+) : WordSpec() {
 
     final var port by Delegates.notNull<Int>()
 

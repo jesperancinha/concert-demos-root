@@ -15,11 +15,12 @@ import org.mockito.Mockito.`when`
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest
-import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.context.annotation.ComponentScan
 import org.springframework.http.MediaType
 import org.springframework.test.context.ActiveProfiles
+import org.springframework.test.context.bean.override.mockito.MockitoBean
 import org.springframework.test.web.reactive.server.WebTestClient
+import org.springframework.test.web.reactive.server.expectBody
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 
@@ -27,45 +28,44 @@ import reactor.core.publisher.Mono
 @ActiveProfiles("test")
 @EnableConfigurationProperties(ConfigurationProperties::class)
 @ComponentScan("org.jesperancinha.concerts.webflux.controllers")
-class MusicControllerImplSpec {
+class MusicControllerImplSpec @Autowired constructor(
+    private val webTestClient: WebTestClient
+) {
 
-    @Autowired
-    lateinit var webTestClient: WebTestClient
-
-    @MockBean
+    @MockitoBean
     lateinit var musicService: MusicService
 
-    @MockBean
+    @MockitoBean
     lateinit var musicRepository: MusicRepository
 
-    @MockBean
+    @MockitoBean
     lateinit var artistService: ArtistService
 
-    @MockBean
+    @MockitoBean
     lateinit var artistRepository: ArtistRepository
 
-    @MockBean
+    @MockitoBean
     lateinit var concertService: ConcertService
 
-    @MockBean
+    @MockitoBean
     lateinit var concertRepository: ConcertRepository
 
-    @MockBean
+    @MockitoBean
     lateinit var concertListingService: ConcertListingService
 
-    @MockBean
+    @MockitoBean
     lateinit var concertListingRepository: ConcertListingRepository
 
-    @MockBean
+    @MockitoBean
     lateinit var listingService: ListingService
 
-    @MockBean
+    @MockitoBean
     lateinit var repository: ListingRepository
 
-    @MockBean
+    @MockitoBean
     lateinit var listingMusicService: ListingMusicService
 
-    @MockBean
+    @MockitoBean
     lateinit var listingMusicRepository: ListingMusicRepository
 
     @Captor
@@ -79,7 +79,7 @@ class MusicControllerImplSpec {
             .accept(MediaType.APPLICATION_JSON)
             .exchange()
             .expectStatus().isOk
-        results.expectBody(List::class.java).value { list -> list.shouldBeEmpty() }
+        results.expectBody<List<*>>().value { list -> list.shouldBeEmpty() }
     }
 
     @Test
@@ -97,6 +97,6 @@ class MusicControllerImplSpec {
             .body(Mono.just(musicDto), MusicDto::class.java)
             .exchange()
             .expectStatus().isOk
-        results.expectBody(MusicDto::class.java).value { responseMusicDto -> responseMusicDto shouldBe musicDto }
+        results.expectBody<MusicDto>().value { responseMusicDto -> responseMusicDto shouldBe musicDto }
     }
 }

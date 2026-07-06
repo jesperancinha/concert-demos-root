@@ -9,6 +9,7 @@ import org.jesperancinha.concerts.data.MusicDto
 import org.jesperancinha.concerts.types.Gender
 import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Component
+import java.util.Objects
 
 @Entity
 data class Concert(
@@ -64,13 +65,7 @@ data class Listing(
         return true
     }
 
-    override fun hashCode(): Int {
-        var result = id.hashCode()
-        result = 31 * result + artist.hashCode()
-        result = 31 * result + referenceMusic.hashCode()
-        result = 31 * result + musics.hashCode()
-        return result
-    }
+    override fun hashCode(): Int = Objects.hash(id, artist, referenceMusic, musics)
 }
 
 @Entity
@@ -99,12 +94,7 @@ data class Music(
         return true
     }
 
-    override fun hashCode(): Int {
-        var result = id?.hashCode() ?: 0
-        result = 31 * result + name.hashCode()
-        result = 31 * result + lyrics.hashCode()
-        return result
-    }
+    override fun hashCode(): Int = Objects.hash(id, name, lyrics)
 
 }
 

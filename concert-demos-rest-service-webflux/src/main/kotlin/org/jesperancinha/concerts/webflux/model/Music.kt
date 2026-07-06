@@ -1,6 +1,7 @@
 package org.jesperancinha.concerts.webflux.model
 
 import org.springframework.data.annotation.Id
+import java.util.Objects
 
 data class Music(
         @Id
@@ -22,11 +23,6 @@ data class Music(
         return true
     }
 
-    override fun hashCode(): Int {
-        var result = id.hashCode()
-        result = 31 * result + name.hashCode()
-        result = 31 * result + lyrics.hashCode()
-        return result
-    }
+    override fun hashCode(): Int = Objects.hash(id, name, lyrics)
 
 }

@@ -1,5 +1,7 @@
 package org.jesperancinha.concerts.data
 
+import java.util.Objects
+
 data class ListingDto(
     val id: Long? = null,
     val artistDto: ArtistDto,
@@ -21,12 +23,6 @@ data class ListingDto(
         return true
     }
 
-    override fun hashCode(): Int {
-        var result = id?.hashCode() ?: 0
-        result = 31 * result + artistDto.hashCode()
-        result = 31 * result + referenceMusicDto.hashCode()
-        result = 31 * result + musicDtos.hashCode()
-        return result
-    }
+    override fun hashCode(): Int = Objects.hash(id, artistDto, referenceMusicDto, musicDtos)
 
 }
