@@ -32,7 +32,7 @@ import java.time.LocalDateTime
 class ArtistControllerImplITSpec @Autowired constructor(
     private val artistRepository: ArtistRepository
 ) {
-    @LocalServerPort
+    @field:LocalServerPort
     var port: Int = 0
 
     @Test

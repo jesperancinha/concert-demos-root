@@ -46,7 +46,7 @@ class ConcertControllerImplITSpec @Autowired constructor(
     private val concertRepository: ConcertRepository
 ) {
 
-    @LocalServerPort
+    @field:LocalServerPort
     var port: Int = 0
 
     @Test

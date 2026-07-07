@@ -35,7 +35,7 @@ import java.time.LocalDateTime
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @ActiveProfiles("test")
 class ConcertControllerImplITTest @Autowired constructor(
-    @LocalServerPort
+    @param:LocalServerPort
     val port: Int,
     private val listingRepository: ListingRepository,
     private val artistRepository: ArtistRepository,

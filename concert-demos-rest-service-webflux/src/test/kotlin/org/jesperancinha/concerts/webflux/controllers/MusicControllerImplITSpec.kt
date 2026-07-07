@@ -33,7 +33,7 @@ class MusicControllerImplITSpec @Autowired constructor(
     private val musicRepository: MusicRepository
 ) {
 
-    @LocalServerPort
+    @field:LocalServerPort
     var port: Int = 0
 
     @Test

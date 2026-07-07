@@ -25,7 +25,7 @@ import java.net.URI
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @ActiveProfiles("test")
 class MusicControllerImplITTest @Autowired constructor(
-    @LocalServerPort
+    @param:LocalServerPort
     val port: Int,
     private val listingRepository: ListingRepository,
     private val artistRepository: ArtistRepository,
