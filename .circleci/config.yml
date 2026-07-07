@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: eclipse-temurin:21-alpine
+      - image: eclipse-temurin:25-alpine
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
