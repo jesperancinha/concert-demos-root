@@ -137,6 +137,17 @@ sdk use 17-open
 
 ---
 
+## Claude
+
+Prompt claude with the following:
+
+### Run all skills
+```text
+please run skills angular, annotations, docker, java, jee, jvm, kotlin, maven, parallel, readme, scripts, spring, spring-test on this project
+```
+
+---
+
 ## References
 
 -   [Reactive Manifesto](https://www.reactivemanifesto.org/)

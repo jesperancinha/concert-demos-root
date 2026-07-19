@@ -21,8 +21,8 @@
   "author": "João Esperancinha",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "15.8.2",
+    "cypress": "15.18.1",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.3"
+    "typescript": "^7.0.2"
   }
 }
