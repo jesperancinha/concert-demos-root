@@ -53,3 +53,4 @@ cypressUpdateOne.sh
 docker-composetmp.yml
 packagetmp.json
 pluginUpdatesOne.sh
+dependabot.yml.bak

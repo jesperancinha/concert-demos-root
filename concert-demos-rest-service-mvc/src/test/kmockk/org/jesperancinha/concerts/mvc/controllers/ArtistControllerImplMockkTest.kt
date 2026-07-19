@@ -15,7 +15,7 @@ import org.jesperancinha.concerts.types.Gender.NONAPPLICABLE
 import org.mockito.ArgumentCaptor
 import org.mockito.Captor
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
+import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
@@ -28,20 +28,17 @@ import java.time.LocalDateTime
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 @MockkBean(
-    classes = [
+    types = [
         MusicService::class, MusicRepository::class,
         MusicRepository::class, ArtistRepository::class,
         ArtistService::class, ConcertService::class,
         ConcertRepository::class, ListingService::class,
         ListingRepository::class]
 )
-class ArtistControllerImplMockkTest : WordSpec() {
-
-    @Autowired
-    lateinit var mvc: MockMvc
-
-    @Autowired
-    lateinit var artistService: ArtistService
+class ArtistControllerImplMockkTest @Autowired constructor(
+    private val mvc: MockMvc,
+    private val artistService: ArtistService,
+) : WordSpec() {
 
     override fun extensions() = listOf(SpringExtension)
 

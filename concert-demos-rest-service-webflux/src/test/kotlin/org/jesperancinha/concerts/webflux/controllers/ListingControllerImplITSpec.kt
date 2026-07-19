@@ -30,28 +30,21 @@ import org.springframework.core.ParameterizedTypeReference
 import org.springframework.http.HttpMethod
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.web.client.RestTemplate
+import org.springframework.web.client.postForEntity
 import java.time.LocalDateTime
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @EnableConfigurationProperties(ConfigurationProperties::class)
 @ActiveProfiles("test")
-class ListingControllerImplITSpec {
+class ListingControllerImplITSpec @Autowired constructor(
+    private val artistService: ListingService,
+    private val listingRepository: ListingRepository,
+    private val artistRepository: ArtistRepository,
+    private val musicRepository: MusicRepository
+) {
 
-    @LocalServerPort
+    @field:LocalServerPort
     var port: Int = 0
-
-    @Autowired
-    lateinit var artistService: ListingService
-
-    @Autowired
-    lateinit var listingRepository: ListingRepository
-
-    @Autowired
-    lateinit var artistRepository: ArtistRepository
-
-    @Autowired
-    lateinit var musicRepository: MusicRepository
-
 
     @Test
     fun `should GetAllListings`() {
@@ -88,8 +81,8 @@ class ListingControllerImplITSpec {
         )
         val restTemplate = RestTemplate()
 
-        val savedArtistDto = restTemplate.postForEntity(artistsUri, artistDto, ArtistDto::class.java).body
-        val savedMusicDto = restTemplate.postForEntity(musicsUri, musicDto, MusicDto::class.java).body
+        val savedArtistDto = restTemplate.postForEntity<ArtistDto>(artistsUri, artistDto).body
+        val savedMusicDto = restTemplate.postForEntity<MusicDto>(musicsUri, musicDto).body
         savedArtistDto.shouldNotBeNull()
         savedMusicDto.shouldNotBeNull()
         val listingDto = ListingDto(
@@ -98,7 +91,7 @@ class ListingControllerImplITSpec {
             savedMusicDto,
             mutableListOf(savedMusicDto)
         )
-        val savedListingDto = restTemplate.postForEntity(listingsUri, listingDto, ListingDto::class.java).body
+        val savedListingDto = restTemplate.postForEntity<ListingDto>(listingsUri, listingDto).body
         val result = restTemplate.exchange(
             listingsUri,
             HttpMethod.GET,

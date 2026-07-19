@@ -11,18 +11,18 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
 
-      - name: Set up Node.js 22
-        uses: actions/setup-node@v5
+      - name: Set up Node.js 24
+        uses: actions/setup-node@v7
         with:
-          node-version: '22'
+          node-version: '24'
 
       - name: Run dependency update script
         run: make deps-cypress-update
 
       - name: Create pull request
-        uses: peter-evans/create-pull-request@v7-rc
+        uses: peter-evans/create-pull-request@v8-rc
         with:
           commit-message: Update cypress dependencies
           branch: update-cypress-dependencies-and-containers

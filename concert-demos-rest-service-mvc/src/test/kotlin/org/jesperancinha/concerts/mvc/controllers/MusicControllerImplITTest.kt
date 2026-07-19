@@ -19,25 +19,18 @@ import org.springframework.http.HttpMethod
 import org.springframework.http.RequestEntity
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.web.client.RestTemplate
+import org.springframework.web.client.postForEntity
 import java.net.URI
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @ActiveProfiles("test")
-class MusicControllerImplITTest(
-    @LocalServerPort
+class MusicControllerImplITTest @Autowired constructor(
+    @param:LocalServerPort
     val port: Int,
-
-    @Autowired
-    val listingRepository: ListingRepository,
-
-    @Autowired
-    val artistRepository: ArtistRepository,
-
-    @Autowired
-    val musicRepository: MusicRepository,
-
-    @Autowired
-    val concertRepository: ConcertRepository,
+    private val listingRepository: ListingRepository,
+    private val artistRepository: ArtistRepository,
+    private val musicRepository: MusicRepository,
+    private val concertRepository: ConcertRepository,
 ) {
 
     @Test
@@ -58,7 +51,7 @@ class MusicControllerImplITTest(
             name = "Hey mama",
             lyrics = LYRICS_TEXT)
         val restTemplate = RestTemplate()
-        restTemplate.postForEntity(uri, musicDto, Music::class.java)
+        restTemplate.postForEntity<Music>(uri, musicDto)
         val request = RequestEntity<Any>(HttpMethod.GET, URI.create(uri))
         val respType = object : ParameterizedTypeReference<List<MusicDto>>() {}
         val response = restTemplate.exchange(request, respType)

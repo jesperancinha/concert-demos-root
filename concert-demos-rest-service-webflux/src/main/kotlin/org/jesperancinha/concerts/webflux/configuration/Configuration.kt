@@ -16,7 +16,7 @@ private val logger = LoggerFactory.getLogger(org.jesperancinha.concerts.webflux.
 
 @Configuration
 class Configuration(
-    @Value("\${org.jesperancinha.concerts.schema.file:/schema.sql}")
+    @param:Value($$"${org.jesperancinha.concerts.schema.file:/schema.sql}")
     val schema: String,
 ) {
 

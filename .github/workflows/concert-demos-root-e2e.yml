@@ -10,15 +10,15 @@ jobs:
   e2e-electron:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - name: Set up JDK 21
+      - uses: actions/checkout@v7
+      - name: Set up JDK 25
         uses: actions/setup-java@v5
         with:
-          java-version: '21'
+          java-version: '25'
           distribution: 'adopt'
 
       - name: Start Docker
-        uses: nick-fields/retry@v3
+        uses: nick-fields/retry@v4
         with:
           max_attempts: 4
           retry_on: error
@@ -37,15 +37,15 @@ jobs:
   e2e-chrome:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - name: Set up JDK 21
+      - uses: actions/checkout@v7
+      - name: Set up JDK 25
         uses: actions/setup-java@v5
         with:
-          java-version: '21'
+          java-version: '25'
           distribution: 'adopt'
 
       - name: Start Docker
-        uses: nick-fields/retry@v3
+        uses: nick-fields/retry@v4
         with:
           max_attempts: 4
           retry_on: error
@@ -64,15 +64,15 @@ jobs:
   e2e-firefox:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - name: Set up JDK 21
+      - uses: actions/checkout@v7
+      - name: Set up JDK 25
         uses: actions/setup-java@v5
         with:
-          java-version: '21'
+          java-version: '25'
           distribution: 'adopt'
 
       - name: Start Docker
-        uses: nick-fields/retry@v3
+        uses: nick-fields/retry@v4
         with:
           max_attempts: 4
           retry_on: error
@@ -91,15 +91,15 @@ jobs:
   e2e-edge:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - name: Set up JDK 21
+      - uses: actions/checkout@v7
+      - name: Set up JDK 25
         uses: actions/setup-java@v5
         with:
-          java-version: '21'
+          java-version: '25'
           distribution: 'adopt'
 
       - name: Start Docker
-        uses: nick-fields/retry@v3
+        uses: nick-fields/retry@v4
         with:
           max_attempts: 4
           retry_on: error

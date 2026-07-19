@@ -8,15 +8,16 @@ import io.kotest.matchers.shouldNotBe
 import io.mockk.every
 import org.jesperancinha.concerts.mvc.daos.ArtistRepository
 import org.jesperancinha.concerts.mvc.services.ArtistServiceImpl
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.test.context.ContextConfiguration
 
 @ContextConfiguration(classes = [(ArtistServiceImpl::class)])
-class HelloMockkTest(service: ArtistServiceImpl) : WordSpec() {
+class HelloMockkTest @Autowired constructor(
+    private val service: ArtistServiceImpl,
+    @MockkBean private val artistRepository: ArtistRepository,
+) : WordSpec() {
 
     override fun extensions() = listOf(SpringExtension)
-
-    @MockkBean
-    lateinit var artistRepository: ArtistRepository
 
     init {
         "SpringExtension" should {

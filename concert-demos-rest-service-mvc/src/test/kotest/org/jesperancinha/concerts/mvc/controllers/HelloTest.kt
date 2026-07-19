@@ -6,16 +6,17 @@ import io.kotest.matchers.collections.shouldBeEmpty
 import io.kotest.matchers.shouldNotBe
 import org.jesperancinha.concerts.mvc.daos.ArtistRepository
 import org.jesperancinha.concerts.mvc.services.ArtistServiceImpl
-import org.springframework.boot.test.mock.mockito.MockBean
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.test.context.ContextConfiguration
+import org.springframework.test.context.bean.override.mockito.MockitoBean
 
 @ContextConfiguration(classes = [(ArtistServiceImpl::class)])
-class HelloTest(service: ArtistServiceImpl) : WordSpec() {
+class HelloTest @Autowired constructor(
+    private val service: ArtistServiceImpl,
+    @MockitoBean private val artistRepository: ArtistRepository,
+) : WordSpec() {
 
     override fun extensions() = listOf(SpringExtension)
-
-    @MockBean
-    lateinit var artistRepository: ArtistRepository
 
     init {
         "SpringExtension" should {

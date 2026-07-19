@@ -5,7 +5,7 @@ import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 
 interface ConcertListingService {
-    fun getAllConcerts(): Flux<ConcertListing?>?
+    fun getAllConcerts(): Flux<ConcertListing>
 
     fun createConcert(concertListing: ConcertListing): Mono<ConcertListing>
 }

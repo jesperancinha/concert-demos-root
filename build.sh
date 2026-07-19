@@ -6,7 +6,7 @@ docker-machine env dev
 
 eval $(docker-machine env dev)
 
-docker-compose down
+docker compose down
 
 mvn clean install
 
@@ -15,4 +15,4 @@ mvn clean install
 #yarn build
 #cd ..
 
-docker-compose up -d --build --remove-orphans
+docker compose up -d --build --remove-orphans

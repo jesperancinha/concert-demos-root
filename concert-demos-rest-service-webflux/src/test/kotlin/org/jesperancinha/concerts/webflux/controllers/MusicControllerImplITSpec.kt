@@ -23,21 +23,18 @@ import org.springframework.core.ParameterizedTypeReference
 import org.springframework.http.HttpMethod
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.web.client.RestTemplate
+import org.springframework.web.client.postForEntity
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @EnableConfigurationProperties(ConfigurationProperties::class)
 @ActiveProfiles("test")
-class MusicControllerImplITSpec {
+class MusicControllerImplITSpec @Autowired constructor(
+    private val artistService: ArtistService,
+    private val musicRepository: MusicRepository
+) {
 
-    @LocalServerPort
+    @field:LocalServerPort
     var port: Int = 0
-
-    @Autowired
-    lateinit var artistService: ArtistService
-
-    @Autowired
-    lateinit var musicRepository: MusicRepository
-
 
     @Test
     fun `should GetAllMusics`() {
@@ -61,7 +58,7 @@ class MusicControllerImplITSpec {
             LYRICS_TEXT
         )
         val restTemplate = RestTemplate()
-        restTemplate.postForEntity(uri, musicDto, Music::class.java)
+        restTemplate.postForEntity<Music>(uri, musicDto)
 
         val result = restTemplate.exchange(
             uri,

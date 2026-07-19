@@ -34,20 +34,13 @@ import java.time.LocalDateTime
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @ActiveProfiles("test")
-class ListingControllerImplITTest(
-    @LocalServerPort
+class ListingControllerImplITTest @Autowired constructor(
+    @param:LocalServerPort
     val port: Int,
-    @Autowired
-    val listingRepository: ListingRepository,
-
-    @Autowired
-    val artistRepository: ArtistRepository,
-
-    @Autowired
-    val musicRepository: MusicRepository,
-
-    @Autowired
-    val concertRepository: ConcertRepository,
+    private val listingRepository: ListingRepository,
+    private val artistRepository: ArtistRepository,
+    private val musicRepository: MusicRepository,
+    private val concertRepository: ConcertRepository,
 ) {
 
     @Test

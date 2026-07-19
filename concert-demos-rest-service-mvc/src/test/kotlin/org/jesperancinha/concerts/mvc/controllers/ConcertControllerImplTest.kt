@@ -19,46 +19,30 @@ import org.mockito.ArgumentCaptor
 import org.mockito.Captor
 import org.mockito.Mockito.`when`
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
+import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
+import org.springframework.test.context.bean.override.mockito.MockitoBean
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import java.time.LocalDateTime
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
-class ConcertControllerImplTest(
-    @Autowired val mvc: MockMvc,
+class ConcertControllerImplTest @Autowired constructor(
+    private val mvc: MockMvc,
+    @MockitoBean private val musicService: MusicService,
+    @MockitoBean private val musicRepository: MusicRepository,
+    @MockitoBean private val artistService: ArtistService,
+    @MockitoBean private val artistRepository: ArtistRepository,
+    @MockitoBean private val concertService: ConcertService,
+    @MockitoBean private val concertRepository: ConcertRepository,
+    @MockitoBean private val listingService: ListingService,
+    @MockitoBean private val repository: ListingRepository,
 ) {
-    @MockBean
-    lateinit var musicService: MusicService
-
-    @MockBean
-    lateinit var musicRepository: MusicRepository
-
-    @MockBean
-    lateinit var artistService: ArtistService
-
-    @MockBean
-    lateinit var artistRepository: ArtistRepository
-
-    @MockBean
-    lateinit var concertService: ConcertService
-
-    @MockBean
-    lateinit var concertRepository: ConcertRepository
-
-    @MockBean
-    lateinit var listingService: ListingService
-
-    @MockBean
-    lateinit var repository: ListingRepository
-
     @Captor
     lateinit var argumentCaptor: ArgumentCaptor<Concert>
 
