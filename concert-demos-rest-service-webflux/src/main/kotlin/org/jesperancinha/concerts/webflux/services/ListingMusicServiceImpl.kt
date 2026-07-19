@@ -8,7 +8,7 @@ import reactor.core.publisher.Mono
 
 @Service
 class ListingMusicServiceImpl(private val listingMusicRepository: ListingMusicRepository) : ListingMusicService {
-    override fun getAllListings(): Flux<ListingMusic?>? {
+    override fun getAllListings(): Flux<ListingMusic> {
         return listingMusicRepository.findAll()
     }
 

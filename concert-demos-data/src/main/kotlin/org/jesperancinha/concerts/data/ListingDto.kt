@@ -6,7 +6,7 @@ data class ListingDto(
     val id: Long? = null,
     val artistDto: ArtistDto,
     val referenceMusicDto: MusicDto,
-    val musicDtos: MutableList<MusicDto?>,
+    val musicDtos: MutableList<MusicDto>,
 ) {
 
     override fun equals(other: Any?): Boolean {

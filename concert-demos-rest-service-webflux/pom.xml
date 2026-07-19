@@ -12,13 +12,10 @@
     </parent>
 
     <artifactId>concert-demos-rest-service-webflux</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <name>Concerts REST WebFlux Service</name>
     <description>Concerts rest service for Spring Boot</description>
 
     <dependencies>
-
-        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-r2dbc -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-r2dbc</artifactId>
@@ -31,7 +28,10 @@
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-relational</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-mustache</artifactId>
@@ -68,11 +68,6 @@
             <groupId>io.projectreactor.kotlin</groupId>
             <artifactId>reactor-kotlin-extensions</artifactId>
             <version>${reactor-kotlin-extensions.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-all</artifactId>
         </dependency>
         <dependency>
             <groupId>io.github.microutils</groupId>
@@ -111,6 +106,12 @@
         <dependency>
             <groupId>io.kotest</groupId>
             <artifactId>kotest-assertions-core-jvm</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-webflux-test</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

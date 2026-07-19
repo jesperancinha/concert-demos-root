@@ -8,6 +8,7 @@ import org.jesperancinha.concerts.data.ListingDto
 import org.jesperancinha.concerts.data.MusicDto
 import org.jesperancinha.concerts.types.Gender
 import org.springframework.data.repository.CrudRepository
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Component
 import java.util.Objects
 
@@ -24,7 +25,7 @@ data class Concert(
         joinColumns = [JoinColumn(name = "listing_id")],
         inverseJoinColumns = [JoinColumn(name = "concert_id")]
     )
-    var listings: MutableSet<Listing>? = HashSet(),
+    var listings: MutableSet<Listing> = HashSet(),
 )
 
 @Entity
@@ -163,7 +164,6 @@ fun MusicDto.toMusic(): Music = Music(
 )
 
 
-
 interface ArtistRepository : CrudRepository<Artist, Long>
 interface ConcertRepository : CrudRepository<Concert, Long>
 interface ListingRepository : CrudRepository<Listing, Long>
@@ -180,18 +180,17 @@ class ConcertConverter(
             concert.name,
             concert.location,
             concert.date,
-            concert.listings?.map { listingConverter.toListingDto(it) }?.toMutableList()
+            concert.listings.map { listingConverter.toListingDto(it) }.toMutableList()
         )
     }
 
     fun toConcert(concertDto: ConcertDto): Concert {
         val concert = Concert(concertDto.id, concertDto.name, concertDto.location, concertDto.date)
-        concert.listings = concertDto.listingDtos?.
-        map {
-            val listing = listingRepository.findById(it?.id ?: -1).orElse(null)
-            listing.concerts.add(concert)
+        concert.listings = concertDto.listingDtos.mapNotNull {
+            val listing = listingRepository.findByIdOrNull(it.id ?: -1)
+                ?.apply { concerts.add(concert) }
             listing
-        }?.toMutableSet()
+        }.toMutableSet()
         return concert
     }
 }
@@ -225,10 +224,15 @@ class ListingConverter(
             listingDto.artistDto.toArtist(),
             listingDto.referenceMusicDto.toMusic()
         )
-        listing.musics = listingDto.musicDtos.map {
-            val music = musicRepository.findById(it?.id ?: -1).orElse(null)
-            music.listings.add(listing)
-            musicRepository.save(music)
+        listing.musics = listingDto.musicDtos.mapNotNull {
+            it.id?.let { id ->
+                musicRepository.findByIdOrNull(id)
+                    ?.apply {
+                        listings.add(listing)
+                        musicRepository.save(this)
+
+                    }
+            }
         }.toMutableSet()
         return listing
     }

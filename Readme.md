@@ -3,7 +3,7 @@
 ---
 
 [![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=Concert%20Demos%20🎸%20&color=informational)](https://github.com/jesperancinha/concert-demos-root)
-[![GitHub release](https://img.shields.io/github/release-pre/jesperancinha/concert-demos-root.svg)](#)
+![GitHub release](https://img.shields.io/github/release-pre/jesperancinha/concert-demos-root.svg)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 [![CircleCI](https://circleci.com/gh/jesperancinha/concert-demos-root.svg?style=svg)](https://circleci.com/gh/jesperancinha/concert-demos-root)
@@ -12,16 +12,15 @@
 [![concert-demos-root-e2e](https://github.com/jesperancinha/concert-demos-root/actions/workflows/concert-demos-root-e2e.yml/badge.svg)](https://github.com/jesperancinha/concert-demos-root/actions/workflows/concert-demos-root-e2e.yml)
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/0ddf4a0b338e4644b416824298e33127)](https://www.codacy.com/manual/jofisaes/concert-demos-root?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/concert-demos-root&amp;utm_campaign=Badge_Grade)
-[![codebeat badge](https://codebeat.co/badges/c36571eb-ca0f-4abe-9af2-c66ffc3a4002)](https://codebeat.co/projects/github-com-jesperancinha-concert-demos-root-master)
 [![Known Vulnerabilities](https://snyk.io/test/github/jesperancinha/concert-demos-root/badge.svg)](https://snyk.io/test/github/jesperancinha/concert-demos-root)
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/0ddf4a0b338e4644b416824298e33127)](https://www.codacy.com/gh/jesperancinha/concert-demos-root/dashboard?utm_source=github.com&utm_medium=referral&utm_content=jesperancinha/concert-demos-root&utm_campaign=Badge_Coverage)
 [![codecov](https://codecov.io/gh/jesperancinha/concert-demos-root/branch/master/graph/badge.svg?token=4bVCCk2Ydj)](https://codecov.io/gh/jesperancinha/concert-demos-root)
 [![Coverage Status](https://coveralls.io/repos/github/jesperancinha/concert-demos-root/badge.svg?branch=master)](https://coveralls.io/github/jesperancinha/concert-demos-root?branch=master)
 
-[![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/concert-demos-root.svg)](#)
-[![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/concert-demos-root.svg)](#)
-[![GitHub top language](https://img.shields.io/github/languages/code-size/jesperancinha/concert-demos-root.svg)](#)
+![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/concert-demos-root.svg)
+![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/concert-demos-root.svg)
+![GitHub top language](https://img.shields.io/github/languages/code-size/jesperancinha/concert-demos-root.svg)
 
 ## Technologies used
 
@@ -121,17 +120,17 @@ You can make tests for this application using the Swagger UI at:
 ## Java version
 
 ```bash
-sdk install 17-open
-sdk use 17-open
+sdk install java 25-open
+sdk use java 25-open
 ```
 
 ## Coverage report Graphs
 
-<div align="center">
+<div style="text-align: center;">
 <img width="30%" src="https://codecov.io/gh/jesperancinha/concert-demos-root/branch/master/graphs/sunburst.svg" alt=""/>
 <img width="30%" src="https://codecov.io/gh/jesperancinha/concert-demos-root/branch/master/graphs/tree.svg" alt=""/>
 </div>
-<div align="center">
+<div style="text-align: center;">
 <img width="60%" src="https://codecov.io/gh/jesperancinha/concert-demos-root/branch/master/graphs/icicle.svg" alt=""/>
 </div>
 

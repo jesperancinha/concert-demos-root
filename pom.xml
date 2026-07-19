@@ -22,18 +22,18 @@
         <build-helper-maven-plugin.version>3.6.1</build-helper-maven-plugin.version>
 
         <kotest.version>5.9.1</kotest.version>
-        <springmockk.version>4.0.2</springmockk.version>
+        <springmockk.version>5.0.1</springmockk.version>
         <kotest-extensions-spring.version>1.3.0</kotest-extensions-spring.version>
         <mockk.version>1.14.7</mockk.version>
 
-        <netty-all.version>4.2.9.Final</netty-all.version>
         <postgresql.version>42.7.11</postgresql.version>
 
         <jacoco-maven-plugin.version>0.8.14</jacoco-maven-plugin.version>
         <omni-coveragereporter-maven-plugin.version>0.4.5</omni-coveragereporter-maven-plugin.version>
         <kotlinx-coroutines.version>1.10.2</kotlinx-coroutines.version>
-        <springdoc-openapi-starter.version>2.8.14</springdoc-openapi-starter.version>
-        <spring-boot.version>3.5.8</spring-boot.version>
+        <springdoc-openapi-starter.version>3.0.3</springdoc-openapi-starter.version>
+        <spring-boot.version>4.1.0</spring-boot.version>
+        <r2dbc-postgresql.version>0.8.13.RELEASE</r2dbc-postgresql.version>
     </properties>
 
     <modules>
@@ -107,14 +107,9 @@
                 <version>${postgresql.version}</version>
             </dependency>
             <dependency>
-                <groupId>io.netty</groupId>
-                <artifactId>netty-all</artifactId>
-                <version>${netty-all.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>io.r2dbc</groupId>
                 <artifactId>r2dbc-postgresql</artifactId>
-                <version>0.8.13.RELEASE</version>
+                <version>${r2dbc-postgresql.version}</version>
             </dependency>
 
             <dependency>

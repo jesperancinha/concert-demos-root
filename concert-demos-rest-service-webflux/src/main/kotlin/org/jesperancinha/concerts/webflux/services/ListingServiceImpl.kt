@@ -52,10 +52,11 @@ class ListingServiceImpl(
             val listingId = it.id
             Flux.fromIterable(listingDto.musicDtos)
                 .map {
-                    when (val id = it?.id) {
+                    val mono = when (val id = it.id) {
                         null -> Mono.empty()
                         else -> listingMusicRepository.save(ListingMusic(null, listingId, id))
                     }
+                    mono
                 }
         }.flatMap { it }.map {
             ListingDto(it.listingId, listingDto.artistDto, listingDto.referenceMusicDto, listingDto.musicDtos)
@@ -84,10 +85,10 @@ class ListingServiceImpl(
                     ?.flatMap { musicId ->
                         musicRepository.findById(musicId)
                             .map { MusicConverter.toMusicDto(it) }
-                    }?.map {
-                        listingDto.musicDtos?.add(it)
+                    }?.mapNotNull {
+                        listingDto.musicDtos.add(it)
                         listingDto
-                    }
+                    }?: Mono.empty()
             }.toMono()
     }
 }

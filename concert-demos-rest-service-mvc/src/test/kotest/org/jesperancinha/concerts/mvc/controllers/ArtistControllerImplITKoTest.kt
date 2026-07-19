@@ -50,7 +50,7 @@ class ArtistControllerImplITKoTest @Autowired constructor(
             "retrieve list of all artists" {
                 val uri = "http://localhost:${port}/concerts/data/artists"
                 val restTemplate = RestTemplate()
-                val result: List<Artist> = restTemplate.getForObject(uri, List::class)
+                val result: List<Artist> = restTemplate.getForObject<List<Artist>>(uri) ?: listOf()
                 result.shouldBeEmpty()
             }
             "create an artist" @Transactional {

@@ -87,15 +87,15 @@ class ConcertControllerImplITSpec @Autowired constructor(
         )
 
         val restTemplate = RestTemplate()
-        val savedArtistDto = restTemplate.postForEntity<ArtistDto>(artistsUri, artistDto).body
-        val savedMusicDto = restTemplate.postForEntity<MusicDto>(musicsUri, musicDto).body
+        val savedArtistDto = restTemplate.postForEntity<ArtistDto>(artistsUri, artistDto).body.shouldNotBeNull()
+        val savedMusicDto = restTemplate.postForEntity<MusicDto>(musicsUri, musicDto).body.shouldNotBeNull()
         val listingDto = ListingDto(
             null,
             savedArtistDto,
             savedMusicDto,
             mutableListOf(savedMusicDto)
         )
-        val savedListingDto = restTemplate.postForEntity<ListingDto>(listingsUri, listingDto).body
+        val savedListingDto = restTemplate.postForEntity<ListingDto>(listingsUri, listingDto).body.shouldNotBeNull()
         val concertDto = ConcertDto(
             null,
             "Nicki Wrld Tour",

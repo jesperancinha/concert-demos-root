@@ -34,7 +34,7 @@ class ConcertServiceImpl(
                                 }
                             }
                             .map {
-                                concert.listingDtos?.add(it)
+                                concert.listingDtos.add(it)
                                 concert
                             }
 
@@ -49,7 +49,7 @@ class ConcertServiceImpl(
             .flatMapMany {
                 concertId = it.id
                 ConcertDto(it.id, concertDto.name, concertDto.date, concertDto.location, concertDto.listingDtos)
-                    .listingDtos?.let { it1 -> Flux.fromIterable(it1) }
+                    .listingDtos.let { it1 -> Flux.fromIterable(it1) }
             }.flatMap {
                 concertListingRepository.save(ConcertListing(concertId, it?.id))
             }.map {

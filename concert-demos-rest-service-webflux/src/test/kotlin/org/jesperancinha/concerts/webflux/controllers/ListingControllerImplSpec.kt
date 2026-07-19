@@ -19,7 +19,7 @@ import org.mockito.ArgumentCaptor
 import org.mockito.Captor
 import org.mockito.Mockito.`when`
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest
+import org.springframework.boot.webflux.test.autoconfigure.WebFluxTest
 import org.springframework.http.MediaType
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.bean.override.mockito.MockitoBean
@@ -117,7 +117,7 @@ class ListingControllerImplSpec @Autowired constructor(
             .exchange()
             .expectStatus().isOk
         results.expectBody<ListingDto>().value { responseListingDto ->
-            responseListingDto.id.shouldNotBeNull()
+            responseListingDto.shouldNotBeNull().id.shouldNotBeNull()
             responseListingDto.artistDto shouldBe artistDto
             responseListingDto.referenceMusicDto shouldBe musicDto
             responseListingDto.musicDtos.shouldHaveSize(1)
