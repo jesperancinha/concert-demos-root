@@ -32,30 +32,22 @@ import org.springframework.core.ParameterizedTypeReference
 import org.springframework.http.HttpMethod
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.web.client.RestTemplate
+import org.springframework.web.client.postForEntity
 import java.time.LocalDateTime
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @EnableConfigurationProperties(ConfigurationProperties::class)
 @ActiveProfiles("test")
-class ConcertControllerImplITSpec {
+class ConcertControllerImplITSpec @Autowired constructor(
+    private val artistService: ArtistService,
+    private val listingRepository: ListingRepository,
+    private val artistRepository: ArtistRepository,
+    private val musicRepository: MusicRepository,
+    private val concertRepository: ConcertRepository
+) {
 
-    @LocalServerPort
+    @field:LocalServerPort
     var port: Int = 0
-
-    @Autowired
-    lateinit var artistService: ArtistService
-
-    @Autowired
-    lateinit var listingRepository: ListingRepository
-
-    @Autowired
-    lateinit var artistRepository: ArtistRepository
-
-    @Autowired
-    lateinit var musicRepository: MusicRepository
-
-    @Autowired
-    lateinit var concertRepository: ConcertRepository
 
     @Test
     fun `should GetAllConcerts`() {
@@ -95,15 +87,15 @@ class ConcertControllerImplITSpec {
         )
 
         val restTemplate = RestTemplate()
-        val savedArtistDto = restTemplate.postForEntity(artistsUri, artistDto, ArtistDto::class.java).body
-        val savedMusicDto = restTemplate.postForEntity(musicsUri, musicDto, MusicDto::class.java).body
+        val savedArtistDto = restTemplate.postForEntity<ArtistDto>(artistsUri, artistDto).body.shouldNotBeNull()
+        val savedMusicDto = restTemplate.postForEntity<MusicDto>(musicsUri, musicDto).body.shouldNotBeNull()
         val listingDto = ListingDto(
             null,
             savedArtistDto,
             savedMusicDto,
             mutableListOf(savedMusicDto)
         )
-        val savedListingDto = restTemplate.postForEntity(listingsUri, listingDto, ListingDto::class.java).body
+        val savedListingDto = restTemplate.postForEntity<ListingDto>(listingsUri, listingDto).body.shouldNotBeNull()
         val concertDto = ConcertDto(
             null,
             "Nicki Wrld Tour",
@@ -112,7 +104,7 @@ class ConcertControllerImplITSpec {
             mutableListOf(savedListingDto)
 
         )
-        val savedConcertDto = restTemplate.postForEntity(concertsUri, concertDto, ConcertDto::class.java).body
+        val savedConcertDto = restTemplate.postForEntity<ConcertDto>(concertsUri, concertDto).body
         val result = restTemplate.exchange(
             concertsUri,
             HttpMethod.GET,

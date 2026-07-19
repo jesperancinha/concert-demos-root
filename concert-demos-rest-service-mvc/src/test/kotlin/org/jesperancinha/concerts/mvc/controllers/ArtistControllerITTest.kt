@@ -33,25 +33,20 @@ import java.time.LocalDateTime
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @ActiveProfiles("test")
-class ArtistControllerITTest(
-    @LocalServerPort
-
+class ArtistControllerITTest @Autowired constructor(
+    @param:LocalServerPort
     val port: Int,
-    @Autowired
-    val listingRepository: ListingRepository,
-    @Autowired
-    val artistRepository: ArtistRepository,
-    @Autowired
-    val musicRepository: MusicRepository,
-    @Autowired
-    val concertRepository: ConcertRepository,
+    private val listingRepository: ListingRepository,
+    private val artistRepository: ArtistRepository,
+    private val musicRepository: MusicRepository,
+    private val concertRepository: ConcertRepository,
 ) {
 
     @Test
     fun `Retrieve list of all artists`() {
         val uri = "http://localhost:${port}/concerts/data/artists"
         val restTemplate = RestTemplate()
-        val result: List<Artist> = restTemplate.getForObject(uri, List::class)
+        val result: List<Artist> = restTemplate.getForObject<List<Artist>>(uri) ?: listOf()
         result.shouldBeEmpty()
     }
 

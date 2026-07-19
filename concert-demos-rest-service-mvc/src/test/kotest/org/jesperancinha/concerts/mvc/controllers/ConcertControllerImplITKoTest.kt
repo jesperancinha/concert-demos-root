@@ -37,22 +37,13 @@ import kotlin.properties.Delegates
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @ActiveProfiles("test")
-class ConcertControllerImplITKoTest : WordSpec() {
-
-    @Autowired
-    lateinit var environment: Environment
-
-    @Autowired
-    lateinit var listingRepository: ListingRepository
-
-    @Autowired
-    lateinit var artistRepository: ArtistRepository
-
-    @Autowired
-    lateinit var musicRepository: MusicRepository
-
-    @Autowired
-    lateinit var concertRepository: ConcertRepository
+class ConcertControllerImplITKoTest @Autowired constructor(
+    private val environment: Environment,
+    private val listingRepository: ListingRepository,
+    private val artistRepository: ArtistRepository,
+    private val musicRepository: MusicRepository,
+    private val concertRepository: ConcertRepository,
+) : WordSpec() {
 
     final var port by Delegates.notNull<Int>()
 
@@ -63,7 +54,7 @@ class ConcertControllerImplITKoTest : WordSpec() {
             "retrieve all concerts" {
                 val uri = "http://localhost:${port}/concerts/data/listings"
                 val restTemplate = RestTemplate()
-                val result: List<ConcertDto> = restTemplate.getForObject(uri, List::class)
+                val result: List<ConcertDto> = restTemplate.getForObject<List<ConcertDto>>(uri) ?: listOf()
                 result.shouldBeEmpty()
             }
             "create concerts" {
@@ -101,7 +92,11 @@ class ConcertControllerImplITKoTest : WordSpec() {
                     musicDtos = mutableListOf(savedMusicDto)
                 )
                 val savedListingDto =
-                    restTemplate.postForEntity<ListingDto>(listingsUri, listingDto, ListingDto::class).body
+                    restTemplate.postForEntity<ListingDto>(
+                        listingsUri,
+                        listingDto,
+                        ListingDto::class
+                    ).body.shouldNotBeNull()
                 val concertDto = ConcertDto(
                     name = "Nicki Wrld Tour",
                     location = "Amsterdam",
@@ -109,7 +104,11 @@ class ConcertControllerImplITKoTest : WordSpec() {
                     listingDtos = mutableListOf(savedListingDto)
                 )
                 val savedConcertDto =
-                    restTemplate.postForEntity<ConcertDto>(concertsUri, concertDto, ConcertDto::class).body
+                    restTemplate.postForEntity<ConcertDto>(
+                        concertsUri,
+                        concertDto,
+                        ConcertDto::class
+                    ).body.shouldNotBeNull()
                 val request = RequestEntity<Any>(HttpMethod.GET, URI.create(concertsUri))
                 val respType = object : ParameterizedTypeReference<List<ConcertDto>>() {}
                 val response = restTemplate.exchange(request, respType)
@@ -119,7 +118,7 @@ class ConcertControllerImplITKoTest : WordSpec() {
                 assertThat(result).hasSize(1)
                 val concertDtoResult = result.getOrNull(0)
                 assertThat(concertDtoResult?.id).isNotEqualTo(0)
-                assertThat(concertDtoResult?.id).isEqualTo(savedConcertDto?.id)
+                assertThat(concertDtoResult?.id).isEqualTo(savedConcertDto.id)
                 assertThat(concertDtoResult?.name).isEqualTo("Nicki Wrld Tour")
                 assertThat(concertDtoResult?.location).isEqualTo("Amsterdam")
                 assertThat(concertDtoResult?.listingDtos).hasSize(1)

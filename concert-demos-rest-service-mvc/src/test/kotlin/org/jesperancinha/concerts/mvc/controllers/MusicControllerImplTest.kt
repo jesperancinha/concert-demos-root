@@ -14,10 +14,10 @@ import org.mockito.ArgumentCaptor
 import org.mockito.Captor
 import org.mockito.Mockito.*
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
+import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.http.MediaType
+import org.springframework.test.context.bean.override.mockito.MockitoBean
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
@@ -26,23 +26,14 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
-@MockBean(classes = [ArtistService::class, ConcertService::class, ListingService::class, ListingRepository::class])
-class MusicControllerImplTest(
-    @Autowired
-    val mvc: MockMvc,
+@MockitoBean(types = [ArtistService::class, ConcertService::class, ListingService::class, ListingRepository::class])
+class MusicControllerImplTest @Autowired constructor(
+    private val mvc: MockMvc,
+    @MockitoBean private val musicService: MusicService,
+    @MockitoBean private val musicRepository: MusicRepository,
+    @MockitoBean private val artistRepository: ArtistRepository,
+    @MockitoBean private val concertRepository: ConcertRepository,
 ) {
-    @MockBean
-    lateinit var musicService: MusicService
-
-    @MockBean
-    lateinit var musicRepository: MusicRepository
-
-    @MockBean
-    lateinit var artistRepository: ArtistRepository
-
-    @MockBean
-    lateinit var concertRepository: ConcertRepository
-
     @Captor
     lateinit var argumentCaptor: ArgumentCaptor<Music>
 

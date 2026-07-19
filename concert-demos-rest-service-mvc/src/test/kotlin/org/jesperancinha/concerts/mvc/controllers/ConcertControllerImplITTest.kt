@@ -34,24 +34,20 @@ import java.time.LocalDateTime
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @ActiveProfiles("test")
-class ConcertControllerImplITTest(
-    @LocalServerPort
+class ConcertControllerImplITTest @Autowired constructor(
+    @param:LocalServerPort
     val port: Int,
-    @Autowired
-    val listingRepository: ListingRepository,
-    @Autowired
-    val artistRepository: ArtistRepository,
-    @Autowired
-    val musicRepository: MusicRepository,
-    @Autowired
-    val concertRepository: ConcertRepository,
+    private val listingRepository: ListingRepository,
+    private val artistRepository: ArtistRepository,
+    private val musicRepository: MusicRepository,
+    private val concertRepository: ConcertRepository,
 ) {
 
     @Test
     fun `retrieve all concerts`() {
         val uri = "http://localhost:${port}/concerts/data/listings"
         val restTemplate = RestTemplate()
-        val result: List<ConcertDto> = restTemplate.getForObject(uri, List::class)
+        val result: List<ConcertDto> = restTemplate.getForObject<List<ConcertDto>>(uri) ?: listOf()
         result.shouldBeEmpty()
     }
 
@@ -90,7 +86,7 @@ class ConcertControllerImplITTest(
             referenceMusicDto = savedMusicDto,
             musicDtos = mutableListOf(savedMusicDto)
         )
-        val savedListingDto = restTemplate.postForEntity<ListingDto>(listingsUri, listingDto, ListingDto::class).body
+        val savedListingDto = restTemplate.postForEntity<ListingDto>(listingsUri, listingDto, ListingDto::class).body.shouldNotBeNull()
         val concertDto = ConcertDto(
             name = "Nicki Wrld Tour",
             location = "Amsterdam",
@@ -98,7 +94,7 @@ class ConcertControllerImplITTest(
             listingDtos = mutableListOf(savedListingDto)
 
         )
-        val savedConcertDto = restTemplate.postForEntity<ConcertDto>(concertsUri, concertDto, ConcertDto::class).body
+        val savedConcertDto = restTemplate.postForEntity<ConcertDto>(concertsUri, concertDto, ConcertDto::class).body.shouldNotBeNull()
         val request = RequestEntity<Any>(HttpMethod.GET, URI.create(concertsUri))
         val respType = object : ParameterizedTypeReference<List<ConcertDto>>() {}
         val response = restTemplate.exchange(request, respType)
@@ -108,7 +104,7 @@ class ConcertControllerImplITTest(
         assertThat(result).hasSize(1)
         val concertDtoResult = result.getOrNull(0)
         assertThat(concertDtoResult?.id).isNotEqualTo(0)
-        assertThat(concertDtoResult?.id).isEqualTo(savedConcertDto?.id)
+        assertThat(concertDtoResult?.id).isEqualTo(savedConcertDto.id)
         assertThat(concertDtoResult?.name).isEqualTo("Nicki Wrld Tour")
         assertThat(concertDtoResult?.location).isEqualTo("Amsterdam")
         assertThat(concertDtoResult?.listingDtos).hasSize(1)

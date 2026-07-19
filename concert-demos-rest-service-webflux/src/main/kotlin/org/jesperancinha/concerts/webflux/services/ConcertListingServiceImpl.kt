@@ -9,7 +9,7 @@ import reactor.core.publisher.Mono
 @Service
 class ConcertListingServiceImpl(private val concertListingRepository: ConcertListingRepository) :
     ConcertListingService {
-    override fun getAllConcerts(): Flux<ConcertListing?>? {
+    override fun getAllConcerts(): Flux<ConcertListing> {
         return concertListingRepository.findAll()
     }
 
