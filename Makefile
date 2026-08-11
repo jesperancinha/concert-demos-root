@@ -50,7 +50,7 @@ dcup-light:
 dcup: dcd
 	docker compose up -d --build --remove-orphans
 	make concerts-wait
-dcd: dc-migration
+dcd:
 	docker compose down
 concerts-wait:
 	bash concerts_wait.sh
@@ -91,5 +91,3 @@ deps-node-update:
 deps-quick-update: deps-cypress-update deps-plugins-update deps-java-update deps-node-update
 update-repo-prs:
 	curl -sL https://raw.githubusercontent.com/jesperancinha/project-signer/master/update-all-repo-prs.sh | bash
-dc-migration:
-	curl -sL https://raw.githubusercontent.com/jesperancinha/project-signer/master/setupDockerCompose.sh | bash
