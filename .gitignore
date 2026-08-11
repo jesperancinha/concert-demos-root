@@ -54,3 +54,4 @@ docker-composetmp.yml
 packagetmp.json
 pluginUpdatesOne.sh
 dependabot.yml.bak
+.output*.txt
