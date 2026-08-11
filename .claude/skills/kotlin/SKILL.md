@@ -125,7 +125,27 @@ private val CSV_HEADER = CSVFormat.DEFAULT.builder()
 Due to Java conversions to Kotlin, some of them, due to their automatic nature, didn't consider the existence of data classes.
 If Kotlin classes still use lombok for the builder pattern please convert them to `data class`.
 
-## 9. Checklist
+## 9. Replace the package of `jackson-module-kotlin` 
+
+Please replace:
+
+```xml
+<dependency>
+    <groupId>com.fasterxml.jackson.module</groupId>
+    <artifactId>jackson-module-kotlin</artifactId>
+</dependency>
+```
+
+with 
+
+```xml
+<dependency>
+    <groupId>tools.jackson.module</groupId>
+    <artifactId>jackson-module-kotlin</artifactId>
+</dependency>
+```
+
+## 10. Checklist
 
 [ ] The code does not use the `!!` operator.
 [ ] The code does not use the safe call operator (`?.`) when the value is guaranteed to be non-null.
