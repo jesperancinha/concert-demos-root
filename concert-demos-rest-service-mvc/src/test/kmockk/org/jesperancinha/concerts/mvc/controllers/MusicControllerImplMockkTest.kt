@@ -31,7 +31,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 @MockkBean(
     types = [
         MusicService::class, MusicRepository::class,
-        MusicRepository::class, ArtistRepository::class,
+        ArtistRepository::class,
         ArtistService::class, ConcertService::class,
         ConcertRepository::class, ListingService::class,
         ListingRepository::class]
