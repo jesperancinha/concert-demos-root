@@ -18,6 +18,7 @@
         <maven-surefire-plugin.version>3.5.4</maven-surefire-plugin.version>
         <maven-compiler-plugin.version>3.14.1</maven-compiler-plugin.version>
         <kotlin.version>2.3.20</kotlin.version>
+        <kotlin.compiler.jvmTarget>${java.version}</kotlin.compiler.jvmTarget>
         <kotlin-logging.version>3.0.5</kotlin-logging.version>
         <build-helper-maven-plugin.version>3.6.1</build-helper-maven-plugin.version>
 
