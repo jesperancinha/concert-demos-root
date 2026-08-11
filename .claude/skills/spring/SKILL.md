@@ -280,8 +280,9 @@ If `no-args` is being used, it can be removed. The `no-args` plugin is not neces
 
 ## Example 2
 
-The kotlin version does not need to be specified in the `kotlin-maven-plugin` configuration. It can be removed, and the
-version will be taken from the `kotlin.version` property.
+Since version `2.3.20`, the kotlin dependency `kotlin-maven-allopen` is not necessary anymore. 
+It comes as a transitive dependency of the `kotlin-maven-noarg` dependency. 
+Therefore, it can be removed from the `pom.xml` files.
 
 As an example, this can be replaced:
 
@@ -307,10 +308,7 @@ by:
     <dependency>
         <groupId>org.jetbrains.kotlin</groupId>
         <artifactId>kotlin-maven-noarg</artifactId>
-    </dependency>
-    <dependency>
-        <groupId>org.jetbrains.kotlin</groupId>
-        <artifactId>kotlin-maven-allopen</artifactId>
+        <version>${kotlin.version}</version>
     </dependency>
 </dependencies>
 ```
